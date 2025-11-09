@@ -95,6 +95,18 @@ export const Endgame = {
   // Reset the game, but carry over some post-completion stats. We also call this when starting a speedrun, so make sure
   // any stats which are updated due to completion happen in startNewGame() instead of in here
   resetStuff() {
+    let remains = 0;
+    if (ImaginaryUpgrade(26).isAvailableForPurchase) remains += 67108864;
+    if (ImaginaryUpgrade(27).isAvailableForPurchase) remains += 134217728;
+    if (ImaginaryUpgrade(28).isAvailableForPurchase) remains += 268435456;
+    if (ImaginaryUpgrade(29).isAvailableForPurchase) remains += 536870912;
+    if (ImaginaryUpgrade(30).isAvailableForPurchase) remains += 1073741824;
+    let darkremains = 0;
+    if (ImaginaryUpgrade(26).isBought) darkremains += 67108864;
+    if (ImaginaryUpgrade(27).isBought) darkremains += 134217728;
+    if (ImaginaryUpgrade(28).isBought) darkremains += 268435456;
+    if (ImaginaryUpgrade(29).isBought) darkremains += 536870912;
+    if (ImaginaryUpgrade(30).isBought) darkremains += 1073741824;
     player.isGameEnd = false;
     Tab.dimensions.antimatter.show();
     AchievementTimers.marathon2.reset();
@@ -173,8 +185,8 @@ export const Endgame = {
         5: 1,
       };
     }
-    player.reality.imaginaryUpgradeBits = 0;
-    player.reality.imaginaryUpgReqs = 0;
+    player.reality.imaginaryUpgReqs = remains;
+    player.reality.imaginaryUpgradeBits = darkremains;
     player.reality.imaginaryRebuyables = {
       1: 0,
       2: 0,
