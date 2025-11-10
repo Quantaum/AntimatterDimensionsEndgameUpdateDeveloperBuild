@@ -47,13 +47,13 @@ export default {
       return timeDisplayShort(new Decimal(this.storedRealCap));
     },
     storedBHDesc() {
-      timeDisplayShort(new Decimal(this.storedBlackHole));
+      return timeDisplayShort(new Decimal(this.storedBlackHole));
     },
     nerfedBHTimeDesc() {
-      timeDisplayShort(new Decimal(this.nerfedBlackHoleTime));
+      return timeDisplayShort(new Decimal(this.nerfedBlackHoleTime));
     },
     storedRealDesc() {
-      timeDisplayShort(new Decimal(this.storedReal));
+      return timeDisplayShort(new Decimal(this.storedReal));
     },
     unlocksInfo() {
       return ENSLAVED_UNLOCKS;
