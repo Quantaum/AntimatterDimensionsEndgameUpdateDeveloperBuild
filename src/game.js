@@ -720,6 +720,18 @@ function updatePrestigeRates() {
     player.records.thisReality.bestRSmin = currentRSmin;
     player.records.thisReality.bestRSminVal = Effarig.shardsGained;
   }
+
+  const currentCPmin = gainedCelestialPoints().div(Decimal.clampMin(0.0005, Time.thisEndgameRealTime.totalMinutes));
+  if (currentCPmin.gt(player.records.thisEndgame.bestCPmin) && isEndgameAvailable()) {
+    player.records.thisEndgame.bestCPmin = currentCPmin;
+    player.records.thisEndgame.bestCPminVal = gainedCelestialPoints();
+  }
+
+  const currentDPmin = gainedDoomedParticles().div(Decimal.clampMin(0.0005, Time.thisEndgameRealTime.totalMinutes));
+  if (currentDPmin.gt(player.records.thisEndgame.bestDPmin) && isEndgameAvailable()) {
+    player.records.thisEndgame.bestDPmin = currentDPmin;
+    player.records.thisEndgame.bestDPminVal = gainedDoomedParticles();
+  }
 }
 
 function passivePrestigeGen() {
