@@ -268,11 +268,19 @@ export const DarkMatterDimensions = {
       }
     }
     if (SingularityMilestone.dim4Generation.canBeApplied && Laitela.annihilationUnlocked) {
-      const type = 4;
+      const type = DarkMatterDimensions.highestUnlocked;
       DarkMatterDimension(type).amount = DarkMatterDimension(type).amount
         .plus(SingularityMilestone.dim4Generation.effectValue * realDiff / 1000);
     }
   },
+
+  get highestUnlocked() {
+    if (DarkMatterDimension(8).isUnlocked) return 8;
+    if (DarkMatterDimension(7).isUnlocked) return 7;
+    if (DarkMatterDimension(6).isUnlocked) return 6;
+    if (DarkMatterDimension(5).isUnlocked) return 5;
+    return 4;
+  }
 
   reset() {
     for (const dimension of DarkMatterDimensions.all) {
