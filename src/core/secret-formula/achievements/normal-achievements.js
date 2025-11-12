@@ -1415,7 +1415,7 @@ export const normalAchievements = [
   },
   {
     id: 191,
-    name: "...for now",
+    name: "...For Now",
     description: "Purchase a 1st Dimension in Run 2.",
     checkRequirement: () => PlayerProgress.endgameUnlocked() && AntimatterDimension(1).amount.gte(1),
     checkEvent: GAME_EVENT.GAME_TICK_AFTER
@@ -1451,7 +1451,15 @@ export const normalAchievements = [
   {
     id: 195,
     name: "Hard Reset",
-    description: "Disable all Pelle Nerfs. (NYI)",
+    description: "Disable all Pelle Nerfs.",
+    checkRequirement: () => PelleAchievementUpgrade.all.filter(u => u.isBought).length >= 33 &&
+      PelleDestructionUpgrade.all.filter(u => u.isBought).length >= 51 &&
+      PelleRealityUpgrade.all.filter(u => u.isBought).length >= 20 &&
+      PelleImaginaryUpgrade.all.filter(u => u.isBought).length >= 19 &&
+      PelleCelestialUpgrade.all.filter(u => u.isBought).length >= 21 &&
+      PellePerkUpgrade.all.filter(u => u.isBought).length >= 29 &&
+      PelleAlchemyUpgrade.all.filter(u => u.isBought).length >= 21,
+    checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     get reward() {
       return `Unlock Strike Disabling.`;
     }
@@ -1459,7 +1467,9 @@ export const normalAchievements = [
   {
     id: 196,
     name: "Full Control of the Dark",
-    description: "Purchase the 8th Dark Matter Dimension. (NYI)",
+    description: "Purchase the 8th Dark Matter Dimension.",
+    checkRequirement: () => ImaginaryUpgrade(29).isBought,
+    checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     get reward() {
       return `Decrease Galaxy Generator Instability by ${formatInt(2)}.`;
     },
@@ -1468,14 +1478,18 @@ export const normalAchievements = [
   {
     id: 197,
     name: "Gone...",
-    description: "Destroy Pelle. (NYI)",
+    description: "Destroy Pelle.",
+    checkRequirement: () => PelleStrikeUpgrade.all.filter(u => u.isBought).length >= 5,
+    checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     get reward() {
       return `Boost Celestial Point Gain.`;
     }
   },
   {
     id: 198,
-    name: "...but not forgotten",
-    description: "Reach 1.8e308 Imaginary Machines. (NYI)",
+    name: "...But Not Forgotten",
+    description: "Reach 1.8e308 Imaginary Machines.",
+    checkRequirement: () => Currency.imaginaryMachines.value >= Number.MAX_VALUE,
+    checkEvent: GAME_EVENT.GAME_TICK_AFTER
   },
 ];
