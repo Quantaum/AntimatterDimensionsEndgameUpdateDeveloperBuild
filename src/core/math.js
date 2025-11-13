@@ -499,7 +499,7 @@ window.ExponentialCostScaling = class ExponentialCostScaling {
     const base = this.log._baseCost;
     const inc = this.log._baseIncrease;
     const scale = this.log._costScale;
-    const purchases = this._purchasesBeforeScaling;
+    const purchases = new Decimal(this._purchasesBeforeScaling);
     const ppIlog = new Decimal(purchasesPerIncrease.log10());
     let logMoney = new Decimal(currency.log10()).sub(ppIlog);
     // A console.log(logMoney);
