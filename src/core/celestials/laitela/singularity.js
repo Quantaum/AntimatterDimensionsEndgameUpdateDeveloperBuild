@@ -82,7 +82,7 @@ class SingularityMilestoneState extends GameMechanicState {
   }
 
   get effectDisplay() {
-    if (Decimal.isFinite(this.effectValue)) return this.config.effectFormat(this.effectValue);
+    if (this.effectValue.lt(Decimal.MAX_VALUE)) return this.config.effectFormat(this.effectValue);
     return "N/A";
   }
 
