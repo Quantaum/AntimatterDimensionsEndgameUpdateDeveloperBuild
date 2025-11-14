@@ -155,36 +155,6 @@ export class DarkMatterDimensionState extends DimensionState {
     return new Decimal(POWER_DE_COST_MULTS[this.tier - 1]);
   }
 
-  get costScaleDE() {
-    return new ExponentialCostScaling({
-      baseCost: this.adjustedStartingCost.mul(SingularityMilestone.darkDimensionCostReduction.effectOrDefault(1))
-        .times(POWER_DE_START_COST),
-      baseIncrease: this.powerDECostIncrease.toNumber(),
-      costScale: 10,
-      scalingCostThreshold: Decimal.NUMBER_MAX_VALUE.div(SingularityMilestone.darkDimensionCostReduction.effectOrDefault(1))
-    });
-  }
-
-  get costScaleDM() {
-    return new ExponentialCostScaling({
-      baseCost: this.adjustedStartingCost.mul(SingularityMilestone.darkDimensionCostReduction.effectOrDefault(1))
-        .times(POWER_DM_START_COST),
-      baseIncrease: this.powerDMCostIncrease.toNumber(),
-      costScale: 10,
-      scalingCostThreshold: Decimal.NUMBER_MAX_VALUE.div(SingularityMilestone.darkDimensionCostReduction.effectOrDefault(1))
-    });
-  }
-
-  get costScaleInterval() {
-    return new ExponentialCostScaling({
-      baseCost: this.adjustedStartingCost.mul(SingularityMilestone.darkDimensionCostReduction.effectOrDefault(1))
-        .times(INTERVAL_START_COST),
-      baseIncrease: this.intervalCostIncrease.toNumber(),
-      costScale: 10,
-      scalingCostThreshold: Decimal.NUMBER_MAX_VALUE.div(SingularityMilestone.darkDimensionCostReduction.effectOrDefault(1))
-    });
-  }
-
   get timeSinceLastUpdate() {
     return this.data.timeSinceLastUpdate;
   }
@@ -211,43 +181,28 @@ export class DarkMatterDimensionState extends DimensionState {
   }
 
   buyManyInterval(x) {
-    // eslint-disable-next-line max-len
-    const calc = this.costScaleInterval.decimalGetMaxBought(this.data.intervalUpgrades, Currency.darkMatter.value, DC.D1);
-    const quant = calc?.quantity;
-    if (calc === null) return;
-    if (Decimal.lte(x, quant.clampMax(this.maxIntervalPurchases))) {
-      // eslint-disable-next-line max-len
-      Currency.darkMatter.purchase(this.costScaleInterval.decimalCalculateCost(this.data.intervalUpgrades.add(Decimal.min(x, this.maxIntervalPurchases)).sub(1)));
-      this.data.intervalUpgrades = this.data.intervalUpgrades.add(Decimal.min(x, this.maxIntervalPurchases));
-    }
-    // eslint-disable-next-line max-len
-    Currency.darkMatter.purchase(this.costScaleInterval.decimalCalculateCost(this.data.intervalUpgrades.add(quant.clampMax(this.maxIntervalPurchases)).sub(1)));
-    this.data.intervalUpgrades = this.data.intervalUpgrades.add(quant.clampMax(this.maxIntervalPurchases));
-    // S this.data.intervalUpgrades
+    if (x.gt(this.maxIntervalPurchases)) return false;
+    const cost = this.rawIntervalCost.times(
+      Decimal.pow(this.intervalCostIncrease, x).minus(1)).div(this.intervalCostIncrease.sub(1)).floor();
+    if (!Currency.darkMatter.purchase(cost)) return false;
+    this.data.intervalUpgrades = this.data.intervalUpgrades.add(x);
+    return true;
   }
 
   buyManyPowerDM(x) {
-    const calc = this.costScaleDM.decimalGetMaxBought(this.data.powerDMUpgrades, Currency.darkMatter.value, DC.D1);
-    if (calc === null) return;
-    if (Decimal.lte(x, calc.quantity)) {
-      Currency.darkMatter.purchase(this.costScaleDM.decimalCalculateCost(this.data.powerDMUpgrades.add(x).sub(1)));
-      this.data.powerDMUpgrades = this.data.powerDMUpgrades.add(x);
-    }
-    Currency.darkMatter.purchase(this.costScaleDM.decimalCalculateCost(this.data.powerDMUpgrades.add(calc.quantity.sub(1))));
-    this.data.powerDMUpgrades = this.data.powerDMUpgrades.add(calc.quantity);
-    // S this.data.powerDMUpgrades
+    const cost = this.rawPowerDMCost.times(
+      Decimal.pow(this.powerDMCostIncrease, x).minus(1)).div(this.powerDMCostIncrease.sub(1)).floor();
+    if (!Currency.darkMatter.purchase(cost)) return false;
+    this.data.powerDMUpgrades = this.data.powerDMUpgrades.add(x);
+    return true;
   }
 
   buyManyPowerDE(x) {
-    const calc = this.costScaleDE.decimalGetMaxBought(this.data.powerDEUpgrades, Currency.darkMatter.value, DC.D1);
-    if (calc === null) return;
-    if (Decimal.lte(x, calc.quantity)) {
-      Currency.darkMatter.purchase(this.costScaleDE.decimalCalculateCost(this.data.powerDEUpgrades.add(x).sub(1)));
-      this.data.powerDEUpgrades = this.data.powerDEUpgrades.add(x);
-    }
-    Currency.darkMatter.purchase(this.costScaleDE.decimalCalculateCost(this.data.powerDEUpgrades.add(calc.quantity.sub(1))));
-    this.data.powerDEUpgrades = this.data.powerDEUpgrades.add(calc.quantity);
-    // S this.data.powerDEUpgrades
+    const cost = this.rawPowerDECost.times(
+      Decimal.pow(this.powerDECostIncrease, x).minus(1)).div(this.powerDECostIncrease.sub(1)).floor();
+    if (!Currency.darkMatter.purchase(cost)) return false;
+    this.data.powerDEUpgrades = this.data.powerDEUpgrades.add(x);
+    return true;
   }
 
   buyInterval() {
