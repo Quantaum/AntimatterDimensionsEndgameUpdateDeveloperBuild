@@ -29,7 +29,7 @@ export default {
       intervalAscensionBump: new Decimal(10000),
       intervalAfterAscension: new Decimal(0),
       darkEnergyPerSecond: new Decimal(0),
-      portionDE: new Decimal(0),
+      portionDE: 0,
       productionPerSecond: new Decimal(0),
       percentPerSecond: 0,
       hoverOverAscension: false,
@@ -123,7 +123,7 @@ export default {
       this.intervalAscensionBump.copyFrom(SingularityMilestone.ascensionIntervalScaling.effectOrDefault(new Decimal(1200)));
       this.intervalAfterAscension.copyFrom(dim.intervalAfterAscension);
       this.darkEnergyPerSecond.copyFrom(dim.productionPerSecond);
-      this.portionDE.copyFrom(this.darkEnergyPerSecond.div(Currency.darkEnergy.productionPerSecond));
+      this.portionDE = this.darkEnergyPerSecond.div(Currency.darkEnergy.productionPerSecond).toNumber();
       this.productionPerSecond.copyFrom(this.dimensionProduction(this.tier));
       this.percentPerSecond = Decimal.divide(this.productionPerSecond, this.amount).clampMax(1).toNumber();
       if (!this.isIntervalCapped) this.hoverOverAscension = false;
