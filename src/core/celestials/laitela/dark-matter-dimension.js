@@ -155,6 +155,36 @@ export class DarkMatterDimensionState extends DimensionState {
     return new Decimal(POWER_DE_COST_MULTS[this.tier - 1]);
   }
 
+  get costScaleDE() {
+    return new ExponentialCostScaling({
+      baseCost: this.adjustedStartingCost.mul(SingularityMilestone.darkDimensionCostReduction.effectOrDefault(1))
+        .times(POWER_DE_START_COST),
+      baseIncrease: this.powerDECostIncrease,
+      costScale: new Decimal(10),
+      scalingCostThreshold: Decimal.NUMBER_MAX_VALUE.div(SingularityMilestone.darkDimensionCostReduction.effectOrDefault(1))
+    });
+  }
+
+  get costScaleDM() {
+    return new ExponentialCostScaling({
+      baseCost: this.adjustedStartingCost.mul(SingularityMilestone.darkDimensionCostReduction.effectOrDefault(1))
+        .times(POWER_DM_START_COST),
+      baseIncrease: this.powerDMCostIncrease,
+      costScale: new Decimal(10),
+      scalingCostThreshold: Decimal.NUMBER_MAX_VALUE.div(SingularityMilestone.darkDimensionCostReduction.effectOrDefault(1))
+    });
+  }
+
+  get costScaleInterval() {
+    return new ExponentialCostScaling({
+      baseCost: this.adjustedStartingCost.mul(SingularityMilestone.darkDimensionCostReduction.effectOrDefault(1))
+        .times(INTERVAL_START_COST),
+      baseIncrease: this.intervalCostIncrease,
+      costScale: new Decimal(10),
+      scalingCostThreshold: Decimal.NUMBER_MAX_VALUE.div(SingularityMilestone.darkDimensionCostReduction.effectOrDefault(1))
+    });
+  }
+
   get timeSinceLastUpdate() {
     return this.data.timeSinceLastUpdate;
   }
@@ -181,7 +211,7 @@ export class DarkMatterDimensionState extends DimensionState {
   }
 
   buyManyInterval(x) {
-    if (x.gt(this.maxIntervalPurchases)) return false;
+    if (new Decimal(x).gt(this.maxIntervalPurchases)) return false;
     const cost = this.rawIntervalCost.times(
       Decimal.pow(this.intervalCostIncrease, x).minus(1)).div(this.intervalCostIncrease.sub(1)).floor();
     if (!Currency.darkMatter.purchase(cost)) return false;
