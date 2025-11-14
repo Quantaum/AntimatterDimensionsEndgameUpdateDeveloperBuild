@@ -74,7 +74,7 @@ class SingularityMilestoneState extends GameMechanicState {
 
   get progressToNext() {
     const prog = (Currency.singularities.value.sub(this.previousGoal)).div(this.nextGoal);
-    return formatPercents(Decimal.clampMax(prog, 1));
+    return formatPercents(Decimal.clampMax(prog, 1).toNumber());
   }
 
   get isMaxed() {
