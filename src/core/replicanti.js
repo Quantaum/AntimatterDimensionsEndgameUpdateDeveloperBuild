@@ -453,6 +453,10 @@ export const ReplicantiUpgrade = {
       return (1000 + Effects.sum(GlyphSacrifice.replication)) * Effects.product(BreakEternityUpgrade.replicantiGalaxyPower);
     }
 
+    get contingentRGStart() {
+      return 1000000;
+    }
+
     get costIncrease() {
       const galaxies = this.value;
       let increase = EternityChallenge(6).isRunning
@@ -463,6 +467,9 @@ export const ReplicantiUpgrade = {
       }
       if (galaxies >= this.remoteRGStart) {
         increase = increase.times(DC.E5.pow(Math.pow(galaxies - this.remoteRGStart + 1, 2)));
+      }
+      if (galaxies >= this.contingentRGStart) {
+        increase = increase.pow(Math.pow(1.0002, galaxies - this.contingentRGStart));
       }
       return increase;
     }
@@ -492,8 +499,9 @@ export const ReplicantiUpgrade = {
       const logBase = 170;
       const logBaseIncrease = EternityChallenge(6).isRunning ? 2 : 25;
       const logCostScaling = EternityChallenge(6).isRunning ? 2 : 5;
-      const distantReplicatedGalaxyStart = 100 + Effects.sum(GlyphSacrifice.replication);
-      const remoteReplicatedGalaxyStart = 1000 + Effects.sum(GlyphSacrifice.replication);
+      const distantReplicatedGalaxyStart = (100 + Effects.sum(GlyphSacrifice.replication)) * Effects.product(BreakEternityUpgrade.replicantiGalaxyPower);
+      const remoteReplicatedGalaxyStart = (1000 + Effects.sum(GlyphSacrifice.replication)) * Effects.product(BreakEternityUpgrade.replicantiGalaxyPower);
+      const contingentReplicatedGalaxyStart = 1000000;
       let logCost = logBase + count * logBaseIncrease + (count * (count - 1) / 2) * logCostScaling;
       if (count > distantReplicatedGalaxyStart) {
         const logDistantScaling = 50;
@@ -508,6 +516,11 @@ export const ReplicantiUpgrade = {
         const numRemote = count - remoteReplicatedGalaxyStart;
         // The formula x * (x + 1) * (2 * x + 1) / 6 is the sum of the first n squares.
         logCost += logRemoteScaling * numRemote * (numRemote + 1) * (2 * numRemote + 1) / 6;
+      }
+      if (count > contingentReplicatedGalaxyStart) {
+        const contingentScalingFactor = 1.0002;
+        const numContingent = count - contingentReplicatedGalaxyStart;
+        logCost *= Math.pow(contingentScalingFactor, numContingent);
       }
       return Decimal.pow10(logCost);
     }
