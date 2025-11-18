@@ -278,7 +278,7 @@ export const DarkMatterDimensions = {
         }
         Currency.darkEnergy.add(ticks.mul(dim.powerDE));
         if (player.celestials.laitela.maxDarkMatter.gte(Laitela.darkMatterCap)) {
-          Currency.darkMatter = Laitela.darkMatterCap;
+          player.celestials.laitela.darkMatter = Laitela.darkMatterCap;
         }
         dim.timeSinceLastUpdate -= dim.interval.times(ticks).toNumber();
       }
