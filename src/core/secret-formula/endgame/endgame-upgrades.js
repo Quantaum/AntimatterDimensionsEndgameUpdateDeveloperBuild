@@ -168,6 +168,8 @@ export const endgameUpgrades = [
     checkRequirement: () => GalaxyGeneratorUpgrades.RSMult.boughtAmount === 0 && GalaxyGenerator.generatedGalaxies >= 1e60 && 
       player.endgames >= 20,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
+    canLock: true,
+    lockEvent: "purchase the 6th Galaxy Generator Upgrade",
     description: () => `Weaken the second Galaxy Generator Instability Magnitude by ${formatPercents(0.1)}`,
     effect: 0.9
   },
