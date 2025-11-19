@@ -13,6 +13,7 @@ import EffarigTab from "./celestial-effarig/EffarigTab";
 import EndgameTab from "./endgame/EndgameTab";
 import EndgameMasteriesTab from "./endgame-masteries/EndgameMasteriesTab";
 import EndgameMilestonesTab from "./endgame-milestones/EndgameMilestonesTab";
+import EndgameUpgradesTab from "./endgame-upgrades/EndgameUpgradesTab";
 import EnslavedTab from "./celestial-enslaved/EnslavedTab";
 import EternityChallengesTab from "./eternity-challenges/EternityChallengesTab";
 import EternityMilestonesTab from "./eternity-milestones/EternityMilestonesTab";
@@ -97,6 +98,7 @@ const TabComponents = {
   ExpansionPacksTab,
   EndgameMasteriesTab,
   EndgameMilestonesTab,
+  EndgameUpgradesTab,
   ShopTab,
   MultiplierBreakdownTab
 };
