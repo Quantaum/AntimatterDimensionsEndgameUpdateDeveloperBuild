@@ -920,6 +920,7 @@ window.player = {
       glyphInfoType: GlyphInfo.types.NONE,
       showGlyphInfoByDefault: false,
       masteries: true,
+      breakEternityUpgrades: true,
     },
     animations: {
       bigCrunch: true,
