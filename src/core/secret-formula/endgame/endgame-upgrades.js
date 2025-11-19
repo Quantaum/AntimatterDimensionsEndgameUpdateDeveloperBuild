@@ -205,7 +205,7 @@ export const endgameUpgrades = [
     formatEffect: value => formatPow(value, 2, 3)
   },
   {
-    name: "Quadridimensional Quantification",
+    name: "Quaternary Quantification",
     id: 18,
     cost: 1e220,
     requirement: "Have Tesseract Traversement Purchased",
