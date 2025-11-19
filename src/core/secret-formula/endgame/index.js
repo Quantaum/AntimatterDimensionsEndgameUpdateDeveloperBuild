@@ -4,7 +4,7 @@ import { permanentEndgameMasteries } from "./permanent-endgame-masteries";
 import { endgameMilestones } from "./endgame-milestones";
 
 export const endgame = {
-  upgrades: breakEternityUpgrades,
+  breakUpgrades: breakEternityUpgrades,
   masteries: endgameMasteries,
   permanentMasteries: permanentEndgameMasteries,
   milestones: endgameMilestones
