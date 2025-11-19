@@ -827,6 +827,16 @@ window.player = {
     },
     respec: false,
     galacticPower: DC.D0,
+    rebuyables: {
+      1: 0,
+      2: 0,
+      3: 0,
+      4: 0,
+      5: 0,
+    },
+    upgradeBits: 0,
+    upgReqs: 0,
+    reqLock: 0,
   },
   endgameMasteries: {
     skills: DC.D0,
