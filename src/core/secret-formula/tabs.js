@@ -573,6 +573,15 @@ export const tabs = [
         id: 5,
         hidable: true,
       },
+      {
+        key: "upgrades",
+        name: "Endgame Upgrades",
+        symbol: "<i class='fas fa-arrow-up'></i>",
+        component: "EndgameUpgradesTab",
+        condition: () => EndgameUpgrades.isUnlocked,
+        id: 6,
+        hidable: true,
+      },
     ],
   }
 ];
