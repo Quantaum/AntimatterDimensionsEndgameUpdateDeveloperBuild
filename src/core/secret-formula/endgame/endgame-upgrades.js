@@ -50,7 +50,7 @@ export const endgameUpgrades = [
   rebuyable({
     name: "Darkness Ameliorator",
     id: 4,
-    initialCost: 1e46,
+    initialCost: 1e48,
     costMult: 480,
     textTemplate: "Increase the Dark Matter hardcap by a factor of {value}",
     effect: 1e25,
@@ -59,7 +59,7 @@ export const endgameUpgrades = [
   rebuyable({
     name: "Celestial Ameliorator",
     id: 5,
-    initialCost: 1e48,
+    initialCost: 1e56,
     costMult: 120,
     textTemplate: "Delay the Celestial Matter Softcap start by a factor of {value}",
     effect: 2,
