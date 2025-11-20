@@ -9566,7 +9566,7 @@ kbd {
   font-family: Typewriter, serif;
   font-size: 1rem;
   color: var(--color-celestials);
-  background-color: var(--color-background);
+  background-color: #404040;
   border: var(--var-border-width, 0.2rem) solid var(--color-endgame);
   border-radius: var(--var-border-radius, 0.5rem);
   transition-duration: 0.15s;
@@ -9588,13 +9588,13 @@ kbd {
 
 .c-endgame-upgrade-btn--unavailable {
   color: var(--color-endgame);
-  background-color: var(--color-glyph-undo-disabled);
+  background-color: #404040;
   cursor: default;
 }
 
 .c-endgame-upgrade-btn--unavailable:hover {
   color: var(--color-endgame);
-  background-color: var(--color-glyph-undo-disabled);
+  background-color: #404040;
 }
 
 .c-endgame-upgrade-btn--bought {
