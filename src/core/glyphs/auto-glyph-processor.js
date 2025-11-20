@@ -344,6 +344,9 @@ export function getGlyphLevelInputs() {
   const incAfterInstability = staticFactors.realityUpgrades + staticFactors.achievements;
   baseLevel += incAfterInstability;
   scaledLevel += incAfterInstability;
+  const postInstabilityMult = Effects.product(EndgameUpgrade(25));
+  baseLevel *= postInstabilityMult;
+  scaledLevel *= postInstabilityMult;
   return {
     ep: sources.ep,
     repl: sources.repl,
@@ -355,6 +358,7 @@ export function getGlyphLevelInputs() {
     achievementFactor: staticFactors.achievements,
     shardFactor,
     singularityEffect,
+    postInstabilityMult,
     rawLevel: baseLevel,
     actualLevel: Math.max(1, scaledLevel),
   };
