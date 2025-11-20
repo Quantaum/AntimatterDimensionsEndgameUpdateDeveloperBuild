@@ -136,7 +136,7 @@ export function disChargeAll() {
 class InfinityIPMultUpgrade extends GameMechanicState {
   get cost() {
     if (this.purchaseCount >= this.purchasesAtIncrease) {
-      return this.config.costIncreaseThreshold
+      return this.costIncreaseThreshold
         .times(Decimal.pow(this.costIncrease, this.purchaseCount - this.purchasesAtIncrease));
     }
     return Decimal.pow(this.costIncrease, this.purchaseCount + 1);
@@ -146,8 +146,12 @@ class InfinityIPMultUpgrade extends GameMechanicState {
     return player.IPMultPurchases;
   }
 
+  get costIncreaseThreshold() {
+    this.config.costIncreaseThreshold();
+  }
+
   get purchasesAtIncrease() {
-    return this.config.costIncreaseThreshold.log10() - 1;
+    return this.costIncreaseThreshold.log10() - 1;
   }
 
   get hasIncreasedCost() {
@@ -194,7 +198,7 @@ class InfinityIPMultUpgrade extends GameMechanicState {
     if (!this.canBeBought) return;
     if (!this.hasIncreasedCost) {
       // Only allow IP below the softcap to be used
-      const availableIP = Currency.infinityPoints.value.clampMax(this.config.costIncreaseThreshold);
+      const availableIP = Currency.infinityPoints.value.clampMax(this.costIncreaseThreshold);
       const purchases = Decimal.affordGeometricSeries(availableIP, this.cost, this.costIncrease, 0).toNumber();
       if (purchases <= 0) return;
       this.purchase(purchases);
