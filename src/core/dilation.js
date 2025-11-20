@@ -114,8 +114,8 @@ export function getTachyonGalaxyMult(thresholdUpgrade) {
   const glyphReduction = glyphEffect === 0 ? 1 : glyphEffect;
   const contingentTG = 1000000;
   const contingentStrength = Math.pow(1.0002, Math.max(player.dilation.baseTachyonGalaxies - contingentTG, 0));
-  const power = DilationUpgrade.galaxyThresholdPelle.canBeApplied
-    ? DilationUpgrade.galaxyThresholdPelle.effectValue * contingentStrength : contingentStrength;
+  const pelleExclusivePower = DilationUpgrade.galaxyThresholdPelle.canBeApplied ? DilationUpgrade.galaxyThresholdPelle.effectValue : 1;
+  const power = pelleExclusivePower * contingentStrength * EndgameUpgrade(22).effectOrDefault(1);
   return (1 + thresholdMult * glyphReduction) ** power;
 }
 
