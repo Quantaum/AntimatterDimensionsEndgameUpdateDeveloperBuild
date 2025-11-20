@@ -407,6 +407,9 @@ Currency.realities = new class extends NumberCurrency {
   set value(value) { player.realities = value; }
 
   get startingValue() {
+    if (EndgameUpgrade(6).isBought) {
+      return 1000;
+    }
     return Effects.max(
       0,
       EndgameMastery(31)
