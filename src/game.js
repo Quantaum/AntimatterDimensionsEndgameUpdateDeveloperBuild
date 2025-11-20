@@ -405,7 +405,7 @@ export function getGameSpeedupFactor(effectsToConsider, blackHolesActiveOverride
 
   factor = factor.times(PelleUpgrade.timeSpeedMult.effectValue);
 
-  if (EndgameUpgrade(7).isBought) factor = Decimal.max(factor, player.records.thisEndgame.peakGameSpeed);
+  if (EndgameUpgrade(7).isBought) factor = Decimal.clampMin(factor, player.records.thisEndgame.peakGameSpeed);
 
   // 1e-300 is now possible with max inverted BH, going below it would be possible with
   // an effarig glyph.
