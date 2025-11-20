@@ -12,7 +12,8 @@ const rebuyable = props => {
     props.initialCost * props.costMult
   );
   const { effect } = props;
-  props.effect = () => Decimal.pow(effect, player.endgame.rebuyables[props.id]);
+  if (props.isDecimal) props.effect = () => Decimal.pow(effect, player.endgame.rebuyables[props.id]);
+  else props.effect = () => Math.pow(effect, player.endgame.rebuyables[props.id]);
   props.description = () => props.textTemplate.replace("{value}", format(effect, 2, 2));
   props.formatEffect = value => formatX(value, 2, 0);
   props.formatCost = value => format(value, 2, 0);
@@ -27,7 +28,8 @@ export const endgameUpgrades = [
     initialCost: 1e40,
     costMult: 60,
     textTemplate: "Delay the Infinity Upgrade 23 Softcap start by a factor of {value}",
-    effect: 1.2
+    effect: 1.2,
+    isDecimal: true
   }),
   rebuyable({
     name: "Infinity Ameliorator",
@@ -51,7 +53,8 @@ export const endgameUpgrades = [
     initialCost: 1e46,
     costMult: 480,
     textTemplate: "Increase the Dark Matter hardcap by a factor of {value}",
-    effect: 1e25
+    effect: 1e25,
+    isDecimal: true
   }),
   rebuyable({
     name: "Celestial Ameliorator",
@@ -59,7 +62,8 @@ export const endgameUpgrades = [
     initialCost: 1e48,
     costMult: 120,
     textTemplate: "Delay the Celestial Matter Softcap start by a factor of {value}",
-    effect: 2
+    effect: 2,
+    isDecimal: true
   }),
   {
     name: "Resourceful Rebirth",
