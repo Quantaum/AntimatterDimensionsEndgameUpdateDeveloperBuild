@@ -23,8 +23,12 @@ export default {
       barWidth: 0,
       capRiftName: "",
       galGenInstability: 0,
+      harshGalGenInstability: 0,
+      effectiveInstability: 0,
       generationReduction: 0,
+      trueGenerationReduction: 0,
       isInstabilityShown: false,
+      isSecondInstabilityShown: false,
     };
   },
   computed: {
@@ -65,8 +69,12 @@ export default {
       this.barWidth = (this.isCapped ? this.capRift.reducedTo : this.emphasisedStart);
       if (this.capRift) this.capRiftName = wordShift.wordCycle(this.capRift.name);
       this.galGenInstability = GalaxyGenerator.galGenInstability;
+      this.harshGalGenInstability = GalaxyGenerator.harshGalGenInstability;
+      this.effectiveInstability = Math.pow(this.galGenInstability, this.harshGalGenInstability);
       this.generationReduction = Math.max(1, Math.pow(this.galGenInstability, Math.log10(Math.max(Math.pow(this.galaxies / 1e10, 0.75), 1))));
+      this.trueGenerationReduction = Math.max(1, Math.pow(Math.pow(this.galGenInstability, this.harshGalGenInstability), Math.log10(Math.max(Math.pow(this.galaxies / 1e10, 0.75), 1))));
       this.isInstabilityShown = PlayerProgress.endgameUnlocked() || this.galaxies >= 1e10;
+      this.isSecondInstabilityShown = this.galaxies >= 1e60;
     },
     increaseCap() {
       if (GalaxyGenerator.isCapped) GalaxyGenerator.startSacrifice();
@@ -109,6 +117,21 @@ export default {
             <span class="c-galaxies-amount">{{ format(galGenInstability, 2, 1) }}</span>,
             which is dividing Galaxies above {{ format(1e10, 2, 1) }} by
             <span class="c-galaxies-amount">{{ format(generationReduction, 2, 1) }}</span>.
+          </div>
+          <div v-if="isSecondInstabilityShown">
+            <span class="c-danger-text">
+              Your Galaxy Generator has produced too many Galaxies, and is starting to break down.
+              This started at {{ format(1e60, 2, 1) }} Galaxies.
+              <br>
+              This effect is currently raising your Galaxy Generator Instability Magnitude by
+              <span class="c-galaxies-amount">{{ formatPow(harshGalGenInstability, 2, 3) }}</span>,
+              making it effectively equal to
+              <span class="c-galaxies-amount">{{ formatPow(effectiveInstability, 2, 3) }}</span>.
+              <br>
+              Therefore, whereas your Galaxy production would normally be divided by the number above,
+              it is instead being divided by
+              <span class="c-galaxies-amount">{{ format(trueGenerationReduction, 2, 1) }}</span>.
+            </span>
           </div>
         </div>
         <div>
@@ -295,6 +318,12 @@ export default {
 }
 
 .s-base--dark .c-medium-text {
+  text-shadow: 0.2rem 0.2rem 0.2rem black;
+}
+
+.c-danger-text {
+  font-weight: bold;
+  background: var(--color-pelle--base);
   text-shadow: 0.2rem 0.2rem 0.2rem black;
 }
 </style>
