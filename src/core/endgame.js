@@ -218,7 +218,7 @@ export const Endgame = {
     player.reality.autoAutoClean = false;
     player.reality.applyFilterToPurge = false;
     player.reality.moveGlyphsOnProtection = false;
-    player.reality.perkPoints = 0;
+    player.reality.perkPoints = EndgameUpgrade(6).isBought ? 1e7 : 0;
     player.reality.unlockedEC = 0;
     player.reality.autoEC = true;
     player.reality.lastAutoEC = 0;
@@ -236,9 +236,9 @@ export const Endgame = {
     player.reality.glyphs.sac.reality = 0;
     player.blackHole = Array.range(0, 2).map(id => ({
       id,
-      intervalUpgrades: 0,
+      intervalUpgrades: EndgameUpgrade(6).isBought ? 25 : 0,
       powerUpgrades: 0,
-      durationUpgrades: 0,
+      durationUpgrades: EndgameUpgrade(6).isBought ? 25 : 0,
       phase: 0,
       active: false,
       unlocked: false,
@@ -260,7 +260,7 @@ export const Endgame = {
     player.celestials.teresa.bestAMSet = [];
     player.celestials.teresa.perkShop = Array.repeat(0, 5);
     player.celestials.teresa.lastRepeatedMachines = DC.D0;
-    player.celestials.effarig.relicShards = DC.D0;
+    player.celestials.effarig.relicShards = EndgameUpgrade(6).isBought ? DC.E12 : DC.D0;
     player.celestials.effarig.unlockBits = 0;
     player.celestials.effarig.run = false;
     player.celestials.effarig.quoteBits = 0;
@@ -277,6 +277,10 @@ export const Endgame = {
     player.celestials.enslaved.isAutoReleasing = false;
     player.celestials.enslaved.quoteBits = 0;
     player.celestials.enslaved.unlocks = [];
+    if (EndgameUpgrade(6).isBought) {
+      player.celestials.enslaved.unlocks.push(0);
+      player.celestials.enslaved.unlocks.push(1);
+    }
     player.celestials.enslaved.run = false;
     player.celestials.enslaved.completed = false;
     player.celestials.enslaved.tesseracts = 0;
