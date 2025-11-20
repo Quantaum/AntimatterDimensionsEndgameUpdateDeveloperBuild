@@ -329,7 +329,7 @@ export const TimeDimensions = {
   },
 
   get compressionMagnitude() {
-    const reduction = Effects.product(EndgameMastery(83));
+    const reduction = Effects.product(EndgameMastery(83), EndgameUpgrade(3));
     return 10 * reduction;
   },
 
