@@ -111,7 +111,7 @@ export default {
           EndgameUpgrade(14).tryShowWarningModal();
         }
       } else {
-        this.upgrade.purchase();
+        !this.faded && this.upgrade.purchase();
       }
     }
   }
@@ -127,7 +127,7 @@ export default {
       'c-pelle-upgrade--faded': faded,
       'c-pelle-upgrade--galaxyGenerator': galaxyGenerator
     }"
-    @click="!faded && attemptPurchase"
+    @click="attemptPurchase"
     @mouseover="hovering = true"
     @mouseleave="hovering = false"
   >
