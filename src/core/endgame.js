@@ -69,6 +69,7 @@ export const Endgame = {
       const prevRunIndices = Object.keys(speedrun.previousRuns).map(k => Number(k));
       if (prevRunIndices.length > 100) player.speedrun.previousRuns[prevRunIndices.min()] = undefined;
     }
+    EventHub.dispatch(GAME_EVENT.ENDGAME_RESET_BEFORE);
 
     // Modify beaten-game quantities before doing a carryover reset
     giveEndgameRewards();
@@ -88,6 +89,7 @@ export const Endgame = {
       for (const type of BASIC_GLYPH_TYPES) Glyphs.addToInventory(GlyphGenerator.endgameGlyph(type));
       for (const type of BASIC_GLYPH_TYPES) Glyphs.addToInventory(GlyphGenerator.endgameGlyph(type));
     }
+    EventHub.dispatch(GAME_EVENT.ENDGAME_RESET_AFTER);
 
     // The ending animation ends at 12.5, although the value continues to increase after that. We set it to a bit above
     // 12.5 when we start the rollback animation to hide some of the unavoidable lag from all the reset functions
@@ -510,7 +512,6 @@ export const Endgame = {
     if (!EndgameMastery(61).isBought) {
       lockAchievementsOnEndgame();
     }
-    EventHub.dispatch(GAME_EVENT.ENDGAME_RESET_AFTER);
     player.records.totalTimePlayed = new Decimal(player.records.realTimePlayed);
     player.records.timePlayedAtBHUnlock = Decimal.MAX_VALUE;
     player.records.realTimeDoomed = 0;
