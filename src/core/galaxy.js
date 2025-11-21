@@ -100,11 +100,10 @@ export class Galaxy {
   }
 
   static get costScalingStart() {
-    return 100 + TimeStudy(302).effectOrDefault(0) + Effects.sum(
+    return 100 + TimeStudy(302).effectOrDefault(0) + GlyphSacrifice.power.effectValue.toNumber() + Effects.sum(
       TimeStudy(223),
       TimeStudy(224),
       EternityChallenge(5).reward,
-      GlyphSacrifice.power,
       BreakEternityUpgrade.galaxyScaleDelay
     );
   }
