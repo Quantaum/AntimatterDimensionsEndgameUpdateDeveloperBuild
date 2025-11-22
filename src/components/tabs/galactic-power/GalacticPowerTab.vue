@@ -42,18 +42,18 @@ export default {
 </script>
 
 <template>
-  <div class="l-eternity-milestone-grid">
+  <div class="l-endgame-milestone-grid">
     <div>You have {{ format(galacticPower, 2, 2) }} Galactic Power.</div>
     <div
       v-for="row in rows"
       :key="row"
-      class="l-eternity-milestone-grid__row"
+      class="l-endgame-milestone-grid__row"
     >
       <GalacticPowerRow
         v-for="column in 1"
         :key="row + column"
-        :get-milestone="getPower(row, column)"
-        class="l-eternity-milestone-grid__cell"
+        :get-power="getPower(row, column)"
+        class="l-endgame-milestone-grid__cell"
       />
     </div>
     <div>{{ nextAtDisplay }}</div>
