@@ -210,7 +210,7 @@ const SingularityMilestoneThresholds = (function() {
         (new Decimal(r).gt(m.increaseThreshold) && ((new Decimal(r).sub(m.increaseThreshold)).toNumber() % 3) === 2))
       .map(r => m.start.times(Decimal.pow(m.repeat, r))))
     .flat(Infinity)
-    .filter(n => n < 1e100)
+    .filter(n => new Decimal(n).lt(1e100))
     .sort((a, b) => a - b);
 }());
 
