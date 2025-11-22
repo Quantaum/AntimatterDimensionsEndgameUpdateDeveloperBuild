@@ -1,7 +1,11 @@
 <script>
+import GalacticPowerRow from "./GalacticPowerRow";
 
 export default {
   name: "GalacticPowerTab",
+  components: {
+    GalacticPowerRow
+  },
   data() {
     return {
       nextPow: 0
@@ -35,7 +39,7 @@ export default {
 <template>
   <div>
     <div>
-      Rows coming soon...
+      <GalacticPowerRow/>
     </div>
     <div>{{ nextAtDisplay }}</div>
   </div>
