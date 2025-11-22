@@ -28,9 +28,6 @@ export default {
   methods: {
     update() {
       this.nextPow = GalacticPower.nextPow;
-    },
-    isPowerVisible() {
-      return GalacticPowers.id.isUnlocked;
     }
   }
 };
