@@ -1942,7 +1942,8 @@ export const celestialNavigation = {
               "The Celestial of Darkness"
             ];
           }
-          let pelleString = `${format(Currency.imaginaryMachines.value)} / ${format(Number.MAX_VALUE)} iM`;
+          let pelleString = "Pelle's Doomed Reality is still intact";
+          let progressString = "Disable more nerfs/Strikes to continue";
           if (!Achievement(195).isUnlocked && !ImaginaryUpgrade(30).isAvailableForPurchase) {
             const remainingNerfs = (PelleAchievementUpgrade.all.length + PelleDestructionUpgrade.all.length +
               PelleRealityUpgrade.all.length + PelleImaginaryUpgrade.all.length + PelleCelestialUpgrade.all.length +
