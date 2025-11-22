@@ -43,7 +43,7 @@ export default {
 
 <template>
   <div class="l-eternity-milestone-grid">
-    <div>You have {{ quantify("Galactic Power", galacticPower, 3) }}.</div>
+    <div>You have {{ format(galacticPower, 2, 2) }} Galactic Power.</div>
     <div
       v-for="row in rows"
       :key="row"
