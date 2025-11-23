@@ -1,7 +1,11 @@
 <script>
+import EffectDisplay from "@/components/EffectDisplay";
 
 export default {
   name: "GalacticPowerRow",
+  components: {
+    EffectDisplay
+  },
   props: {
     getPower: {
       type: Function,
@@ -43,7 +47,9 @@ export default {
   <div>
     {{ title }} {{ description }}.
     <br>
-    Currently: {{ reward }}
+    <EffectDisplay
+      :config="reward"
+    />
   </div>
 </template>
 
