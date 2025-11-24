@@ -22,7 +22,12 @@ export class Galaxy {
   }
   
   static get remoteStart() {
-    return this.baseRemoteStart + Effects.sum(BreakEternityUpgrade.galaxyScaleDelay);
+    return this.baseRemoteStart + Effects.sum(BreakEternityUpgrade.galaxyScaleDelay) + GalacticPowers.remoteGalaxyScale.reward;
+  }
+
+  static get remoteGalaxyStrength() {
+    const reduction = GalacticPowers.remoteGalaxyPower.isUnlocked ? GalacticPowers.remoteGalaxyPower.reward : 1;
+    return 1 + (0.002 * reduction);
   }
 
   static get requirement() {
@@ -57,7 +62,7 @@ export class Galaxy {
     }
 
     if (type === GALAXY_TYPE.REMOTE) {
-      amount *= Math.pow(1.002, galaxies - (Galaxy.remoteStart - 1));
+      amount *= Math.pow(Galaxy.remoteGalaxyStrength, galaxies - (Galaxy.remoteStart - 1));
     }
 
     amount -= Effects.sum(InfinityUpgrade.resetBoost);
