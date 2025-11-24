@@ -104,7 +104,7 @@ export const endgameUpgrades = [
       let endgames = 1;
       const timeStr = Time.bestEndgameRealTime.totalMilliseconds.lte(100)
         ? `${TimeSpan.fromMilliseconds(new Decimal(1000)).toStringShort()} (capped)`
-        : `${Time.bestEndgameRealTime.times(10).toStringShort()}`;
+        : `${TimeSpan.fromMilliseconds(new Decimal(value)).toStringShort()}`;
       return `${quantify("Endgame", endgames)} every ${timeStr}`;
     }
   },
