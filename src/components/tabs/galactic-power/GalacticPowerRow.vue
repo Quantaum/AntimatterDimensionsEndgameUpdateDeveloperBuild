@@ -44,7 +44,10 @@ export default {
 </script>
 
 <template>
-  <div v-show="isUnlocked">
+  <div
+    v-show="isUnlocked"
+    class="c-galactic-power-text"
+  >
     {{ title }} {{ description }}.
     <br>
     <EffectDisplay
@@ -54,5 +57,12 @@ export default {
 </template>
 
 <style scoped>
+.c-galactic-power-text {
+  font-size: 1rem;
+  font-weight: bold;
+  background: linear-gradient(var(--color-pelle--secondary), var(--color-pelle--base));
+  background-clip: text;
 
+  -webkit-text-fill-color: transparent;
+}
 </style>
