@@ -376,7 +376,7 @@ export const imaginaryUpgrades = [
     name: "Galactic Genocide",
     id: 29,
     cost: 1e200,
-    requirement: () => `Have a total of ${format(1e75, 2, 2) Galaxies`,
+    requirement: () => `Have a total of ${format(1e75, 2, 2)} Galaxies`,
     hasFailed: () => false,
     checkRequirement: () => Replicanti.galaxies.total + player.galaxies + 
       player.dilation.totalTachyonGalaxies + GalaxyGenerator.galaxies >= 1e75,
