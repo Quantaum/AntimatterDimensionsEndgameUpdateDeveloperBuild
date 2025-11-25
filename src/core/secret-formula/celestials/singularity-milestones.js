@@ -357,7 +357,7 @@ export const singularityMilestones = {
     limit: 1,
     description: "Increase the Per-Purchase Multiplier for the other four Dimension types based on Singularities",
     effect: () => Math.pow(Math.max(Math.log10(Decimal.log10(Currency.singularities.value.plus(1)) + 1) / 2, 1), 1.5),
-    effectFormat: x => formatPercents(x, 2, 2),
+    effectFormat: x => `+${formatPercents(x - 1, 2, 2)}`,
     upgradeDirection: LAITELA_UPGRADE_DIRECTION.BOOSTS_MAIN,
   },
   darkFromGalacticPower: {
