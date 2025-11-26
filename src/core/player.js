@@ -954,6 +954,7 @@ window.player = {
       eternity: true,
       dilation: true,
       resetReality: true,
+      resetEndgame: true,
       glyphReplace: true,
       glyphSacrifice: true,
       autoClean: true,
