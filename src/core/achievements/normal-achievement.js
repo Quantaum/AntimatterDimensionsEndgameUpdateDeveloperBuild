@@ -76,6 +76,12 @@ class AchievementState extends GameMechanicState {
     if (this.id === 148 || this.id === 166) {
       GameCache.staticGlyphWeights.invalidate();
     }
+    if (this.id === 194) {
+      Pelle.quotes.allPelleAchs.show();
+    }
+    if (this.id === 195) {
+      Pelle.quotes.allPelleNerfs.show();
+    }
     if (auto) {
       GameUI.notify.reality(`Automatically unlocked: ${this.name}`);
     } else {
