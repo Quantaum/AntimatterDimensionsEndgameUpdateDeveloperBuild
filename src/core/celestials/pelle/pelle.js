@@ -124,6 +124,12 @@ export const Pelle = {
     if (player.endgames >= 2) {
       Pelle.quotes.doom3.show();
     }
+    if (player.endgame.doomedParticles.gte(1e10)) {
+      Pelle.quotes.doomE10DP.show();
+    }
+    if (player.endgame.doomedParticles.gte(1e55)) {
+      Pelle.quotes.doomE55DP.show();
+    }
     GameStorage.save(true);
   },
 
@@ -465,6 +471,19 @@ EventHub.logic.on(GAME_EVENT.GAME_TICK_AFTER, () => {
 });
 EventHub.logic.on(GAME_EVENT.GAME_TICK_AFTER, () => {
   if (player.celestials.pelle.records.totalEndgameAntimatter.gte(DC.E9E15) && player.endgames >= 1) Pelle.quotes.end2.show();
+});
+EventHub.logic.on(GAME_EVENT.GAME_TICK_AFTER, () => {
+  if (PelleAchievementUpgrade.all.filter(u => u.isBought).length >= 1 || PelleDestructionUpgrade.all.filter(u => u.isBought).length >= 1) Pelle.quotes.disable.show();
+});
+EventHub.logic.on(GAME_EVENT.GAME_TICK_AFTER, () => {
+  if (PelleDestructionUpgrade.disableGalaxyNerf.isBought) Pelle.quotes.galaxyDebuffDisable.show();
+});
+EventHub.logic.on(GAME_EVENT.GAME_TICK_AFTER, () => {
+  if (PelleStrikeUpgrade.all.filter(u => u.isBought).length >= 1) Pelle.quotes.strikeDisable1.show();
+  if (PelleStrikeUpgrade.all.filter(u => u.isBought).length >= 2) Pelle.quotes.strikeDisable2.show();
+  if (PelleStrikeUpgrade.all.filter(u => u.isBought).length >= 3) Pelle.quotes.strikeDisable3.show();
+  if (PelleStrikeUpgrade.all.filter(u => u.isBought).length >= 4) Pelle.quotes.strikeDisable4.show();
+  if (PelleStrikeUpgrade.all.filter(u => u.isBought).length >= 5) Pelle.quotes.strikeDisable5.show();
 });
 EventHub.logic.on(GAME_EVENT.GAME_TICK_AFTER, () => {
   if (Glyphs.activeWithoutCompanion.length > 0) player.requirementChecks.endgame.noGlyphsDoomed = false;
