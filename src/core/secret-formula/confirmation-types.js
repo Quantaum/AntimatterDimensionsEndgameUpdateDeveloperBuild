@@ -80,6 +80,10 @@ export const confirmationTypes = [
     option: "armageddon",
     isUnlocked: () => Pelle.isDoomed,
   }, {
+    name: "Reset Endgame",
+    option: "resetEndgame",
+    isUnlocked: () => PlayerProgress.endgameUnlocked(),
+  }, {
     name: "Respec Shop Purchases",
     option: "respecIAP",
     isUnlocked: () => Cloud.isAvailable
