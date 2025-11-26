@@ -365,7 +365,7 @@ export const singularityMilestones = {
     repeat: new Decimal(0),
     limit: 1,
     description: "Galactic Power boosts Dark Matter and Dark Energy gain",
-    effect: () => 1 + Math.pow(Decimal.log10(Currency.galacticPower.value.add(1)), 0.2),
+    effect: () => Decimal.pow(Currency.galacticPower.value.add(1), 0.2).add(1),
     effectFormat: x => formatX(x, 2, 2),
     upgradeDirection: LAITELA_UPGRADE_DIRECTION.BOOSTS_LAITELA,
   },
