@@ -32,5 +32,13 @@ export const ExpansionPacks = {
   },
   get nextPackUnlockAM() {
     return this.nextPack?.unlockAM;
+  },
+  unlock() {
+    const cost = Math.pow(2, 64);
+    if (player.endgame.expansionPacks.areUnlocked) return;
+    if (GalaxyGenerator.galaxies >= cost) {
+      GalaxyGenerator.galaxies -= cost;
+      player.endgame.expansionPacks.areUnlocked = true;
+    }
   }
 }
