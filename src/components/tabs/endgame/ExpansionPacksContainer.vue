@@ -60,7 +60,7 @@ export default {
     <CostDisplay
       v-if="!isBought"
       br
-      :config="upgrade.config"
+      :config="pack.config"
       name="Antimatter"
     />
   </button>
