@@ -38,7 +38,7 @@ export const expansionPacks = {
     symbol: "⌬",
     description: () =>
       `Automatically unlock one V-Achievement every ${TimeSpan.fromSeconds(new Decimal(60))}, which can be reduced by spending
-      Celestial Points.`,
+      Celestial Points. This includes Hard V-Achievements.`,
     cost: Decimal.pow(10, 1e90),
     formatCost: value => formatPostBreak(value, 2, 0)
   },
@@ -77,7 +77,7 @@ export const expansionPacks = {
     symbol: "♅",
     description: () =>
       `Reduce the Galaxy Generator Instability Magnitude by ${formatInt(1)}, and raise the first three types of Dimensions to
-      a power based on your record Galaxy amount.`,
+      a power based on your all-time record Galaxy amount.`,
     cost: Decimal.pow(10, 1e150),
     formatCost: value => formatPostBreak(value, 2, 0)
   }
