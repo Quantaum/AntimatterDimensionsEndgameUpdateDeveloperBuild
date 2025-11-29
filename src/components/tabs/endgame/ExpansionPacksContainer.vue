@@ -48,22 +48,23 @@ export default {
 
 <template>
   <div v-show="isUnlocked">
-  <button
-    :class="classObject"
-    @click="pack.purchase()"
-  >
-    <DescriptionDisplay :config="pack.config" />
-    <EffectDisplay
-      br
-      :config="pack.config"
-    />
-    <CostDisplay
-      v-if="!isBought"
-      br
-      :config="pack.config"
-      name="Antimatter"
-    />
-  </button>
+    <button
+      :class="classObject"
+      @click="pack.purchase()"
+    >
+      <DescriptionDisplay :config="pack.config" />
+      <EffectDisplay
+        br
+        :config="pack.config"
+      />
+      <CostDisplay
+        v-if="!isBought"
+        br
+        :config="pack.config"
+        name="Antimatter"
+      />
+    </button>
+  </div>
 </template>
 
 <style scoped>
