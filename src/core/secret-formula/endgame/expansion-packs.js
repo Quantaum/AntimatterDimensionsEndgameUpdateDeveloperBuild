@@ -45,7 +45,7 @@ export const expansionPacks = {
   raPack: {
     name: "Ra's Expansion Pack",
     id: "raPack",
-    symbol: "<i class='fas fa-sun'></i>",
+    symbol: "\uf185",
     description: () =>
       `Ra is kept on Endgame. Raise the level cap of all Celestials to the double-logarithm of your record Antimatter amount.
       Unlock an additional effect for each Celestial which scales based on their level. Multiply Memory and Memory Chunk gain
