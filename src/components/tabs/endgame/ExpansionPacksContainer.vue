@@ -45,13 +45,13 @@ export default {
     },
     symbolObject() {
       return {
-        "o-symbol-teresa": this.pack.config.id === "teresaPack",
-        "o-symbol-effarig": this.pack.config.id === "effarigPack",
-        "o-symbol-enslaved": this.pack.config.id === "enslavedPack",
-        "o-symbol-v": this.pack.config.id === "vPack",
-        "o-symbol-ra": this.pack.config.id === "raPack",
-        "o-symbol-laitela": this.pack.config.id === "laitelaPack",
-        "o-symbol-pelle": this.pack.config.id === "pellePack"
+        "o-teresa-symbol": this.pack.config.id === "teresaPack",
+        "o-effarig-symbol": this.pack.config.id === "effarigPack",
+        "o-enslaved-symbol": this.pack.config.id === "enslavedPack",
+        "o-v-symbol": this.pack.config.id === "vPack",
+        "o-ra-symbol": this.pack.config.id === "raPack",
+        "o-laitela-symbol": this.pack.config.id === "laitelaPack",
+        "o-pelle-symbol": this.pack.config.id === "pellePack"
       };
     },
   },
