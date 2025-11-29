@@ -36,8 +36,8 @@ export const ExpansionPacks = {
   unlock() {
     const cost = Math.pow(2, 64);
     if (player.endgame.expansionPacks.areUnlocked) return;
-    if (GalaxyGenerator.galaxies >= cost) {
-      GalaxyGenerator.galaxies -= cost;
+    if (Currency.galaxyGeneratorGalaxies.gte(cost)) {
+      Currency.galaxyGeneratorGalaxies.subtract(cost);
       player.endgame.expansionPacks.areUnlocked = true;
     }
   }
