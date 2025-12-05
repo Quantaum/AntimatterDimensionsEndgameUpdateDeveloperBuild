@@ -1259,8 +1259,8 @@ button:focus {
 
 .l-reset-endgame-button {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 44rem;
+  height: 6rem;
 }
 
 .c-reset-endgame-button {
