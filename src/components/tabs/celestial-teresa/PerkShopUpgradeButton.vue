@@ -2,10 +2,12 @@
 import CostDisplay from "@/components/CostDisplay";
 import DescriptionDisplay from "@/components/DescriptionDisplay";
 import EffectDisplay from "@/components/EffectDisplay";
+import PrimaryButton from "@/components/PrimaryButton";
 
 export default {
   name: "PerkShopUpgradeButton",
   components: {
+    PrimaryButton,
     DescriptionDisplay,
     EffectDisplay,
     CostDisplay
@@ -21,6 +23,7 @@ export default {
       isAvailableForPurchase: false,
       isCapped: false,
       otherCurr: false,
+      chargeView: false,
     };
   },
   computed: {
@@ -34,12 +37,21 @@ export default {
           (this.upgrade === PerkShopUpgrade.musicGlyph || this.upgrade === PerkShopUpgrade.fillMusicGlyph)
       };
     },
+    chargeDisplay() {
+      return this.chargeView ? "ON" : "OFF";
+    },
+  },
+  watch: {
+    chargeView(newValue) {
+      Teresa.chargeModeOn = newValue;
+    }
   },
   methods: {
     update() {
       this.isAvailableForPurchase = this.upgrade.isAvailableForPurchase;
       this.isCapped = this.upgrade.isCapped;
       this.otherCurr = (this.upgrade === PerkShopUpgrade.addCharges);
+      this.chargeView = Teresa.chargeModeOn;
     }
   }
 };
@@ -64,6 +76,12 @@ export default {
         :name="otherCurr ? 'Celestial Point' : 'Perk Point'"
       />
     </button>
+    <PrimaryButton
+      class="o-teresa-shop-button--capped"
+      @click="chargeView = !chargeView"
+    >
+      Toggle Charge Mode: {{ chargeDisplay }}
+    </PrimaryButton>
   </div>
 </template>
 
