@@ -6,6 +6,9 @@ function rebuyable(config) {
   return {
     id,
     cost: () => (config.cost ? config.cost() : rebuyableCost(config.initialCost, config.increment, config.id)),
+    chargedEffect: () => (config.chargedEffect
+      ? config.chargedEffect(player.celestials.teresa.perkShop[config.id])
+      : config.effect(player.celestials.teresa.perkShop[config.id])),
     otherReq,
     cap,
     costCap,
@@ -26,6 +29,7 @@ export const perkShop = {
     description: () => PerkShopUpgrade.glyphLevel.isCharged ? `Multiply pre-instability Glyph level based on highest-ever
       Glyph level` : `Increase pre-instability Glyph levels by ${formatPercents(0.05)}`,
     effect: bought => PerkShopUpgrade.glyphLevel.isCharged ? Math.pow(player.records.bestEndgame.glyphLevel, 0.2) : Math.pow(1.05, bought),
+    chargedEffect: () => Math.pow(player.records.bestEndgame.glyphLevel, 0.2),
     formatEffect: value => formatX(value, 2, 2),
     formatCost: value => format(value, 2),
     costCap: () => (Ra.unlocks.perkShopIncrease.canBeApplied ? 1048576 : 2048),
@@ -39,6 +43,7 @@ export const perkShop = {
     description: () => PerkShopUpgrade.rmMult.isCharged ? `Multiply Reality Machine gain and cap based on
       Antimatter amount` : `Double Reality Machine gain`,
     effect: bought => PerkShopUpgrade.rmMult.isCharged ? Decimal.log10(player.antimatter) : Math.pow(2, bought),
+    chargedEffect: () => Decimal.log10(player.antimatter),
     formatEffect: value => formatX(value, 2),
     formatCost: value => format(value, 2),
     costCap: () => (Ra.unlocks.perkShopIncrease.canBeApplied ? 1048576 : 2048),
