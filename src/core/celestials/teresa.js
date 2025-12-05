@@ -59,6 +59,12 @@ export const Teresa = {
   get runCompleted() {
     return player.celestials.teresa.bestRunAM.gt(1);
   },
+  get totalCharges() {
+    return PerkShopUpgrade.addCharges.effectOrDefault(0);
+  },
+  get chargesLeft() {
+    return this.totalCharges - player.celestials.teresa.charged.size;
+  },
   quotes: Quotes.teresa,
   symbol: "Ϟ"
 };
