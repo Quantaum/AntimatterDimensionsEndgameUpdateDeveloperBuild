@@ -2,7 +2,7 @@ function rebuyableCost(initialCost, increment, id) {
   return initialCost * Math.pow(increment, player.celestials.teresa.perkShop[id]);
 }
 function rebuyable(config) {
-  const { id, otherReq, cap, costCap, description, formatEffect, formatCost } = config;
+  const { id, otherReq, cap, costCap, description, formatEffect, formatCost, showEffectAfterCharge } = config;
   return {
     id,
     cost: () => (config.cost ? config.cost() : rebuyableCost(config.initialCost, config.increment, config.id)),
@@ -13,7 +13,8 @@ function rebuyable(config) {
     effect: () => config.effect(player.celestials.teresa.perkShop[config.id]),
     formatEffect,
     formatCost,
-    rebuyable: true
+    rebuyable: true,
+    showEffectAfterCharge
   };
 }
 
@@ -22,55 +23,63 @@ export const perkShop = {
     id: 0,
     initialCost: 1,
     increment: 2,
-    description: () => `Increase pre-instability Glyph levels by ${formatPercents(0.05)}`,
-    effect: bought => Math.pow(1.05, bought),
+    description: () => PerkShopUpgrade.glyphLevel.isCharged ? `Multiply pre-instability Glyph level based on highest-ever
+      Glyph level` : `Increase pre-instability Glyph levels by ${formatPercents(0.05)}`,
+    effect: bought => PerkShopUpgrade.glyphLevel.isCharged ? Math.pow(player.records.bestEndgame.glyphLevel, 0.2) : Math.pow(1.05, bought),
     formatEffect: value => formatX(value, 2, 2),
     formatCost: value => format(value, 2),
     costCap: () => (Ra.unlocks.perkShopIncrease.canBeApplied ? 1048576 : 2048),
-    cap: () => (Ra.unlocks.perkShopIncrease.canBeApplied ? Math.pow(1.05, 20) : Math.pow(1.05, 11))
+    cap: () => (Ra.unlocks.perkShopIncrease.canBeApplied ? Math.pow(1.05, 20) : Math.pow(1.05, 11)),
+    showEffectAfterCharge: true
   }),
   rmMult: rebuyable({
     id: 1,
     initialCost: 1,
     increment: 2,
-    description: "Double Reality Machine gain",
-    effect: bought => Math.pow(2, bought),
+    description: () => PerkShopUpgrade.rmMult.isCharged ? `Multiply Reality Machine gain and cap based on
+      Antimatter amount` : `Double Reality Machine gain`,
+    effect: bought => PerkShopUpgrade.rmMult.isCharged ? Decimal.log10(player.antimatter) : Math.pow(2, bought),
     formatEffect: value => formatX(value, 2),
     formatCost: value => format(value, 2),
     costCap: () => (Ra.unlocks.perkShopIncrease.canBeApplied ? 1048576 : 2048),
-    cap: () => (Ra.unlocks.perkShopIncrease.canBeApplied ? 1048576 : 2048)
+    cap: () => (Ra.unlocks.perkShopIncrease.canBeApplied ? 1048576 : 2048),
+    showEffectAfterCharge: true
   }),
   bulkDilation: rebuyable({
     id: 2,
     initialCost: 100,
     increment: 2,
-    description: "Dilation autobuyers buy twice as many Dilation Upgrades at once.",
-    effect: bought => Math.pow(2, bought),
+    description: () => PerkShopUpgrade.bulkDilation.isCharged ? `Dilation Autobuyers always buy max.` : `Dilation
+      autobuyers buy twice as many Dilation Upgrades at once.`,
+    effect: bought => PerkShopUpgrade.bulkDilation.isCharged ? Math.pow(10, 300) : Math.pow(2, bought),
     formatEffect: value => formatX(value, 2),
     formatCost: value => format(value, 2),
     costCap: () => (Ra.unlocks.perkShopIncrease.canBeApplied ? 1638400 : 1600),
-    cap: () => (Ra.unlocks.perkShopIncrease.canBeApplied ? 16384 : 16)
+    cap: () => (Ra.unlocks.perkShopIncrease.canBeApplied ? 16384 : 16),
+    showEffectAfterCharge: false
   }),
   autoSpeed: rebuyable({
     id: 3,
     initialCost: 1000,
     increment: 2,
-    description: () => `Infinity Dimension, Time Dimension, Dilation,
-      and Replicanti autobuyers are ${formatX(2)} faster.`,
-    effect: bought => Math.pow(2, bought),
+    description: () => PerkShopUpgrade.autoSpeed.isCharged ? `Infinity Dimension, Time Dimension, Dilation, and Replicanti autobuyer
+      intervals are Instant.` : `Infinity Dimension, Time Dimension, Dilation, and Replicanti autobuyers are ${formatX(2)} faster.`,
+    effect: bought => PerkShopUpgrade.autoSpeed.isCharged ? Math.pow(10, 300) : Math.pow(2, bought),
     formatEffect: value => formatX(value, 2),
     formatCost: value => format(value, 2),
     costCap: () => (Ra.unlocks.perkShopIncrease.canBeApplied ? 64000 : 4000),
-    cap: () => (Ra.unlocks.perkShopIncrease.canBeApplied ? 64 : 4)
+    cap: () => (Ra.unlocks.perkShopIncrease.canBeApplied ? 64 : 4),
+    showEffectAfterCharge: false
   }),
   musicGlyph: rebuyable({
     id: 4,
-    description: () => `Receive a Music Glyph of a random type that is ${formatPercents(0.8)} of your highest level.
-      (Try clicking it!)`,
+    description: () => PerkShopUpgrade.musicGlyph.isCharged ? `Unlock an Autobuyer to automatically purchase and purge Music
+      Glyphs.` : `Receive a Music Glyph of a random type that is ${formatPercents(0.8)} of your highest level. (Try clicking it!)`,
     cost: () => 1,
     formatCost: value => formatInt(value),
     costCap: () => Number.MAX_VALUE,
-    cap: () => Number.MAX_VALUE
+    cap: () => Number.MAX_VALUE,
+    showEffectAfterCharge: false
   }),
   // Only appears with the perk shop increase upgrade
   fillMusicGlyph: rebuyable({
@@ -80,7 +89,8 @@ export const perkShop = {
     otherReq: () => GameCache.glyphInventorySpace.value > 0,
     formatCost: value => formatInt(value),
     costCap: () => Number.MAX_VALUE,
-    cap: () => Number.MAX_VALUE
+    cap: () => Number.MAX_VALUE,
+    showEffectAfterCharge: false
   }),
   // My bored ass having to do this shit smh also ditto to the above but for Teresa Expansion Pack
   addCharges: rebuyable({
@@ -92,6 +102,7 @@ export const perkShop = {
     formatEffect: value => formatInt(value),
     formatCost: value => format(value, 2),
     costCap: () => 1e60,
-    cap: () => 5
+    cap: () => 5,
+    showEffectAfterCharge: false
   }),
 };
