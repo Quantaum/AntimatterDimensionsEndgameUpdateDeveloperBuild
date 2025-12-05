@@ -21,6 +21,7 @@ export default {
       isAvailableForPurchase: false,
       isCapped: false,
       otherCurr: false,
+      displayEffect: false,
     };
   },
   computed: {
@@ -40,6 +41,7 @@ export default {
       this.isAvailableForPurchase = this.upgrade.isAvailableForPurchase;
       this.isCapped = this.upgrade.isCapped;
       this.otherCurr = (this.upgrade === PerkShopUpgrade.addCharges);
+      this.displayEffect = this.upgrade.displayEffect;
     }
   }
 };
@@ -52,6 +54,7 @@ export default {
       @click="upgrade.purchase()"
     >
       <DescriptionDisplay
+        v-if="displayEffect"
         :config="upgrade.config"
         :length="70"
       />
