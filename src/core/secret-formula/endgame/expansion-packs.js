@@ -5,7 +5,7 @@ export const expansionPacks = {
     symbol: "Ϟ",
     description: () =>
       `Uncap Teresa's Canister. Teresa's Canister now affects the Reality Machine cap as well as Reality Machine gain.
-      Unlock Charged Perk Upgrades in the Teresa Tab.`,
+      Unlock Charged Perk Upgrades in the Teresa Tab. Automatically pour RM into Teresa.`,
     cost: Decimal.pow(10, 1e30),
     formatCost: value => formatPostBreak(value, 2, 0)
   },
