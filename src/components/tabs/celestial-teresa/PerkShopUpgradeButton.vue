@@ -64,14 +64,14 @@ export default {
         :config="upgrade.config"
         :length="70"
       />
-      <br>
       <EffectDisplay
         v-if="displayEffect"
+        br
         :config="effectConfig"
       />
-      <br>
       <CostDisplay
         v-if="!isCapped"
+        br
         :config="upgrade.config"
         :name="otherCurr ? 'Celestial Point' : 'Perk Point'"
       />
