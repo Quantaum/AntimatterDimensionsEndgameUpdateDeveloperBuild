@@ -291,7 +291,9 @@ function updateRealityRecords(realityProps) {
   }
   if (player.records.bestReality.glyphLevel < realityProps.gainedGlyphLevel.actualLevel) {
     player.records.bestReality.glyphLevel = realityProps.gainedGlyphLevel.actualLevel;
-    player.records.bestEndgame.glyphLevel = player.records.bestReality.glyphLevel;
+    if (player.records.bestReality.glyphLevel > player.records.bestEndgame.glyphLevel) {
+      player.records.bestEndgame.glyphLevel = player.records.bestReality.glyphLevel;
+    }
     player.records.bestReality.glyphLevelSet = Glyphs.copyForRecords(Glyphs.active.filter(g => g !== null));
   }
   player.records.bestReality.time = Decimal.min(player.records.thisReality.time, player.records.bestReality.time);
