@@ -373,11 +373,13 @@ export const Endgame = {
     player.celestials.ra.pets.v.memoryChunks = 0;
     player.celestials.ra.pets.v.memoryUpgrades = 0;
     player.celestials.ra.pets.v.chunkUpgrades = 0;
-    player.celestials.ra.alchemy = Array.repeat(0, 21)
-      .map(() => ({
-        amount: 0,
-        reaction: false
-      }));
+    if (!ExpansionPack.effarigPack.isBought) {
+      player.celestials.ra.alchemy = Array.repeat(0, 21)
+        .map(() => ({
+          amount: 0,
+          reaction: false
+        }));
+    }
     player.celestials.ra.highestRefinementValue.power = 0;
     player.celestials.ra.highestRefinementValue.infinity = 0;
     player.celestials.ra.highestRefinementValue.time = 0;
