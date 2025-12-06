@@ -605,6 +605,10 @@ export function gameLoop(passedDiff, options = {}) {
   applyAutoprestige(realDiff);
   updateImaginaryMachines(realDiff);
 
+  if (ExpansionPack.teresaPack.isBought) {
+    Teresa.pourRM(realDiff);
+  }
+
   const uncountabilityGain = AlchemyResource.uncountability.effectValue * Time.unscaledDeltaTime.totalSeconds.toNumber();
   Currency.realities.add(uncountabilityGain);
   Currency.perkPoints.add(uncountabilityGain);
