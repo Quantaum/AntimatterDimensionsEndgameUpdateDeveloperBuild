@@ -257,6 +257,7 @@ export const GlyphGenerator = {
     const random1 = rng.uniform();
     const random2 = rng.uniform();
     if (type !== "effarig" && Ra.unlocks.glyphEffectCount.canBeApplied) return 4;
+    if (type === "effarig" && ExpansionPack.effarigPack.isBought) return 7;
     const maxEffects = Ra.unlocks.glyphEffectCount.canBeApplied ? 7 : 4;
     let num = Math.min(
       maxEffects,
