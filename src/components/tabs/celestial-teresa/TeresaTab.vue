@@ -91,7 +91,7 @@ export default {
     },
     autoText() {
       return this.autoPour ? "Auto ON" : "Auto OFF";
-    }
+    },
     pourText() {
       return this.isPouredAmountCapped ? "Filled" : "Pour RM";
     },
