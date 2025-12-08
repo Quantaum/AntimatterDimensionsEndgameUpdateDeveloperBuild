@@ -130,7 +130,7 @@ export default {
       class="l-black-hole-sliders"
     >
       <b>
-        Black Holes currently auto-release {{ formatPercents(pulseAmount, 2, 1) }} of Stored Game Time per second if Pulse is on.
+        Black Holes currently auto-release {{ formatPercents(amountSlider, 2, 1) }} of Stored Game Time per second if Pulse is on.
       </b>
       <SliderComponent
         v-if="areExtraSlidersUnlocked"
@@ -140,7 +140,7 @@ export default {
       />
       <br>
       <b>
-        Black Holes currently release Stored Game Time every {{ formatInt(pulseTime) }} ticks of Pulse is on.
+        Black Holes currently release Stored Game Time every {{ formatInt(timeSlider) }} ticks of Pulse is on.
       </b>
       <SliderComponent
         v-if="areExtraSlidersUnlocked"
