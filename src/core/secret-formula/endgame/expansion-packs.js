@@ -17,7 +17,7 @@ export const expansionPacks = {
       `Multiply Relic Shard gain by the logarithm of your Antimatter amount. The Effarig Level ${formatInt(10)} reward in Ra
       is improved so that Effarig Glyphs are always generated with ${formatInt(7)} effects. Increase Glyph Alchemy caps to one-third
       of your all-time maximum Glyph Level. Alchemy resources are kept on Endgame, and making a Reality Glyph no longer spends
-      Reality resources.`,
+      Reality resources. Layers of Effarig's Reality will automatically complete at one-tenth the time of your fastest Endgame.`,
     cost: Decimal.pow(10, 1e50),
     formatCost: value => formatPostBreak(value, 2, 0)
   },
@@ -29,7 +29,7 @@ export const expansionPacks = {
       `Charging your Black Hole always only takes ${formatPercents(0.99)} of your total Game Speed. Unlock optimizers for
       for adjusting the amount of your stored time you desire to discharge as well as the interval at which you want to discharge
       your Stored Time. Double the strength of all Effective Tesseracts. Tesseracts multiply Endgames as well as reducing the Infinity
-      Dimension Compression Magnitude slightly.`,
+      Dimension Compression Magnitude slightly. Start Endgames with the Nameless Ones completed. Unlock an autobuyer for Tesseracts.`,
     cost: Decimal.pow(10, 1e70),
     formatCost: value => formatPostBreak(value, 2, 0)
   },
