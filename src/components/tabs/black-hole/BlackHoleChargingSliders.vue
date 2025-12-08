@@ -17,8 +17,8 @@ export default {
       negativeBHDivisor: 1,
       maxNegativeBlackHole: 300,
       isDisabled: false,
-      pulseAmount: 0.01,
-      pulseTime: 5,
+      amountSlider: 0.01,
+      timeSlider: 5,
       areExtraSlidersUnlocked: false
     };
   },
@@ -42,8 +42,8 @@ export default {
       this.negativeBHDivisor = Math.pow(10, this.negativeSlider);
       const maxInversion = player.requirementChecks.reality.slowestBH <= 1e-300;
       this.isDisabled = ImaginaryUpgrade(24).isLockingMechanics && Ra.isRunning && maxInversion;
-      this.pulseAmount = player.celestials.enslaved.pulseAmount;
-      this.pulseTime = player.celestials.enslaved.pulseTime;
+      this.amountSlider = player.celestials.enslaved.pulseAmount * 1000;
+      this.timeSlider = player.celestials.enslaved.pulseTime;
       this.areExtraSlidersUnlocked = ExpansionPack.enslavedPack.isBought;
     },
     adjustSliderNegative(value) {
