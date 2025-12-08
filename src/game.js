@@ -508,7 +508,7 @@ export function gameLoop(passedDiff, options = {}) {
   if (Enslaved.isAutoReleasing) {
     Enslaved.autoReleaseTick++;
   }
-  if (Enslaved.autoReleaseTick >= 5) {
+  if (Enslaved.autoReleaseTick >= player.celestials.enslaved.pulseTime) {
     Enslaved.autoReleaseTick = 0;
     Enslaved.useStoredTime(true);
     Enslaved.isReleaseTick = true;
