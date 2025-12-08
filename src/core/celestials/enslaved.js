@@ -128,13 +128,13 @@ export const Enslaved = {
         EnslavedProgress.storedTime.giveProgress();
       }
     }
-    if (autoRelease) release = release.times(0.01);
+    if (autoRelease) release = release.times(player.celestials.enslaved.pulseAmount);
     this.nextTickDiff = Decimal.clampMax(release, this.timeCap);
     this.isReleaseTick = true;
     // Effective gamespeed from stored time assumes a "default" 50 ms update rate for consistency
     const effectiveGamespeed = release.div(50);
     player.celestials.ra.peakGamespeed = Decimal.max(player.celestials.ra.peakGamespeed, effectiveGamespeed);
-    this.autoReleaseSpeed = (release.div(player.options.updateRate)).div(5);
+    this.autoReleaseSpeed = (release.div(player.options.updateRate)).div(player.celestials.enslaved.pulseTime);
     player.celestials.enslaved.stored = player.celestials.enslaved.stored.times(autoRelease ? 0.99 : 0);
   },
   has(info) {
