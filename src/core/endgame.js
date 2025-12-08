@@ -25,7 +25,7 @@ function updateEndgameRecords() {
 
 function giveEndgameRewards() {
   const endgameMultiplier = (ExpansionPack.enslavedPack.isBought
-    ? Math.floor(1 + Math.pow(Math.log10(Tesseracts.effectiveCount), Math.log10(player.endgames)))
+    ? Math.floor(1 + Math.pow(Math.log10(Tesseracts.effectiveCount + 1), Math.log10(player.endgames + 1)))
     : 1);
   Currency.celestialPoints.add(gainedCelestialPoints());
   Currency.doomedParticles.add(gainedDoomedParticles());
