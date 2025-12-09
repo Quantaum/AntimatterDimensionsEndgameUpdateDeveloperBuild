@@ -29,13 +29,13 @@ export default {
   computed: {
     autobuyer: () => Autobuyer.endgame,
     modes: () => [
-      AUTO_ETERNITY_MODE.AMOUNTCP,
-      AUTO_ETERNITY_MODE.AMOUNTDP,
-      AUTO_ETERNITY_MODE.TIME,
-      AUTO_ETERNITY_MODE.X_HIGHEST_CP,      
-      AUTO_ETERNITY_MODE.X_HIGHEST_DP,
+      AUTO_ENDGAME_MODE.AMOUNTCP,
+      AUTO_ENDGAME_MODE.AMOUNTDP,
+      AUTO_ENDGAME_MODE.TIME,
+      AUTO_ENDGAME_MODE.X_HIGHEST_CP,      
+      AUTO_ENDGAME_MODE.X_HIGHEST_DP,
     ],
-    amountMode: () => AUTO_ETERNITY_MODE.AMOUNTCP
+    amountMode: () => AUTO_ENDGAME_MODE.AMOUNTCP
   },
   watch: {
     increaseWithMult(newValue) {
