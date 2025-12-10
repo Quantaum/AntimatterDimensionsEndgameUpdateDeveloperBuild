@@ -90,7 +90,7 @@ export class DarkMatterDimensionState extends DimensionState {
 
   get powerDE() {
     if (!this.isUnlocked || Pelle.isDoomed) return DC.D0;
-    const supertier = [1, 1, 1, 1, 1, 5, 10, 20, 40];
+    const supertier = [1, 1, 1, 1, 1, 5, 12, 30, 80];
     const tierFactor = Decimal.pow(15, (this.tier - 1) * supertier[this.tier]);
     const destabilizeBoost = Laitela.isFullyDestabilized ? 8 : 1;
     return this.data.powerDEUpgrades.div(10).add(1)
@@ -113,7 +113,7 @@ export class DarkMatterDimensionState extends DimensionState {
   }
 
   get adjustedStartingCost() {
-    const tiers = [null, 0, 2, 5, 13, 108, 324, 1296, 6480];
+    const tiers = [null, 0, 2, 5, 13, 108, 360, 1800, 9000];
     return Decimal.pow(COST_MULT_PER_TIER, tiers[this.tier]).times(10).times(
       SingularityMilestone.darkDimensionCostReduction.effectOrDefault(1));
   }
