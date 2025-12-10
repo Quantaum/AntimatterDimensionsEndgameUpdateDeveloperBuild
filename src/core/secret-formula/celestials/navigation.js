@@ -1724,7 +1724,7 @@ export const celestialNavigation = {
     complete: () => {
       const upgrade = ImaginaryUpgrade(19);
       if (upgrade.canBeBought || upgrade.isBought) return 1;
-      if (upgrade.isAvailableForPurchase) return Currency.imaginaryMachines.value / upgrade.cost;
+      if (upgrade.isAvailableForPurchase) return Currency.imaginaryMachines.value.div(upgrade.cost);
       return upgrade.isPossible
         ? Tickspeed.continuumValue / 3850000
         : 0;
@@ -1809,7 +1809,7 @@ export const celestialNavigation = {
     visible: () => Laitela.difficultyTier > 4,
     complete: () => {
       if (Pelle.isUnlocked) return 1;
-      const imCost = Math.clampMax(emphasizeEnd(Math.log10(Currency.imaginaryMachines.value) / Math.log10(1.6e15)), 1);
+      const imCost = Math.clampMax(emphasizeEnd(Decimal.log10(Currency.imaginaryMachines.value) / Math.log10(1.6e15)), 1);
       let laitelaProgress = Laitela.isRunning ? Math.min(Currency.eternityPoints.value.log10() / 4000, 0.99) : 0;
       if (Laitela.difficultyTier !== 8 || Glyphs.activeWithoutCompanion.length > 1) laitelaProgress = 0;
       else if (ImaginaryUpgrade(25).isAvailableForPurchase) laitelaProgress = 1;
@@ -1909,7 +1909,7 @@ export const celestialNavigation = {
     visible: () => PlayerProgress.endgameUnlocked(),
     complete: () => {
       if (ImaginaryUpgrade(30).isAvailableForPurchase) return 1;
-      const imCost = Math.clampMax(Math.log10(Currency.imaginaryMachines.value) / Math.log10(Number.MAX_VALUE), 1);
+      const imCost = Math.clampMax(Decimal.log10(Currency.imaginaryMachines.value) / Math.log10(Number.MAX_VALUE), 1);
       const nerfsLeft = (PelleAchievementUpgrade.all.filter(u => u.isBought).length +
         PelleDestructionUpgrade.all.filter(u => u.isBought).length + PelleRealityUpgrade.all.filter(u => u.isBought).length +
         PelleImaginaryUpgrade.all.filter(u => u.isBought).length + PelleCelestialUpgrade.all.filter(u => u.isBought).length +
