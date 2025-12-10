@@ -304,8 +304,8 @@ export const endgameMasteries = [
     description: "Improve Singularity Gain per bulk increase based on Singularities owned",
     effect: () => Decimal.floor((new Decimal(Decimal.log10(Decimal.clamp(Currency.singularities.value.div(1e50), 1, 1e120))).div(5)).add(
       new Decimal(Decimal.log10(Decimal.clamp(Currency.singularities.value.div(1e170), 1, 1e250))).div(10)).add(
-      new Decimal(Decimal.log10(Decimal.clamp(Currency.singularities.value.div(new Decimal(1e420)), 1, new Decimal(1e2500)))).div(100)).add(
-      Decimal.pow(new Decimal(Decimal.log10(Decimal.clamp(Currency.singularities.value.div(new Decimal(1e2920)), 1, new Decimal(1e390625)))), 0.25)).add(1)),
+      new Decimal(Decimal.log10(Decimal.clamp(Currency.singularities.value.div(new Decimal("1e420")), 1, new Decimal("1e2500")))).div(100)).add(
+      Decimal.pow(new Decimal(Decimal.log10(Decimal.clamp(Currency.singularities.value.div(new Decimal("1e2920")), 1, new Decimal("1e390625")))), 0.25)).add(1)),
     cap: DC.E2,
     formatEffect: value => `+${format(value, 2)}`
   },
