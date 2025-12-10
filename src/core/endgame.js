@@ -202,8 +202,8 @@ export const Endgame = {
     player.partSimulatedReality = 0;
     Currency.realityMachines.reset();
     player.reality.maxRM = DC.D0;
-    player.reality.imaginaryMachines = 0;
-    player.reality.iMCap = 0;
+    player.reality.imaginaryMachines = DC.D0;
+    player.reality.iMCap = DC.D0;
     player.reality.glyphs.sac.power = DC.D0;
     player.reality.glyphs.sac.infinity = DC.D0;
     player.reality.glyphs.sac.time = DC.D0;
