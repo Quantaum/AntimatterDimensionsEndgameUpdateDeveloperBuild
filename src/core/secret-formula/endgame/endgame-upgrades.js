@@ -191,7 +191,7 @@ export const endgameUpgrades = [
     checkRequirement: () => Currency.antimatter.exponent >= 1e33 && !Pelle.isDoomed,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     description: () => `Gain a power to the Antimatter Exponent based on Imaginary Machines`,
-    effect: () => 1 + (Math.pow(Math.log10(Math.log10(player.reality.imaginaryMachines + 1) + 1), 2) / 200),
+    effect: () => 1 + (Math.pow(Math.log10(Decimal.log10(player.reality.imaginaryMachines.add(1)) + 1), 2) / 200),
     formatEffect: value => formatPow(value, 2, 3)
   },
   {
