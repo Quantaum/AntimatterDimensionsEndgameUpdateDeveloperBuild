@@ -66,7 +66,7 @@ export default {
         if (ExpansionPacks.areUnlocked && ExpansionPacks.nextPackUnlockAM === undefined) {
           setProgress(gainedCelestialPoints(), Decimal.NUMBER_MAX_VALUE, "Percentage to Celestial Point Cap");
         } else if (ExpansionPacks.areUnlocked) {
-          setProgress(new Decimal(Currency.antimatter.value.exponent), new Decimal(ExpansionPacks.nextPackUnlockAM),
+          setProgress(new Decimal(Currency.antimatter.value.exponent), new Decimal(Decimal.log10(ExpansionPacks.nextPackUnlockAM)),
             "Percentage to next Expansion Pack");
         } else if (GalaxyGenerator.galaxies > 1e15) {
           setLinearProgress(GalaxyGenerator.galaxies, Math.pow(2, 64), "Percentage to Expansion Packs");
