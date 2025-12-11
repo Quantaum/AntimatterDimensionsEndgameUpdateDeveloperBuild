@@ -14,7 +14,7 @@ export const glyphSacrifice = {
       const nextGalaxyText = amount.lt(750)
         ? ` (next at ${format(nextDistantGalaxy, 2, 2)})`
         : "";
-      return `Distant Galaxy scaling starts ${formatInt(amount)} later${nextGalaxyText}`;
+      return `Distant Galaxy scaling starts ${formatHybridLarge(amount, 3)} later${nextGalaxyText}`;
     },
     cap: () => GlyphSacrificeHandler.maxSacrificeForEffects
   },
@@ -55,7 +55,7 @@ export const glyphSacrifice = {
       const nextGalaxyText = amount.lt(1500)
         ? ` (next at ${format(nextDistantGalaxy, 2, 2)})`
         : "";
-      return `Replicanti Galaxy scaling starts ${formatInt(amount)} later${nextGalaxyText}`;
+      return `Replicanti Galaxy scaling starts ${formatHybridLarge(amount, 3)} later${nextGalaxyText}`;
     },
     cap: () => GlyphSacrificeHandler.maxSacrificeForEffects
   },
