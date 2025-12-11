@@ -567,7 +567,7 @@ export const normalTimeStudies = [
     requiresST: [226],
     description: "You gain extra Replicanti Galaxies based on Replicanti amount",
     effect: () => Math.floor(Replicanti.amount.exponent / 1000),
-    formatEffect: value => `+${formatInt(value)} RG`
+    formatEffect: value => `+${formatHybridLarge(value, 3)} RG`
   },
   {
     id: 226,
@@ -578,7 +578,7 @@ export const normalTimeStudies = [
     requiresST: [225],
     description: "You gain extra Replicanti Galaxies based on their max",
     effect: () => Math.floor(player.replicanti.boughtGalaxyCap / 12),
-    formatEffect: value => `+${formatInt(value)} RG`
+    formatEffect: value => `+${formatHybridLarge(value, 3)} RG`
   },
   {
     id: 227,
