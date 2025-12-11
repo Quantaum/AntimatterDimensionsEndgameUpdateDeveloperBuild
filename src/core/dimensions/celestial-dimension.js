@@ -124,7 +124,7 @@ class CelestialDimensionState extends DimensionState {
   }
 
   get purchaseCap() {
-    return Decimal.NUMBER_MAX_VALUE;
+    return DC.C2P1024;
   }
 
   get isCapped() {
@@ -206,7 +206,7 @@ export const CelestialDimensions = {
    * @type {CelestialDimensionState[]}
    */
   all: CelestialDimension.index.compact(),
-  HARDCAP_PURCHASES: Decimal.NUMBER_MAX_VALUE,
+  HARDCAP_PURCHASES: DC.C2P1024,
   get SOFTCAP() {
     return DC.E100.timesEffectsOf(EndgameMastery(94), EndgameUpgrade(5));
   },
