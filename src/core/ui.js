@@ -81,6 +81,9 @@ Vue.mixin({
     formatDimboostParts(value, places, placesUnder1000) {
       return formatDimboostParts(value, places, placesUnder1000);
     },
+    formatHybridFloat(value, places) {
+      return formatHybridFloat(value, places);
+    },
     pluralize,
     quantify,
     quantifyInt
