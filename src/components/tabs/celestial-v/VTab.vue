@@ -4,6 +4,9 @@ import GlyphSetPreview from "@/components/GlyphSetPreview";
 import PrimaryButton from "@/components/PrimaryButton";
 import { V_REDUCTION_MODE } from "@/core/secret-formula";
 import VUnlockRequirement from "./VUnlockRequirement";
+import CostDisplay from "@/components/CostDisplay";
+import DescriptionDisplay from "@/components/DescriptionDisplay";
+import EffectDisplay from "@/components/EffectDisplay";
 
 export default {
   name: "VTab",
@@ -11,7 +14,16 @@ export default {
     CelestialQuoteHistory,
     VUnlockRequirement,
     PrimaryButton,
-    GlyphSetPreview
+    GlyphSetPreview,
+    DescriptionDisplay,
+    EffectDisplay,
+    CostDisplay
+  },
+  props: {
+    upgrade: {
+      type: Object,
+      required: true
+    }
   },
   data() {
     return {
@@ -26,6 +38,8 @@ export default {
       wantsFlipped: true,
       isRunning: false,
       hasAlchemy: false,
+      isAvailableForPurchase: false,
+      isCapped: false,
     };
   },
   computed: {
@@ -105,6 +119,8 @@ export default {
       this.wantsFlipped = player.celestials.v.wantsFlipped;
       this.isRunning = V.isRunning;
       this.hasAlchemy = Ra.unlocks.unlockGlyphAlchemy.canBeApplied;
+      this.isAvailableForPurchase = this.upgrade.isAvailableForPurchase;
+      this.isCapped = this.upgrade.isCapped;
     },
     unlockCelestial() {
       if (V.canUnlockCelestial) V.unlockCelestial();
@@ -154,6 +170,9 @@ export default {
     },
     createCursedGlyph() {
       Glyphs.giveCursedGlyph();
+    },
+    purchase() {
+      this.upgrade.purchase();
     }
   }
 };
@@ -217,6 +236,30 @@ export default {
         class="c-v-info-text"
       >
         You have {{ quantify("Perk Point", pp, 2, 0) }}.
+      </div>
+      <div
+        class="o-v-milestone"
+        :class="{'o-v-milestone--unlocked':
+          upgrade.isCapped || upgrade.isAvailableForPurchase}"
+      >
+        <button
+          @click="purchase"
+        >
+          <DescriptionDisplay
+            :config="upgrade.config"
+            :length="70"
+          />
+          <EffectDisplay
+            br
+            :config="upgrade.config"
+          />
+          <CostDisplay
+            v-if="!isCapped"
+            br
+            :config="upgrade.config"
+            name="Celestial Point"
+          />
+        </button>
       </div>
       <div class="l-v-unlocks-container">
         <li
