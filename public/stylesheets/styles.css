@@ -7643,11 +7643,10 @@ kbd {
 .o-v-upgrade {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  position: absolute;
   width: 25rem;
   height: 10rem;
-  justify-content: center;
   font-family: Typewriter;
   font-size: 1.2rem;
   color: black;
