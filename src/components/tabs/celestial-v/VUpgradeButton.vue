@@ -54,12 +54,10 @@ export default {
         :length="70"
       />
       <EffectDisplay
-        br
         :config="upgrade.config"
       />
       <CostDisplay
         v-if="!isCapped"
-        br
         :config="upgrade.config"
         name="Celestial Point"
       />
