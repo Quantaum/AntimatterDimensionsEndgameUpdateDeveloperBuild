@@ -172,7 +172,7 @@ class VUpgradeState extends RebuyableMechanicState {
   }
 
   get isCapped() {
-    return new Decimal(this.cost).gte(this.costCap(this.bought));
+    return new Decimal(this.cost).gte(this.costCap);
   }
 
   get isAvailableForPurchase() {
