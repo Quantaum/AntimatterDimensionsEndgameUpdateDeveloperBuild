@@ -606,7 +606,9 @@ export const Endgame = {
     player.partInfinitied = 0;
     player.dimensionBoosts = DC.D0;
     player.galaxies = 0;
-    player.break = false;
+    if (player.eternities.lte(1)) {
+      player.break = false;
+    }
     resetTickspeed();
     AntimatterDimensions.reset();
     Currency.antimatter.reset();
