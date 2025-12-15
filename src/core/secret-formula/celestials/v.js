@@ -277,9 +277,9 @@ export const vUpgrades = {
     increment: 1e5,
     description: () => `Reduce the time to automatically complete V-Achievements`,
     effect: bought => 60 / Math.pow(2, bought),
-    formatEffect: value => TimeSpan.fromMilliseconds(new Decimal(value * 1000)).toStringShort(),
+    formatEffect: value => value <= 30 ? "Instant" : TimeSpan.fromMilliseconds(new Decimal(value * 1000)).toStringShort(),
     formatCost: value => format(value, 2),
     costCap: 1e135,
-    cap: () => 60 / Math.pow(2, 11)
+    cap: Number.MAX_VALUE
   }),
 };
