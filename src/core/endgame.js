@@ -365,7 +365,7 @@ export const Endgame = {
     player.celestials.enslaved.glyphHintsGiven = 0;
     player.celestials.enslaved.zeroHintTime = 0;
     Enslaved.autoReleaseTick = 0;
-    player.celestials.v.unlockBits = 0;
+    player.celestials.v.unlockBits = ExpansionPack.vPack.isBought ? 1 : 0;
     player.celestials.v.run = false;
     if (!ExpansionPacks.areUnlocked) {
       player.celestials.v.quoteBits = 0;
