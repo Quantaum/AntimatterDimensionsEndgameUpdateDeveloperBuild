@@ -198,7 +198,7 @@ export const shortcuts = [
   }, {
     name: "Reset Endgame",
     keys: ["alt", "n"],
-    type: "bindRepeatableHotkey",
+    type: "bindHotkey",
     function: () => Endgame.resetNoReward(),
     visible: () => PlayerProgress.endgameUnlocked()
   }, {
