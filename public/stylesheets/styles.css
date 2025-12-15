@@ -9805,7 +9805,7 @@ kbd {
 
 .l-endgame-button-column {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 44rem;
   height: 6rem;
   padding: 0.5rem;
