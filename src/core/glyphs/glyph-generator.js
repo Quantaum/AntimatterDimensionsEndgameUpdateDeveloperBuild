@@ -127,7 +127,7 @@ export const GlyphGenerator = {
   },
 
   realityGlyph(level) {
-    const str = rarityToStrength(100);
+    const str = rarityToStrength(100 + Ra.unlocks.realityGlyphRarity.effectOrDefault(0));
     const effects = this.generateRealityEffects(level);
     const effectBitmask = makeGlyphEffectBitmask(effects);
     return {
