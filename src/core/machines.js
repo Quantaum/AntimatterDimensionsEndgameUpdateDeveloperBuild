@@ -8,7 +8,7 @@ export const MachineHandler = {
     if (ExpansionPack.teresaPack.isBought) effectMultipliers = effectMultipliers.timesEffectsOf(PerkShopUpgrade.rmMult);
     if (ExpansionPack.teresaPack.isBought) effectMultipliers = effectMultipliers.times(Teresa.rmMultiplier);
     const smallBoost = DC.D1.timesEffectsOf(EndgameMastery(153));
-    const largeBoost = DC.D1.timesEffectsOf(SingularityMilestone.rmCap);
+    const largeBoost = DC.D1.timesEffectsOf(SingularityMilestone.rmCap, Ra.unlocks.realityMachineCap);
     return Decimal.pow(this.baseRMCap.times(effectMultipliers).times(
       Decimal.pow(ImaginaryUpgrade(6).effectOrDefault(1), smallBoost)), largeBoost);
   },
