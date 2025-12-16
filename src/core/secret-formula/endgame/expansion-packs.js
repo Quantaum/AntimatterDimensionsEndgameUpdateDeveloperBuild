@@ -66,10 +66,11 @@ export const expansionPacks = {
       by ${formatInt(200)}. Multiply Dark Matter gain by the double-logarithm of your Antimatter amount or the logarithm of
       your Imaginary Machine amount, whichever is bigger. Start Endgames with ${formatInt(10)} Singularities. Multiply Dark Energy
       gain by the logarithm of your Singularity amount squared. Raise the Annhilation effect to a power based on Dark Matter.
-      Unlock the ability to "Hadronize" Lai'tela's Reality, increasing the Antimatter required to gain significant entropy while
-      resetting Lai'tela's Reality to allow for all 8 Dimensions. While disabled Dimension count still resets on Endgame, Hadronizes
-      do not. Hadronization allows for additional completions of Lai'tela for the same ${formatX(8)} reward to Dark Matter on
-      destabilization and ${formatX(8)} to Dark Energy on the final destabilization for each Hadronization.`,
+      Improve the Annihilation autobuyer. Unlock the ability to "Hadronize" Lai'tela's Reality, increasing the Antimatter
+      required to gain significant entropy while resetting Lai'tela's Reality to allow for all 8 Dimensions. While disabled
+      Dimension count still resets on Endgame, Hadronizes do not. Hadronization allows for additional completions of Lai'tela
+      for the same ${formatX(8)} reward to Dark Matter on destabilization and ${formatX(8)} to Dark Energy on the final
+      destabilization for each Hadronization.`,
     cost: Decimal.pow(10, 1e130),
     formatCost: value => formatPostBreak(value, 2, 0)
   },
