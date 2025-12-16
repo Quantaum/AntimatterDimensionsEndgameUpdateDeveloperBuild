@@ -41,7 +41,7 @@ export default {
     formatGlyphEffect(effect) {
       if (this.realityGlyphLevel < effect[0]) return `(Requires Glyph level ${formatInt(effect[0])})`;
       const config = GlyphEffects[effect[1]];
-      const value = config.effect(this.realityGlyphLevel, rarityToStrength(100));
+      const value = config.effect(this.realityGlyphLevel, rarityToStrength(100 + Ra.unlocks.realityGlyphRarity.effectOrDefault(0)));
       const effectTemplate = config.singleDesc;
       return effectTemplate.replace("{value}", config.formatEffect(value));
     }
