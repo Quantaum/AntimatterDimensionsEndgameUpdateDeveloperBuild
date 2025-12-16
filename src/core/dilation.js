@@ -163,7 +163,8 @@ export function tachyonGainMultiplier() {
       Achievement(132),
       RealityUpgrade(4),
       RealityUpgrade(8),
-      RealityUpgrade(15)
+      RealityUpgrade(15),
+      Ra.unlocks.gameSpeedTachyonMult
     );
 
   mult = mult.pow(pow);
