@@ -278,7 +278,7 @@ export const CelestialDimensions = {
     let base = 2;
     if (Pelle.isDoomed) base /= 10;
     let exponent = 1;
-    if (base > 1) exponent *= Effects.product(EndgameMastery(104));
+    if (base > 1) exponent *= Effects.product(EndgameMastery(104), Ra.unlocks.celestialDimensionConversionPower);
     return Math.pow(base, exponent);
   }
 };
