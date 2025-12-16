@@ -390,10 +390,10 @@ export function getGameSpeedupFactor(effectsToConsider, blackHolesActiveOverride
   }
 
   if (effects.includes(GAME_SPEED_EFFECT.RA_BUFFS)) {
-    if (Ra.unlocks.gameSpeedTesseractBoost.effectValue.gt(1)) {
+    if (Ra.unlocks.gameSpeedTesseractBoost.canBeApplied) {
       factor = factor.timesEffectOf(Ra.unlocks.gameSpeedTesseractBoost);
     }
-    if (Ra.unlocks.gameSpeedImprovement.effectValue >= 1) {
+    if (Ra.unlocks.gameSpeedImprovement.canBeApplied) {
       factor = factor.powEffectOf(Ra.unlocks.gameSpeedImprovement);
     }
   }
