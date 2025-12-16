@@ -176,7 +176,7 @@ export const Tickspeed = {
       Achievement(66),
       Achievement(83)
     )
-      .times(getTickSpeedMultiplier().pow(this.totalUpgrades));
+      .times(getTickSpeedMultiplier().pow(this.totalUpgrades).powEffectOf(Ra.unlocks.tickspeedPower));
   },
 
   get totalUpgrades() {
