@@ -67,6 +67,21 @@ const rarityBorderStyles = {
       colorSplit: [65, 85],
     },
   ],
+  elysian: [
+    {
+      lineType: "bump",
+      colorSplit: [15, 35],
+    },
+    {
+      lineType: "radial",
+      colorSplit: [65, 85],
+    },
+    {
+      lineType: "linear",
+      angles: [45, 135],
+      colorSplit: [10, 12, 14, 16, 84, 86, 88, 90],
+    }
+  ],
   cursed: [
     {
       lineType: "spike",
