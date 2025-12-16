@@ -669,7 +669,7 @@ export const normalTimeStudies = [
     requiresST: [223, 224, 232],
     description: () => `Distant Galaxy scaling threshold starts another ${formatInt(Math.pow(3000, Ra.unlocks.triadBuff))} Antimatter
       Galaxies later`,
-    effect: Math.pow(3000, Ra.unlocks.triadBuff),
+    effect: () => Math.pow(3000, Ra.unlocks.triadBuff),
     unlocked: () => Ra.unlocks.unlockHardV.effectOrDefault(0) >= 2
   },
   {
@@ -681,7 +681,7 @@ export const normalTimeStudies = [
     requiresST: [225, 226, 233],
     description: () => `Gain ${formatPercents(0.5 * Ra.unlocks.triadBuff)} more extra Replicanti Galaxies from Time Studies 225 and 226,
       and from Effarig's Infinity`,
-    effect: 1 + 0.5 * Ra.unlocks.triadBuff,
+    effect: () => 1 + 0.5 * Ra.unlocks.triadBuff,
     unlocked: () => Ra.unlocks.unlockHardV.effectOrDefault(0) >= 3
   },
   {
@@ -694,7 +694,7 @@ export const normalTimeStudies = [
     description: () => (Ra.unlocks.triadBuff.effectValue > 1
       ? `Dimensional Sacrifice multiplier is raised to the power of ${format(2 * Ra.unlocks.triadBuff.effectOrDefault(1), 2, 2)}`
       : `Dimensional Sacrifice multiplier is squared`),
-    effect: 2 * Ra.unlocks.triadBuff.effectOrDefault(1),
+    effect: () => 2 * Ra.unlocks.triadBuff.effectOrDefault(1),
     unlocked: () => Ra.unlocks.unlockHardV.effectOrDefault(0) >= 4
   }
 ];
