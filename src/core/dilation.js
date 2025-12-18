@@ -149,7 +149,7 @@ export function getDilationGainPerSecond() {
   if (Enslaved.isRunning && !dtRate.eq(0)) dtRate = Decimal.pow10(Math.pow(dtRate.plus(1).log10(), 0.85) - 1);
   if (V.isRunning) dtRate = dtRate.pow(0.5);
   if (dtRate.gte(DilationSoftcapStart.PRIMARY_THRESHOLD)) {
-    dtRate = Decimal.pow(10, ((Decimal.log10(dtRate) - Decimal.log10(DilationSoftcapStart.PRIMARY_THRESHOLD) / 10) +
+    dtRate = Decimal.pow(10, (((Decimal.log10(dtRate) - Decimal.log10(DilationSoftcapStart.PRIMARY_THRESHOLD)) / 10) +
       Decimal.log10(DilationSoftcapStart.PRIMARY_THRESHOLD)));
   }
   return dtRate;
