@@ -223,6 +223,8 @@ window.player = {
       isActive: false,
       lowerBound: 0.1,
       upperBound: 10,
+      hasLowerBound: false,
+      hasUpperBound: false,
     },
     singularity: { isActive: false },
     ipMultBuyer: { isActive: false, },
