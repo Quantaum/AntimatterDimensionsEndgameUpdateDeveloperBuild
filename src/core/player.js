@@ -219,6 +219,11 @@ window.player = {
     tesseracts: {
       isActive: false,
     },
+    bulkSingularity: {
+      isActive: false,
+      lowerBound: 0.1,
+      upperBound: 10,
+    },
     singularity: { isActive: false },
     ipMultBuyer: { isActive: false, },
     epMultBuyer: { isActive: false, },
