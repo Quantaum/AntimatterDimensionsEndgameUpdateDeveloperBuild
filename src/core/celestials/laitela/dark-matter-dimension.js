@@ -282,8 +282,8 @@ export const DarkMatterDimensions = {
         } else {
           const nerfedProduction = Decimal.min(productionDM, DC.E10000).times(
             Decimal.max(Decimal.pow(productionDM.div(DC.E10000), 1), 0.5));
-          const nerfedProductionFull = Decimal.min(productionDM, DC.E100000).times(
-            Decimal.max(Decimal.pow(productionDM.div(DC.E100000), 1), 0.1));
+          const nerfedProductionFull = Decimal.min(nerfedProduction, DC.E100000).times(
+            Decimal.max(Decimal.pow(nerfedProduction.div(DC.E100000), 1), 0.1));
           DarkMatterDimension(tier - 1).amount = DarkMatterDimension(tier - 1).amount.plus(nerfedProductionFull);
         }
         Currency.darkEnergy.add(ticks.mul(dim.powerDE));
