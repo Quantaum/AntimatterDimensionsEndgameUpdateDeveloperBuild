@@ -453,6 +453,7 @@ export const Endgame = {
     player.celestials.ra.peakGamespeed = DC.D1;
     player.celestials.ra.petWithRemembrance = "";
     player.celestials.laitela.darkMatter = DC.D0;
+    player.celestials.laitela.unnerfedDarkMatter = DC.D0;
     player.celestials.laitela.maxDarkMatter = DC.D0;
     player.celestials.laitela.run = false;
     if (!ExpansionPacks.areUnlocked) {
