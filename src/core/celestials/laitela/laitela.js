@@ -58,8 +58,10 @@ export const Laitela = {
     return Math.clamp(Math.pow(Currency.antimatter.value.add(1).log10() / 1e11, 2), 0, 100) / 200;
   },
   get darkMatterMultGain() {
-    return Decimal.pow(Currency.darkMatter.value.dividedBy(this.annihilationDMRequirement)
-      .plus(1).log10(), 1.5).times(ImaginaryUpgrade(21).effectOrDefault(1));
+    const extraPow = ExpansionPack.laitelaPack.isBought
+      ? Decimal.pow((Math.log10(Decimal.log10(Currency.darkMatter.value) + 1) + 1) / 2, 2).add(1) : 1;
+    return Decimal.pow(Decimal.pow(Currency.darkMatter.value.dividedBy(this.annihilationDMRequirement)
+      .plus(1).log10(), 1.5).times(ImaginaryUpgrade(21).effectOrDefault(1)), extraPow);
   },
   get darkMatterMult() {
     return this.celestial.darkMatterMult;
