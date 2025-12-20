@@ -278,7 +278,7 @@ export const DarkMatterDimensions = {
         const ticks = Decimal.floor(new Decimal(dim.timeSinceLastUpdate).div(dim.interval));
         const productionDM = dim.amount.times(ticks).times(dim.powerDM);
         if (tier === 1) {
-          Currency.darkMatter.add(productionDM);
+          Currency.unnerfedDarkMatter.add(productionDM);
         } else {
           DarkMatterDimension(tier - 1).amount = DarkMatterDimension(tier - 1).amount.plus(productionDM);
         }
