@@ -53,7 +53,7 @@ export class DarkMatterDimensionState extends DimensionState {
     const tierFactor = Decimal.pow(4, this.tier - 1);
     const intervalReduction = ExpansionPack.laitelaPack.isBought ? 200 : 0;
     return DC.E3.mul(tierFactor).mul(Decimal.pow(perUpgrade, this.data.intervalUpgrades)).mul(
-      Decimal.pow(SingularityMilestone.ascensionIntervalScaling.effectOrDefault(1200).sub(
+      Decimal.pow(SingularityMilestone.ascensionIntervalScaling.effectOrDefault(new Decimal(1200)).sub(
       intervalReduction), this.ascensions)).mul(SingularityMilestone.darkDimensionIntervalReduction.effectOrDefault(1));
   }
 
