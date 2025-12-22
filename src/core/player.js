@@ -215,6 +215,7 @@ window.player = {
     annihilation: {
       isActive: false,
       multiplier: 1.05,
+      mode: 0,
     },
     tesseracts: {
       isActive: false,
