@@ -67,7 +67,7 @@ export const expansionPacks = {
       your Imaginary Machine amount, whichever is bigger. Start Endgames with ${formatInt(10)} Singularities. Multiply Dark Energy
       gain by the logarithm of your Singularity amount squared. Raise the Annhilation effect to a power based on Dark Matter.
       Improve the Annihilation autobuyer. Unlock the ability to Hadronize Lai'tela's Reality. The reward for destabilizing Lai'tela's
-      Reality now affects the Dark Matter Cap as well.`,
+      Reality now affects the Dark Matter Cap as well. The maximum gain of Entropy per second is multiplied by ${formatInt(10)}.`,
     cost: Decimal.pow(10, 1e130),
     formatCost: value => formatPostBreak(value, 2, 0)
   },
