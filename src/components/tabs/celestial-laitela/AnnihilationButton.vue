@@ -40,12 +40,7 @@ export default {
       Laitela.annihilate();
     },
     modeToggle() {
-      if (player.auto.annihilation.mode === 0) {
-        player.auto.annihilation.mode = 1;
-      }
-      if (player.auto.annihilation.mode === 1) {
-        player.auto.annihilation.mode = 0;
-      }
+      player.auto.annihilation.mode = (player.auto.annihilation.mode + 1) % 2;
     },
     handleAutoAnnihilationInputChange() {
       const float = parseFloat(this.autoAnnihilationInput);
