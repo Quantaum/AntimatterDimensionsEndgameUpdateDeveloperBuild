@@ -54,6 +54,10 @@ export const Laitela = {
     return Decimal.clampMin(Decimal.pow(100, this.difficultyTier).times(
       Decimal.pow(new Decimal(360).div(player.celestials.laitela.fastestCompletion), 2)), 1);
   },
+  get realityRewardDE() {
+    const fullDestabilization = this.isFullyDestabilized ? 8 : 1;
+    return fullDestabilization;
+  },
   // Note that entropy goes from 0 to 1, with 1 being completion
   get entropyGainPerSecond() {
     return Math.clamp(Math.pow(Currency.antimatter.value.add(1).log10() / 1e11, 2), 0, 100) / 200;
