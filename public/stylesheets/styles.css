@@ -9178,6 +9178,35 @@ kbd {
   box-shadow: none;
 }
 
+.l-laitela-hadronize-button {
+  width: 35rem;
+  height: 3rem;
+  font-family: Typewriter, serif;
+  color: var(--color-pelle-base);
+  background: linear-gradient(var(--color-laitela--base), var(--color-laitela--accent));
+  border: var(--var-border-width, 0.2rem) solid var(--color-laitela--accent);
+  border-radius: var(--var-border-radius, 0.5rem);
+  padding: 0.5rem;
+}
+
+.c-laitela-hadronize-button {
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+
+.c-laitela-hadronize-button h2 {
+  color: inherit;
+}
+
+.c-laitela-hadronize-button b {
+  color: inherit;
+}
+
+.c-laitela-hadronize-button:hover {
+  color: var(--color-pelle--secondary) !important; /* h2 color overrides this */
+  background: linear-gradient(var(--color-laitela--accent), var(--color-laitela--base));
+}
+
 /* #endregion laitela tab */
 
 .c-performance-stats {
