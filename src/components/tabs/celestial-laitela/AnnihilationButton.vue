@@ -49,6 +49,12 @@ export default {
       } else {
         player.auto.annihilation.multiplier = float;
       }
+    },
+    classObject() {
+      return {
+        "l-laitela-annihilation-container": true,
+        "l-laitela-annihilation-container--large": this.modeUnlocked
+      };
     }
   }
 };
