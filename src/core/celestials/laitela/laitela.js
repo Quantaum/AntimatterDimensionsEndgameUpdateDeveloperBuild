@@ -136,9 +136,11 @@ export const Laitela = {
     }
   },
   hadronize() {
+    if (!Laitela.isFullyDestabilized) return false;
     this.celestial.fastestCompletion = 3600;
     this.celestial.difficultyTier = 0;
     this.celestial.hadronizes += 1;
+    return true;
   },
   reset() {
     this.annihilate(true);
