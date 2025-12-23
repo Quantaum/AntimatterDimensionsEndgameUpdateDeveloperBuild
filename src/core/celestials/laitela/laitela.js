@@ -138,7 +138,7 @@ export const Laitela = {
   hadronize() {
     this.celestial.fastestCompletion = 3600;
     this.celestial.difficultyTier = 0;
-    this.hadronizes += 1;
+    this.celestial.hadronizes += 1;
   },
   reset() {
     this.annihilate(true);
