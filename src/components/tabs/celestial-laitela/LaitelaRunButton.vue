@@ -63,6 +63,9 @@ export default {
         "o-pelle-disabled-pointer": this.isDoomed
       };
     },
+    hadronize() {
+      Laitela.hadronize();
+    }
   }
 };
 </script>
