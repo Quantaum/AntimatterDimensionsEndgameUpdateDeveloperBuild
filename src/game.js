@@ -341,7 +341,7 @@ export const GAME_SPEED_EFFECT = {
   * @param {number?} blackHolesActiveOverride A numerical value which forces all black holes up to its specified index
   *   to be active for the purposes of game speed calculation. This is only used during offline black hole stuff.
   */
-export function getGameSpeedupFactor(effectsToConsider, blackHolesActiveOverride) {
+export function getGameSpeedupFactor(effectsToConsider, applyMaxThisEndgame = true, blackHolesActiveOverride) {
   let effects;
   if (effectsToConsider === undefined) {
     effects = [GAME_SPEED_EFFECT.FIXED_SPEED, GAME_SPEED_EFFECT.TIME_GLYPH, GAME_SPEED_EFFECT.BLACK_HOLE,
@@ -418,7 +418,7 @@ export function getGameSpeedupFactor(effectsToConsider, blackHolesActiveOverride
 
   factor = factor.times(PelleUpgrade.timeSpeedMult.effectValue);
 
-  if (EndgameUpgrade(7).isBought) factor = Decimal.clampMin(factor, player.records.thisEndgame.peakGameSpeed);
+  if (EndgameUpgrade(7).isBought && applyMaxThisEndgame) factor = Decimal.clampMin(factor, player.records.thisEndgame.peakGameSpeed);
 
   // 1e-300 is now possible with max inverted BH, going below it would be possible with
   // an effarig glyph.
@@ -562,7 +562,7 @@ export function gameLoop(passedDiff, options = {}) {
       // These variables are the actual game speed used and the game speed unaffected by time storage, respectively
       const reducedTimeFactor = getGameSpeedupFactor();
       const totalTimeFactor = getGameSpeedupFactor([GAME_SPEED_EFFECT.FIXED_SPEED, GAME_SPEED_EFFECT.TIME_GLYPH, GAME_SPEED_EFFECT.BLACK_HOLE,
-        GAME_SPEED_EFFECT.SINGULARITY_MILESTONE, GAME_SPEED_EFFECT.CELESTIAL_MATTER, GAME_SPEED_EFFECT.RA_BUFFS]);
+        GAME_SPEED_EFFECT.SINGULARITY_MILESTONE, GAME_SPEED_EFFECT.CELESTIAL_MATTER, GAME_SPEED_EFFECT.RA_BUFFS], false);
       const amplification = Ra.unlocks.improvedStoredTime.effects.gameTimeAmplification.effectOrDefault(1);
       const beforeStore = player.celestials.enslaved.stored;
       player.celestials.enslaved.stored = Decimal.clampMax(player.celestials.enslaved.stored.plus(
