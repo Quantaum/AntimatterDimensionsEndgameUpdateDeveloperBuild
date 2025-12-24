@@ -186,6 +186,13 @@ window.player = {
       })),
       isActive: true,
     },
+    pelleDilationUpgrades: {
+      all: Array.range(0, 3).map(() => ({
+        isActive: false,
+        lastTick: 0,
+      })),
+      isActive: true,
+    },
     blackHolePower: {
       all: Array.range(0, 2).map(() => ({
         isActive: false,
