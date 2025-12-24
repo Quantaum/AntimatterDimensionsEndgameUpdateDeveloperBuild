@@ -242,7 +242,7 @@ window.player = {
   infinities: DC.D0,
   infinitiesBanked: DC.D0,
   dimensionBoosts: DC.D0,
-  galaxies: 0,
+  galaxies: DC.D0,
   news: {
     // This is properly handled in NewsHandler.addSeenNews which adds properties as needed
     seen: {},
@@ -449,8 +449,8 @@ window.player = {
     chanceCost: DC.E150,
     interval: 1000,
     intervalCost: DC.E140,
-    boughtGalaxyCap: 0,
-    galaxies: 0,
+    boughtGalaxyCap: DC.D0,
+    galaxies: DC.D0,
     galCost: DC.E170,
   },
   timestudy: {
@@ -477,8 +477,8 @@ window.player = {
     tachyonParticles: DC.D0,
     dilatedTime: DC.D0,
     nextThreshold: DC.E3,
-    baseTachyonGalaxies: 0,
-    totalTachyonGalaxies: 0,
+    baseTachyonGalaxies: DC.D0,
+    totalTachyonGalaxies: DC.D0,
     upgrades: new Set(),
     rebuyables: {
       1: 0,
@@ -840,8 +840,8 @@ window.player = {
       progressBits: 0,
       galaxyGenerator: {
         unlocked: false,
-        spentGalaxies: 0,
-        generatedGalaxies: 0,
+        spentGalaxies: DC.D0,
+        generatedGalaxies: DC.D0,
         phase: 0,
         sacrificeActive: false
       },
