@@ -11,7 +11,7 @@ export default {
       isAffordable: false,
       tickspeed: new Decimal(0),
       gameSpeedMult: new Decimal(1),
-      galaxyCount: 0,
+      galaxyCount: new Decimal(0),
       isContinuumActive: false,
       continuumValue: 0,
       hasTutorial: false,
@@ -28,7 +28,7 @@ export default {
     },
     multiplierDisplay() {
       if (InfinityChallenge(3).isRunning) return `Multiply all Antimatter Dimensions by
-        ${formatX(1.05 + this.galaxyCount * 0.005, 3, 3)}`;
+        ${formatX(this.galaxyCount.times(0.005).add(1.05), 3, 3)}`;
       const tickmult = this.mult;
       return `${formatX(tickmult.reciprocal(), 2, 3)} faster / upgrade.`;
     },
@@ -58,7 +58,7 @@ export default {
       this.isAffordable = Tickspeed.isAvailableForPurchase && Tickspeed.isAffordable;
       this.tickspeed.copyFrom(Tickspeed.perSecond);
       this.gameSpeedMult.copyFrom(getGameSpeedupForDisplay());
-      this.galaxyCount = player.galaxies;
+      this.galaxyCount.copyFrom(player.galaxies);
       this.isContinuumActive = Laitela.continuumActive;
       if (this.isContinuumActive) this.continuumValue = Tickspeed.continuumValue;
       this.hasTutorial = Tutorial.isActive(TUTORIAL_STATE.TICKSPEED);
