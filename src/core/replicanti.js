@@ -653,7 +653,7 @@ export const Replicanti = {
       return player.replicanti.galaxies;
     },
     get extra() {
-      return Decimal.floor((new Decimal(1).timesEffectsOf(
+      return Decimal.floor((new Decimal().plusEffectsOf(
         TimeStudy(225),
         TimeStudy(226)
       ).add(Effarig.bonusRG)).times(TimeStudy(303).effectOrDefault(1)).times(this.multiplication).add(this.bought.times(this.multiplication - 1)));
