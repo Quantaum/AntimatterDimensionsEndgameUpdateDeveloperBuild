@@ -576,10 +576,10 @@ export const Replicanti = {
       return player.replicanti.galaxies;
     },
     get extra() {
-      return Decimal.floor(new Decimal((new Decimal(1).timesEffectsOf(
+      return Decimal.floor((new Decimal(1).timesEffectsOf(
         TimeStudy(225),
         TimeStudy(226)
-      ) + Effarig.bonusRG) * TimeStudy(303).effectOrDefault(1) * this.multiplication).add(this.bought.times(this.multiplication - 1)));
+      ).add(Effarig.bonusRG)).times(TimeStudy(303).effectOrDefault(1)).times(this.multiplication).add(this.bought.times(this.multiplication - 1)));
     },
     get total() {
       return this.bought.add(this.extra);
