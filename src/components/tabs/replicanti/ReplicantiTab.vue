@@ -163,13 +163,13 @@ export default {
       this.distantRG = ReplicantiUpgrade.galaxies.distantRGStart;
       this.remoteRG = ReplicantiUpgrade.galaxies.remoteRGStart;
       this.contingentRG = ReplicantiUpgrade.galaxies.contingentRGStart;
-      this.isContingent = Replicanti.galaxies.bought >= this.contingentRG;
+      this.isContingent = Replicanti.galaxies.bought.gte(this.contingentRG);
       this.effarigInfinityBonusRG = Effarig.bonusRG;
       this.nextEffarigRGThreshold = Decimal.NUMBER_MAX_VALUE.pow(
         Effarig.bonusRG + 2
       );
       this.canSeeGalaxyButton =
-        Replicanti.galaxies.max >= 1 || PlayerProgress.eternityUnlocked();
+        Replicanti.galaxies.max.gte(1) || PlayerProgress.eternityUnlocked();
       this.maxReplicanti.copyFrom(player.records.thisReality.maxReplicanti);
       this.estimateToMax = this.calculateEstimate();
     },
