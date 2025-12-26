@@ -12,9 +12,9 @@ export default {
     return {
       isUnlocked: false,
       isDilated: false,
-      galaxies: 0,
-      generatedGalaxies: 0,
-      galaxiesPerSecond: 0,
+      galaxies: new Decimal(0),
+      generatedGalaxies: new Decimal(0),
+      galaxiesPerSecond: new Decimal(0),
       cap: 0,
       isCapped: false,
       capRift: null,
@@ -24,11 +24,11 @@ export default {
       capRiftName: "",
       galGenInstability: 0,
       harshGalGenInstability: 0,
-      effectiveInstability: 0,
+      effectiveInstability: new Decimal(0),
       instabilityStart: 0,
       harshInstabilityStart: 0,
-      generationReduction: 0,
-      trueGenerationReduction: 0,
+      generationReduction: new Decimal(0),
+      trueGenerationReduction: new Decimal(0),
       isInstabilityShown: false,
       isSecondInstabilityShown: false,
     };
@@ -44,15 +44,15 @@ export default {
       return GalaxyGeneratorUpgrades.all;
     },
     galaxyText() {
-      let text = format(Math.max(this.galaxies, 0), 2);
-      if (this.galaxies < 0) text += ` [${format(this.galaxies, 2)}]`;
+      let text = format(Decimal.max(this.galaxies, 0), 2);
+      if (this.galaxies.lt(0)) text += ` [${format(this.galaxies, 2)}]`;
       return text;
     },
     sacrificeText() {
       return this.capRift.galaxyGeneratorText.replace("$value", this.capRiftName);
     },
     emphasisedStart() {
-      return Math.pow(this.generatedGalaxies / this.cap, 0.45);
+      return Decimal.pow(this.generatedGalaxies.div(this.cap), 0.45).toNumber();
     }
   },
   methods: {
@@ -62,9 +62,9 @@ export default {
       this.isCapped = GalaxyGenerator.isCapped;
       this.isCollapsed = player.celestials.pelle.collapsed.galaxies && !this.isCapped;
       if (this.isCollapsed || !this.isUnlocked) return;
-      this.galaxies = player.galaxies + GalaxyGenerator.galaxies;
-      this.generatedGalaxies = GalaxyGenerator.generatedGalaxies;
-      this.galaxiesPerSecond = GalaxyGenerator.gainPerSecond;
+      this.galaxies.copyFrom(player.galaxies.add(GalaxyGenerator.galaxies));
+      this.generatedGalaxies.copyFrom(GalaxyGenerator.generatedGalaxies);
+      this.galaxiesPerSecond.copyFrom(GalaxyGenerator.gainPerSecond);
       this.cap = GalaxyGenerator.generationCap;
       this.capRift = GalaxyGenerator.capRift;
       this.sacrificeActive = GalaxyGenerator.sacrificeActive;
@@ -72,13 +72,13 @@ export default {
       if (this.capRift) this.capRiftName = wordShift.wordCycle(this.capRift.name);
       this.galGenInstability = GalaxyGenerator.galGenInstability;
       this.harshGalGenInstability = GalaxyGenerator.harshGalGenInstability;
-      this.effectiveInstability = Math.pow(this.galGenInstability, this.harshGalGenInstability);
+      this.effectiveInstability.copyFrom(Decimal.pow(this.galGenInstability, this.harshGalGenInstability));
       this.instabilityStart = GalaxyGenerator.instabilityStart;
       this.harshInstabilityStart = GalaxyGenerator.harshInstabilityStart;
-      this.generationReduction = Math.max(1, Math.pow(this.galGenInstability, Math.log10(Math.max(Math.pow(this.galaxies / this.instabilityStart, 0.75), 1))));
-      this.trueGenerationReduction = Math.max(1, Math.pow(Math.pow(this.galGenInstability, this.harshGalGenInstability), Math.log10(Math.max(Math.pow(this.galaxies / this.instabilityStart, 0.75), 1))));
-      this.isInstabilityShown = PlayerProgress.endgameUnlocked() || this.galaxies >= this.instabilityStart;
-      this.isSecondInstabilityShown = this.galaxies >= this.harshInstabilityStart;
+      this.generationReduction.copyFrom(Decimal.max(1, Decimal.pow(this.galGenInstability, Decimal.log10(Decimal.max(Decimal.pow(this.galaxies.div(this.instabilityStart), 0.75), 1)))));
+      this.trueGenerationReduction.copyFrom(Decimal.max(1, Decimal.pow(Decimal.pow(this.galGenInstability, this.harshGalGenInstability), Decimal.log10(Decimal.max(Decimal.pow(this.galaxies.div(this.instabilityStart), 0.75), 1)))));
+      this.isInstabilityShown = PlayerProgress.endgameUnlocked() || this.galaxies.gte(this.instabilityStart);
+      this.isSecondInstabilityShown = this.galaxies.gte(this.harshInstabilityStart);
     },
     increaseCap() {
       if (GalaxyGenerator.isCapped) GalaxyGenerator.startSacrifice();
