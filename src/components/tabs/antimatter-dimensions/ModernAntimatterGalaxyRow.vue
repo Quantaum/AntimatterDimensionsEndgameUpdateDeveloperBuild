@@ -114,7 +114,7 @@ export default {
       manualRequestGalaxyReset(this.canBulkBuy && bulk);
     },
     formatGalaxies(num) {
-      return num.gt(1e8) ? format(num, 2) : formatInt(num);
+      return new Decimal(num).gt(1e8) ? format(num, 2) : formatInt(num);
     },
   }
 };
