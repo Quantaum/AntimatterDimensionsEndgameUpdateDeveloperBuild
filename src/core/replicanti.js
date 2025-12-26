@@ -485,78 +485,79 @@ export const ReplicantiUpgrade = {
 
     bulkPurchaseCalc() {
       // Copypasted constants
-      const logBase = 170;
-      const logBaseIncrease = EternityChallenge(6).isRunning ? 2 : 25;
-      const logCostScaling = EternityChallenge(6).isRunning ? 2 : 5;
-      const distantReplicatedGalaxyStart = (100 + GlyphSacrifice.replication.effectValue.toNumber()) * Effects.product(BreakEternityUpgrade.replicantiGalaxyPower);
-      const remoteReplicatedGalaxyStart = (1000 + GlyphSacrifice.replication.effectValue.toNumber()) * Effects.product(BreakEternityUpgrade.replicantiGalaxyPower);
-      const contingentReplicatedGalaxyStart = 1000000;
-      const logDistantScaling = 50;
-      const logRemoteScaling = 5;
-      const extraIncrements = 5;
+      const logBase = new Decimal(170);
+      const logBaseIncrease = EternityChallenge(6).isRunning ? DC.D2 : new Decimal(25);
+      const logCostScaling = EternityChallenge(6).isRunning ? DC.D2 : DC.D5;
+      const distantReplicatedGalaxyStart = GlyphInfo.replication.sacrificeInfo.effect().add(100);
+      const remoteReplicatedGalaxyStart = GlyphInfo.replication.sacrificeInfo.effect().add(1000);
+      const contingentReplicatedGalaxyStart = DC.E6;
+      const logDistantScaling = new Decimal(50);
+      const logRemoteScaling = DC.D5;
+      const extraIncrements = DC.D5;
       const contingentScalingFactor = 1.0002;
 
-      const cur = Currency.infinityPoints.value.times(TimeStudy(233).effectOrDefault(1)).max(1).log10();
+      const cur = new Decimal(Currency.infinityPoints.value.times(TimeStudy(233).effectOrDefault(1)).max(1).log10());
 
-      if (logBase > cur) return;
-      let a = new Decimal(logCostScaling / 2);
-      let b = new Decimal(logBaseIncrease - logCostScaling / 2);
-      let c = new Decimal(logBase - cur);
+      if (logBase.gt(cur)) return;
+      let a = logCostScaling.div(2);
+      let b = logBaseIncrease.sub(logCostScaling.div(2));
+      let c = logBase.sub(cur);
       if (decimalQuadraticSolution(a, b, c).floor().lte(distantReplicatedGalaxyStart)) {
         // eslint-disable-next-line consistent-return
         return decimalQuadraticSolution(a, b, c).floor().add(1);
       }
-      a = new Decimal(logCostScaling + logDistantScaling / 2);
+      a = logCostScaling.add(logDistantScaling).div(2);
       // eslint-disable-next-line max-len
-      b = new Decimal((logBaseIncrease - logCostScaling / 2) - logDistantScaling * distantReplicatedGalaxyStart + logDistantScaling * 4.5);
+      b = logBaseIncrease.sub(logCostScaling.div(2)).sub(logDistantScaling.times(distantReplicatedGalaxyStart)).add(logDistantScaling.times(4.5));
       // eslint-disable-next-line max-len
-      c = new Decimal(-cur + 170 + Math.pow(distantReplicatedGalaxyStart, 2) * logDistantScaling / 2 - distantReplicatedGalaxyStart * 4.5 * logDistantScaling);
+      c = cur.neg().add(170).add(distantReplicatedGalaxyStart.pow(2).times(logDistantScaling).div(2)).sub(distantReplicatedGalaxyStart.times(4.5).times(logDistantScaling));
       if (decimalQuadraticSolution(a, b, c).floor().lte(remoteReplicatedGalaxyStart)) {
         // eslint-disable-next-line consistent-return
         return decimalQuadraticSolution(a, b, c).floor().add(1);
       }
-      a = new Decimal(logRemoteScaling / 3);
+      a = logRemoteScaling.div(3);
 
-      b = new Decimal(logCostScaling + logDistantScaling / 2 - logRemoteScaling * remoteReplicatedGalaxyStart + logRemoteScaling / 2);
+      b = logCostScaling.add(logDistantScaling).div(2).sub(logRemoteScaling.mul(remoteReplicatedGalaxyStart))
+        .add(logRemoteScaling.div(2));
 
-      c = new Decimal(logBaseIncrease - logCostScaling / 2 - distantReplicatedGalaxyStart * logDistantScaling +
-        logDistantScaling * 4.5 + Math.pow(remoteReplicatedGalaxyStart, 2) * logRemoteScaling -
-        remoteReplicatedGalaxyStart * logRemoteScaling);
+      c = logBaseIncrease.sub(logCostScaling.div(2)).sub(distantReplicatedGalaxyStart.times(logDistantScaling))
+        .add(logDistantScaling.times(4.5)).add(remoteReplicatedGalaxyStart.pow(2).mul(logRemoteScaling))
+        .sub(remoteReplicatedGalaxyStart.mul(logRemoteScaling));
 
-      const d = new Decimal(-cur + 170 + Math.pow(distantReplicatedGalaxyStart, 2) * logDistantScaling / 2 -
-        distantReplicatedGalaxyStart * 4.5 * logDistantScaling -
-        Math.pow(remoteReplicatedGalaxyStart, 3) * logRemoteScaling / 3 +
-        Math.pow(remoteReplicatedGalaxyStart, 2) * logRemoteScaling / 2 -
-        remoteReplicatedGalaxyStart * logRemoteScaling / 6);
+      const d = cur.neg().add(170).add(distantReplicatedGalaxyStart.pow(2).mul(logDistantScaling).div(2))
+        .sub(distantReplicatedGalaxyStart.mul(4.5).mul(logDistantScaling))
+        .sub(remoteReplicatedGalaxyStart.pow(3).mul(logRemoteScaling).div(3))
+        .add(remoteReplicatedGalaxyStart.pow(2).mul(logRemoteScaling).div(2))
+        .sub(remoteReplicatedGalaxyStart.mul(logRemoteScaling).div(6));
 
       if (decimalCubicSolution(a, b, c, d, false).floor().lte(contingentReplicatedGalaxyStart)) {
         // eslint-disable-next-line consistent-return
         return decimalCubicSolution(a, b, c, d, false).floor().add(1);
       }
 
-      const numDistant = contingentReplicatedGalaxyStart - distantReplicatedGalaxyStart;
-      const numRemote = contingentReplicatedGalaxyStart - remoteReplicatedGalaxyStart;
-      const logCostAtContingent = new Decimal(logBase).add(contingentReplicatedGalaxyStart * logBaseIncrease).add(
-        (contingentReplicatedGalaxyStart * (contingentReplicatedGalaxyStart - 1) / 2) * logCostScaling).add(
-        new Decimal(logDistantScaling).times(numDistant).times(numDistant + 2 * extraIncrements - 1).div(2)).add(
-        new Decimal(logRemoteScaling).times(numRemote).times(numRemote + 1).times(numRemote * 2 + 1).div(6)).toNumber();
-      let simpleEstimate = Decimal.log(new Decimal(cur / logCostAtContingent), contingentScalingFactor) + contingentReplicatedGalaxyStart;
-      let estimatedCost = Decimal.log10(this.baseCostAfterCount(simpleEstimate));
+      const numDistant = contingentReplicatedGalaxyStart.sub(distantReplicatedGalaxyStart);
+      const numRemote = contingentReplicatedGalaxyStart.sub(remoteReplicatedGalaxyStart);
+      const logCostAtContingent = logBase.add(contingentReplicatedGalaxyStart.times(logBaseIncrease)).add(
+        (contingentReplicatedGalaxyStart.times(contingentReplicatedGalaxyStart.sub(1)).div(2)).times(logCostScaling)).add(
+        logDistantScaling.times(numDistant).times(numDistant.add(extraIncrements.times(2)).sub(1)).div(2)).add(
+        logRemoteScaling.times(numRemote).times(numRemote.add(1)).times(numRemote.times(2).add(1)).div(6));
+      let simpleEstimate = new Decimal(Decimal.log(cur.div(logCostAtContingent), contingentScalingFactor)).add(contingentReplicatedGalaxyStart);
+      let estimatedCost = new Decimal(Decimal.log10(this.baseCostAfterCount(simpleEstimate)));
       let x = 0;
       // eslint-disable-next-line consistent-return
-      if (cur >= estimatedCost && cur < Decimal.log10(this.baseCostAfterCount(simpleEstimate + 1))) return simpleEstimate;
-      if (cur < estimatedCost) {
-        while (x < 50 && cur < estimatedCost) {
-          simpleEstimate -= 1;
-          estimatedCost = Decimal.log10(this.baseCostAfterCount(simpleEstimate));
+      if (cur.gte(estimatedCost) && cur.lt(new Decimal(Decimal.log10(this.baseCostAfterCount(simpleEstimate.add(1)))))) return simpleEstimate;
+      if (cur.lt(estimatedCost)) {
+        while (x < 50 && cur.lt(estimatedCost)) {
+          simpleEstimate = simpleEstimate.sub(1);
+          estimatedCost = new Decimal(Decimal.log10(this.baseCostAfterCount(simpleEstimate)));
           x++;
         }
         return simpleEstimate;
       }
-      if (cur >= Decimal.log10(this.baseCostAfterCount(simpleEstimate + 1))) {
-        while (x < 50 && cur >= cur >= Decimal.log10(this.baseCostAfterCount(simpleEstimate + 1))) {
-          simpleEstimate += 1;
-          estimatedCost = Decimal.log10(this.baseCostAfterCount(simpleEstimate));
+      if (cur.gte(new Decimal(Decimal.log10(this.baseCostAfterCount(simpleEstimate.add(1)))))) {
+        while (x < 50 && cur.gte(new Decimal(Decimal.log10(this.baseCostAfterCount(simpleEstimate.add(1)))))) {
+          simpleEstimate = simpleEstimate.add(1);
+          estimatedCost = new Decimal(Decimal.log10(this.baseCostAfterCount(simpleEstimate)));
           x++;
         }
         return simpleEstimate;
