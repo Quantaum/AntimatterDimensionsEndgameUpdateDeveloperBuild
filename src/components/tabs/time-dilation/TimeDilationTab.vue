@@ -14,8 +14,8 @@ export default {
       dilatedTime: new Decimal(),
       dilatedTimeIncome: new Decimal(),
       galaxyThreshold: new Decimal(),
-      baseGalaxies: 0,
-      totalGalaxies: 0,
+      baseGalaxies: new Decimal(),
+      totalGalaxies: new Decimal(),
       tachyonGalaxyGain: 1,
       hasPelleDilationUpgrades: false,
       galaxyTimeEstimate: "",
@@ -108,10 +108,10 @@ export default {
         this.dilatedTimeIncome = rawDTGain;
       }
       this.galaxyThreshold.copyFrom(player.dilation.nextThreshold);
-      this.baseGalaxies = player.dilation.baseTachyonGalaxies;
-      this.totalGalaxies = player.dilation.totalTachyonGalaxies;
+      this.baseGalaxies.copyFrom(player.dilation.baseTachyonGalaxies);
+      this.totalGalaxies.copyFrom(player.dilation.totalTachyonGalaxies);
       this.hasPelleDilationUpgrades = PelleRifts.paradox.milestones[0].canBeApplied;
-      if (this.baseGalaxies < 500 && DilationUpgrade.doubleGalaxies.isBought) {
+      if (this.baseGalaxies.lt(500) && DilationUpgrade.doubleGalaxies.isBought) {
         this.tachyonGalaxyGain = DilationUpgrade.doubleGalaxies.effectValue;
       } else {
         this.tachyonGalaxyGain = 1;
