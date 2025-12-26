@@ -140,10 +140,10 @@ export class Galaxy {
   }
 
   static typeAt(galaxies) {
-    if (galaxies.gte(Galaxy.remoteStart)) {
+    if (new Decimal(galaxies).gte(Galaxy.remoteStart)) {
       return GALAXY_TYPE.REMOTE;
     }
-    if (EternityChallenge(5).isRunning || galaxies.gte(this.costScalingStart)) {
+    if (EternityChallenge(5).isRunning || new Decimal(galaxies).gte(this.costScalingStart)) {
       return GALAXY_TYPE.DISTANT;
     }
     return GALAXY_TYPE.NORMAL;
