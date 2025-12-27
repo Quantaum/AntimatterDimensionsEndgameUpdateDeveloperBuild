@@ -544,7 +544,7 @@ export const ReplicantiUpgrade = {
       let simpleEstimate = new Decimal(Decimal.log(cur.div(logCostAtContingent), contingentScalingFactor)).add(contingentReplicatedGalaxyStart);
       let estimatedCost = new Decimal(Decimal.log10(this.baseCostAfterCount(simpleEstimate)));
       let n = 0;
-      while (n < 20 && (cur.gte(new Decimal(Decimal.log10(this.baseCostAfterCount(simpleEstimate.add(1))))) || cur.lt(estimatedCost))) {
+      while (n < 25 && (cur.gte(new Decimal(Decimal.log10(this.baseCostAfterCount(simpleEstimate.add(1))))) || cur.lt(estimatedCost))) {
         simpleEstimate = simpleEstimate.add(new Decimal(Decimal.log(cur.div(estimatedCost), contingentScalingFactor)));
         estimatedCost = new Decimal(Decimal.log10(this.baseCostAfterCount(simpleEstimate)));
         n++;
@@ -553,7 +553,7 @@ export const ReplicantiUpgrade = {
       // eslint-disable-next-line consistent-return
       if (cur.gte(estimatedCost) && cur.lt(new Decimal(Decimal.log10(this.baseCostAfterCount(simpleEstimate.add(1)))))) return simpleEstimate;
       if (cur.lt(estimatedCost)) {
-        while (x < 20 && cur.lt(estimatedCost)) {
+        while (x < 50 && cur.lt(estimatedCost)) {
           simpleEstimate = simpleEstimate.sub(1);
           estimatedCost = new Decimal(Decimal.log10(this.baseCostAfterCount(simpleEstimate)));
           x++;
@@ -561,7 +561,7 @@ export const ReplicantiUpgrade = {
         return simpleEstimate;
       }
       if (cur.gte(new Decimal(Decimal.log10(this.baseCostAfterCount(simpleEstimate.add(1)))))) {
-        while (x < 20 && cur.gte(new Decimal(Decimal.log10(this.baseCostAfterCount(simpleEstimate.add(1)))))) {
+        while (x < 50 && cur.gte(new Decimal(Decimal.log10(this.baseCostAfterCount(simpleEstimate.add(1)))))) {
           simpleEstimate = simpleEstimate.add(1);
           estimatedCost = new Decimal(Decimal.log10(this.baseCostAfterCount(simpleEstimate)));
           x++;
