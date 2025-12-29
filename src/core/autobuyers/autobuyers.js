@@ -39,7 +39,7 @@ export const Autobuyer = {
   endgame: new EndgameAutobuyerState(),
   eternity: new EternityAutobuyerState(),
   galaxy: new GalaxyAutobuyerState(),
-  galaxyGenerator: new GalaxyGeneratorAutobuyerState(),
+  galaxyGenerator: GalaxyGeneratorAutobuyerState.createAccessor(),
   imaginaryUpgrade: ImaginaryUpgradeAutobuyerState.createAccessor(),
   infinityDimension: InfinityDimensionAutobuyerState.createAccessor(),
   ipMult: new IPMultAutobuyerState(),
