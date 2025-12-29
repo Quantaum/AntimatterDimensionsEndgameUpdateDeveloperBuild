@@ -234,6 +234,13 @@ window.player = {
       hasLowerBound: false,
       hasUpperBound: false,
     },
+    galaxyGenerator: {
+      all: Array.range(0, 6).map(() => ({
+        isActive: false,
+        lastTick: 0,
+      })),
+      isActive: true,
+    },
     singularity: { isActive: false },
     ipMultBuyer: { isActive: false, },
     epMultBuyer: { isActive: false, },
