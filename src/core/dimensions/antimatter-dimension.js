@@ -179,6 +179,8 @@ function applyNDPowers(mult, tier) {
       Ra.unlocks.allDimPowTT
     );
 
+  if (ExpansionPack.pellePack.isBought) multiplier = multiplier.pow(1 + Math.pow(Decimal.log10(player.records.bestEndgame.galaxies) / 100, 3));
+
   multiplier = multiplier.pow(getAdjustedGlyphEffect("curseddimensions"));
 
   multiplier = multiplier.pow(VUnlocks.adPow.effectOrDefault(1));
