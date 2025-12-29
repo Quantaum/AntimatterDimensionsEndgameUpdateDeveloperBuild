@@ -14,6 +14,7 @@ import { GalaxyGeneratorAutobuyerState } from "./galaxy-generator-autobuyer";
 import { ImaginaryUpgradeAutobuyerState } from "./imaginary-upgrade-autobuyer";
 import { InfinityDimensionAutobuyerState } from "./infinity-dimension-autobuyer";
 import { EPMultAutobuyerState, IPMultAutobuyerState } from "./prestige-currency-multiplier-autobuyer";
+import { MusicGlyphPurgeAutobuyerState } from "./music-glyph-purge-autobuyer";
 import { PelleDilationUpgradeAutobuyerState } from "./pelle-dilation-upgrade-autobuyer";
 import { RealityAutobuyerState } from "./reality-autobuyer";
 import { RealityUpgradeAutobuyerState } from "./reality-upgrade-autobuyer";
@@ -44,6 +45,7 @@ export const Autobuyer = {
   infinityDimension: InfinityDimensionAutobuyerState.createAccessor(),
   ipMult: new IPMultAutobuyerState(),
   epMult: new EPMultAutobuyerState(),
+  musicGlyphPurge: new MusicGlyphPurgeAutobuyerState(),
   pelleDilationUpgrade: PelleDilationUpgradeAutobuyerState.createAccessor(),
   reality: new RealityAutobuyerState(),
   realityUpgrade: RealityUpgradeAutobuyerState.createAccessor(),
@@ -81,7 +83,8 @@ export const Autobuyers = (function() {
     Autobuyer.darkMatterDimsAscension,
     Autobuyer.singularity,
     Autobuyer.annihilation,
-    Autobuyer.tesseract
+    Autobuyer.tesseract,
+    Autobuyer.musicGlyphPurge,
   ];
 
   const singleComplex = [
