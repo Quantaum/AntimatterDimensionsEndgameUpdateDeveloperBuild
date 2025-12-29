@@ -24,6 +24,6 @@ export default {
 <style scoped>
 .nyi-ethereal-text {
   font-size: 2rem;
-  color: #000040;
+  color: #000080;
 }
 </style>
