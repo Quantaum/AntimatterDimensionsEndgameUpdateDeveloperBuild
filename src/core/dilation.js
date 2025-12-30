@@ -123,14 +123,25 @@ export function getDilationGainPerSecond() {
     let pelleExtraDT = new Decimal(1);
     if (PelleAchievementUpgrade.achievement132.isBought) pelleExtraDT = pelleExtraDT.timesEffectsOf(Achievement(132));
     if (PelleAchievementUpgrade.achievement137.isBought) pelleExtraDT = pelleExtraDT.timesEffectsOf(Achievement(137));
-    //Leave open for future Celestial reward reenabling
+    if (PelleRealityUpgrade.temporalAmplifier.isBought) pelleExtraDT = pelleExtraDT.timesEffectOf(RealityUpgrade(1));
+    if (PelleAlchemyUpgrade.alchemyDilation.isBought) pelleExtraDT = pelleExtraDT.timesEffectOf(AlchemyResource.dilation);
+    if (PelleCelestialUpgrade.raV3.isBought) pelleExtraDT = pelleExtraDT.timesEffectOf(Ra.unlocks.continuousTTBoost.effects.dilatedTime);
+    if (PelleCelestialUpgrade.raNameless4.isBought) pelleExtraDT = pelleExtraDT.timesEffectOf(Ra.unlocks.peakGamespeedDT);
+    if (PelleDestructionUpgrade.destroyedGlyphEffects.isBought) pelleExtraDT = pelleExtraDT.times(getAdjustedGlyphEffect("dilationDT"));
+    if (PelleDestructionUpgrade.destroyedGlyphEffects.isBought) pelleExtraDT = pelleExtraDT.times(
+      Math.clampMin(Decimal.log10(Replicanti.amount) * getAdjustedGlyphEffect("replicationdtgain"), 1));
     if (!PelleDestructionUpgrade.disableDTNerf.isBought) pelleExtraDT = pelleExtraDT.div(1e5);
     if (EndgameMilestone.realityShardDTBoost.isReached) pelleExtraDT = pelleExtraDT.times(Currency.realityShards.value.plus(1));
     const tachyonEffect = Currency.tachyonParticles.value.pow(PelleRifts.paradox.milestones[1].effectOrDefault(1));
-    return new Decimal(tachyonEffect)
+    let dtRate = new Decimal(tachyonEffect)
       .timesEffectsOf(DilationUpgrade.dtGain, DilationUpgrade.dtGainPelle, DilationUpgrade.flatDilationMult)
       .times(ShopPurchase.dilatedTimePurchases.currentMult ** 0.5)
       .times(Pelle.specialGlyphEffect.dilation).times(pelleExtraDT);
+    if (dtRate.gte(DilationSoftcapStart.PRIMARY_THRESHOLD)) {
+      dtRate = Decimal.pow(10, (((Decimal.log10(dtRate) - Decimal.log10(DilationSoftcapStart.PRIMARY_THRESHOLD)) / 10) +
+        Decimal.log10(DilationSoftcapStart.PRIMARY_THRESHOLD)));
+    }
+    return dtRate;
   }
   let dtRate = new Decimal(Currency.tachyonParticles.value)
     .timesEffectsOf(
