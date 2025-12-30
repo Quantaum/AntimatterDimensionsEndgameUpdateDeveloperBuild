@@ -28,7 +28,7 @@ class BlackHoleUpgradeState {
   }
 
   get isAffordable() {
-    return Currency.realityMachines.gte(this.cost);
+    return Pelle.isDoomed ? Currency.realityShards.gte(this.cost) : Currency.realityMachines.gte(this.cost);
   }
 
   purchase() {
@@ -39,7 +39,7 @@ class BlackHoleUpgradeState {
     const bh = BlackHole(this.id);
     const beforeProg = bh.isCharged ? 1 - bh.stateProgress : bh.stateProgress;
 
-    Currency.realityMachines.purchase(this.cost);
+    Pelle.isDoomed ? Currency.realityShards.gte(this.cost) : Currency.realityMachines.purchase(this.cost);
     this.incrementAmount();
     this._lazyValue.invalidate();
     this._lazyCost.invalidate();
