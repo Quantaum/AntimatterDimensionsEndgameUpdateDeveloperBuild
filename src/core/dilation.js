@@ -167,7 +167,17 @@ export function getDilationGainPerSecond() {
 }
 
 export function tachyonGainMultiplier() {
-  if (Pelle.isDisabled("tpMults")) return new Decimal(1);
+  if (Pelle.isDisabled("tpMults")) {
+    let pelleTP = new Decimal(1);
+    if (PelleDestructionUpgrade.x3TPUpgrade.isBought) pelleTP = pelleTP.timesEffectOf(DilationUpgrade.tachyonGain);
+    if (PelleRealityUpgrade.scourToEmpower.isBought) pelleTP = pelleTP.timesEffectOf(GlyphSacrifice.dilation);
+    if (PelleAchievementUpgrade.achievement132.isBought) pelleTP = pelleTP.timesEffectOf(Achievement(132));
+    if (PelleRealityUpgrade.superluminalAmplifier.isBought) pelleTP = pelleTP.timesEffectOf(RealityUpgrade(4));
+    if (PelleRealityUpgrade.paradoxicallyAttain.isBought) pelleTP = pelleTP.timesEffectOf(RealityUpgrade(8));
+    if (PelleRealityUpgrade.paradoxicalForever.isBought) pelleTP = pelleTP.timesEffectOf(RealityUpgrade(15));
+    pelleTP = pelleTP.timesEffectOf(Ra.unlocks.gameSpeedTachyonMult);
+    return pelleTP;
+  }
   const pow = Enslaved.isRunning ? Enslaved.tachyonNerf : 1;
   let mult = new Decimal(1)
     .timesEffectsOf(
