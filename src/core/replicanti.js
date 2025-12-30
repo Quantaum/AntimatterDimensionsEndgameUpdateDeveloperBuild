@@ -150,7 +150,10 @@ export function totalReplicantiSpeedMult(overCap) {
     if (PelleRealityUpgrade.replicativeRapidity.isBought) pelleRep = pelleRep.times(Effects.product(RealityUpgrade(23)));
     if (PelleDestructionUpgrade.timestudy132.isBought) pelleRep = pelleRep.times(3);
     if (PelleAchievementUpgrade.achievement134.isBought && !overCap) pelleRep = pelleRep.times(2);
-    //Leave space open for upcoming Celestial Reward Enabling
+    if (PelleDestructionUpgrade.destroyedGlyphEffects.isBought) pelleRep = pelleRep.times(getAdjustedGlyphEffect("replicationspeed"));
+    if (PelleCelestialUpgrade.raTeresa3.isBought) pelleRep = pelleRep.times(Math.clampMin(Decimal.log10(Replicanti.amount) * getSecondaryGlyphEffect("replicationdtgain"), 1));
+    if (PelleCelestialUpgrade.raV3.isBought) pelleRep = pelleRep.timesEffectOf(Ra.unlocks.continuousTTBoost.effects.replicanti);
+    if (PelleAlchemyUpgrade.alchemyReplication.isBought) pelleRep = pelleRep.timesEffectOf(AlchemyResource.replication);
     totalMult = totalMult.times(pelleRep);
     return totalMult;
   }
