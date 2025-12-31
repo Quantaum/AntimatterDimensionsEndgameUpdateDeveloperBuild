@@ -242,6 +242,7 @@ Currency.antimatter = new class extends DecimalCurrency {
 
   get startingValue() {
     if (Pelle.isDoomed) {
+      if (PellePerkUpgrade.perkSAM.isBought) return Effects.max(10, Perk.startAM);
       if (PelleAchievementUpgrade.achievement78.isBought) return Effects.max(10, Achievement(78)).toDecimal();
       if (PelleAchievementUpgrade.achievement55.isBought) return Effects.max(10, Achievement(55)).toDecimal();
       if (PelleAchievementUpgrade.achievement54.isBought) return Effects.max(10, Achievement(54)).toDecimal();
