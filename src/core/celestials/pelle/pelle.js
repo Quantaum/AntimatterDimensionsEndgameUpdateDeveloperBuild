@@ -260,12 +260,67 @@ export const Pelle = {
   },
 
   get disabledRUPGs() {
-    return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 19, 20, 22, 23, 24];
+    let remainingRUs = [];
+    if (!PelleRealityUpgrade.temporalAmplifier.isBought) remainingRUs.push(1);
+    if (!PelleRealityUpgrade.replicativeAmplifier.isBought) remainingRUs.push(2);
+    if (!PelleRealityUpgrade.eternalAmplifier.isBought) remainingRUs.push(3);
+    if (!PelleRealityUpgrade.superluminalAmplifier.isBought) remainingRUs.push(4);
+    if (!PelleRealityUpgrade.boundlessAmplifier.isBought) remainingRUs.push(5);
+    if (!PelleRealityUpgrade.cosmicallyDuplicate.isBought) remainingRUs.push(6);
+    if (!PelleRealityUpgrade.innumerablyConstruct.isBought) remainingRUs.push(7);
+    if (!PelleRealityUpgrade.paradoxicallyAttain.isBought) remainingRUs.push(8);
+    if (!PelleRealityUpgrade.linguisticallyExpand.isBought) remainingRUs.push(9);
+    if (!PelleRealityUpgrade.existentiallyProlong.isBought) remainingRUs.push(10);
+    if (!PelleRealityUpgrade.boundlessFlow.isBought) remainingRUs.push(11);
+    if (!PelleRealityUpgrade.knowingExistence.isBought) remainingRUs.push(12);
+    if (!PelleRealityUpgrade.telemechanicalProcess.isBought) remainingRUs.push(13);
+    if (!PelleRealityUpgrade.eternalFlow.isBought) remainingRUs.push(14);
+    if (!PelleRealityUpgrade.paradoxicalForever.isBought) remainingRUs.push(15);
+    if (!PelleRealityUpgrade.scourToEmpower.isBought) remainingRUs.push(19);
+    if (!PelleRealityUpgrade.parityOfSingularity.isBought) remainingRUs.push(20);
+    if (!PelleRealityUpgrade.temporalTranscendence.isBought) remainingRUs.push(22);
+    if (!PelleRealityUpgrade.replicativeRapidity.isBought) remainingRUs.push(23);
+    if (!PelleRealityUpgrade.syntheticSymbolism.isBought) remainingRUs.push(24);
+    return remainingRUs;
   },
 
   get uselessPerks() {
-    return [10, 12, 13, 14, 15, 16, 17, 30, 40, 41, 42, 43, 44, 45, 46, 51, 52,
-      53, 60, 61, 62, 80, 81, 82, 83, 100, 103, 104, 105, 106, 201, 202, 203, 204];
+    let remainingPerks = [];
+    if (!PellePerkUpgrade.perkSAM.isBought) remainingPerks.push(10);
+    if (!PellePerkUpgrade.perkSIP1.isBought) remainingPerks.push(12);
+    if (!PellePerkUpgrade.perkSIP2.isBought) remainingPerks.push(13);
+    if (!PellePerkUpgrade.perkSEP1.isBought) remainingPerks.push(14);
+    if (!PellePerkUpgrade.perkSEP2.isBought) remainingPerks.push(15);
+    if (!PellePerkUpgrade.perkSEP3.isBought) remainingPerks.push(16);
+    if (!PellePerkUpgrade.perkSTP.isBought) remainingPerks.push(17);
+    if (!PellePerkUpgrade.perkANR.isBought) remainingPerks.push(30);
+    if (!PellePerkUpgrade.perkEU1.isBought) remainingPerks.push(40);
+    if (!PellePerkUpgrade.perkEU2.isBought) remainingPerks.push(41);
+    if (!PellePerkUpgrade.perkDU1.isBought) remainingPerks.push(42);
+    if (!PellePerkUpgrade.perkDU2.isBought) remainingPerks.push(43);
+    if (!PellePerkUpgrade.perkATT.isBought) remainingPerks.push(44);
+    if (!PellePerkUpgrade.perkATD.isBought) remainingPerks.push(45);
+    if (!PellePerkUpgrade.perkATD.isBought) remainingPerks.push(46);
+    if (!PellePerkUpgrade.perkIDR.isBought) remainingPerks.push(51);
+    if (!PellePerkUpgrade.perkTGR.isBought) remainingPerks.push(52);
+    if (!PellePerkUpgrade.perkDILR.isBought) remainingPerks.push(53);
+    if (!PellePerkUpgrade.perkPEC1.isBought) remainingPerks.push(60);
+    if (!PellePerkUpgrade.perkPEC2.isBought) remainingPerks.push(61);
+    if (!PellePerkUpgrade.perkPEC3.isBought) remainingPerks.push(62);
+    if (!PellePerkUpgrade.perkTP1.isBought) remainingPerks.push(80);
+    if (!PellePerkUpgrade.perkTP2.isBought) remainingPerks.push(81);
+    if (!PellePerkUpgrade.perkTP3.isBought) remainingPerks.push(82);
+    if (!PellePerkUpgrade.perkTP4.isBought) remainingPerks.push(83);
+    if (!PellePerkUpgrade.perkDAU.isBought) remainingPerks.push(100);
+    if (!PellePerkUpgrade.perkDAS.isBought) remainingPerks.push(103);
+    if (!PellePerkUpgrade.perkTTS.isBought) remainingPerks.push(104);
+    if (!PellePerkUpgrade.perkTTF.isBought) remainingPerks.push(105);
+    if (!PellePerkUpgrade.perkTTM.isBought) remainingPerks.push(106);
+    if (!PellePerkUpgrade.perkDILR.isBought) remainingPerks.push(201);
+    if (!PellePerkUpgrade.perkDILR.isBought) remainingPerks.push(202);
+    if (!PellePerkUpgrade.perkDILR.isBought) remainingPerks.push(203);
+    if (!PellePerkUpgrade.perkDILR.isBought) remainingPerks.push(204);
+    return remainingPerks;
   },
 
   get specialGlyphEffect() {
