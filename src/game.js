@@ -922,7 +922,7 @@ function globalPassivePrestigeGen(realDiff) {
 
 function passivePrestigeGen(realDiff) {
   let eternitiedGain = DC.D0;
-  if (RealityUpgrade(14).isBought && !Pelle.isDoomed) {
+  if (RealityUpgrade(14).isBought && (!Pelle.isDoomed || PelleRealityUpgrade.eternalFlow.isBought)) {
     eternitiedGain = DC.D1.timesEffectsOf(
       Achievement(113),
       RealityUpgrade(3),
@@ -936,9 +936,9 @@ function passivePrestigeGen(realDiff) {
     player.reality.partEternitied = player.reality.partEternitied.sub(player.reality.partEternitied.floor());
   }
 
-  if (!EternityChallenge(4).isRunning && !Pelle.isDoomed) {
+  if (!EternityChallenge(4).isRunning) {
     let infGen = DC.D0;
-    if (BreakInfinityUpgrade.infinitiedGen.isBought) {
+    if (BreakInfinityUpgrade.infinitiedGen.isBought && (!Pelle.isDoomed || PelleDestructionUpgrade.passiveInfGen.isBought)) {
       // Multipliers are done this way to explicitly exclude ach87 and TS32
       infGen = infGen.plus(new Decimal(0.5).times(Time.deltaTimeMs).div(Decimal.clampMin(50, player.records.bestInfinity.time)));
       infGen = infGen.timesEffectsOf(
@@ -948,10 +948,10 @@ function passivePrestigeGen(realDiff) {
       );
       infGen = infGen.times(getAdjustedGlyphEffect("infinityinfmult"));
     }
-    if (RealityUpgrade(11).isBought) {
+    if (RealityUpgrade(11).isBought && (!Pelle.isDoomed || PelleRealityUpgrade.boundlessFlow.isBought)) {
       infGen = infGen.plus(RealityUpgrade(11).effectValue.times(Time.deltaTime));
     }
-    if (EffarigUnlock.eternity.isUnlocked) {
+    if (EffarigUnlock.eternity.isUnlocked && (!Pelle.isDoomed || PelleCelestialUpgrade.effarigRewards.isBought)) {
       // We consider half of the eternities we gained above this tick
       // to have been gained before the infinities, and thus not to
       // count here. This gives us the desirable behavior that
