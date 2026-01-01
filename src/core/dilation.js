@@ -89,6 +89,15 @@ export function buyDilationUpgrade(id, bulk = 1) {
       player.dilation.totalTachyonGalaxies = DC.D0;
     }
 
+    if (id === 3 && Pelle.isDoomed) {
+      let PelleRetroTP = 1;
+      if (PellePerkUpgrade.perkTP1.isBought) PelleRetroTP = Effects.max(1, Perk.retroactiveTP1);
+      if (PellePerkUpgrade.perkTP2.isBought) PelleRetroTP = Effects.max(1, Perk.retroactiveTP2);
+      if (PellePerkUpgrade.perkTP3.isBought) PelleRetroTP = Effects.max(1, Perk.retroactiveTP3);
+      if (PellePerkUpgrade.perkTP4.isBought) PelleRetroTP = Effects.max(1, Perk.retroactiveTP4);
+      Currency.tachyonParticles.multiply(Decimal.pow(PelleRetroTP, buying));
+    }
+
     if (id === 3 && !Pelle.isDisabled("tpMults")) {
       let retroactiveTPFactor = Effects.max(
         1,
