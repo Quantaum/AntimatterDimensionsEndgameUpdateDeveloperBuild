@@ -185,7 +185,7 @@ export function totalReplicantiSpeedMult(overCap) {
 }
 
 export function replicantiCap() {
-  return EffarigUnlock.infinity.canBeApplied
+  return EffarigUnlock.infinity.canBeApplied || (Pelle.isDoomed && PelleCelestialUpgrade.replicantiCapIncrease.isBought)
     ? Currency.infinitiesTotal.value
       .pow(TimeStudy(31).isBought ? 120 : 30)
       .clampMin(1)
