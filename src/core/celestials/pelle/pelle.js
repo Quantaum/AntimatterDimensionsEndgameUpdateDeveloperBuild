@@ -518,6 +518,27 @@ export const Pelle = {
       return "It's Not Over We Will Return We'll Ω Soon Meet Again".split(" ");
     }
   },
+
+  get sickVisualStrikeText() {
+    if (PelleStrikeUpgrade.all.filter(u => u.isBought).length === 0) {
+      return `Pelle Strike penalties are permanent and remain active even after Armageddon!`;
+    }
+    if (PelleStrikeUpgrade.all.filter(u => u.isBought).length === 1) {
+      return Date.now() % 2500 > 500 ? `Pelle Strike penalties are permanent and remain active even after Armageddon!` : wordShift.randomCrossWords("Pelle Strike penalties are permanent and remain active even after Armageddon!");
+    }
+    if (PelleStrikeUpgrade.all.filter(u => u.isBought).length === 2) {
+      return Date.now() % 2500 > 1000 ? `Pelle Strike penalties are permanent and remain active even after Armageddon!` : wordShift.randomCrossWords("Pelle Strike penalties are permanent and remain active even after Armageddon!");
+    }
+    if (PelleStrikeUpgrade.all.filter(u => u.isBought).length === 3) {
+      return Date.now() % 2500 > 1500 ? `Pelle Strike penalties are permanent and remain active even after Armageddon!` : wordShift.randomCrossWords("Pelle Strike penalties are permanent and remain active even after Armageddon!");
+    }
+    if (PelleStrikeUpgrade.all.filter(u => u.isBought).length === 4) {
+      return Date.now() % 2500 > 2000 ? `Pelle Strike penalties are permanent and remain active even after Armageddon!` : wordShift.randomCrossWords("Pelle Strike penalties are permanent and remain active even after Armageddon!");
+    }
+    if (PelleStrikeUpgrade.all.filter(u => u.isBought).length === 5) {
+      return wordShift.wordCycle(["All Pelle Strikes have been destroyed!"], [`It's not over yet ${wordShift.wordCycle(["False", "Deity", "Destroyer"])}!`]);
+    }
+  },
   
   quotes: Quotes.pelle,
 };
