@@ -110,6 +110,7 @@ export const Effarig = {
     return Decimal.pow10(Math.pow(base, this.multDilation));
   },
   get bonusRG() {
+    if (Pelle.isDoomed && !PelleCelestialUpgrade.maxRGIncrease.isBought) return 0;
     // Will return 0 if Effarig Infinity is uncompleted
     return Math.floor(replicantiCap().pLog10() / LOG10_MAX_VALUE - 1);
   },
