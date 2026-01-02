@@ -66,6 +66,10 @@ class AlchemyResourceState extends GameMechanicState {
     return this.unlockedWith.level >= this.unlockedAt;
   }
 
+  get isDestroyed() {
+    return Pelle.isDoomed && this.config.destroyed();
+  }
+
   get lockText() {
     return `${this.unlockedWith.name} Level ${formatInt(this.unlockedAt)}`;
   }
