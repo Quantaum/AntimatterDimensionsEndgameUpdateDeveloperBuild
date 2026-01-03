@@ -106,5 +106,27 @@ export const vQuotes = {
       "Surely I must be better than him.",
       "After all, I AM the Celestial of Achievements."
     ]
+  },
+  vPack: {
+    id: 12,
+    lines: [
+      "...",
+      "Destroyer?!?!",
+      "Why are you back?",
+      "And... you found my secret upgrade...",
+      "No no no...",
+      "You cannot be better than me..."
+    ]
+  },
+  maxAutoV: {
+    id: 13,
+    lines: [
+      "Wait...",
+      "How did you cap the upgrade?",
+      "You've reduced me to nothing but a memory...",
+      "I will not be cast aside!",
+      "Do you hear me?",
+      "I will not be-"
+    ]
   }
 };
