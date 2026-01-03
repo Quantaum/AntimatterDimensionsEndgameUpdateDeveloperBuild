@@ -26,6 +26,7 @@ const battle =       ["Conflict",      "Battle",        "End"];
 const battles =      ["Conflicts",     "Battles",       "Ends"];
 const cluster =      ["Cluster",       "Filament",      "Stars"];
 const confusing =    ["Amusing",       "Confusing",     "Laughter"];
+const cycle =        ["Repeat",        "Cycle",         "Loop"];
 const dance =        ["Song",          "Dance",         "Charade"];
 const debuff =       ["Nerf",          "Debuff",        "Corruption"];
 const debuffs =      ["Nerfs",         "Debuffs",       "Corruptions"];
@@ -564,8 +565,31 @@ export const pelleQuotes = {
       { text: "I need some new $1 to Strike you with.", 1: debuffs }
     ],
   },
-  allPelleAchs: {
+  expansionPacks: {
     id: 19,
+    lines: [
+      "Stop.",
+      "How did you all get here?",
+      { text: "$1!", 1: destroyer },
+      { text: "Did you break the $1?", 1: cycle },
+      "You may be more powerful than I took you for.",
+      "No, Lai, keep Ra alive for now.",
+      "We need him for information.",
+      { text: "He was with the $1 for the longest, so he knows the most.", 1: elemental },
+      "If anyone knows where he is, it's Ra.",
+      { text: "Why do I want to know where the $1 is?", 1: elemental },
+      "First off, he has more power than all of us combined.",
+      { text: "If somehow I fail, he can smite the $1 for us.", 1: destroyer },
+      "And second, I haven't seen him in years.",
+      "Don't you think I want to know how he's doing?",
+      { text: "$1", 1: exhaustion },
+      "Well I see no reason for you all to linger here.",
+      "You can go.",
+      { text: "I and the $1 have some unfinished business to deal with.", 1: destroyer }
+    ]
+  },
+  allPelleAchs: {
+    id: 20,
     lines: [
       "You...",
       "You're taking control of my Reality so quickly...",
@@ -581,7 +605,7 @@ export const pelleQuotes = {
     ],
   },
   galaxyDebuffDisable: {
-    id: 20,
+    id: 21,
     lines: [
       "How do you do it?",
       { text: "Every time $1 is inevitable for you...", 1: loss },
@@ -595,7 +619,7 @@ export const pelleQuotes = {
     ],
   },
   doomE55DP: {
-    id: 21,
+    id: 22,
     lines: [
       "...",
       "This...",
@@ -608,7 +632,7 @@ export const pelleQuotes = {
     ],
   },
   allPelleNerfs: {
-    id: 22,
+    id: 23,
     lines: [
       "How...",
       "How did you do it?",
@@ -622,7 +646,7 @@ export const pelleQuotes = {
     ],
   },
   strikeDisable1: {
-    id: 23,
+    id: 24,
     lines: [
       { text: "$1", 1: profanity },
       "How did you find it?",
@@ -635,7 +659,7 @@ export const pelleQuotes = {
     ],
   },
   strikeDisable2: {
-    id: 24,
+    id: 25,
     lines: [
       { text: "You're making me really $1.", 1: angry },
       "You know that, right?",
@@ -645,7 +669,7 @@ export const pelleQuotes = {
     ],
   },
   strikeDisable3: {
-    id: 25,
+    id: 26,
     lines: [
       "Enough of this madness!",
       "Stop!",
@@ -657,7 +681,7 @@ export const pelleQuotes = {
     ],
   },
   strikeDisable4: {
-    id: 26,
+    id: 27,
     lines: [
       "Alright.",
       { text: "$1.", 1: destroyer },
@@ -673,7 +697,7 @@ export const pelleQuotes = {
     ],
   },
   strikeDisable5: {
-    id: 27,
+    id: 28,
     lines: [
       "...",
       "How?",
