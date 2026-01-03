@@ -266,7 +266,7 @@ export const Singularity = {
   },
 
   perform() {
-    if (!this.capIsReached || Pelle.isDoomed) return;
+    if (!this.capIsReached || (Pelle.isDoomed && !PelleDestructionUpgrade.singularityMilestones.isBought)) return;
 
     EventHub.dispatch(GAME_EVENT.SINGULARITY_RESET_BEFORE);
 
