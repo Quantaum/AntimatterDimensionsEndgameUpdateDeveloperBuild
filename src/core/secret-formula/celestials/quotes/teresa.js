@@ -46,7 +46,7 @@ export const teresaQuotes = {
     lines: [
       "Oh, hi Destroyer.",
       "Looks like you found my secret shop.",
-      "Look, I have a question."
+      "Look, I have a question.",
       "Why are you trying to defeat us?",
       "Are we just... an obstacle to you?",
       "Or is it something else...",
