@@ -71,7 +71,7 @@ export default {
       return `<span style="color:#${color}">${resourceText}</span>`;
     },
     isDoomed() {
-      return Pelle.isDoomed && this.resource.config.destroyed;
+      return Pelle.isDoomed && this.resource.destroyed;
     }
   },
   methods: {
