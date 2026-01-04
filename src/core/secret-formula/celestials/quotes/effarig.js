@@ -80,6 +80,7 @@ export const effarigQuotes = {
   },
   effarigPack: {
     id: 9,
+    requirement: () => ExpansionPack.effarigPack.isBought,
     lines: [
       "Found what you were looking for?",
       "I tried to hide it from those who might abuse it's potential.",
@@ -97,6 +98,7 @@ export const effarigQuotes = {
   },
   glyphLevel1: {
     id: 10,
+    requirement: () => player.records.bestEndgame.glyphLevel >= 1e5,
     lines: [
       "Six-digit Glyph levels, huh?",
       "You're breaking more walls than I can build.",
@@ -111,6 +113,7 @@ export const effarigQuotes = {
   },
   glyphLevel2: {
     id: 11,
+    requirement: () => player.records.bestEndgame.glyphLevel >= 2e5,
     lines: [
       "Woah. Slow down there, buckaroo.",
       "One more power burst, and you'd have Glyph Levels in the millions.",
