@@ -29,6 +29,7 @@ const confusing =    ["Amusing",       "Confusing",     "Laughter"];
 const cycle =        ["Repeat",        "Cycle",         "Loop"];
 const dance =        ["Song",          "Dance",         "Charade"];
 const debuff =       ["Nerf",          "Debuff",        "Corruption"];
+const endgame =      ["Esacpe",        "Rebirth",       "Endgame"];
 const debuffs =      ["Nerfs",         "Debuffs",       "Corruptions"];
 const exhaustion =   ["Exhale",        "Exhaustion",    "Sigh"];
 const filament =     ["Generator",     "Filament",      "Stars"];
@@ -713,4 +714,27 @@ export const pelleQuotes = {
       { text: "I will $1 you no longer.", 1: watch }
     ],
   },
+  pellePack: {
+    id: 29,
+    lines: [
+      "Why are you still here?",
+      "Can you not see there is nothing left?",
+      { text: "I have been $1.", 1: overpowered },
+      "Do you do this just to spite me?",
+      "Or...",
+      { text: "Did you discover the $1's secret power...", 1: elemental },
+      "What was it called...",
+      { text: "$1?", 1: endgame },
+      "...",
+      "You did!",
+      "Those are Celestial Points you have there!",
+      "I was supposed to protect that power!",
+      "You-",
+      { text: "$1", 1: exhaustion },
+      "Wait.",
+      "I think I remember you...",
+      "...",
+      `${player.username}?`
+    ]
+  }
 };
