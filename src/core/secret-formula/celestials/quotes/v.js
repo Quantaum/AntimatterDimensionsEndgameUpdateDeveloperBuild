@@ -109,6 +109,7 @@ export const vQuotes = {
   },
   vPack: {
     id: 12,
+    requirement: () => ExpansionPack.vPack.isBought,
     lines: [
       "...",
       "Destroyer?!?!",
@@ -120,6 +121,7 @@ export const vQuotes = {
   },
   maxAutoV: {
     id: 13,
+    requirement: () => VUpgrade.auto.isCapped,
     lines: [
       "Wait...",
       "How did you cap the upgrade?",
