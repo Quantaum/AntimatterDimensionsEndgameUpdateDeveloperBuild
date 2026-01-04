@@ -716,6 +716,7 @@ export const pelleQuotes = {
   },
   pellePack: {
     id: 29,
+    requirement: () => ExpansionPack.pellePack.isBought,
     lines: [
       "Why are you still here?",
       "Can you not see there is nothing left?",
