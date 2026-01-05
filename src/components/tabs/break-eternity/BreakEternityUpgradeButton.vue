@@ -26,6 +26,9 @@ export default {
     };
   },
   computed: {
+    config() {
+      return this.upgrade.config;
+    },
     classObject() {
       return {
         "o-break-eternity-upgrade": true,
@@ -58,7 +61,7 @@ export default {
         type="breakEternityUpgrades"
         class="l-hint-text--reality-upgrade c-hint-text--reality-upgrade"
       >
-        {{ upgrade.name }}
+        {{ config.name }}
       </HintText>
       <DescriptionDisplay :config="upgrade.config" />
       <EffectDisplay :config="upgrade.config" />
