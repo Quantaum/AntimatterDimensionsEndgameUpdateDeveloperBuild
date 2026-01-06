@@ -76,7 +76,7 @@ export default {
       const options = player.options;
       this.time = Date.now();
       this.lastExportTime = player.lastExportTime;
-      this.hasExportedToday = Math.floor(this.time / 86400) <= Math.floor(this.lastExportTime / 86400);
+      this.hasExportedToday = Math.floor(this.time / 86400000) <= Math.floor(this.lastExportTime / 86400000);
       this.cloudAvailable = Cloud.isAvailable;
       this.cloudEnabled = options.cloudEnabled;
       this.forceCloudOverwrite = options.forceCloudOverwrite;
