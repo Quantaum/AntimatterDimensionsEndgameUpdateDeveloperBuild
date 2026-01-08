@@ -9,7 +9,7 @@ export const changelog = [
    * }
    */
   {
-    date: [2026, 1, 7],
+    date: [2026, 1, 8],
     name: "v0.3.0: The Greater Reimagining II",
     info: `
 Happy New Year!
