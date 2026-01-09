@@ -130,9 +130,11 @@ export const Endgame = {
     EventHub.dispatch(GAME_EVENT.ENDGAME_RESET_BEFORE);
 
     // Modify beaten-game quantities before doing a carryover reset
-    giveEndgameRewards();
-    updateEndgameRecords();
-    GlyphAppearanceHandler.unlockSet();
+    if (Pelle.isDoomed && player.antimatter.gte(DC.E9E15)) {
+      giveEndgameRewards();
+      updateEndgameRecords();
+      GlyphAppearanceHandler.unlockSet();
+    }
     if (player.endgame.respec) {
       respecEndgameMasteries();
       player.endgame.respec = false;
