@@ -1,5 +1,19 @@
 //Time for spaghetti code
 export function endgameMigration(player) {
+  player.dimensionBoosts = new Decimal(player.dimensionBoosts);
+  player.galaxies = new Decimal(player.galaxies);
+  player.celestials.laitela.darkEnergy = new Decimal(player.celestials.laitela.darkEnergy);
+  player.celestials.laitela.singularities = new Decimal(player.celestials.laitela.singularities);
+  player.celestials.effarig.relicShards = new Decimal(player.celestials.effarig.relicShards);
+  player.reality.glyphs.sac.power = new Decimal(player.reality.glyphs.sac.power);
+  player.reality.glyphs.sac.infinity = new Decimal(player.reality.glyphs.sac.infinity);
+  player.reality.glyphs.sac.time = new Decimal(player.reality.glyphs.sac.time);
+  player.reality.glyphs.sac.replication = new Decimal(player.reality.glyphs.sac.replication);
+  player.reality.glyphs.sac.dilation = new Decimal(player.reality.glyphs.sac.dilation);
+  player.reality.glyphs.sac.effarig = new Decimal(player.reality.glyphs.sac.effarig);
+  player.reality.glyphs.sac.reality = new Decimal(player.reality.glyphs.sac.reality);
+  player.reality.imaginaryMachines = new Decimal(player.reality.imaginaryMachines);
+  player.reality.iMCap = new Decimal(player.reality.iMCap);
   player.celestials.laitela.dimensions = Array.range(0, 8).map(() =>
     ({
       amount: new Decimal(0),
