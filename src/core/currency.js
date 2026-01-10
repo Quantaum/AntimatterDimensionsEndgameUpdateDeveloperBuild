@@ -566,7 +566,7 @@ Currency.unnerfedCelestialMatter = new class extends DecimalCurrency {
 Currency.celestialMatter = new class extends DecimalCurrency {
   get value() { return player.endgame.celestialMatter; }
   set value(value) {
-    const newValue = Decimal.min(value, Decimal.NUMBER_MAX_VALUE);
+    const newValue = Decimal.min(value, DC.NUMMAX);
     player.endgame.celestialMatter = newValue;
   }
 }();
@@ -607,7 +607,7 @@ Currency.endgameSkills = new class extends DecimalCurrency {
 Currency.galacticPower = new class extends DecimalCurrency {
   get value() { return player.endgame.galacticPower; }
   set value(value) {
-    const newValue = Decimal.min(value, Decimal.NUMBER_MAX_VALUE);
+    const newValue = Decimal.min(value, DC.NUMMAX);
     player.endgame.galacticPower = newValue;
   }
 }();
