@@ -65,12 +65,12 @@ export function calcHighestPurchaseableTD(tier, currency) {
     return Math.floor(postInc + preInc);
   }
 
-  if (currency.lt(Decimal.NUMBER_MAX_VALUE)) {
+  if (currency.lt(DC.NUMMAX)) {
     return Math.floor(Math.max(0, ((logC - logBase) / logMult) + 1));
   }
 
   if (currency.lt(DC.E1300)) {
-    const preInc = Math.floor((Decimal.log10(Decimal.NUMBER_MAX_VALUE) - logBase) / logMult);
+    const preInc = Math.floor((Decimal.log10(DC.NUMMAX) - logBase) / logMult);
     logMult = Math.log10(Math.max(TimeDimension(tier)._costMultiplier * 1.5, 1));
     const decCur = logC - (preInc * logMult);
     const postInc = Math.floor(Math.clampMin(decCur / logMult, 0));
@@ -185,7 +185,7 @@ class TimeDimensionState extends DimensionState {
     this._costMultiplier = COST_MULTS[tier];
     const E6000_SCALING_AMOUNTS = [null, 7322, 4627, 3382, 2665, 833, 689, 562, 456];
     this._e6000ScalingAmount = E6000_SCALING_AMOUNTS[tier];
-    const COST_THRESHOLDS = [Decimal.NUMBER_MAX_VALUE, DC.E1300, DC.E6000];
+    const COST_THRESHOLDS = [DC.NUMMAX, DC.E1300, DC.E6000];
     this._costIncreaseThresholds = COST_THRESHOLDS;
   }
 
