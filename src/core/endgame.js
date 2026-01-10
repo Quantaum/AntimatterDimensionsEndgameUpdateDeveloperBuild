@@ -1,4 +1,4 @@
-import * as ADNotations from "@antimatter-dimensions/notations";
+import * as ADNotations from "adnot-beport-small";
 
 import { AutomatorPanels } from "@/components/tabs/automator/AutomatorDocs";
 import { GlyphInfo } from "@/components/modals/options/SelectGlyphInfoDropdown";
