@@ -85,7 +85,7 @@ export const Laitela = {
     return (this.celestial.darkMatterMult.add(this.darkMatterMultGain)).div(this.celestial.darkMatterMult);
   },
   get darkMatterCap() {
-    let baseCap = Decimal.NUMBER_MAX_VALUE;
+    let baseCap = DC.NUMMAX;
     if (ImaginaryUpgrade(26).isBought) baseCap = DC.E1000;
     if (ImaginaryUpgrade(27).isBought) baseCap = DC.E4000;
     if (ImaginaryUpgrade(28).isBought) baseCap = DC.E20000;
