@@ -438,7 +438,7 @@ export const GlyphAlteration = {
   },
   sacrificeBoost(type) {
     const capped = Decimal.clampMax(this.getSacrificePower(type), GlyphSacrificeHandler.maxSacrificeForEffects);
-    return Decimal.log10(Decimal.clampMin(capped.div(this.boostingThreshold), 1)) / 2;
+    return Decimal.log10(Decimal.clampMin(capped.div(this.boostingThreshold), 1)).div(2).toNumber();
   },
   baseAdditionColor(isDark = Theme.current().isDark()) {
     return isDark ? "#CCCCCC" : "black";
