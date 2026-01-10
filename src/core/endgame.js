@@ -83,6 +83,10 @@ export const Endgame = {
       respecEndgameMasteries();
       player.endgame.respec = false;
     }
+    if (player.celestials.teresa.disCharge) {
+      disChargeAllPerkUpgrades();
+      player.celestials.teresa.disCharge = false;
+    }
     this.resetStuff();
 
     // Add Glyphs after other Glyphs are purged
@@ -143,6 +147,10 @@ export const Endgame = {
     if (player.endgame.respec) {
       respecEndgameMasteries();
       player.endgame.respec = false;
+    }
+    if (player.celestials.teresa.disCharge) {
+      disChargeAllPerkUpgrades();
+      player.celestials.teresa.disCharge = false;
     }
     this.resetStuff();
 
