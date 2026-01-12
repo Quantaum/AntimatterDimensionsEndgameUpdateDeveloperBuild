@@ -165,7 +165,7 @@ export function getDilationGainPerSecond() {
   dtRate = dtRate.times(ShopPurchase.dilatedTimePurchases.currentMult);
   dtRate = dtRate.times(
     Decimal.clampMin(Decimal.log10(Replicanti.amount).times(getAdjustedGlyphEffect("replicationdtgain")), 1));
-  if (Enslaved.isRunning && !dtRate.eq(0)) dtRate = Decimal.pow10(Math.pow(dtRate.plus(1).log10(), 0.85) - 1);
+  if (Enslaved.isRunning && !dtRate.eq(0)) dtRate = Decimal.pow10(Decimal.pow(dtRate.plus(1).log10(), 0.85).sub(1));
   if (V.isRunning) dtRate = dtRate.pow(0.5);
   if (dtRate.gte(DilationSoftcapStart.PRIMARY_THRESHOLD)) {
     dtRate = Decimal.pow(10, (((Decimal.log10(dtRate).sub(Decimal.log10(DilationSoftcapStart.PRIMARY_THRESHOLD))).div(10)).add(
@@ -269,7 +269,7 @@ export function getDilationTimeEstimate(goal) {
 export function dilatedValueOf(value) {
   const log10 = value.log10();
   const dilationPenalty = 0.75 * Effects.product(DilationUpgrade.dilationPenalty);
-  return Decimal.pow10(Math.sign(log10) * Math.pow(Math.abs(log10), dilationPenalty));
+  return Decimal.pow10(Decimal.sign(log10).times(Decimal.pow(Decimal.abs(log10)), dilationPenalty));
 }
 
 class DilationUpgradeState extends SetPurchasableMechanicState {
