@@ -7,7 +7,7 @@ export const ra = {
       chunkGain: "Eternity Points",
       memoryGain: "current RM",
       requiredUnlock: () => undefined,
-      rawMemoryChunksPerSecond: () => 4 * Decimal.pow(Currency.eternityPoints.value.pLog10().div(5e3), 3.5).toNumber(),
+      rawMemoryChunksPerSecond: () => 4 * Decimal.pow(Currency.eternityPoints.value.add(1).pLog10().div(5e3), 3.5).toNumber(),
       memoryProductionMultiplier: () => Ra.unlocks.teresaXP.effectOrDefault(1)
     },
     effarig: {
@@ -27,7 +27,7 @@ export const ra = {
       chunkGain: "Time Shards",
       memoryGain: "total time played",
       requiredUnlock: () => Ra.unlocks.enslavedUnlock,
-      rawMemoryChunksPerSecond: () => 4 * Decimal.pow(Currency.timeShards.value.pLog10().div(5e4), 2.5).toNumber(),
+      rawMemoryChunksPerSecond: () => 4 * Decimal.pow(Currency.timeShards.value.add(1).pLog10().div(5e4), 2.5).toNumber(),
       memoryProductionMultiplier: () => Ra.unlocks.enslavedXP.effectOrDefault(1)
     },
     v: {
@@ -37,7 +37,7 @@ export const ra = {
       chunkGain: "Infinity Power",
       memoryGain: "total Memory levels",
       requiredUnlock: () => Ra.unlocks.vUnlock,
-      rawMemoryChunksPerSecond: () => 4 * Decimal.pow(Currency.infinityPower.value.pLog10().div(1e6), 1.875).toNumber(),
+      rawMemoryChunksPerSecond: () => 4 * Decimal.pow(Currency.infinityPower.value.add(1).pLog10().div(1e6), 1.875).toNumber(),
       memoryProductionMultiplier: () => Ra.unlocks.vXP.effectOrDefault(1)
     }
   },
@@ -63,7 +63,7 @@ export const ra = {
     teresaXP: {
       id: 2,
       reward: "All Memory Chunks produce more Memories based on Reality Machines",
-      effect: () => 1 + Decimal.pow(Currency.realityMachines.value.pLog10().div(100), 0.5).toNumber(),
+      effect: () => 1 + Decimal.pow(Currency.realityMachines.value.add(1).pLog10().div(100), 0.5).toNumber(),
       pet: "teresa",
       level: 5,
       displayIcon: `Ϟ`
