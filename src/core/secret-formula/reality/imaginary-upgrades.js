@@ -126,7 +126,7 @@ export const imaginaryUpgrades = [
     checkRequirement: () => player.celestials.effarig.relicShards.gte(1e90),
     checkEvent: GAME_EVENT.REALITY_RESET_AFTER,
     description: "Time Dimension power based on total antimatter",
-    effect: () => 1 + Decimal.log10(player.records.totalEndgameAntimatter.log10()).div(100).toNumber(),
+    effect: () => 1 + Decimal.log10(player.records.totalEndgameAntimatter.add(10).log10()).div(100).toNumber(),
     formatEffect: value => `${formatPow(value, 0, 4)}`,
     isDisabledInDoomed: () => !PelleImaginaryUpgrade.suspicionOfInterference.isBought
   },
@@ -181,7 +181,7 @@ export const imaginaryUpgrades = [
     requirement: () => `Reach ${format("1e1500000000000")} antimatter without
       ever having any 1st Infinity Dimensions`,
     hasFailed: () => player.requirementChecks.reality.maxID1.gt(0),
-    checkRequirement: () => player.requirementChecks.reality.maxID1.eq(0) && player.antimatter.log10().gte(1.5e12),
+    checkRequirement: () => player.requirementChecks.reality.maxID1.eq(0) && player.antimatter.add(1).log10().gte(1.5e12),
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     canLock: true,
     // This upgrade lock acts in multiple different conditions, but isn't 100% foolproof and also blocks a few edge
@@ -262,7 +262,7 @@ export const imaginaryUpgrades = [
     requirement: () => `Reach ${format("1e7400000000000")} antimatter with Continuum disabled for the entire Reality`,
     hasFailed: () => !player.requirementChecks.reality.noContinuum,
     checkRequirement: () => player.requirementChecks.reality.noContinuum &&
-      Currency.antimatter.value.log10().gte(7.4e12),
+      Currency.antimatter.value.add(1).log10().gte(7.4e12),
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     canLock: true,
     lockEvent: "enable Continuum",
@@ -281,7 +281,7 @@ export const imaginaryUpgrades = [
     // Note: 4 cursed glyphs is -12 glyph count, but equipping a positive glyph in the last slot is allowed
     hasFailed: () => !Effarig.isRunning || player.requirementChecks.reality.maxGlyphs > -10,
     checkRequirement: () => Effarig.isRunning && player.requirementChecks.reality.maxGlyphs < -10 &&
-      Currency.antimatter.value.log10().gte(1.5e11),
+      Currency.antimatter.value.add(1).log10().gte(1.5e11),
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     description: () => `All Glyph Sacrifice totals are increased to ${format(1e100)}`,
     effect: new Decimal(1e100),
@@ -354,7 +354,7 @@ export const imaginaryUpgrades = [
     cost: new Decimal(1e100),
     requirement: () => `Reach ${format(DC.E9E15)} Antimatter in Pelle without ever equipping Glyphs`,
     hasFailed: () => !Pelle.isDoomed || player.requirementChecks.endgame.noGlyphsDoomed === false,
-    checkRequirement: () => Currency.antimatter.value.log10().gte(9e15) && Pelle.isDoomed &&
+    checkRequirement: () => Currency.antimatter.value.add(1).log10().gte(9e15) && Pelle.isDoomed &&
       player.requirementChecks.endgame.noGlyphsDoomed === true,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     description: () => `Unlock the 6th Dark Matter Dimension, raise Dark Matter cap to ${formatPostBreak("1e4000")}`,
