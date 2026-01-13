@@ -354,7 +354,7 @@ export const realityUpgrades = [
     id: 25,
     cost: 100000,
     requirement: () => `Reach ${format(DC.E11111)} EP (Best: ${format(player.records.bestReality.bestEP, 2)} EP)`,
-    checkRequirement: () => player.records.bestReality.bestEP.log10().gte(11111),
+    checkRequirement: () => player.records.bestReality.bestEP.add(1).log10().gte(11111),
     checkEvent: GAME_EVENT.ETERNITY_RESET_AFTER,
     description: "Unlock the Reality autobuyer and Automator command",
     automatorPoints: 100,
