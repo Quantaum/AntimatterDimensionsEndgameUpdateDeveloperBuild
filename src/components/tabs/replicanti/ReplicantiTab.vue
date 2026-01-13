@@ -145,7 +145,7 @@ export default {
       this.multTD.copyFrom(DilationUpgrade.tdMultReplicanti.effectValue);
       this.hasDTMult = getAdjustedGlyphEffect("replicationdtgain") !== 0 && !Pelle.isDoomed;
       this.multDT = Decimal.clampMin(
-        Decimal.log10(Replicanti.amount).times(
+        Decimal.log10(Replicanti.amount.add(1)).times(
           getAdjustedGlyphEffect("replicationdtgain")),
         1
       );
