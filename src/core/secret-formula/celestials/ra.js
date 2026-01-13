@@ -372,7 +372,7 @@ export const ra = {
     instabilityDelay: {
       id: 36,
       reward: "Relic Shards delay the first three levels of Glyph Instability",
-      effect: () => Decimal.log10(player.celestials.effarig.relicShards).times(10).toNumber(),
+      effect: () => Decimal.log10(player.celestials.effarig.relicShards.add(1)).times(10).toNumber(),
       pet: "effarig",
       level: 40,
       displayIcon: `<span class="fas fa-arrow-right"></span>`,
@@ -471,7 +471,7 @@ export const ra = {
     imaginaryMachineEternityPower: {
       id: 47,
       reward: "Gain a power to Imaginary Machines based on Eternities",
-      effect: () => 1 + Decimal.log10(Decimal.log10(player.eternities).add(1)).div(20).toNumber(),
+      effect: () => 1 + Decimal.log10(Decimal.log10(player.eternities.add(1)).add(1)).div(20).toNumber(),
       pet: "enslaved",
       level: 100,
       displayIcon: `<span class="fas fa-lightbulb"></span>`,
