@@ -70,6 +70,7 @@ Decimal.prototype.copyFrom = function(decimal) {
   }
   this.mantissa = decimal.mantissa;
   this.exponent = decimal.exponent;
+  this.layer = decimal.layer;
 };
 
 window.copyToClipboard = (function() {
