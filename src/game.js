@@ -1144,9 +1144,9 @@ export function getTTPerSecond() {
 
 export function gainedCelestialPoints() {
   if (!player.break2) return DC.D1;
-  let cp = player.celestials.pelle.records.totalEndgameAntimatter.log10().div(9e15);
+  let cp = player.celestials.pelle.records.totalEndgameAntimatter.add(1).log10().div(9e15);
   if (Achievement(197).isUnlocked) {
-    cp = cp.times(Decimal.max(9e115, player.celestials.pelle.records.totalEndgameAntimatter.log10()).div(9e115));
+    cp = cp.times(Decimal.max(9e115, player.celestials.pelle.records.totalEndgameAntimatter.add(1).log10()).div(9e115));
   }
   cp = Decimal.min(cp, DC.NUMMAX.sub(player.endgame.celestialPoints));
   return cp.floor();
@@ -1154,7 +1154,7 @@ export function gainedCelestialPoints() {
 
 export function gainedDoomedParticles() {
   if (!player.break2) return DC.D1;
-  let dp = Decimal.min(player.celestials.pelle.records.totalEndgameAntimatter.log10().div(9e15), new Decimal(1e100 - player.endgame.doomedParticles.toNumber()));
+  let dp = Decimal.min(player.celestials.pelle.records.totalEndgameAntimatter.add(1).log10().div(9e15), new Decimal(1e100 - player.endgame.doomedParticles.toNumber()));
   return dp.floor();
 }
 
