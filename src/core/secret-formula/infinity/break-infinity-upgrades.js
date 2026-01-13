@@ -29,14 +29,14 @@ export const breakInfinityUpgrades = {
     id: "totalMult",
     cost: 1e4,
     description: "Antimatter Dimensions gain a multiplier based on total antimatter produced",
-    effect: () => Decimal.pow(player.records.totalAntimatter.log10().add(1), 1.5),
+    effect: () => Decimal.pow(player.records.totalAntimatter.add(1).log10().add(1), 1.5),
     formatEffect: value => formatX(value, 2, 2)
   },
   currentAMMult: {
     id: "currentMult",
     cost: 5e4,
     description: "Antimatter Dimensions gain a multiplier based on current antimatter",
-    effect: () => Decimal.pow(Currency.antimatter.value.log10().add(1), 1.5),
+    effect: () => Decimal.pow(Currency.antimatter.value.add(1).log10().add(1), 1.5),
     formatEffect: value => formatX(value, 2, 2)
   },
   galaxyBoost: {
