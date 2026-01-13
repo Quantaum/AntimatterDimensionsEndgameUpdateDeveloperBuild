@@ -43,7 +43,7 @@ window.formatPostBreak = function formatPostBreak(value, places, placesUnder1000
   if (decimal.eq(0)) return notation.formatUnder1000(0, placesUnder1000);
 
   if (decimal.log10().lt(-300)) {
-    return decimal.sign() < 0
+    return decimal.sign < 0
       ? notation.formatVerySmallNegativeDecimal(decimal.abs(), placesUnder1000)
       : notation.formatVerySmallDecimal(decimal, placesUnder1000);
   }
@@ -55,7 +55,7 @@ window.formatPostBreak = function formatPostBreak(value, places, placesUnder1000
       : notation.formatUnder1000(number, placesUnder1000);
   }
 
-  return decimal.sign() < 0
+  return decimal.sign < 0
     ? notation.formatNegativeDecimal(decimal.abs(), places)
     : notation.formatDecimal(decimal, places);
 };
