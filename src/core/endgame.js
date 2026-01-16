@@ -20,6 +20,8 @@ function updateEndgameRecords() {
   if (player.records.thisEndgame.realTime < player.records.bestEndgame.realTime) {
     player.records.bestEndgame.realTime = player.records.thisEndgame.realTime;
   }
+  if (gainedCelestialPoints().gt(player.records.permanent.maxCP)) player.records.permanent.maxCP = gainedCelestialPoints();
+  if (gainedDoomedParticles().gt(player.records.permanent.maxDP)) player.records.permanent.maxDP = gainedDoomedParticles();
 }
 
 function giveEndgameRewards() {
