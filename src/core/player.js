@@ -1245,10 +1245,10 @@ export function guardFromNaNValues(obj) {
           }
           if (!(newValue instanceof Decimal)) {
             throw new Error("Non-Decimal assignment to Decimal player property");
-          }
+          }/*
           if (!isFinite(newValue.mantissa) || !isFinite(newValue.exponent)) {
             throw new Error("NaN player property assignment (old decimal value)");
-          }
+          }*/
           if (!isFinite(newValue.mag) || !isFinite(newValue.sign) || !isFinite(newValue.layer)) {
             throw new Error("NaN player property assignment (new decimal value)");
           }
