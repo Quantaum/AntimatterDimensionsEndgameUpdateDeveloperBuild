@@ -594,21 +594,21 @@ window.ExponentialCostScaling = class ExponentialCostScaling {
     // for example, that 10 AM buys 2/3 of a set of 10 first dimensions rather than
     // buying the whole set of 10, which at least feels more correct.
     const money = rawMoney.div(numberPerSet);
-    const logMoney = money.log10().toNumber();
+    const logMoney = money.log10();
     const logMult = this._logBaseIncrease;
     const logBase = this._logBaseCost;
     // The 1 + is because the multiplier isn't applied to the first purchase
-    let contValue = new Decimal(logMoney).sub(logBase).div(logMult).add(1).toNumber();
+    let contValue = logMoney.sub(logBase).div(logMult).add(1);
     // We can use the linear method up to one purchase past the threshold, because the first purchase
     // past the threshold doesn't have cost scaling in it yet.
-    if (contValue > this._purchasesBeforeScaling) {
-      const discrim = this._precalcDiscriminant + 8 * this._logCostScale * logMoney;
-      if (discrim < 0) {
-        return 0;
+    if (contValue.gt(this._purchasesBeforeScaling)) {
+      const discrim = DC.D8.times(this._logCostScale).times(logMoney).add(this._precalcDiscriminant);
+      if (discrim.lt(0)) {
+        return DC.D0;
       }
-      contValue = this._precalcCenter + Math.sqrt(discrim) / (2 * this._logCostScale);
+      contValue = Decimal.sqrt(discrim).div(DC.D2.times(this._logCostScale)).add(this._precalcCenter);
     }
-    return Math.clampMin(contValue, 0);
+    return Decimal.clampMin(contValue, 0);
   }
 
   static log10(value) {
