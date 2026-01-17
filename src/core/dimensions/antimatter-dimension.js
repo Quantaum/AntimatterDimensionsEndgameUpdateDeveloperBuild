@@ -98,7 +98,7 @@ function applyNDMultipliers(mult, tier) {
   if (Laitela.continuumActive) {
     buy10Value = AntimatterDimension(tier).continuumValue;
   } else {
-    buy10Value = Math.floor(AntimatterDimension(tier).bought / 10);
+    buy10Value = Decimal.floor(AntimatterDimension(tier).bought / 10);
   }
 
   multiplier = multiplier.times(Decimal.pow(AntimatterDimensions.buyTenMultiplier, buy10Value));
@@ -487,22 +487,22 @@ class AntimatterDimensionState extends DimensionState {
    * @returns {number}
    */
   get continuumValue() {
-    if (!this.isAvailableForPurchase) return 0;
+    if (!this.isAvailableForPurchase) return DC.D0;
     // Nameless limits dim 8 purchases to 1 only
     // Continuum should be no different
-    if (this.tier === 8 && Enslaved.isRunning) return 1;
+    if (this.tier === 8 && Enslaved.isRunning) return DC.D1;
     // It's safe to use dimension.currencyAmount because this is
     // a dimension-only method (so don't just copy it over to tickspeed).
     // We need to use dimension.currencyAmount here because of different costs in NC6.
-    return this.costScale.getContinuumValue(this.currencyAmount, 10) * Laitela.matterExtraPurchaseFactor;
+    return this.costScale.getContinuumValue(this.currencyAmount, 10).times(Laitela.matterExtraPurchaseFactor);
   }
 
   /**
    * @returns {number}
    */
   get continuumAmount() {
-    if (!Laitela.continuumActive) return 0;
-    return Math.floor(10 * this.continuumValue);
+    if (!Laitela.continuumActive) return DC.D0;
+    return Decimal.floor(this.continuumValue.times(10));
   }
 
   /**
