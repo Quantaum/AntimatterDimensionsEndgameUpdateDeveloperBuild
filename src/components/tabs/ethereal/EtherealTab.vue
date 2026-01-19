@@ -12,9 +12,9 @@ export default {
       <b>
         Below is the test style of numbers in the Ethereal
       </b>
-      </div class="really-cool-ethereal-text">
+      </div>
       <br>
-      <div>
+      <div class="really-cool-ethereal-text">
         9007199254740992
       </div>
     </div>
