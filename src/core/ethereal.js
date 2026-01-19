@@ -22,7 +22,7 @@ export function getEtherealPowerGainPerSecond() {
   return cpFactor.times(singFactor).times(rmFactor).times(gpFactor).div(1000);
 }
 
-function tryAdvanceSector() {
+export function tryAdvanceSector() {
   if (Currency.etherealPower.lt(Ethereal.sectorThreshold)) return;
   player.endgame.ethereal.sector++;
 }
