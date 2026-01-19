@@ -611,3 +611,11 @@ Currency.galacticPower = new class extends DecimalCurrency {
     player.endgame.galacticPower = newValue;
   }
 }();
+
+Currency.etherealPower = new class extends DecimalCurrency {
+  get value() { return player.endgame.ethereal.power; }
+  set value(value) {
+    const newValue = new Decimal(value);
+    player.endgame.ethereal.power = newValue;
+  }
+}();
