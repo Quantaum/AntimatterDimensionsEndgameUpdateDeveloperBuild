@@ -1,6 +1,6 @@
 const rebuyable = props => {
   props.cost = () => getHybridCostScaling(
-    player.reality.rebuyables[props.id],
+    player.reality.imaginaryRebuyables[props.id],
     1e15,
     props.initialCost,
     props.costMult,
