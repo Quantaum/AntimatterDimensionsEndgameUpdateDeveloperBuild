@@ -6,16 +6,16 @@ export default {
 
 <template>
   <div>
-    <div class="nyi-ethereal-text">
+    <div>
       <br>
-      <div>
+      <div class="nyi-ethereal-text">
       <b>
-        The Ethereal
+        Below is the test style of numbers in the Ethereal
       </b>
-      </div>
+      </div class="really-cool-ethereal-text">
       <br>
       <div>
-        Coming in v0.3.1
+        9007199254740992
       </div>
     </div>
   </div>
@@ -25,5 +25,16 @@ export default {
 .nyi-ethereal-text {
   font-size: 2rem;
   color: #0000c0;
+}
+
+.really-cool-ethereal-text {
+  font-size: 3rem;
+  font-weight: bold;
+  background: linear-gradient(#000000, #0000ff);
+  background-clip: text;
+  border: 0.1rem solid #ffffff;
+  text-shadow: 0 0 1.5rem #ffffff;
+
+  -webkit-text-fill-color: transparent;
 }
 </style>
