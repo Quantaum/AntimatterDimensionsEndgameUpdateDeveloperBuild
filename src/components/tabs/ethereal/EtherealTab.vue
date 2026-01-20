@@ -10,6 +10,14 @@ export default {
       sectorBoost: new Decimal()
     };
   },
+  computed: {
+    etherealPowerDisplay() {
+      if (this.etherealPower.lt(1)) return `${format(this.etherealPower, 3, 3)}`;
+      if (this.etherealPower.lt(10)) return `${format(this.etherealPower, 2, 2)}`;
+      if (this.etherealPower.lt(100)) return `${format(this.etherealPower, 1, 1)}`;
+      return `${formatHybridSmall(this.etherealPower, 3)}`;
+    }
+  },
   methods: {
     update() {
       this.etherealPower.copyFrom(Currency.etherealPower.value);
@@ -26,7 +34,7 @@ export default {
   <div>
     <div>
       <span class="c-normal-ethereal-text">You have </span>
-      <span class="c-really-cool-ethereal-text">{{ format(etherealPower, 2, 2) }}</span>
+      <span class="c-really-cool-ethereal-text">{{ etherealPowerDisplay }}</span>
       <span class="c-normal-ethereal-text"> Ethereal Power. </span>
       <span class="c-really-cool-ethereal-text">+{{ format(etherealPowerPerSecond, 2, 2) }}/s</span>
     </div>
