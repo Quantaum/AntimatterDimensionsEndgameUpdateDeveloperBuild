@@ -26,19 +26,19 @@ export const endgameMilestones = {
          : "(You have not yet reached this milestone)");
     }
   },
-  gameSpeedUncap: {
-    endgames: 10,
-    reward: () => {
-      return `Remove the ${format(1e300, 2, 2)} Game Speed Hardcap`;
-    }
-  },
   fasterGalaxies: {
-    endgames: 15,
+    endgames: 10,
     reward: "Unlock a new Galaxy Generator Upgrade"
   },
   remnantFormula: {
-    endgames: 25,
+    endgames: 15,
     reward: "Improve the Remnant Formula (see Remnant Gain Factors in the Pelle subtab)"
+  },
+  gameSpeedUncap: {
+    endgames: 25,
+    reward: () => {
+      return `Remove the ${format(1e300, 2, 2)} Game Speed Hardcap`;
+    }
   },
   celestialEarlyUnlock: {
     endgames: 50,
