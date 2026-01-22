@@ -130,7 +130,7 @@ export function getTachyonGalaxyMult(thresholdUpgrade) {
   return (1 + thresholdMult * glyphReduction) ** power;
 }
 
-export function getDilationGainPerSecond() {
+export function getDilationGainPerSecond(diff) {
   if (Pelle.isDoomed) {
     let pelleExtraDT = new Decimal(1);
     if (PelleAchievementUpgrade.achievement132.isBought) pelleExtraDT = pelleExtraDT.timesEffectsOf(Achievement(132));
@@ -148,7 +148,8 @@ export function getDilationGainPerSecond() {
     let dtRate = new Decimal(tachyonEffect)
       .timesEffectsOf(DilationUpgrade.dtGain, DilationUpgrade.dtGainPelle, DilationUpgrade.flatDilationMult)
       .times(ShopPurchase.dilatedTimePurchases.currentMult ** 0.5)
-      .times(Pelle.specialGlyphEffect.dilation).times(pelleExtraDT);
+      .times(Pelle.specialGlyphEffect.dilation).times(pelleExtraDT)
+      .times(diff).div(1000);
     if (dtRate.gte(DilationSoftcapStart.PRIMARY_THRESHOLD)) {
       dtRate = Decimal.pow(10, (((Decimal.log10(dtRate).sub(Decimal.log10(DilationSoftcapStart.PRIMARY_THRESHOLD))).div(10)).add(
         Decimal.log10(DilationSoftcapStart.PRIMARY_THRESHOLD))));
@@ -171,6 +172,7 @@ export function getDilationGainPerSecond() {
     Decimal.clampMin(Decimal.log10(Replicanti.amount.add(1)).times(getAdjustedGlyphEffect("replicationdtgain")), 1));
   if (Enslaved.isRunning && !dtRate.eq(0)) dtRate = Decimal.pow10(Decimal.pow(dtRate.plus(1).log10(), 0.85).sub(1));
   if (V.isRunning) dtRate = dtRate.pow(0.5);
+  dtRate = dtRate.times(diff).div(1000);
   if (dtRate.gte(DilationSoftcapStart.PRIMARY_THRESHOLD)) {
     dtRate = Decimal.pow(10, (((Decimal.log10(dtRate).sub(Decimal.log10(DilationSoftcapStart.PRIMARY_THRESHOLD))).div(10)).add(
       Decimal.log10(DilationSoftcapStart.PRIMARY_THRESHOLD))));
