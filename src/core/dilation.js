@@ -257,10 +257,9 @@ export function getTachyonReq() {
 }
 
 export function getDilationTimeEstimate(goal) {
-  const currentDTGain = getDilationGainPerSecond();
-  const rawDTGain = currentDTGain.times(getGameSpeedupForDisplay());
+  const rawDTGain = getDilationGainPerSecond();
   const currentDT = Currency.dilatedTime.value;
-  if (currentDTGain.eq(0)) return null;
+  if (rawDTGain.eq(0)) return null;
   if (PelleRifts.paradox.isActive) {
     const drain = Pelle.riftDrainPercent;
     const goalNetRate = rawDTGain.minus(Decimal.multiply(goal, drain));
