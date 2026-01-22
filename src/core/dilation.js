@@ -344,5 +344,5 @@ export const DilationUpgradeScaling = {
 };
 
 export const DilationSoftcapStart = {
-  PRIMARY_THRESHOLD: DC.E15000
+  PRIMARY_THRESHOLD: DC.E20000
 };
