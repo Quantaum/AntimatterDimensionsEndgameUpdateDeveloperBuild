@@ -59,7 +59,7 @@ window.formatPostBreak = function formatPostBreak(value, places, placesUnder1000
   }
 
   if (decimal.layer >= 2) {
-    return lNotation.formatLDecimal(decimal, places);
+    return lNotation.formatLDecimal(decimal, 4);
   }
 
   return decimal.sign < 0
