@@ -71,8 +71,6 @@ export const AlphaUnlock = mapGameDataToObject(
 );
 */
 
-/*
 EventHub.logic.on(GAME_EVENT.TAB_CHANGED, () => {
   if (Tab.celestials.alpha.isOpen) Alpha.quotes.initial.show();
 });
-*/
