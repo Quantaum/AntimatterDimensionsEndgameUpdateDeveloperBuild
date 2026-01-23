@@ -41,6 +41,9 @@ export const Alpha = {
   get currentShortStageName() {
     return this.shortStageNames[this.currentStage];
   },
+  get celestialMatterConversionNerf() {
+    return 0.01 + (this.currentStage / 400) + Math.max(0, (this.currentStage - 22) / 400) + Math.max(0, (this.currentStage - 25) / 200);
+  },
   quotes: Quotes.alpha,
   symbol: "α"
 };
