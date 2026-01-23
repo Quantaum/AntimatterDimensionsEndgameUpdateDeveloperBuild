@@ -502,6 +502,15 @@ export const tabs = [
         condition: () => Pelle.isUnlocked,
         id: 7,
         hidable: true,
+      },
+      {
+        key: "alpha",
+        name: "Alpha",
+        symbol: "α",
+        component: "AlphaTab",
+        condition: () => Alpha.isUnlocked,
+        id: 8,
+        hidable: true,
       }
     ]
   },
