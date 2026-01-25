@@ -594,7 +594,7 @@ window.ExponentialCostScaling = class ExponentialCostScaling {
     // for example, that 10 AM buys 2/3 of a set of 10 first dimensions rather than
     // buying the whole set of 10, which at least feels more correct.
     const money = rawMoney.div(numberPerSet);
-    const logMoney = money.log10();
+    const logMoney = money.max(1).log10();
     const logMult = this._logBaseIncrease;
     const logBase = this._logBaseCost;
     // The 1 + is because the multiplier isn't applied to the first purchase
