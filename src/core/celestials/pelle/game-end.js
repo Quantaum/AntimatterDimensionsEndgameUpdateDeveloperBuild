@@ -50,8 +50,7 @@ export const END_STATE_MARKERS = {
 export const GameEnd = {
   get endState() {
     if (this.removeAdditionalEnd) return this.additionalEnd;
-    return Decimal.clamp((Decimal.log10(player.celestials.pelle.records.totalEndgameAntimatter.plus(1).log10().add(1)).sub(8.7)).div(
-      Decimal.log10(9e15).sub(8.7)).add(this.additionalEnd), 0, 1e300).toNumber();
+    return Decimal.clamp((Decimal.log10(player.celestials.pelle.records.totalEndgameAntimatter.plus(1).log10().add(1)).sub(Math.log10(5e8))).div(Decimal.log10(9e15).sub(Math.log10(5e8))).add(this.additionalEnd), 0, 1e300).toNumber();
   },
   _additionalEnd: 0,
   get additionalEnd() {
