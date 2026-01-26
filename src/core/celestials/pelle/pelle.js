@@ -64,14 +64,14 @@ export const Pelle = {
     }
 
     EventHub.dispatch(GAME_EVENT.DOOM_REALITY_BEFORE);
-    Glyphs.harshAutoClean();
     if (!Glyphs.unequipAll()) {
       Modal.hideAll();
       Modal.message.show(`Dooming your Reality will unequip your Glyphs. Some of your
         Glyphs could not be unequipped due to lack of inventory space.`, 1);
       return;
     }
-    Glyphs.harshAutoClean();
+    // Keep 8 of each glyphs.
+    Glyphs.autoClean(8);
     if (Glyphs.freeInventorySpace < 5) {
       Modal.hideAll();
       Modal.message.show(`You must have enough empty unprotected Glyph slots for
