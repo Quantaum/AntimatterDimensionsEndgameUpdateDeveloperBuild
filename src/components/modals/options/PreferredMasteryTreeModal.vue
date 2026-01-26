@@ -104,7 +104,7 @@ export default {
       </button>
     </div>
     <br>
-    <h2>Pace Split Preference</h2>
+    <h2>Currency Split Preference</h2>
     <div class="l-modal-split-preferences">
       <button
         v-for="(id, name) in currencyOptions"
