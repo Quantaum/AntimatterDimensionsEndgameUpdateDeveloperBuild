@@ -260,7 +260,7 @@ export function getDilationTimeEstimate(goal) {
   const rawDTGain = getDilationGainPerSecond();
   const currentDT = Currency.dilatedTime.value;
   if (rawDTGain.eq(0)) return null;
-  if (PelleRifts.paradox.isActive) {
+  if (PelleRifts.paradox.isActive && !PelleRifts.paradox.isMaxed) {
     const drain = Pelle.riftDrainPercent;
     const goalNetRate = rawDTGain.minus(Decimal.multiply(goal, drain));
     const currNetRate = rawDTGain.minus(currentDT.times(drain));
