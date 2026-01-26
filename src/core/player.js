@@ -921,7 +921,7 @@ window.player = {
     dpBought: 0,
     masteries: [],
     shopMinimized: false,
-    preferredPaths: [[], 0],
+    preferredPaths: [[], []],
     presets: new Array(6).fill({
       name: "",
       masteries: "",
