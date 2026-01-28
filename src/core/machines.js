@@ -124,7 +124,7 @@ export const MachineHandler = {
   },
 
   get currentDMCap() {
-    return player.reality.DMCap;
+    return player.reality.dmCap;
   },
 
   // This is εM cap based on in-game values at that instant, may be lower than the actual cap
@@ -135,8 +135,8 @@ export const MachineHandler = {
   // Use DMCap to store the base cap; applying multipliers separately avoids some design issues the 3xTP upgrade has
   updateDMCap() {
     if (this.uncappedIM.gte(this.baseIMCap)) {
-      if (this.baseDMCap.gt(player.reality.DMCap)) {
-        player.reality.DMCap = this.baseDMCap;
+      if (this.baseDMCap.gt(player.reality.dmCap)) {
+        player.reality.dmCap = this.baseDMCap;
       }
     }
   },
