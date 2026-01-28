@@ -654,6 +654,7 @@ export function gameLoop(passedDiff, options = {}) {
 
   applyAutoprestige(realDiff);
   updateImaginaryMachines(realDiff);
+  updateDualMachines(realDiff);
 
   if (ExpansionPack.teresaPack.isBought && player.celestials.teresa.autoPour) {
     Teresa.pourRM(realDiff, true);
@@ -1102,6 +1103,11 @@ function applyAutoprestige(diff) {
 function updateImaginaryMachines(diff) {
   MachineHandler.updateIMCap();
   Currency.imaginaryMachines.add(MachineHandler.gainedImaginaryMachines(diff));
+}
+
+function updateDualMachines(diff) {
+  MachineHandler.updateDMCap();
+  Currency.dualMachines.add(MachineHandler.gainedDualMachines(diff));
 }
 
 function updateTachyonGalaxies() {
