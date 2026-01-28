@@ -212,6 +212,7 @@ export const Endgame = {
     ui.view.news = player.options.news.enabled;
     Themes.find(Theme.currentName()).set();
     Notations.all.find(n => n.name === player.options.notation).setAsCurrent();
+    LNotations.find(player.options.lnotation).setAsCurrent(true);
     ADNotations.Settings.exponentCommas.min = 10 ** player.options.notationDigits.comma;
     ADNotations.Settings.exponentCommas.max = 10 ** player.options.notationDigits.notation;
     Currency.realities.reset();
