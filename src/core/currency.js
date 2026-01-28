@@ -619,3 +619,11 @@ Currency.etherealPower = new class extends DecimalCurrency {
     player.endgame.ethereal.power = newValue;
   }
 }();
+
+Currency.dualMachines = new class extends DecimalCurrency {
+  get value() { return player.reality.dualMachines; }
+  set value(value) {
+    const newValue = new Decimal(value);
+    //player.reality.dualMachines = Decimal.clampMax(newValue, MachineHandler.currentDMCap);
+  }
+}();
