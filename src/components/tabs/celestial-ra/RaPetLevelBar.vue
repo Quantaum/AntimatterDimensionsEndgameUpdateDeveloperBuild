@@ -52,7 +52,7 @@ export default {
       return this.level + 1;
     },
     classObject() {
-      const available = this.memories >= this.requiredMemories;
+      const available = this.memories.gte(this.requiredMemories);
       const pet = this.pet;
       return {
         "c-ra-level-up-btn": true,
