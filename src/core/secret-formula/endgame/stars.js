@@ -1,6 +1,7 @@
 export const stars = {
   red: {
     id: 0,
+    name: "red",
     unlockStage: 1,
     resetReq: 1e10,
     effect: () => {
@@ -12,6 +13,7 @@ export const stars = {
   },
   orange: {
     id: 1,
+    name: "orange",
     unlockStage: 4,
     resetReq: 1e12,
     effect: () => {
@@ -23,6 +25,7 @@ export const stars = {
   },
   yellow: {
     id: 2,
+    name: "yellow",
     unlockStage: 7,
     resetReq: 1e14,
     effect: () => {
@@ -34,6 +37,7 @@ export const stars = {
   },
   green: {
     id: 3,
+    name: "green",
     unlockStage: 10,
     resetReq: 1e16,
     effect: () => {
@@ -45,6 +49,7 @@ export const stars = {
   },
   blue: {
     id: 4,
+    name: "blue",
     unlockStage: 13,
     resetReq: 1e18,
     effect: () => {
@@ -56,6 +61,7 @@ export const stars = {
   },
   purple: {
     id: 5,
+    name: "purple",
     unlockStage: 16,
     resetReq: 1e20,
     effect: () => {
@@ -67,6 +73,7 @@ export const stars = {
   },
   white: {
     id: 6,
+    name: "white",
     unlockStage: 20,
     resetReq: 1e24,
     effect: () => {
@@ -78,6 +85,7 @@ export const stars = {
   },
   black: {
     id: 7,
+    name: "black",
     unlockStage: 24,
     resetReq: 1e30,
     effect: () => {
@@ -89,6 +97,7 @@ export const stars = {
   },
   gray: {
     id: 8,
+    name: "gray",
     unlockStage: 28,
     resetReq: 1e40,
     effect: () => {
