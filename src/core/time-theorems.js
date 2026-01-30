@@ -33,7 +33,7 @@ export class TimeTheoremPurchaseType {
   get costIncrement() { throw new NotImplementedError(); }
 
   get bulkPossible() {
-    if (Perk.ttFree.canBeApplied) {
+    if (Perk.ttFree.canBeApplied && !player.disablePostReality) {
       return Decimal.floor(this.currency.value.divide(this.cost).log10().div(this.costIncrement.log10()).add(1)).toNumber();
     }
     return Decimal.affordGeometricSeries(this.currency.value, this.cost, this.costIncrement, 0).toNumber();
@@ -50,7 +50,7 @@ export class TimeTheoremPurchaseType {
     let purchased = false;
     const amount = this.bulkPossible;
     if (this.willInfinity(amount)) return false;
-    const buyFn = cost => (Perk.ttFree.canBeApplied ? this.currency.gte(cost) : this.currency.purchase(cost));
+    const buyFn = cost => ((Perk.ttFree.canBeApplied && !player.disablePostReality) ? this.currency.gte(cost) : this.currency.purchase(cost));
     // This will sometimes buy one too few for EP, so we just have to buy 1 after.
     if (bulk && buyFn(this.bulkCost(amount))) {
       Currency.timeTheorems.add(amount);
@@ -103,7 +103,7 @@ TimeTheoremPurchaseType.ep = new class extends TimeTheoremPurchaseType {
   get costIncrement() { return DC.D2; }
 
   bulkCost(amount) {
-    if (Perk.ttFree.canBeApplied) return this.cost.times(this.costIncrement.pow(amount - 1));
+    if (Perk.ttFree.canBeApplied && !player.disablePostReality) return this.cost.times(this.costIncrement.pow(amount - 1));
     return this.costIncrement.pow(amount + this.amount).subtract(this.cost);
   }
 }();
