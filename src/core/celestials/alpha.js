@@ -11,7 +11,7 @@ export const Alpha = {
   },
   initializeRun() {
     Endgame.resetNoReward();
-    //player.isRealityDisabled = true;
+    player.disablePostReality = true;
     clearCelestialRuns();
     player.celestials.alpha.run = true;
     recalculateAllGlyphs();
