@@ -54,7 +54,7 @@ get increaseWithMult() {
   }
 
   get hasAdditionalModes() {
-    return RealityUpgrade(13).isBought;
+    return !player.disablePostReality && RealityUpgrade(13).isBought;
   }
 
   autoEternitiesAvailable(considerMilestoneReached) {
