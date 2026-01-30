@@ -64,6 +64,7 @@ export const Glyphs = {
     return this.inventory.filter((e, idx) => e === null && idx >= this.protectedSlots).length;
   },
   get activeSlotCount() {
+    if (player.disablePostReality) return 0;
     if (Pelle.isDoomed) {
       let PelleGlyphs = 0;
       if (PelleRifts.vacuum.milestones[0].canBeApplied) PelleGlyphs = PelleGlyphs + 1;
