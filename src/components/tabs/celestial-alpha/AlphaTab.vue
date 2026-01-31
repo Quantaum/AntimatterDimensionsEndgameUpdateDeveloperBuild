@@ -11,6 +11,9 @@ export default {
       stage: 0,
       quote: "",
       isRunning: false,
+      layers: [],
+      nerfs: [],
+      buffs: [],
     };
   },
   computed: {
@@ -48,6 +51,9 @@ export default {
       this.stage = Alpha.currentStage;
       this.quote = Alpha.quote;
       this.isRunning = Alpha.isRunning;
+      this.layers = AlphaDescriptions.layerRow;
+      this.nerfs = AlphaDescriptions.nerfRow;
+      this.buffs = AlphaDescriptions.buffRow;
     },
     startRun() {
       if (this.isDoomed) return;
@@ -61,14 +67,25 @@ export default {
   <div class="l-alpha-celestial-tab">
     <CelestialQuoteHistory celestial="alpha" />
     <div class="l-alpha-unlocks-and-run">
-      <div class="l-alpha-nyi-text">
-        <br>
-        The True Darkness Arises...
-        <br>
-        The Esteemed Leader of the Celestials is gracious enough to grant such pathetic
-        mortals as yourselves a bit more time to prepare for Total Annihilation.
-        <br>
-        Come back in v1.0.0 to meet your End.
+      <div class="l-alpha-unlocks">
+        <p
+          v-for="(layer, idx) in layers"
+          :key="idx"
+        >
+          {{ layer }}
+        </p>
+        <p
+          v-for="(nerf, idx) in nerfs"
+          :key="idx"
+        >
+          {{ nerf }}
+        </p>
+        <p
+          v-for="(buff, idx) in buffs"
+          :key="idx"
+        >
+          {{ buff }}
+        </p>
       </div>
     </div>
   </div>
@@ -87,9 +104,13 @@ export default {
   align-items: center;
 }
 
-.l-alpha-nyi-text {
-  font-size: 2rem;
-  font-weight: bold;
-  color: var(--color-alpha--base);
+.l-alpha-unlocks {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: var(--var-border-width, 0.2rem) solid var(--color-alpha--base);
+  border-radius: var(--var-border-radius, 0.5rem);
+  margin: 1rem;
+  padding: 1rem;
 }
 </style>
