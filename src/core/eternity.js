@@ -325,7 +325,7 @@ class EPMultiplierState extends GameMechanicState {
     let tempVal = DC.D0;
     let bulk = DC.D1;
     let cur = Currency.eternityPoints.value.max(1);
-    if (cur.gt(this.costIncreaseThresholds[3]) && !EndgameMastery(152).isBought) {
+    if (cur.gt(this.costIncreaseThresholds[3]) && (!EndgameMastery(152).isBought || player.disablePostReality)) {
       cur = Decimal.log(cur.div(500), 1e3);
       return Decimal.max(Decimal.floor(Decimal.pow(cur.add(Decimal.pow(1332, 1.2)), 1 / 1.2)), 1332).toNumber();
       // eslint-disable-next-line no-else-return
@@ -394,7 +394,7 @@ class EPMultiplierState extends GameMechanicState {
       const cost = Decimal.pow(multPerUpgrade[i], count).times(500);
       if (cost.lt(costThresholds[i])) return cost;
     }
-    const purchaseScale = EndgameMastery(152).isBought ? count : Math.pow(count, 1.2) - Math.pow(1332, 1.2);
+    const purchaseScale = (EndgameMastery(152).isBought && !player.disablePostReality) ? count : Math.pow(count, 1.2) - Math.pow(1332, 1.2);
     return DC.E3.pow(purchaseScale).times(500);
   }
 }
