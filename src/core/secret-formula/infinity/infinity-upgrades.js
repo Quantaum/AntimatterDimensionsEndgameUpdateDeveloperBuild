@@ -131,16 +131,16 @@ export const infinityUpgrades = {
     checkRequirement: () => InfinityUpgrade.thisInfinityTimeMult.isBought,
     description: "Multiplier to 1st Antimatter Dimension based on unspent Infinity Points",
     effect: () => {
-      const divisor = EndgameMastery(81).isBought ? 5 : 10;
-      const subtrahend = EndgameMastery(81).isBought ? 1.5 : 0;
+      const divisor = (EndgameMastery(81).isBought && !player.disablePostReality) ? 5 : 10;
+      const subtrahend = (EndgameMastery(81).isBought && !player.disablePostReality) ? 1.5 : 0;
       return Decimal.min(Currency.infinityPoints.value.dividedBy(2), Decimal.pow(DC.E1E15, EndgameUpgrade(1).effectOrDefault(1))).pow(Decimal.max((Decimal.log10(Currency.infinityPoints.value.add(10).log10()).div(divisor)).sub(subtrahend), 1.5)).plus(1);
     },
     formatEffect: value => formatX(value, 2, 2),
     charged: {
       description: "Multiplier to 1st Antimatter Dimension based on unspent Infinity Points, powered by Teresa level",
       effect: () => {
-        const divisor = EndgameMastery(81).isBought ? 5 : 10;
-        const subtrahend = EndgameMastery(81).isBought ? 1.5 : 0;
+        const divisor = (EndgameMastery(81).isBought && !player.disablePostReality) ? 5 : 10;
+        const subtrahend = (EndgameMastery(81).isBought && !player.disablePostReality) ? 1.5 : 0;
         return Decimal.min(Currency.infinityPoints.value.dividedBy(2), Decimal.pow(DC.E1E15, EndgameUpgrade(1).effectOrDefault(1))).pow(Decimal.sqrt(Ra.pets.teresa.level * Ra.unlocks.chargeBoost.effectOrDefault(1)).times(Decimal.max((Decimal.log10(Currency.infinityPoints.value.add(10).log10()).div(divisor)).sub(subtrahend), 1.5))).plus(1);
       },
       formatEffect: value => formatX(value, 2, 2)
