@@ -10,11 +10,11 @@ export class TesseractAutobuyerState extends AutobuyerState {
   }
 
   get isUnlocked() {
-    return ExpansionPack.enslavedPack.isBought;
+    return ExpansionPack.enslavedPack.isBought && !player.disablePostReality;
   }
 
   get hasUnlimitedBulk() {
-    return ExpansionPack.enslavedPack.isBought;
+    return ExpansionPack.enslavedPack.isBought && !player.disablePostReality;
   }
 
   tick() {
