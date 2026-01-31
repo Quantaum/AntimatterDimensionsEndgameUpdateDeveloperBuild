@@ -7,7 +7,7 @@ export const Teresa = {
   timePoured: new Decimal(0),
   lastUnlock: "effarig",
   get pouredAmountCap() {
-    return ExpansionPack.teresaPack.isBought ? DC.BEMAX : new Decimal(1e24);
+    return (ExpansionPack.teresaPack.isBought && !player.disablePostReality) ? DC.BEMAX : new Decimal(1e24);
   },
   displayName: "Teresa",
   possessiveName: "Teresa's",
@@ -147,7 +147,7 @@ class PerkShopUpgradeState extends RebuyableMechanicState {
   }
 
   get viewCharge() {
-    return (Teresa.chargeModeOn || this.isCharged || ui.view.shiftDown) && this.ableToCharge && ExpansionPack.teresaPack.isBought;
+    return (Teresa.chargeModeOn || this.isCharged || ui.view.shiftDown) && this.ableToCharge && ExpansionPack.teresaPack.isBought && !player.disablePostReality;
   }
 
   get ableToCharge() {
