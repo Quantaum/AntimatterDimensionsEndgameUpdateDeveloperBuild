@@ -227,7 +227,7 @@ export const infinityUpgrades = {
     cost: () => InfinityUpgrade.ipMult.cost,
     checkRequirement: () => Achievement(41).isUnlocked,
     costCap: () => (BreakEternityUpgrade.doubleIPUncap.isBought && !player.disablePostReality) ? DC.BEMAX : DC.E6E6,
-    costIncreaseThreshold: () => EndgameUpgrade(21).isBought ? DC.BEMAX : DC.E3E6,
+    costIncreaseThreshold: () => (EndgameUpgrade(21).isBought && !player.disablePostReality) ? DC.BEMAX : DC.E3E6,
     description: () => `Multiply Infinity Points from all sources by ${formatX(2)}`,
     // Normally the multiplier caps at e993k or so with 3300000 purchases, but if the cost is capped then we just give
     // an extra e7k to make the multiplier look nice
