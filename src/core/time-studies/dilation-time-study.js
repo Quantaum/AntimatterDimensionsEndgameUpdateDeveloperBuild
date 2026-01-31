@@ -40,7 +40,7 @@ export class DilationTimeStudyState extends TimeStudyState {
         for (const id of [7, 8, 9]) player.dilation.upgrades.add(id);
       }
       if (!player.disablePostReality && (!Pelle.isDoomed || PellePerkUpgrade.perkSTP.isBought)) Currency.tachyonParticles.bumpTo(Perk.startTP.effectOrDefault(0));
-      if (Ra.unlocks.unlockDilationStartingTP.canBeApplied && !isInCelestialReality() && !Pelle.isDoomed) {
+      if (Ra.unlocks.unlockDilationStartingTP.canBeApplied && !isInCelestialReality() && !Pelle.isDoomed && !player.disablePostReality) {
         Currency.tachyonParticles.bumpTo(getTP(Ra.unlocks.unlockDilationStartingTP.effectOrDefault(0), false));
       }
       TabNotification.dilationAfterUnlock.tryTrigger();
