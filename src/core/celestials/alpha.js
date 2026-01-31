@@ -101,7 +101,7 @@ export const AlphaDescriptions = {
   get layerRow() {
     let layers = [];
     if (Alpha.currentStage >= 0) {
-      for (let n = 0; n < Alpha.currentStage + 1; n++) {
+      for (let n = 0; n < Math.min(Alpha.currentStage + 1, 28); n++) {
         layers.push(Alpha.shortStageNames[n]);
       }
     }
