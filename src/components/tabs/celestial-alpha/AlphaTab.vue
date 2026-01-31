@@ -112,5 +112,11 @@ export default {
   border-radius: var(--var-border-radius, 0.5rem);
   margin: 1rem;
   padding: 1rem;
+  overflow-y: scroll;
+  height: 40rem;
+}
+
+p {
+  margin-bottom: 1rem;
 }
 </style>
