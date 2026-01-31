@@ -220,7 +220,7 @@ export function rewardTP() {
 // act dynamically on this fixed base value elsewhere solves that issue
 export function getBaseTP(antimatter, requireEternity) {
   if (!Player.canEternity && requireEternity) return DC.D0;
-  const am = (isInCelestialReality() || Pelle.isDoomed)
+  const am = (isInCelestialReality() || Pelle.isDoomed || player.disablePostReality)
     ? antimatter
     : Ra.unlocks.unlockDilationStartingTP.effectOrDefault(antimatter);
   let baseTP = Decimal.pow(Decimal.log10(am).div(160), 1.8);
