@@ -61,7 +61,7 @@ export default {
   methods: {
     update() {
       this.anySacrifices = GameCache.logTotalGlyphSacrifice !== 0;
-      this.hasAlteration = Ra.unlocks.alteredGlyphs.canBeApplied;
+      this.hasAlteration = Ra.unlocks.alteredGlyphs.canBeApplied && !player.disablePostReality;
       this.hideAlteration = player.options.hideAlterationEffects;
       this.maxSacrifice.copyFrom(GlyphSacrificeHandler.maxSacrificeForEffects);
       this.teresaMult.copyFrom(Teresa.runRewardMultiplier);
