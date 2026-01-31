@@ -72,6 +72,9 @@ export default {
     <div class="l-alpha-unlocks-and-run">
       <div class="l-alpha-unlocks">
         <div>
+          <span class="l-alpha-header">
+            Layer
+          </span>
           <p
             v-for="(layer, idx) in layers"
             :key="idx"
@@ -80,6 +83,9 @@ export default {
           </p>
         </div>
         <div>
+          <span class="l-alpha-header">
+            Nerf
+          </span>
           <p
             v-for="(nerf, idy) in nerfs"
             :key="idy"
@@ -88,6 +94,9 @@ export default {
           </p>
         </div>
         <div>
+          <span class="l-alpha-header">
+            Buff
+          </span>
           <p
             v-for="(buff, idz) in buffs"
             :key="idz"
@@ -134,5 +143,11 @@ p {
   justify-content: center;
   width: 16rem;
   height: 10rem;
+}
+
+.l-alpha-header {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--color-alpha--base);
 }
 </style>
