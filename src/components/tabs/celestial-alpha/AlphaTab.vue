@@ -126,6 +126,8 @@ export default {
 }
 
 p {
+  font-size: 1.2rem;
+  color: var(--color-alpha--base);
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
