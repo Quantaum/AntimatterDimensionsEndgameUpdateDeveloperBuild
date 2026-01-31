@@ -769,7 +769,7 @@ export const Glyphs = {
   },
   // Modifies a basic glyph to have timespeed, and adds the new effect to time glyphs
   applyGamespeed(glyph) {
-    if (!Ra.unlocks.allGamespeedGlyphs.canBeApplied) return;
+    if (!Ra.unlocks.allGamespeedGlyphs.canBeApplied || player.disablePostReality) return;
     if (BASIC_GLYPH_TYPES.includes(glyph.type)) {
       glyph.effects |= (1 << GlyphEffects.timespeed.bitmaskIndex);
       if (glyph.type === "time") {
