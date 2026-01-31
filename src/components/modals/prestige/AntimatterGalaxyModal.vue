@@ -64,10 +64,10 @@ export default {
           this.newGalaxies = Galaxy.buyableGalaxies(Decimal.round(dim.totalAmount.toNumber())).sub(player.galaxies);
         }
       }
-      this.keepAntimatter = Achievement(111).isUnlocked;
+      this.keepAntimatter = Achievement(111).isUnlocked && !player.disablePostReality;
       this.perkANRBought = (Perk.antimatterNoReset.canBeApplied && !player.disablePostReality);
-      this.keepDimBoost = (Achievement(143).isUnlocked && (!Pelle.isDoomed || PelleAchievementUpgrade.achievement143.isBought)) ||
-        PelleUpgrade.galaxyNoResetDimboost.canBeApplied;
+      this.keepDimBoost = ((Achievement(143).isUnlocked && (!Pelle.isDoomed || PelleAchievementUpgrade.achievement143.isBought)) ||
+        PelleUpgrade.galaxyNoResetDimboost.canBeApplied) && !player.disablePostReality;
     },
     handleYesClick() {
       requestGalaxyReset(this.bulk);
