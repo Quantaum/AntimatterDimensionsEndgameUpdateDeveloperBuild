@@ -41,7 +41,7 @@ export default {
         : "fas fa-compress-arrows-alt";
     },
     upgrades() {
-      if (!EndgameMilestone.fasterGalaxies.isReached) return GalaxyGeneratorUpgrades.all.filter(u => u.id !== "galaxyGeneratorRSMult");
+      if (!EndgameMilestone.fasterGalaxies.isReached || player.disablePostReality) return GalaxyGeneratorUpgrades.all.filter(u => u.id !== "galaxyGeneratorRSMult");
       return GalaxyGeneratorUpgrades.all;
     },
     galaxyText() {
