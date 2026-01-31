@@ -247,7 +247,7 @@ export const V = {
     return player.celestials.v.run;
   },
   get isFlipped() {
-    return Ra.unlocks.unlockHardV.isUnlocked;
+    return Ra.unlocks.unlockHardV.isUnlocked && !player.disablePostReality;
   },
   get isFullyCompleted() {
     return this.spaceTheorems >= 66;
