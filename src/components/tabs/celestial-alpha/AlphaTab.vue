@@ -71,24 +71,30 @@ export default {
     <CelestialQuoteHistory celestial="alpha" />
     <div class="l-alpha-unlocks-and-run">
       <div class="l-alpha-unlocks">
-        <p
-          v-for="(layer, idx) in layers"
-          :key="idx"
-        >
-          {{ layer }}
-        </p>
-        <p
-          v-for="(nerf, idy) in nerfs"
-          :key="idy"
-        >
-          {{ nerf }}
-        </p>
-        <p
-          v-for="(buff, idz) in buffs"
-          :key="idz"
-        >
-          {{ buff }}
-        </p>
+        <div>
+          <p
+            v-for="(layer, idx) in layers"
+            :key="idx"
+          >
+            {{ layer }}
+          </p>
+        </div>
+        <div>
+          <p
+            v-for="(nerf, idy) in nerfs"
+            :key="idy"
+          >
+            {{ nerf }}
+          </p>
+        </div>
+        <div>
+          <p
+            v-for="(buff, idz) in buffs"
+            :key="idz"
+          >
+            {{ buff }}
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -108,15 +114,12 @@ export default {
 }
 
 .l-alpha-unlocks {
-  display: flex;
   flex-direction: row;
   align-items: center;
   border: var(--var-border-width, 0.2rem) solid var(--color-alpha--base);
   border-radius: var(--var-border-radius, 0.5rem);
   margin: 1rem;
   padding: 1rem;
-  overflow-y: scroll;
-  height: 40rem;
 }
 
 p {
