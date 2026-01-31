@@ -13,6 +13,7 @@ export const Alpha = {
     player.disablePostReality = true;
     Endgame.resetNoReward();
     disChargeAllPerkUpgrades();
+    disChargeAll();
     AutomatorBackend.stop();
     clearCelestialRuns();
     player.celestials.alpha.run = true;
