@@ -444,7 +444,7 @@ export function getGameSpeedupFactor(effectsToConsider, _applyMaxThisEndgame, bl
     if (Effarig.isRunning) {
       factor = Effarig.multiplier(factor);
     } else if (Laitela.isRunning) {
-      const divisor = ExpansionPack.laitelaPack.isBought ? 5 : 10;
+      const divisor = (ExpansionPack.laitelaPack.isBought && !player.disablePostReality) ? 5 : 10;
       const nerfModifier = Math.clampMax(Time.thisRealityRealTime.totalMinutes.toNumber() / divisor, 1);
       factor = Decimal.pow(factor, nerfModifier);
     }
