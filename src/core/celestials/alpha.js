@@ -83,18 +83,63 @@ export const AlphaUnlocks = mapGameDataToObject(
 export const AlphaArrays = {
   get nerfNames() {
     let nerfs = [];
-      for (let n = 0; n < 28; n++) {
-        nerfs.push(AlphaUnlocks.all.find(x => x.id === n).nerfDescription);
-      }
+    for (let n = 0; n < 28; n++) {
+      nerfs.push(AlphaUnlocks.all.find(x => x.id === n).nerfDescription);
+    }
     return nerfs;
   },
   get buffNames() {
     let buffs = [];
-      for (let n = 0; n < 28; n++) {
-        buffs.push(AlphaUnlocks.all.find(x => x.id === n).buffDescription);
-      }
+    for (let n = 0; n < 28; n++) {
+      buffs.push(AlphaUnlocks.all.find(x => x.id === n).buffDescription);
+    }
     return buffs;
   }
+};
+
+export const AlphaDescriptions = {
+  get layerRow() {
+    let layers = [];
+    if (Alpha.currentStage >= 0) {
+      for (let n = 0; n < Alpha.currentStage + 1; n++) {
+        layers.push(Alpha.shortStageNames[n]);
+      }
+    }
+    if (Alpha.currentStage <= 26) {
+      for (let n = Alpha.currentStage + 1; n < 28; n++) {
+        layers.push("?");
+      }
+    }
+    return layers;
+  },
+  get nerfRow() {
+    let nerfs = [];
+    if (Alpha.currentStage >= 1) {
+      for (let n = 0; n < Alpha.currentStage; n++) {
+        nerfs.push(AlphaArrays.nerfNames[n]);
+      }
+    }
+    if (Alpha.currentStage <= 27) {
+      for (let n = Alpha.currentStage; n < 28; n++) {
+        nerfs.push("?");
+      }
+    }
+    return nerfs;
+  },
+  get buffRow() {
+    let buffs = [];
+    if (Alpha.currentStage >= 1) {
+      for (let n = 0; n < Alpha.currentStage; n++) {
+        buffs.push(AlphaArrays.buffNames[n]);
+      }
+    }
+    if (Alpha.currentStage <= 27) {
+      for (let n = Alpha.currentStage; n < 28; n++) {
+        buffs.push("?");
+      }
+    }
+    return buffs;
+  },
 };
 
 EventHub.logic.on(GAME_EVENT.TAB_CHANGED, () => {
