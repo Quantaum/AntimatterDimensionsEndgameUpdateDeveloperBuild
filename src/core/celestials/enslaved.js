@@ -310,7 +310,7 @@ export const Tesseracts = {
   },
 
   get canBuyTesseract() {
-    return Enslaved.isCompleted && Currency.infinityPoints.gte(Tesseracts.nextCost);
+    return Enslaved.isCompleted && Currency.infinityPoints.gte(Tesseracts.nextCost) && !player.disablePostReality;
   },
 
   capIncrease(count = this.bought, extra = this.extra, mult = this.totalMult) {
