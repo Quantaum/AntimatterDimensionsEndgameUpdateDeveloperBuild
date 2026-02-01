@@ -332,7 +332,11 @@ class TimeDimensionState extends DimensionState {
     // It's safe to use dimension.currencyAmount because this is
     // a dimension-only method (so don't just copy it over to tickspeed).
     // We need to use dimension.currencyAmount here because of different costs in NC6.
-    return this.costScale.getContinuumValue(Currency.eternityPoints.value, 1).times(Laitela.matterExtraPurchaseFactor);
+    return this.getContinuumValue(Currency.eternityPoints.value).times(Laitela.matterExtraPurchaseFactor);
+  }
+
+  get getContinuumValue(currency) {
+    return calcHighestPurchaseableTD(this.tier, currency);
   }
 
   /**
