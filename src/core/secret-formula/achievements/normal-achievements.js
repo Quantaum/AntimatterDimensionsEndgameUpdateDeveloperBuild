@@ -1615,7 +1615,7 @@ export const normalAchievements = [
     id: 217,
     name: "Why are we still here...",
     get description() { return `Reach ${format(1e12, 2, 2)} Endgames.` },
-    checkRequirement: () => Currency.endgames.value. >= 1e12,
+    checkRequirement: () => player.endgames >= 1e12,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER
   },
   {
