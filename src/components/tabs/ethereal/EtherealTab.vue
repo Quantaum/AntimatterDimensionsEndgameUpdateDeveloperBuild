@@ -20,6 +20,9 @@ export default {
       if (this.etherealPower.lt(100)) return `${format(this.etherealPower, 1, 1)}`;
       return `${formatHybridLarge(this.etherealPower, 3)}`;
     },
+    extraPowerDisplay() {
+      return `It is also based on Galactic Power amounts above ${format(DC.NUMMAX, 2, 2)}.`;
+    },
     etherealClassObject() {
       return {
         "o-ethereal-button": true,
@@ -59,7 +62,7 @@ export default {
         <span class="c-normal-ethereal-text">
           Ethereal Power income is based on Celestial Points, Singularities, and Reality Machine amounts.
         </span>
-        <span v-if="isBetter">It is also based on Galactic Power amounts above {{ format(Decimal.pow(2, 1024), 2, 2) }}.</span>
+        <span v-if="isBetter">{{ extraPowerDisplay }}</span>
       </div>
       <div>
         <span class="c-normal-ethereal-text">Your Cosmic Sector is </span>
