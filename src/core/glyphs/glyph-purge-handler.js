@@ -85,7 +85,8 @@ export const GlyphSacrificeHandler = {
     if (!Ra.unlocks.unlockGlyphAlchemy.canBeApplied) return 0;
     const glyphMaxValue = this.levelRefinementValue(glyph.level);
     const rarityModifier = strengthToRarity(glyph.strength) / 100;
-    return this.glyphRefinementEfficiency * glyphMaxValue * rarityModifier;
+    const extraEffects = Ra.unlocks.alchemyCapIncrease.effectOrDefault(1);
+    return this.glyphRefinementEfficiency * glyphMaxValue * rarityModifier * extraEffects;
   },
   glyphRefinementGain(glyph) {
     if (!Ra.unlocks.unlockGlyphAlchemy.canBeApplied || !generatedTypes.includes(glyph.type)) return 0;
