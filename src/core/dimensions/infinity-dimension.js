@@ -252,7 +252,7 @@ class InfinityDimensionState extends DimensionState {
   }
 
   get isCapped() {
-    return this.purchases >= this.purchaseCap;
+    return new Decimal(this.purchases).gte(this.purchaseCap);
   }
 
   get hardcapIPAmount() {
@@ -351,7 +351,7 @@ class InfinityDimensionState extends DimensionState {
       return false;
     }
 
-    let purchasesUntilHardcap = this.purchaseCap - this.purchases;
+    let purchasesUntilHardcap = this.purchaseCap.sub(this.purchases).toNumber();
     if (EternityChallenge(8).isRunning) {
       purchasesUntilHardcap = Math.clampMax(purchasesUntilHardcap, player.eterc8ids);
     }
