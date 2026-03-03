@@ -316,7 +316,7 @@ export const Tesseracts = {
 
   capIncrease(count = this.bought, extra = this.extra, mult = this.totalMult) {
     const totalCount = (count + extra) * mult;
-    const base = totalCount < 1 ? DC.D0 : Decimal.pow(2 ** Octeracts.cubeBoost(), totalCount).times(250e3);
+    const base = totalCount < 1 ? DC.D0 : Decimal.pow(Decimal.pow(2, Octeracts.cubeBoost()), totalCount).times(250e3);
     return base.times(AlchemyResource.boundless.effectValue + 1).times((ExpansionPack.enslavedPack.isBought && !player.disablePostReality) ? 2 : 1);
   },
 
