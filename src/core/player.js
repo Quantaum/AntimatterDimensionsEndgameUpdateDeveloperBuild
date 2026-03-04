@@ -910,21 +910,21 @@ window.player = {
         antimatter: DC.E1,
         dimensions: {
           antimatter: Array.range(0, 8).map(() => ({
-            bought: 0,
-            costBumps: 0,
+            bought: DC.D0,
+            costBumps: DC.D0,
             amount: DC.D0
           })),
           infinity: Array.range(0, 8).map(tier => ({
             isUnlocked: false,
-            bought: 0,
+            bought: DC.D0,
             amount: DC.D0,
             cost: [DC.E8, DC.E9, DC.E10, DC.E20, DC.E140, DC.E200, DC.E250, DC.E280][tier],
-            baseAmount: 0
+            baseAmount: DC.D0
           })),
           time: Array.range(0, 8).map(tier => ({
             cost: [DC.D1, DC.D5, DC.E2, DC.E3, DC.E2350, DC.E2650, DC.E3000, DC.E3350][tier],
             amount: DC.D0,
-            bought: 0
+            bought: DC.D0
           }))
         },
         buyUntil10: true,
