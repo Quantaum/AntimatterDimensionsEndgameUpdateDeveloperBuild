@@ -121,7 +121,7 @@ export const Hepteracts = {
     return DC.D1.div(base);
   },
 
-  get eachPenteractReduction() {
+  get eachHepteractReduction() {
     return Decimal.pow(1.01, Octeracts.cubeBoost());
   }
 };
