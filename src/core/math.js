@@ -381,6 +381,45 @@ window.LinearCostScaling = class LinearCostScaling {
   }
 };
 
+window.DecimalLinearCostScaling = class DecimalLinearCostScaling {
+  /**
+   * @param {Decimal} resourcesAvailable amount of available resources
+   * @param {Decimal} initialCost current cost
+   * @param {Number} costMultiplier current cost multiplier
+   * @param {Number} maxPurchases max amount of purchases
+   * @param {Boolean} free signifies if the purchase is free -> if we only need to consider the last cost
+   */
+  constructor(resourcesAvailable, initialCost, costMultiplier, maxPurchases = DC.BEMAX, free = false) {
+    if (free) {
+      this._purchases = Decimal.clampMax(Decimal.floor(
+        resourcesAvailable.div(initialCost).log10().div(
+        Decimal.log10(costMultiplier)).add(1)), maxPurchases);
+    } else {
+      this._purchases = Decimal.clampMax(Decimal.floor(
+        resourcesAvailable.mul(costMultiplier.sub(1)).div(initialCost).add(1).log10().div(
+        Decimal.log10(costMultiplier))), maxPurchases);
+    }
+    this._totalCostMultiplier = Decimal.pow(costMultiplier, this._purchases);
+    if (free) {
+      this._totalCost = initialCost.mul(Decimal.pow(costMultiplier, this._purchases.sub(1)));
+    } else {
+      this._totalCost = initialCost.mul(Decimal.sub(1, this._totalCostMultiplier)).div(DC.D1.sub(costMultiplier));
+    }
+  }
+
+  get purchases() {
+    return this._purchases;
+  }
+
+  get totalCostMultiplier() {
+    return this._totalCostMultiplier;
+  }
+
+  get totalCost() {
+    return this._totalCost;
+  }
+};
+
 /**
  * ExponentialCostScaling provides both a max quantity and a price
  * @typedef {Object} QuantityAndPrice
