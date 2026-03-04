@@ -351,9 +351,9 @@ class InfinityDimensionState extends DimensionState {
       return false;
     }
 
-    let purchasesUntilHardcap = this.purchaseCap.sub(this.purchases).toNumber();
+    let purchasesUntilHardcap = this.purchaseCap.sub(this.purchases);
     if (EternityChallenge(8).isRunning) {
-      purchasesUntilHardcap = Math.clampMax(purchasesUntilHardcap, player.eterc8ids);
+      purchasesUntilHardcap = Decimal.clampMax(purchasesUntilHardcap, player.eterc8ids);
     }
 
     const costScaling = new DecimalLinearCostScaling(
@@ -372,7 +372,7 @@ class InfinityDimensionState extends DimensionState {
     this.baseAmount = this.baseAmount.plus(costScaling.purchases.times(10));
 
     if (EternityChallenge(8).isRunning) {
-      player.eterc8ids -= costScaling.purchases;
+      player.eterc8ids -= costScaling.purchases.toNumber();
     }
     return true;
   }
@@ -484,7 +484,7 @@ export const InfinityDimensions = {
 
     // Try to buy single from the highest affordable new dimensions
     unlockedDimensions.slice().reverse().forEach(dimension => {
-      if (dimension.purchases === 0) dimension.buySingle();
+      if (dimension.purchases.eq(0)) dimension.buySingle();
     });
 
     // Try to buy max from the lowest dimension (since lower dimensions have bigger multiplier per purchase)
