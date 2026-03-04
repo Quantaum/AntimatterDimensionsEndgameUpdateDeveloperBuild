@@ -131,7 +131,7 @@ export function resetTickspeed() {
 export const Tickspeed = {
 
   get isUnlocked() {
-    return AntimatterDimension(2).bought > 0 || EternityMilestone.unlockAllND.isReached ||
+    return AntimatterDimension(2).bought.gt(0) || EternityMilestone.unlockAllND.isReached ||
       PlayerProgress.realityUnlocked();
   },
 
