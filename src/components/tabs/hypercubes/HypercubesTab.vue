@@ -266,7 +266,7 @@ export default {
           <p>
             {{ octeractLockString }}
           </p>
-          <p>Increase the strength of all cubes by {{ formatDecimalPercents(nextTotalCubeBoost, 2, 2) }}</p>
+          <p>Increase the strength of all cubes by {{ formatPercents(nextTotalCubeBoost, 2, 2) }}</p>
           <p><b>Costs: {{ format(octeractCost) }} ???</b></p>
           <p>Total Octeract effect: {{ formatX(totalCubeBoost, 2, 2) }}</p>
         </button>
