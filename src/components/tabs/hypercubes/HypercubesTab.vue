@@ -115,7 +115,7 @@ export default {
       this.isTesseractAutoUnlocked = tesseractAuto.isUnlocked;
       this.isTesseractAutoActive = tesseractAuto.isActive;
       this.penteractsUnlocked = DualityUpgrade(25).isBought;
-      this.nextFreeTickspeedReduction.copyFrom(Penteracts.eachPenteractReduction);
+      this.nextFreeTickspeedReduction.copyFrom(Penteracts.eachPenteractReduction.sub(1));
       this.penteractCost.copyFrom(Penteracts.nextCost);
       this.totalFreeTickspeedReduction.copyFrom(Penteracts.softcapReduction());
       this.canBuyPenteract = Penteracts.canBuyPenteract;
@@ -124,7 +124,7 @@ export default {
       this.isPenteractAutoUnlocked = false;
       this.isPenteractAutoActive = false;
       this.hexeractsUnlocked = player.celestials.laitela.hadronizes >= 40;
-      this.nextDarkMatterSoftcapReduction.copyFrom(Hexeracts.eachHexeractReduction);
+      this.nextDarkMatterSoftcapReduction.copyFrom(Hexeracts.eachHexeractReduction.sub(1));
       this.hexeractCost.copyFrom(Hexeracts.nextCost);
       this.totalDarkMatterSoftcapReduction.copyFrom(Hexeracts.softcapReduction());
       this.canBuyHexeract = Hexeracts.canBuyHexeract;
@@ -133,7 +133,7 @@ export default {
       this.isHexeractAutoUnlocked = false;
       this.isHexeractAutoActive = false;
       this.hepteractsUnlocked = false;
-      this.nextCelestialDimSoftcapReduction.copyFrom(Hepteracts.eachHepteractReduction);
+      this.nextCelestialDimSoftcapReduction.copyFrom(Hepteracts.eachHepteractReduction.sub(1));
       this.hepteractCost.copyFrom(Hepteracts.nextCost);
       this.totalCelestialDimSoftcapReduction.copyFrom(Hepteracts.softcapReduction());
       this.canBuyHepteract = Hepteracts.canBuyHepteract;
@@ -142,7 +142,7 @@ export default {
       this.isHepteractAutoUnlocked = false;
       this.isHepteractAutoActive = false;
       this.octeractsUnlocked = false;
-      this.nextTotalCubeBoost = Octeracts.eachOcteractBoost;
+      this.nextTotalCubeBoost = Octeracts.eachOcteractBoost - 1;
       this.octeractCost.copyFrom(Octeracts.nextCost);
       this.totalCubeBoost.copyFrom(Octeracts.cubeBoost());
       this.canBuyOcteract = Octeracts.canBuyOcteract;
