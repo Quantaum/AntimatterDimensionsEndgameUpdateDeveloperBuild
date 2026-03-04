@@ -207,7 +207,7 @@ export default {
         <button
           class="c-penteract-button"
           :class="{
-            'c-penteract--disabled': !canBuyPenteract,
+            'c-penteract-button--disabled': !canBuyPenteract,
             'o-pelle-disabled-pointer': creditsClosed
           }"
           @click="buyPenteract"
@@ -224,7 +224,7 @@ export default {
         <button
           class="c-hexeract-button"
           :class="{
-            'c-hexeract--disabled': !canBuyHexeract,
+            'c-hexeract-button--disabled': !canBuyHexeract,
             'o-pelle-disabled-pointer': creditsClosed
           }"
           @click="buyHexeract"
@@ -243,7 +243,7 @@ export default {
         <button
           class="c-hepteract-button"
           :class="{
-            'c-hepteract--disabled': !canBuyHepteract,
+            'c-hepteract-button--disabled': !canBuyHepteract,
             'o-pelle-disabled-pointer': creditsClosed
           }"
           @click="buyHepteract"
@@ -260,7 +260,7 @@ export default {
         <button
           class="c-octeract-button"
           :class="{
-            'c-octeract--disabled': !canBuyOcteract,
+            'c-octeract-button--disabled': !canBuyOcteract,
             'o-pelle-disabled-pointer': creditsClosed
           }"
           @click="buyOcteract"
