@@ -1,12 +1,14 @@
 <script>
 import CelestialDimensionRow from "./ClassicCelestialDimensionRow";
+import CelestialTickspeedRow from "./CelestialTickspeedRow";
 import PrimaryButton from "@/components/PrimaryButton";
 
 export default {
   name: "ClassicCelestialDimensionTab",
   components: {
     PrimaryButton,
-    CelestialDimensionRow
+    CelestialDimensionRow,
+    CelestialTickspeedRow
   },
   data() {
     return {
@@ -80,6 +82,7 @@ export default {
       All Celestial Dimensions can be purchased until {{ format(totalDimCap, 2, 2) }} Celestial Points.
     </div>
     <div>You are getting {{ format(matterPerSecond, 2, 0) }} {{ incomeType }} per second.</div>
+    <CelestialTickspeedRow />
     <div class="l-dimensions-container">
       <CelestialDimensionRow
         v-for="tier in 8"
