@@ -595,9 +595,9 @@ Currency.unnerfedCelestialMatter = new class extends DecimalCurrency {
     super.add(amount);
     if (amount.gt(0)) {
       player.records.totalCelMatter = player.records.totalCelMatter.add(amount);
-      player.records.totalCelestialRealityAntimatter = player.records.totalCelestialRealityAntimatter.add(amount);
-      player.records.totalCelestialEternityAntimatter = player.records.totalCelestialEternityAntimatter.add(amount);
-      player.records.totalCelestialInfinityAntimatter = player.records.totalCelestialInfinityAntimatter.add(amount);
+      player.records.totalCelestialRealityCelMatter = player.records.totalCelestialRealityCelMatter.add(amount);
+      player.records.totalCelestialEternityCelMatter = player.records.totalCelestialEternityCelMatter.add(amount);
+      player.records.totalCelestialInfinityCelMatter = player.records.totalCelestialInfinityCelMatter.add(amount);
     }
   }
 
