@@ -290,7 +290,7 @@ export const CelestialDimensions = {
 };
 
 export function getCelestialTickSpeedMultiplier() {
-  const base = new Decimal(1.5);
+  const base = new Decimal(1.05);
   const galaxies = player.endgame.celDimExpansion.galaxies;
   return base.pow(galaxies.add(1));
 }
