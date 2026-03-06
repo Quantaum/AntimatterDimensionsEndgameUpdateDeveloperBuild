@@ -79,7 +79,6 @@ export default {
       this.galaxies.celestial.copyFrom(player.endgame.celDimExpansion.galaxies);
       const requirement = Galaxy.requirement;
       this.requirement.amount = requirement.amount;
-      this.requirement.tier = requirement.tier;
       this.canBeBought = requirement.isSatisfied && CelestialGalaxy.canBeBought;
       this.distantStart = CelestialGalaxy.costScalingStart;
       this.remoteStart = CelestialGalaxy.remoteStart;
