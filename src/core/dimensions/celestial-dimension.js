@@ -617,11 +617,11 @@ export class CelestialGalaxy {
   }
 
   static get costMult() {
-    return 30;
+    return DC.D60;
   }
 
   static get baseCost() {
-    return 30;
+    return DC.D60;
   }
 
   static get canBeBought() {
