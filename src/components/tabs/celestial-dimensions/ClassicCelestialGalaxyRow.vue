@@ -40,7 +40,7 @@ export default {
     },
     sumText() {
       const parts = [Decimal.max(this.galaxies.celestial, 0)];
-      const sum = parts.map(this.formatGalaxies).join(" + ");
+      const sum = parts.map(this.formatCelestialGalaxies).join(" + ");
       return sum;
     },
     typeName() {
@@ -64,7 +64,7 @@ export default {
             { type: "remote", function: "exponential", amount: this.remoteStart }
           ];
           return `Increased Celestial Galaxy cost scaling: ${scalings.sort((a, b) => a.amount - b.amount)
-            .map(scaling => `${scaling.function} scaling past ${this.formatGalaxies(scaling.amount)} (${scaling.type})`)
+            .map(scaling => `${scaling.function} scaling past ${this.formatCelestialGalaxies(scaling.amount)} (${scaling.type})`)
             .join(", ").capitalize()}`;
         }
       }
