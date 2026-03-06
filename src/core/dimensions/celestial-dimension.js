@@ -726,6 +726,7 @@ export function celestialCrunchReset(forced = false) {
     celestialCrunchGiveRewards();
   }
 
+  secondSoftCelestialReset();
   EventHub.dispatch(GAME_EVENT.CELESTIAL_CRUNCH_AFTER);
 }
 
