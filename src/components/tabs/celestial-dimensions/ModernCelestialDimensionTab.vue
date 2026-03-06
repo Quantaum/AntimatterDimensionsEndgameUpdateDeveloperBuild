@@ -1,7 +1,7 @@
 <script>
-import CelelestialDimensionBoostRow from "@/components/tabs/antimatter-dimensions/ModernCelestialDimensionBoostRow";
+import CelelestialDimensionBoostRow from "./ModernCelestialDimensionBoostRow";
 import CelestialDimensionRow from "./ModernCelestialDimensionRow";
-import CelestialGalaxyRow from "@/components/tabs/antimatter-dimensions/ModernCelestialGalaxyRow";
+import CelestialGalaxyRow from "./ModernCelestialGalaxyRow";
 import CelestialTickspeedRow from "./CelestialTickspeedRow";
 import PrimaryButton from "@/components/PrimaryButton";
 
