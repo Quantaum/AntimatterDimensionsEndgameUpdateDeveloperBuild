@@ -208,7 +208,7 @@ export const CelestialDimensions = {
   all: CelestialDimension.index.compact(),
   HARDCAP_PURCHASES: DC.C2P1024,
   get SOFTCAP() {
-    return DC.E100.timesEffectsOf(EndgameMastery(94), EndgameUpgrade(5)).times(Ethereal.sectorBoost);
+    return DC.E100.timesEffectsOf(EndgameMastery(94), EndgameUpgrade(5)).times(Ethereal.sectorBoost).pow(CelestialDimensions.alphaDecayRemnant);
   },
 
   get softcapPow() {
