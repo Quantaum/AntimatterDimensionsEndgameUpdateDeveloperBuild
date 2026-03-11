@@ -754,7 +754,7 @@ export const pelleQuotes = {
       "My new domain has an entry fee.",
       "You must reach 1e4000 Celestial Points of Eternity.",
       { text: "But for a $1 like you...", 1: destroyer },
-      { text: "That shouldn't be a $1.", 1: harship },
+      { text: "That shouldn't be a $1.", 1: hardship },
       "So I'll expect to see you soon."
     ]
   }
