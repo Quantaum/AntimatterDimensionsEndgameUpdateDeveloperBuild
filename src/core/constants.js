@@ -289,10 +289,10 @@ window.GlyphRarities = [
   {
     minStrength: 4.75,
     name: "Empyrean",
-    darkColor: "#20a0a0",
-    lightColor: "#208080",
-    darkHighContrast: "#40ffff",
-    lightHighContrast: "#40c0c0"
+    darkColor: "#20a090",
+    lightColor: "#208070",
+    darkHighContrast: "#40ffd0",
+    lightHighContrast: "#40c0a0"
   }, {
     minStrength: 4.125,
     name: "Elysian",
