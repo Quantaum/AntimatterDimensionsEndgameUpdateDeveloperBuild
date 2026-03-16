@@ -482,7 +482,8 @@ export default {
         You have {{ celestialInfinityCountString }}.
       </div>
       <div v-if="celestialInfinity.hasBest">
-        Your fastest Celestial Infinity was {{ celestialInfinity.best.toStringShort() }}.
+        Your fastest game-time Celestial Infinity was {{ celestialInfinity.best.toStringShort() }}.
+        Your fastest real-time Celestial Infinity was {{ celestialInfinity.bestReal.toStringShort() }}.
       </div>
       <div v-else>
         You have no fastest Celestial Infinity.
