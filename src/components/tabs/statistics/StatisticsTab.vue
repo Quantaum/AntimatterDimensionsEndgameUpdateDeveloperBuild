@@ -28,6 +28,7 @@ export default {
         totalInfinityAntimatter: new Decimal(0),
         hasBest: false,
         best: TimeSpan.zero,
+        bestReal: TimeSpan.zero,
         this: TimeSpan.zero,
         thisReal: TimeSpan.zero,
         bestRate: new Decimal(0),
