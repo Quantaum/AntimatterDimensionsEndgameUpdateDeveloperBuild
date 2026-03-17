@@ -319,6 +319,58 @@ export const Time = {
   },
 
   /**
+   * @returns {TimeSpan}
+   */
+  get thisCelestialInfinity() {
+    return this.fromMilliseconds(() => player.records.thisCelestialInfinity.time);
+  },
+  /**
+   * @param {TimeSpan} timespan
+   */
+  set thisCelestialInfinity(timespan) {
+    this.toMilliseconds(timespan, value => player.records.thisCelestialInfinity.time = value);
+  },
+
+  /**
+   * @returns {TimeSpan}
+   */
+  get thisCelestialInfinityRealTime() {
+    return this.fromMilliseconds(() => new Decimal(player.records.thisCelestialInfinity.realTime));
+  },
+  /**
+   * @param {TimeSpan} timespan
+   */
+  set thisCelestialInfinityRealTime(timespan) {
+    this.toMilliseconds(timespan, value => player.records.thisCelestialInfinity.realTime = value.toNumber());
+  },
+
+  /**
+   * @returns {TimeSpan}
+   */
+  get bestCelestialInfinity() {
+    return this.fromMilliseconds(() => player.records.bestCelestialInfinity.time);
+  },
+  /**
+   * @param {TimeSpan} timespan
+   */
+  set bestCelestialInfinity(timespan) {
+    this.toMilliseconds(timespan, value => player.records.bestCelestialInfinity.time = value);
+  },
+
+  /**
+   * @returns {TimeSpan}
+   */
+  get bestCelestialInfinityRealTime() {
+    return this.fromMilliseconds(() => new Decimal(player.records.bestCelestialInfinity.realTime));
+  },
+  /**
+   * @param {TimeSpan} timespan
+   */
+  set bestCelestialInfinityRealTime(timespan) {
+    this.toMilliseconds(timespan, value => player.records.bestCelestialInfinity.realTime = value.toNumber());
+  },
+
+  /**
    * @return {TimeSpan}
    */
   get worstChallenge() {

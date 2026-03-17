@@ -64,7 +64,10 @@ export const effarigUnlocks = {
   maintainRS: {
     id: 7,
     description: "Keep Relic Shards on Endgame",
-    cost: new Decimal("1e4300")
+    cost: new Decimal("1e4300"),
+    onPurchased: () => {
+      Effarig.quotes.keepRelicShard.show();
+    }
   },
   glyphGenerationBoost: {
     id: 8,
