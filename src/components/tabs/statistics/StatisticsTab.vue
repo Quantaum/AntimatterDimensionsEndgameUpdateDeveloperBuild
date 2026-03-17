@@ -13,6 +13,7 @@ export default {
       realTimeDoomed: TimeSpan.zero,
       totalAntimatter: new Decimal(0),
       totalAntimatterOutsideDoom: new Decimal(0),
+      totalCelMatter: new Decimal(0),
       realTimePlayed: TimeSpan.zero,
       timeSinceCreation: 0,
       uniqueNews: 0,
@@ -66,6 +67,17 @@ export default {
         bestRateCP: new Decimal(0),
         bestRateDP: new Decimal(0),
       },
+      celestialInfinity: {
+        isUnlocked: false,
+        count: new Decimal(0),
+        totalCelestialInfinityCelMatter: new Decimal(0),
+        hasBest: false,
+        best: TimeSpan.zero,
+        bestReal: TimeSpan.zero,
+        this: TimeSpan.zero,
+        thisReal: TimeSpan.zero,
+        bestRate: new Decimal(0),
+      },
       matterScale: [],
       lastMatterTime: 0,
       paperclips: 0,
@@ -99,6 +111,12 @@ export default {
         ? `${this.formatDecimalAmount(num)} ${pluralize("Endgame", num.floor())}`
         : "no Endgames";
     },
+    celestialInfinityCountString() {
+      const num = this.celestialInfinity.count;
+      return num.gt(0)
+        ? `${this.formatDecimalAmount(num)} ${pluralize("Celestial Infinity", num.floor())}`
+        : "no Celestial Infinities";
+    },
     fullGameCompletions() {
       return player.records.fullGameCompletions;
     },
@@ -114,6 +132,7 @@ export default {
       const records = player.records;
       this.totalAntimatter.copyFrom(records.totalAntimatter);
       this.totalAntimatterOutsideDoom.copyFrom(player.records.totalAntimatterOutsideDoom);
+      this.totalCelMatter.copyFrom(records.totalCelMatter);
       this.realTimePlayed.setFrom(new Decimal(records.realTimePlayed));
       this.fullTimePlayed = TimeSpan.fromMilliseconds(
         new Decimal(records.previousRunRealTime + records.realTimePlayed));
@@ -185,13 +204,28 @@ export default {
       if (isEndgameUnlocked) {
         endgame.count = Math.floor(player.endgames);
         endgame.totalEndgameAntimatter.copyFrom(records.totalEndgameAntimatter);
-        endgame.hasBest = bestEndgame.realTime <= 999999999999;
+        endgame.hasBest = bestEndgame.realTime < 999999999999;
         endgame.best.setFrom(bestEndgame.time);
         endgame.bestReal.setFrom(new Decimal(bestEndgame.realTime));
         endgame.this.setFrom(records.thisEndgame.time);
         endgame.thisReal.setFrom(new Decimal(records.thisEndgame.realTime));
         endgame.bestRateCP.copyFrom(bestEndgame.bestCPmin);
         endgame.bestRateDP.copyFrom(bestEndgame.bestDPmin);
+      }
+
+      const isCelestialInfinityUnlocked = progress.isCelestialInfinityUnlocked;
+      const celestialInfinity = this.celestialInfinity;
+      const bestCelestialInfinity = records.bestCelestialInfinity;
+      celestialInfinity.isUnlocked = isCelestialInfinityUnlocked;
+      if (isCelestialInfinityUnlocked) {
+        celestialInfinity.count.copyFrom(Currency.celestialInfinities);
+        celestialInfinity.totalCelestialInfinityCelMatter.copyFrom(records.totalCelestialInfinityCelMatter);
+        celestialInfinity.hasBest = bestCelestialInfinity.realTime < 999999999999;
+        celestialInfinity.best.setFrom(bestCelestialInfinity.time);
+        celestialInfinity.bestReal.setFrom(new Decimal(bestCelestialInfinity.realTime));
+        celestialInfinity.this.setFrom(records.thisCelestialInfinity.time);
+        celestialInfinity.thisReal.setFrom(new Decimal(records.thisCelestialInfinity.realTime));
+        celestialInfinity.bestRate.copyFrom(bestCelestialInfinity.bestCIPminCelestialEternity);
       }
       this.updateMatterScale();
 
@@ -246,6 +280,13 @@ export default {
         </div>
         <div v-if="infinity.isUnlocked">
           You have made a total of {{ format(infinity.totalInfinityAntimatter, 2, 1) }} antimatter this Infinity.
+        </div>
+        <div v-if="endgame.isUnlocked" class="c-stats-tab-celestials">
+          You have made a total of {{ format(totalCelMatter, 2, 1) }} Celestial Matter.
+        </div>
+        <div v-if="celestialInfinity.isUnlocked" class="c-stats-tab-celestials">
+          You have made a total of {{ format(celestialInfinity.totalCelestialInfinityCelMatter, 2, 1) }} Celestial Matter
+          this Celestial Infinity.
         </div>
         <div>You have played for {{ realTimePlayed }}. (real time)</div>
         <div v-if="reality.isUnlocked">
@@ -432,6 +473,33 @@ export default {
       </div>
       <br>
     </div>
+    <div
+      v-if="celestialInfinity.isUnlocked"
+      class="c-stats-tab-subheader c-stats-tab-general"
+    >
+      <div class="c-stats-tab-title c-stats-tab-celestial-infinity">
+        Celestial Infinity
+      </div>
+      <div>
+        You have {{ celestialInfinityCountString }}.
+      </div>
+      <div v-if="celestialInfinity.hasBest">
+        Your fastest game-time Celestial Infinity was {{ celestialInfinity.best.toStringShort() }}.
+        Your fastest real-time Celestial Infinity was {{ celestialInfinity.bestReal.toStringShort() }}.
+      </div>
+      <div v-else>
+        You have no fastest Celestial Infinity.
+      </div>
+      <div>
+        You have spent {{ celestialInfinity.this.toStringShort() }} in this Celestial Infinity.
+        ({{ celestialInfinity.thisReal.toStringShort() }} real time)
+      </div>
+      <div>
+        Your best Celestial Infinity Points per minute
+        is {{ format(celestialInfinity.bestRate, 2, 2) }}.
+      </div>
+      <br>
+    </div>
   </div>
 </template>
 
@@ -471,5 +539,16 @@ export default {
 
 .c-stats-tab-endgame {
   color: var(--color-endgame);
+}
+
+.c-stats-tab-celestials {
+  color: var(--color-celestials);
+}
+
+.c-stats-tab-celestial-infinity {
+  background: linear-gradient(var(--color-infinity), var(--color-celestials));
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
 }
 </style>

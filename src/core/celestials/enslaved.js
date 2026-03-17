@@ -274,6 +274,17 @@ export const Tesseracts = {
     return player.celestials.enslaved.tesseracts;
   },
 
+  get canBeBoughtRaw() {
+    const estimate = Currency.infinityPoints.value.gt(Decimal.pow10(6e7)) ? Decimal.round(Decimal.exp(Decimal.lambertw(Decimal.ln(Decimal.pow(Decimal.log10(Currency.infinityPoints.value.add(1)).div(6e7), 2).div(Math.E)).div(Math.E))).times(Math.E).sub(1).div(2).add(3)) : Currency.infinityPoints.value.add(1).log10().div(2e7);
+    const costValue = Decimal.pow10(new Decimal(2e7).times(Decimal.min(estimate, 3)).times(Decimal.max(estimate.sub(3), 1).factorial()).times(Decimal.pow(2, Decimal.max(estimate.sub(3), 0))));
+    if (Currency.infinityPoints.value.gte(costValue)) return estimate;
+    return estimate.sub(1);
+  },
+
+  get amountNeeded() {
+    return this.canBeBoughtRaw.sub(this.bought);
+  },
+
   get rawExtra() {
     return (this.bought * (SingularityMilestone.tesseractMultFromSingularities.effectOrDefault(1) - 1)) + Effects.sum(EndgameMastery(61));
   },
@@ -299,6 +310,12 @@ export const Tesseracts = {
     if (!this.canBuyTesseract) return;
     if (GameEnd.creditsEverClosed) return;
     player.celestials.enslaved.tesseracts++;
+  },
+
+  buyMaxTesseract() {
+    if (!this.canBuyTesseract) return;
+    if (GameEnd.creditsEverClosed) return;
+    player.celestials.enslaved.tesseracts += this.amountNeeded.toNumber();
   },
 
   costs(index) {

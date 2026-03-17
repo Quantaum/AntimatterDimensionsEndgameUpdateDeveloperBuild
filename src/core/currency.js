@@ -595,20 +595,8 @@ Currency.celestialPoints = new class extends DecimalCurrency {
 Currency.unnerfedCelestialMatter = new class extends DecimalCurrency {
   get value() { return player.endgame.unnerfedCelestialMatter; }
   set value(value) {
-    player.endgame.unnerfedCelestialMatter = value;
-    player.records.thisCelestialInfinity.maxCM = player.records.thisCelestialInfinity.maxCM.max(value);
-    player.records.thisCelestialEternity.maxCM = player.records.thisCelestialEternity.maxCM.max(value);
-    player.records.thisCelestialReality.maxCM = player.records.thisCelestialReality.maxCM.max(value);
-  }
-
-  add(amount) {
-    super.add(amount);
-    if (amount.gt(0)) {
-      player.records.totalCelMatter = player.records.totalCelMatter.add(amount);
-      player.records.totalCelestialRealityCelMatter = player.records.totalCelestialRealityCelMatter.add(amount);
-      player.records.totalCelestialEternityCelMatter = player.records.totalCelestialEternityCelMatter.add(amount);
-      player.records.totalCelestialInfinityCelMatter = player.records.totalCelestialInfinityCelMatter.add(amount);
-    }
+    const newValue = new Decimal(value);
+    player.endgame.unnerfedCelestialMatter = newValue;
   }
 
   get productionPerSecond() {

@@ -24,6 +24,10 @@ export class PlayerProgress {
     return this._player.endgames > 0;
   }
 
+  get isCelestialInfinityUnlocked() {
+    return new Decimal(this._player.endgame.celDimExpansion.celestialInfinities).gt(0);
+  }
+
   get hasFullCompletion() {
     return this._player.records?.fullGameCompletions > 0;
   }

@@ -99,7 +99,7 @@ class CelestialDimensionState extends DimensionState {
     mult = mult.powEffectsOf(SingularityMilestone.dimensionPow, Ra.unlocks.celestialDimensionPower);
     mult = mult.pow(CelestialDimensions.alphaDecayRemnant);
     mult = mult.times(CelestialDimBoost.multiplierToCDTier());
-    mult = mult.timesEffectsOf(CelestialInfinityUpgrade.rawCelestialDimMult, CelestialInfinityUpgrade.antimatterCelestialDimBuff);
+    mult = mult.timesEffectOf(CelestialInfinityUpgrade.antimatterCelestialDimBuff);
     return mult;
   }
 
@@ -277,7 +277,7 @@ export const CelestialDimensions = {
   },
 
   get alphaDecayRemnant() {
-    return Alpha.isDestroyed ? Time.thisEndgameRealTime._ms.div(18000000).min(1) : 1;
+    return Alpha.isDestroyed ? Time.thisEndgameRealTime.totalHours.plusEffectOf(CelestialInfinityUpgrade.alphaDecayStartBoost).min(5).div(5) : 1;
   },
 
   get conversionExponent() {
@@ -300,7 +300,7 @@ export function getCelestialTickSpeedMultiplier() {
 
 export function buyCelestialTickSpeed() {
   if (!CelestialTickspeed.isAvailableForPurchase || !CelestialTickspeed.isAffordable) return false;
-  Currency.celestialMatter.subtract(CelestialTickspeed.cost);
+  Currency.unnerfedCelestialMatter.subtract(CelestialTickspeed.cost);
   player.endgame.celDimExpansion.totalTickBought = player.endgame.celDimExpansion.totalTickBought.add(1);
   GameUI.update();
   return true;
@@ -315,7 +315,7 @@ export function buyMaxCelestialTickSpeed() {
   if (purchases === null) {
     return;
   }
-  Currency.celestialMatter.subtract(Decimal.pow10(purchases.logPrice));
+  Currency.unnerfedCelestialMatter.subtract(Decimal.pow10(purchases.logPrice));
   player.endgame.celDimExpansion.totalTickBought = player.endgame.celDimExpansion.totalTickBought.add(purchases.quantity);
   boughtTickspeed = true;
 }

@@ -886,6 +886,13 @@ export function gameLoop(passedDiff, options = {}) {
   const uncapped = Decimal.min(player.endgame.unnerfedCelestialMatter, CelestialDimensions.SOFTCAP);
   const instability = Decimal.pow(Decimal.max(player.endgame.unnerfedCelestialMatter.div(CelestialDimensions.SOFTCAP), 1), 1 / CelestialDimensions.softcapPow);
   player.endgame.celestialMatter = Decimal.min(uncapped.times(instability), DC.NUMMAX);
+  player.records.thisCelestialInfinity.maxCM = player.records.thisCelestialInfinity.maxCM.max(Decimal.min(uncapped.times(instability), DC.NUMMAX));
+  player.records.thisCelestialEternity.maxCM = player.records.thisCelestialEternity.maxCM.max(Decimal.min(uncapped.times(instability), DC.NUMMAX));
+  player.records.thisCelestialReality.maxCM = player.records.thisCelestialReality.maxCM.max(Decimal.min(uncapped.times(instability), DC.NUMMAX));
+  player.records.totalCelMatter = player.records.totalCelMatter.max(Decimal.min(uncapped.times(instability), DC.NUMMAX));
+  player.records.totalCelestialRealityCelMatter = player.records.totalCelestialRealityCelMatter.max(Decimal.min(uncapped.times(instability), DC.NUMMAX));
+  player.records.totalCelestialEternityCelMatter = player.records.totalCelestialEternityCelMatter.max(Decimal.min(uncapped.times(instability), DC.NUMMAX));
+  player.records.totalCelestialInfinityCelMatter = player.records.totalCelestialInfinityCelMatter.max(Decimal.min(uncapped.times(instability), DC.NUMMAX));
 
   let darkMatterProd = DC.D1;
   const unnerfedDM = player.celestials.laitela.unnerfedDarkMatter;

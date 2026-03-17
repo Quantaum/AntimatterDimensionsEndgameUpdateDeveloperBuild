@@ -19,7 +19,7 @@ export default {
         [
           CelestialInfinityUpgrade.gameSpeedMultCIP,
           CelestialInfinityUpgrade.celDimPurchaseBoost,
-          CelestialInfinityUpgrade.rawCelestialDimMult
+          CelestialInfinityUpgrade.alphaDecayStartBoost
         ],
         [
           CelestialInfinityUpgrade.celDimBoostBuff,
