@@ -395,7 +395,7 @@ export const Ra = {
       : 25000 * Ra.unlocks.alchemyCapIncrease.effectOrDefault(1);
   },
   get momentumValue() {
-    const hoursFromUnlock = EffarigUnlock.maxMomentum.isBought
+    const hoursFromUnlock = EffarigUnlock.maxMomentum.isUnlocked
       ? Infinity
       : TimeSpan.fromMilliseconds(new Decimal(player.celestials.ra.momentumTime)).totalHours.toNumber();
     return Math.clampMax(1 + 0.01 * hoursFromUnlock, AlchemyResource.momentum.effectValue);
