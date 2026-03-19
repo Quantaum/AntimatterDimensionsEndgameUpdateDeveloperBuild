@@ -125,7 +125,7 @@ export function buyMaxTickSpeed() {
 
 export function resetTickspeed() {
   player.totalTickBought = DC.D0;
-  player.chall9TickspeedCostBumps = 0;
+  player.chall9TickspeedCostBumps = DC.D0;
 }
 
 export const Tickspeed = {
@@ -198,7 +198,7 @@ export const Tickspeed = {
 
   multiplySameCosts() {
     for (const dimension of AntimatterDimensions.all) {
-      if (dimension.cost.e === this.cost.e) dimension.costBumps++;
+      if (dimension.cost.e === this.cost.e) dimension.costBumps = dimension.costBumps.add(1);
     }
   }
 };
