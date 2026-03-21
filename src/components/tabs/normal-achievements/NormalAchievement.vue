@@ -135,7 +135,7 @@ export default {
         this.garbleKey = this.id;
       }
       if (player.speedrun.isActive) this.achievementTime = player.speedrun.achievementTimes[this.id];
-      this.achievementProgress.copyFrom(this.config.progress);
+      this.achievementProgress.copyFrom(this.config.progress());
     },
     onMouseEnter() {
       clearTimeout(this.mouseOverInterval);
@@ -226,7 +226,7 @@ export default {
         <div
           class="o-achievement-prog"
         >
-          {{ achieveProg }}
+          {{ achieveProgress }}
         </div>
       </template>
     </div>
