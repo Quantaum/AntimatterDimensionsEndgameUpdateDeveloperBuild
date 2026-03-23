@@ -165,6 +165,9 @@ export default {
       <div v-if="inputIsSecret">
         ???
       </div>
+      <div v-else-if="inputIsEnd">
+        Accelerate?
+      </div>
       <template v-else-if="inputIsValidSave">
         <div v-if="fileName">
           File name: {{ fileName }}
