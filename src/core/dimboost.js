@@ -177,6 +177,82 @@ export class DimBoost {
     if (InfinityUpgrade.skipReset1.isBought) return DC.D1;
     return DC.D0;
   }
+
+  static get maxBuyableDimBoosts() {
+    // Boosts that unlock new dims are bought one at a time, unlocking the next dimension
+    if (DimBoost.canUnlockNewDimension) {
+      if (DimBoost.requirement.isSatisfied) return DC.D1;
+    }
+    const req1 = DimBoost.bulkRequirement(1);
+    if (!req1.isSatisfied) return DC.D0;
+    const req2 = DimBoost.bulkRequirement(2);
+    if (!req2.isSatisfied) {
+      return DC.D1;
+    }
+
+    const tier = DimBoost.maxDimensionsUnlockable;
+    let amount = DC.D20;
+    let discount = Effects.sum(
+      TimeStudy(211),
+      TimeStudy(222)
+    );
+    if (!player.disablePostReality) discount += AlphaUnlocks.fifthDimboost.effects.buff.effectOrDefault(0);
+    let multiplierPerDB;
+    if (tier === 6) {
+      multiplierPerDB = DC.D20.sub(discount);
+    } else if (tier === 8) {
+      multiplierPerDB = DC.D15.sub(discount);
+    }
+    if (Alpha.isRunning) multiplierPerDB = multiplierPerDB.times(AlphaUnlocks.fifthDimboost.effects.nerf.effectOrDefault(1));
+  
+    amount = amount.sub(Effects.sum(InfinityUpgrade.resetBoost));
+    if (InfinityChallenge(5).isCompleted) amount = amount.sub(1);
+  
+    multiplierPerDB = multiplierPerDB.times(InfinityUpgrade.resetBoost.chargedEffect.effectOrDefault(1));
+    amount = amount.times(InfinityUpgrade.resetBoost.chargedEffect.effectOrDefault(1));
+  
+    const ad = AntimatterDimension(tier).totalAmount;
+    let calcBoosts;
+    calcBoosts = ad.sub(amount).div(multiplierPerDB);
+  
+  
+    if (EternityChallenge(5).isRunning) {
+      const ad = AntimatterDimension(tier).totalAmount;
+      let estimateTotalAmount = Decimal.floor(Decimal.cbrt(ad.div(InfinityUpgrade.resetBoost.chargedEffect.effectOrDefault(1)))).add(1);
+      const freeBoost = NormalChallenge(10).isRunning ? new Decimal(2) : new Decimal(4);
+      const divisor1 = NormalChallenge(10).isRunning ? new Decimal(20) : new Decimal(15);
+      const divisor2 = Effects.sum(TimeStudy(211), TimeStudy(222)) + (player.disablePostReality ? 0 : AlphaUnlocks.fifthDimboost.effects.buff.effectOrDefault(0));
+      const multi = divisor1.sub(divisor2).times(Alpha.isRunning ? AlphaUnlocks.fifthDimboost.effects.nerf.effectOrDefault(1) : 1);
+      const extraEffect = InfinityChallenge(5).isCompleted ? new Decimal(1) : new Decimal(0);
+      const cubicSum = DC.D20.add(estimateTotalAmount.sub(freeBoost.add(1)).mul(multi));
+      const listedCost = estimateTotalAmount.lt(freeBoost) ? new Decimal(0) : (Decimal.pow(estimateTotalAmount.sub(1), 3).add(estimateTotalAmount).add(cubicSum).sub(1).sub(Effects.sum(InfinityUpgrade.resetBoost)).sub(extraEffect)).times(InfinityUpgrade.resetBoost.chargedEffect.effectOrDefault(1));
+      if (listedCost.gt(0)) {
+        if (listedCost.lt(ad)) {
+          estimateTotalAmount = estimateTotalAmount.add(1);
+        }
+        if (listedCost.gte(ad)) {
+          estimateTotalAmount = estimateTotalAmount.sub(1);
+          if (listedCost.gte(ad)) {
+            estimateTotalAmount = estimateTotalAmount.add(1);
+          }
+        }
+        calcBoosts = estimateTotalAmount;
+      } else {
+        calcBoosts = freeBoost;
+        // Dimension boosts 1-4 dont use 8th dims, 1-2 dont use 6th dims, so add those extras afterwards.
+      }
+      calcBoosts = calcBoosts.sub(1);
+    } else {
+      calcBoosts = calcBoosts.add(NormalChallenge(10).isRunning ? 2 : 4);
+      // Dimension boosts 1-4 dont use 8th dims, 1-2 dont use 6th dims, so add those extras afterwards.
+    }
+    
+    // Add one cause (x-b)/i is off by one otherwise
+    if (calcBoosts.floor().add(1).lte(DimBoost.purchasedBoosts)) return DC.D0;
+    calcBoosts = calcBoosts.sub(DimBoost.purchasedBoosts);
+    const minBoosts = Decimal.min(DC.BEMAX, calcBoosts.floor().add(1));
+    return minBoosts;
+  }
 }
 
 // eslint-disable-next-line max-params
@@ -246,79 +322,5 @@ export function requestDimensionBoost(bulk) {
 }
 
 function maxBuyDimBoosts() {
-  // Boosts that unlock new dims are bought one at a time, unlocking the next dimension
-  if (DimBoost.canUnlockNewDimension) {
-    if (DimBoost.requirement.isSatisfied) softReset(1);
-    return;
-  }
-  const req1 = DimBoost.bulkRequirement(1);
-  if (!req1.isSatisfied) return;
-  const req2 = DimBoost.bulkRequirement(2);
-  if (!req2.isSatisfied) {
-    softReset(1);
-    return;
-  }
-
-  const tier = DimBoost.maxDimensionsUnlockable;
-  let amount = DC.D20;
-  let discount = Effects.sum(
-    TimeStudy(211),
-    TimeStudy(222)
-  );
-  if (!player.disablePostReality) discount += AlphaUnlocks.fifthDimboost.effects.buff.effectOrDefault(0);
-  let multiplierPerDB;
-  if (tier === 6) {
-    multiplierPerDB = DC.D20.sub(discount);
-  } else if (tier === 8) {
-    multiplierPerDB = DC.D15.sub(discount);
-  }
-  if (Alpha.isRunning) multiplierPerDB = multiplierPerDB.times(AlphaUnlocks.fifthDimboost.effects.nerf.effectOrDefault(1));
-
-  amount = amount.sub(Effects.sum(InfinityUpgrade.resetBoost));
-  if (InfinityChallenge(5).isCompleted) amount = amount.sub(1);
-
-  multiplierPerDB = multiplierPerDB.times(InfinityUpgrade.resetBoost.chargedEffect.effectOrDefault(1));
-  amount = amount.times(InfinityUpgrade.resetBoost.chargedEffect.effectOrDefault(1));
-
-  const ad = AntimatterDimension(tier).totalAmount;
-  let calcBoosts;
-  calcBoosts = ad.sub(amount).div(multiplierPerDB);
-
-
-  if (EternityChallenge(5).isRunning) {
-    const ad = AntimatterDimension(tier).totalAmount;
-    let estimateTotalAmount = Decimal.floor(Decimal.cbrt(ad.div(InfinityUpgrade.resetBoost.chargedEffect.effectOrDefault(1)))).add(1);
-    const freeBoost = NormalChallenge(10).isRunning ? new Decimal(2) : new Decimal(4);
-    const divisor1 = NormalChallenge(10).isRunning ? new Decimal(20) : new Decimal(15);
-    const divisor2 = Effects.sum(TimeStudy(211), TimeStudy(222)) + (player.disablePostReality ? 0 : AlphaUnlocks.fifthDimboost.effects.buff.effectOrDefault(0));
-    const multi = divisor1.sub(divisor2).times(Alpha.isRunning ? AlphaUnlocks.fifthDimboost.effects.nerf.effectOrDefault(1) : 1);
-    const extraEffect = InfinityChallenge(5).isCompleted ? new Decimal(1) : new Decimal(0);
-    const cubicSum = DC.D20.add(estimateTotalAmount.sub(freeBoost.add(1)).mul(multi));
-    const listedCost = estimateTotalAmount.lt(freeBoost) ? new Decimal(0) : (Decimal.pow(estimateTotalAmount.sub(1), 3).add(estimateTotalAmount).add(cubicSum).sub(1).sub(Effects.sum(InfinityUpgrade.resetBoost)).sub(extraEffect)).times(InfinityUpgrade.resetBoost.chargedEffect.effectOrDefault(1));
-    if (listedCost.gt(0)) {
-      if (listedCost.lt(ad)) {
-        estimateTotalAmount = estimateTotalAmount.add(1);
-      }
-      if (listedCost.gte(ad)) {
-        estimateTotalAmount = estimateTotalAmount.sub(1);
-        if (listedCost.gte(ad)) {
-          estimateTotalAmount = estimateTotalAmount.add(1);
-        }
-      }
-      calcBoosts = estimateTotalAmount;
-    } else {
-      calcBoosts = freeBoost;
-      // Dimension boosts 1-4 dont use 8th dims, 1-2 dont use 6th dims, so add those extras afterwards.
-    }
-    calcBoosts = calcBoosts.sub(1);
-  } else {
-    calcBoosts = calcBoosts.add(NormalChallenge(10).isRunning ? 2 : 4);
-    // Dimension boosts 1-4 dont use 8th dims, 1-2 dont use 6th dims, so add those extras afterwards.
-  }
-  
-  // Add one cause (x-b)/i is off by one otherwise
-  if (calcBoosts.floor().add(1).lte(DimBoost.purchasedBoosts)) return;
-  calcBoosts = calcBoosts.sub(DimBoost.purchasedBoosts);
-  const minBoosts = Decimal.min(DC.BEMAX, calcBoosts.floor().add(1));
-  softReset(minBoosts);
+  softReset(DimBoost.maxBuyableDimBoosts);
 }
