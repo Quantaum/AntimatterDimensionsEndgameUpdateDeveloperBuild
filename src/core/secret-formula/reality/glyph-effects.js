@@ -92,10 +92,10 @@ export const glyphEffects = {
     shortDesc: () => (GlyphAlteration.isAdded("time")
       ? "EP ×{value} and ^{value2}"
       : "EP ×{value}"),
-    effect: (level, strength) => Decimal.pow(level * strength, 3).times(100),
+    effect: (level, strength) => Math.pow(level * strength, 3) * 100,
     formatEffect: x => format(x, 2, 3),
     combine: GlyphCombiner.multiply,
-    conversion: x => 1 + Decimal.log10(x).toNumber() / 1000,
+    conversion: x => 1 + Math.log10(x) / 1000,
     formatSecondaryEffect: x => format(x, 4, 4),
     alteredColor: () => GlyphAlteration.getAdditionColor("time"),
     alterationType: ALTERATION_TYPE.ADDITION,
@@ -328,7 +328,7 @@ export const glyphEffects = {
       : "IP ×{value}"),
     effect: (level, strength) => Decimal.pow(level * (strength + 1), 6).times(10000),
     formatEffect: x => format(x, 2, 3),
-    combine: GlyphCombiner.multiply,
+    combine: GlyphCombiner.multiplyDecimal,
     // eslint-disable-next-line no-negated-condition
     softcap: value => ((Effarig.eternityCap !== undefined) ? Decimal.min(value, Effarig.eternityCap) : value),
     conversion: x => 1 + Decimal.log10(x).toNumber() / 1800,
