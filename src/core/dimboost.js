@@ -29,9 +29,8 @@ export class DimBoost {
         TimeStudy(231),
         Achievement(117),
         Achievement(142),
-        GlyphEffect.dimBoostPower,
         PelleRifts.recursion.milestones[0]
-      ).powEffectsOf(InfinityUpgrade.dimboostMult.chargedEffect);
+      ).times(getAdjustedGlyphEffect("powerdimboost")).powEffectsOf(InfinityUpgrade.dimboostMult.chargedEffect);
     if (GlyphAlteration.isAdded("effarig")) boost = boost.pow(getSecondaryGlyphEffect("effarigforgotten"));
     if (Alpha.isRunning) boost = boost.pow(AlphaUnlocks.fourthDimboost.effects.nerf.effectOrDefault(1));
     if (!player.disablePostReality) boost = boost.pow(AlphaUnlocks.fourthDimboost.effects.buff.effectOrDefault(1));
