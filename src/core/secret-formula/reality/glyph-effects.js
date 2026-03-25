@@ -328,7 +328,7 @@ export const glyphEffects = {
       : "IP ×{value}"),
     effect: (level, strength) => Math.clampMin(Math.pow(level * (strength + 1), 6) * 10000, 1),
     formatEffect: x => format(x, 2, 3),
-    combine: GlyphCombiner.multiply,
+    combine: GlyphCombiner.multiplyDecimal,
     // eslint-disable-next-line no-negated-condition
     softcap: value => ((Effarig.eternityCap !== undefined) ? Math.min(value, Effarig.eternityCap.toNumber()) : value),
     conversion: x => 1 + Math.log10(x) / 1800,
