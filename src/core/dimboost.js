@@ -122,6 +122,40 @@ export class DimBoost {
 
     amount = Decimal.round(amount);
 
+    let costAtSoftcap = DC.D20;
+    if (this.maxDimensionsUnlockable === 6 && NormalChallenge(10).isRunning) {
+      costAtSoftcap = costAtSoftcap.add(DC.E100.sub(3).mul(DC.D20.sub(Effects.sum(TimeStudy(211), TimeStudy(222)) +
+        (!player.disablePostReality ? AlphaUnlocks.fifthDimboost.effects.buff.effectOrDefault(0) : 0)).times(
+        Alpha.isRunning ? AlphaUnlocks.fifthDimboost.effects.nerf.effectOrDefault(1) : 1)).round());
+    } else if (this.maxDimensionsUnlockable === 8) {
+      costAtSoftcap = costAtSoftcap.add(DC.E100.sub(5).mul(DC.D15.sub(Effects.sum(TimeStudy(211), TimeStudy(222)) +
+        (!player.disablePostReality ? AlphaUnlocks.fifthDimboost.effects.buff.effectOrDefault(0) : 0)).times(
+        Alpha.isRunning ? AlphaUnlocks.fifthDimboost.effects.nerf.effectOrDefault(1) : 1)).round());
+    }
+    if (EternityChallenge(5).isRunning) {
+      costAtSoftcap = Decimal.pow(DC.E100.sub(1), 3).add(DC.E100).add(costAtSoftcap).sub(1);
+    }
+    costAtSoftcap = costAtSoftcap.sub(Effects.sum(InfinityUpgrade.resetBoost));
+    if (InfinityChallenge(5).isCompleted) costAtSoftcap = costAtSoftcap.sub(1);
+    costAtSoftcap = costAtSoftcap.times(InfinityUpgrade.resetBoost.chargedEffect.effectOrDefault(1));
+    costAtSoftcap = Decimal.round(costAtSoftcap);
+
+    if (amount.gt(costAtSoftcap)) {
+      const inc = NormalChallenge(10).isRunning
+        ? DC.D20.sub(discount).times(multi).times(InfinityUpgrade.resetBoost.chargedEffect.effectOrDefault(1))
+        : DC.D15.sub(discount).times(multi).times(InfinityUpgrade.resetBoost.chargedEffect.effectOrDefault(1));
+      let aboveCap = amount.sub(20);
+      aboveCap = aboveCap.div(inc);
+      aboveCap = aboveCap.add(NormalChallenge(10).isRunning ? 3 : 5);
+      aboveCap = aboveCap.div(DC.E100);
+      aboveCap = Decimal.sqr(aboveCap);
+      aboveCap = aboveCap.times(DC.E100);
+      aboveCap = aboveCap.sub(NormalChallenge(10).isRunning ? 3 : 5);
+      aboveCap = aboveCap.times(inc);
+      aboveCap = aboveCap.add(20);
+      amount = Decimal.round(aboveCap);
+    }
+
     return new DimBoostRequirement(tier, amount);
   }
 
@@ -244,6 +278,12 @@ export class DimBoost {
     } else {
       calcBoosts = calcBoosts.add(NormalChallenge(10).isRunning ? 2 : 4);
       // Dimension boosts 1-4 dont use 8th dims, 1-2 dont use 6th dims, so add those extras afterwards.
+    }
+
+    if (calcBoosts.gt(DC.E100)) {
+      calcBoosts = calcBoosts.div(DC.E100);
+      calcBoosts = Decimal.sqrt(calcBoosts);
+      calcBoosts = calcBoosts.times(DC.E100);
     }
     
     // Add one cause (x-b)/i is off by one otherwise
