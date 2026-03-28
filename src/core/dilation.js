@@ -281,6 +281,12 @@ export function dilatedValueOf(value) {
   return Decimal.pow10(new Decimal(Decimal.sign(log10)).times(Decimal.pow(Decimal.abs(log10), dilationPenalty)));
 }
 
+export function dilateMultiplier(value, mag) {
+  if (value.lte(0)) return new Decimal(0);
+  const log10 = value.log10();
+  return Decimal.pow10(new Decimal(Decimal.sign(log10)).times(Decimal.pow(Decimal.abs(log10), mag)));
+}
+
 class DilationUpgradeState extends SetPurchasableMechanicState {
   get currency() {
     return Currency.dilatedTime;

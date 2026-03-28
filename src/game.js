@@ -126,7 +126,7 @@ export function gainedInfinityPoints() {
     if (PelleAchievementUpgrade.achievement141.isBought) ip = ip.timesEffectOf(Achievement(141).effects.ipGain);
     if (PelleDestructionUpgrade.x2IPUpgrade.isBought) ip = ip.timesEffectOf(InfinityUpgrade.ipMult);
     if (PelleDestructionUpgrade.reenableIPDilationUpgrade.isBought) ip = ip.timesEffectOf(DilationUpgrade.ipMultDT);
-    if (PelleDestructionUpgrade.destroyedGlyphEffects.isBought) ip = ip.timesEffectOf(GlyphEffect.ipMult);
+    if (PelleDestructionUpgrade.destroyedGlyphEffects.isBought) ip = ip.times(getAdjustedGlyphEffect("infinityIP"));
     if (PelleAlchemyUpgrade.alchemyExponential.isBought && Replicanti.areUnlocked) ip = ip.times(Replicanti.amount.powEffectOf(AlchemyResource.exponential));
     if (PelleCelestialUpgrade.raTeresa3.isBought) ip = ip.pow(getSecondaryGlyphEffect("infinityIP"));
     if (EndgameMastery(141).isBought) ip = ip.powEffectsOf(EndgameMastery(141));
@@ -183,7 +183,7 @@ function totalEPMult() {
     if (PelleDestructionUpgrade.timestudy121.isBought) ep = ep.timesEffectOf(TimeStudy(121));
     if (PelleDestructionUpgrade.timestudy123.isBought) ep = ep.timesEffectOf(TimeStudy(123));
     if (PelleRealityUpgrade.knowingExistence.isBought) ep = ep.timesEffectOf(RealityUpgrade(12));
-    if (PelleDestructionUpgrade.destroyedGlyphEffects.isBought) ep = ep.timesEffectOf(GlyphEffect.epMult);
+    if (PelleDestructionUpgrade.destroyedGlyphEffects.isBought) ep = ep.times(getAdjustedGlyphEffect("timeEP"));
     if (!player.disablePostReality) ep = ep.times(AlphaUnlocks.timestudy61.effects.buff.effectOrDefault(1));
     return ep;
   }
@@ -195,9 +195,8 @@ function totalEPMult() {
       TimeStudy(122),
       TimeStudy(121),
       TimeStudy(123),
-      RealityUpgrade(12),
-      GlyphEffect.epMult
-    ).times(player.disablePostReality ? 1 : AlphaUnlocks.timestudy61.effects.buff.effectOrDefault(1));
+      RealityUpgrade(12)
+    ).times(getAdjustedGlyphEffect("timeEP")).times(player.disablePostReality ? 1 : AlphaUnlocks.timestudy61.effects.buff.effectOrDefault(1));
 }
 
 export function gainedEternityPoints() {
@@ -218,6 +217,8 @@ export function gainedEternityPoints() {
     ep = ep.powEffectsOf(EndgameMastery(142));
   }
   ep = ep.powEffectOf(Ra.unlocks.eternityPointPower);
+
+  ep = ep.powEffectOf(Achievement(232));
 
   if (Alpha.isRunning) ep = ep.pow(AlphaUnlocks.eternityChallenge10.effects.nerf.effectOrDefault(1));
   if (Alpha.isRunning) ep = ep.pow(AlphaUnlocks.timeDimension8.effects.nerf.effectOrDefault(1));
@@ -947,6 +948,8 @@ export function gameLoop(passedDiff, options = {}) {
   laitelaRealityTick(realDiff);
   Achievements.autoAchieveUpdate(diff);
   V.checkForUnlocks();
+  V.updateTotalRunUnlocks();
+  Ra.checkForUnlocks();
   AutomatorBackend.update(realDiff);
   Pelle.gameLoop(realDiff);
   GalaxyGenerator.loop(realDiff);

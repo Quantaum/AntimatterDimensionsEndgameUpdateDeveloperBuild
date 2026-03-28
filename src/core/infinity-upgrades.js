@@ -101,9 +101,8 @@ export function totalIPMult() {
       Achievement(125),
       Achievement(141).effects.ipGain,
       InfinityUpgrade.ipMult,
-      DilationUpgrade.ipMultDT,
-      GlyphEffect.ipMult
-    );
+      DilationUpgrade.ipMultDT
+    ).times(getAdjustedGlyphEffect("infinityIP"));
   if (Replicanti.areUnlocked) ipMult = ipMult.times(Replicanti.amount.powEffectOf(AlchemyResource.exponential));
   return ipMult;
 }

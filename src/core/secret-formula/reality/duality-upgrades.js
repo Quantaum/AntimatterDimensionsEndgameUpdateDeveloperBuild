@@ -221,7 +221,7 @@ export const dualityUpgrades = [
     name: "Binate Velocity",
     id: 20,
     cost: new Decimal(1e16),
-    requirement: () => `Have a Continuum increase of at least ${formatX(4444444, 2, 2)}?`,
+    requirement: () => `Have a Continuum increase of at least ${formatX(4444444, 2, 2)}`,
     hasFailed: () => false,
     checkRequirement: () => Laitela.matterExtraPurchaseFactor >= 4444444,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,

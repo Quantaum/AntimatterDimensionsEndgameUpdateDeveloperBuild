@@ -267,7 +267,7 @@ export const Ra = {
     for (const pet of Ra.pets.all) pet.tick(realDiff, generateChunks);
   },
   get productionPerMemoryChunk() {
-    let res = new Decimal(Effects.product(Ra.unlocks.continuousTTBoost.effects.memories, Achievement(168)));
+    let res = new Decimal(Effects.product(Ra.unlocks.continuousTTBoost.effects.memories, Achievement(168), Achievement(236)));
     for (const pet of Ra.pets.all) {
       if (pet.isUnlocked) res = res.times(pet.memoryProductionMultiplier);
     }

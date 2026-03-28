@@ -196,9 +196,9 @@ export default {
           {{ runDescription }}
         </div>
         <EffarigRunUnlockReward
-          v-for="(unlock, i) in runUnlocks"
-          :key="i"
-          :unlock="unlock"
+          v-for="(secondUnlock, j) in runUnlocks"
+          :key="j"
+          :unlock="secondUnlock"
         />
       </div>
     </div>

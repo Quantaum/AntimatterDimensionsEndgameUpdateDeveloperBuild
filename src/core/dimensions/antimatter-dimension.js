@@ -93,6 +93,8 @@ export function getDimensionFinalMultiplierUncached(tier) {
 
   if (!player.disablePostReality) multiplier = multiplier.pow(AlphaUnlocks.timestudy181.effects.buff.effectOrDefault(1));
 
+  multiplier = dilateMultiplier(multiplier, Achievement(231).effectOrDefault(1));
+
   return multiplier;
 }
 
@@ -346,7 +348,7 @@ export function buyMaxDimension(tier, bulk = Infinity) {
     return;
   }
   let buying = maxBought.quantity;
-  if (buying.gt(bulkLeft)) buying = bulkLeft;
+  if (buying.gt(bulkLeft)) buying = new Decimal(bulkLeft);
   if (dimension.currencyAmount.gte(Decimal.pow10(maxBought.logPrice))) {
     dimension.amount = dimension.amount.plus(buying.times(10)).round();
     dimension.bought = dimension.bought.plus(buying.times(10)).round();
@@ -625,11 +627,11 @@ class AntimatterDimensionState extends DimensionState {
         const endgameMultValue = (EndgameMilestone.endgameAntimatter.isReached && !player.disablePostReality) ? endgameMult : 1;
         production = Decimal.pow10(Decimal.pow(log10, getAdjustedGlyphEffect("effarigantimatter") * Effects.product(EndgameMastery(101), EndgameUpgrade(15), SingularityMilestone.antimatterExponentPower) * endgameMultValue));
       }
-      if (production.gt(Decimal.pow10(1e150))) {
+      if (production.gt(Decimal.pow10(1e150)) && Pelle.isDoomed) {
         const log10 = production.log10();
         production = Decimal.pow10(Decimal.pow(log10.div(1e150), 0.5).times(1e150));
       }
-      if (production.gt(Decimal.pow10(1e225))) {
+      if (production.gt(Decimal.pow10(1e225)) && Pelle.isDoomed) {
         const log10 = production.log10();
         production = Decimal.pow10(Decimal.pow(log10.div(1e225), 0.1).times(1e225));
       }

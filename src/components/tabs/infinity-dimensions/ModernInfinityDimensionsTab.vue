@@ -39,6 +39,7 @@ export default {
       freeTesseractHardcap: 0,
       isAutoUnlocked: false,
       isAutoActive: false,
+      isAlphaDestroyed: false,
     };
   },
   computed: {
@@ -90,6 +91,7 @@ export default {
       const auto = Autobuyer.tesseract;
       this.isAutoUnlocked = auto.isUnlocked;
       this.isAutoActive = auto.isActive;
+      this.isAlphaDestroyed = Alpha.isDestroyed;
     },
     maxAll() {
       InfinityDimensions.buyMax();
@@ -188,9 +190,11 @@ export default {
     </div>
     <div>
       Free Tesseracts are softcapped past {{ format(freeTesseractSoftcap, 2, 2) }}.
-      <br>
-      This softcap causes Tesseracts past {{ format(freeTesseractSoftcap, 2, 2) }} to eternally approach
-      a hardcap of {{ format(freeTesseractHardcap, 2, 2) }} without ever actually reaching it.
+      <div v-if="!isAlphaDestroyed">
+        <br>
+        This softcap causes Tesseracts past {{ format(freeTesseractSoftcap, 2, 2) }} to eternally approach
+        a hardcap of {{ format(freeTesseractHardcap, 2, 2) }} without ever actually reaching it.
+      </div>
     </div>
     <div v-if="isEnslavedRunning">
       All Infinity Dimensions are limited to a single purchase.
