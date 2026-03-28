@@ -5,6 +5,7 @@ export const ReplicantiGrowth = {
     return Math.log10(Number.MAX_VALUE);
   },
   get scaleFactor() {
+    if (Replicanti.amount.gte(DC.E9E15)) return 10;
     if (PelleStrikes.eternity.hasStrike && !PelleStrikes.eternity.isDestroyed() && Replicanti.amount.gte(DC.E2000)) return 10;
     if (Pelle.isDoomed) return 2;
     if (Alpha.isRunning) return AlphaUnlocks.timestudy192.effects.nerf.effectOrDefault(1.2);
@@ -275,6 +276,8 @@ export function replicantiLoop(diff) {
   if (Pelle.isDoomed && Replicanti.amount.add(1).log10().sub(replicantiBeforeLoop.log10()).gt(308)) {
     Replicanti.amount = replicantiBeforeLoop.times(1e308);
   }
+
+  if (Replicanti.amount.lt(DC.E9E15)) Replicanti.amount = Decimal.min(DC.E9E15, Replicanti.amount);
 
   if (areRGsBeingBought && Replicanti.amount.gte(DC.NUMMAX)) {
     const buyer = Autobuyer.replicantiGalaxy;
