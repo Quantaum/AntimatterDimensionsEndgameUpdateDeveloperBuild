@@ -122,6 +122,10 @@ class CelQuotes extends BitUpgradeState {
   get bits() { return player.celestials[this._celestial].quoteBits; }
   set bits(value) { player.celestials[this._celestial].quoteBits = value; }
 
+  get isUnlocked() {
+    return player.celestials[this._celestial].quotes.includes(this.id);
+  }
+
   get requirement() {
     // If requirement is defined, it is always a function returning a boolean.
     return this.config.requirement?.();
@@ -140,7 +144,15 @@ class CelQuotes extends BitUpgradeState {
   }
 
   show() { this.unlock(); }
-  onUnlock() { this.present(); }
+
+  unlock() {
+    if (this.canBeUnlocked) player.celestials[this._celestial].quotes.push(this.id);
+  }
+
+  onUnlock() {
+    player.celestials[this._celestial].quotes.push(this.id);
+    this.present();
+  }
 
   present() {
     Quote.addToQueue(this);
