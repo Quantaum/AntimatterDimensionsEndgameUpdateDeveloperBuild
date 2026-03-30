@@ -712,6 +712,7 @@ window.player = {
     teresa: {
       pouredAmount: DC.D0,
       quoteBits: 0,
+      quotes: [],
       unlockBits: 0,
       run: false,
       bestRunAM: DC.D1,
@@ -728,6 +729,7 @@ window.player = {
       unlockBits: 0,
       run: false,
       quoteBits: 0,
+      quotes: [],
       glyphWeights: {
         ep: 25,
         repl: 25,
@@ -746,6 +748,7 @@ window.player = {
       autoStoreReal: false,
       isAutoReleasing: false,
       quoteBits: 0,
+      quotes: [],
       unlocks: [],
       run: false,
       completed: false,
@@ -764,6 +767,7 @@ window.player = {
       unlockBits: 0,
       run: false,
       quoteBits: 0,
+      quotes: [],
       runUnlocks: [0, 0, 0, 0, 0, 0, 0, 0, 0],
       goalReductionSteps: [0, 0, 0, 0, 0, 0, 0, 0, 0],
       STSpent: 0,
@@ -823,6 +827,7 @@ window.player = {
         effarig: 0
       },
       quoteBits: 0,
+      quotes: [],
       momentumTime: 0,
       unlockBits: 0,
       unlocks: [],
@@ -838,6 +843,7 @@ window.player = {
       maxDarkMatter: DC.D0,
       run: false,
       quoteBits: 0,
+      quotes: [],
       dimensions: Array.range(0, 8).map(() =>
         ({
           amount: DC.D0,
@@ -935,6 +941,7 @@ window.player = {
         sacrificeActive: false
       },
       quoteBits: 0,
+      quotes: [],
       collapsed: {
         upgrades: false,
         rifts: false,
@@ -946,6 +953,7 @@ window.player = {
       unlockBits: 0,
       run: false,
       quoteBits: 0,
+      quotes: [],
       stage: 0,
       records: {
         antimatter: DC.E1,
