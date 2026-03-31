@@ -148,6 +148,22 @@ class RebuyableImaginaryUpgradeState extends RebuyableMechanicState {
       GameCache.staticGlyphWeights.invalidate();
     }
   }
+
+  bulkPurchase() {
+    if (!this.isAffordable) return false;
+    Currency.imaginaryMachines.subtract(this.cost);
+    this.boughtAmount += getInverseHybridCostScaling(
+      Currency.imaginaryMachines.value,
+      1e15,
+      this.config.initialCost,
+      this.config.costMult,
+      this.config.costMult / 2,
+      DC.E309,
+      1e3,
+      this.config.costMult
+    ).sub(player.reality.imaginaryRebuyables[this.id]).toNumber();
+    return true;
+  }
 }
 
 ImaginaryUpgradeState.index = mapGameData(
