@@ -780,7 +780,7 @@ function celestialCrunchTabChange(firstCelestialInfinity) {
 export function secondSoftCelestialReset() {
   Endgame.resetNoReward();
   player.endgame.celDimExpansion.dimBoosts = new Decimal(CelestialInfinityUpgrade.buffedStart.effectOrDefault(0));
-  player.endgame.celDimExpansion.galaxies = CelestialInfinityUpgrade.buffedStart.isBought ? DC.D1 : DC.D0;
+  player.endgame.celDimExpansion.galaxies = CelestialInfinityUpgrade.buffedStart.isBought ? DC.D2 : DC.D0;
   player.records.thisCelestialInfinity.maxCM = DC.D0;
   Currency.unnerfedCelestialMatter.reset();
   Currency.celestialMatter.reset();
