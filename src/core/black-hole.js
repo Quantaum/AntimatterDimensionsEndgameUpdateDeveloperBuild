@@ -13,7 +13,7 @@ class BlackHoleUpgradeState {
       DC.E310,
       1e5,
       10
-    ).sub(player.reality.imaginaryRebuyables[this.id]).toNumber());
+    ).sub(getAmount()).toNumber());
     this._lazyValue = new Lazy(() => calculateValue(getAmount()));
     this._lazyCost = new Lazy(() => getHybridCostScaling(getAmount(),
       1e30,
