@@ -765,6 +765,39 @@ window.getHybridCostScaling = function getHybridCostScaling(
   return costScale.calculateCost(postInfinityAmount);
 };
 
+// Calculate the inverse of the getHybridCostScaling() function. You have no idea how tedious this was.
+window.getInverseHybridCostScaling = function getInverseHybridCostScaling(
+  amountOfMoney, linCostScalingStart, linInitialCost, linCostMult, linCostMultGrowth,
+  expInitialCost, expCostMult, expCostMultGrowth
+) {
+  if (amountOfMoney.lt(linInitialCost)) return DC.D0;
+  let estimation = DC.D0;
+  if (amountOfMoney.lt(linCostScalingStart)) {
+    const pastStart = amountOfMoney.div(linInitialCost);
+	  estimation = Decimal.round(Decimal.log10(pastStart).div(Decimal.log10(linCostMult))).add(1);
+  }
+  if (amountOfMoney.gte(linCostScalingStart) && amountOfMoney.lt(DC.NUMMAX)) {
+	  const afterScale = new LinearMultiplierScaling(linCostMult, linCostMultGrowth).purchasesForLogTotalMultiplier(
+      Decimal.ln(amountOfMoney.div(linCostScalingStart)).toNumber());
+	  estimation = Decimal.round(Decimal.floor(Decimal.log10(linCostScalingStart / linInitialCost).div(
+      Decimal.log10(linCostMult))).add(afterScale)).add(1);
+  }
+  if (amountOfMoney.gte(DC.NUMMAX)) {
+  	const purchasesAtInfinity = Decimal.floor(new LinearMultiplierScaling(linCostMult, linCostMultGrowth).purchasesForLogTotalMultiplier(
+      Decimal.ln(DC.NUMMAX.div(linCostScalingStart)).toNumber()) + Decimal.floor(Decimal.log10(linCostScalingStart / linInitialCost).div(
+      Decimal.log10(linCostMult))).toNumber()).add(1);
+  	if (amountOfMoney.lt(expInitialCost)) return purchasesAtInfinity;
+  	const logMoneyAfterInfinity = Decimal.log10(amountOfMoney).sub(Decimal.log10(expInitialCost));
+  	const logScale = Decimal.log10(expCostMult);
+  	const logScaleGrowth = Decimal.log10(expCostMultGrowth);
+  	estimation = Decimal.floor(logScale.add(logScaleGrowth.div(2)).neg().add(Decimal.sqrt(Decimal.sqr(logScale.add(logScaleGrowth.div(2)))
+      .add(logScaleGrowth.times(logMoneyAfterInfinity).times(2)))).div(logScaleGrowth)).add(purchasesAtInfinity).add(1);
+  }
+  if (amountOfMoney.gte(getHybridCostScaling(estimation.sub(1).toNumber(), linCostScalingStart, linInitialCost, linCostMult,
+    linCostMultGrowth, expInitialCost, expCostMult, expCostMultGrowth))) return estimation;
+  return estimation.sub(1);
+};
+
 window.logFactorial = (function() {
   const LOGS = Array.range(1, 11).map(Math.log);
   const TABLE = [0];

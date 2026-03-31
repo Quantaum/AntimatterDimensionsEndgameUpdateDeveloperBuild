@@ -749,6 +749,7 @@ export const Endgame = {
     if (EternityMilestone.keepAutobuyers.isReached) {
       NormalChallenges.completeAll();
     }
+    AutomatorBackend.restart();
   }
 };
 function lockAchievementsOnEndgame() {

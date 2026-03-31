@@ -19,7 +19,7 @@ export class DualityUpgradeAutobuyerState extends AutobuyerState {
 
   tick() {
     const upg = DualityUpgrade(this.id);
-    while (Currency.dualMachines.gte(upg.cost)) upg.purchase();
+    upg.bulkPurchase();
   }
 
   static get entryCount() { return 10; }

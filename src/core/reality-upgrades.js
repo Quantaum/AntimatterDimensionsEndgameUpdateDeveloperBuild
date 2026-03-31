@@ -118,6 +118,22 @@ class RebuyableRealityUpgradeState extends RebuyableMechanicState {
   set boughtAmount(value) {
     player.reality.rebuyables[this.id] = value;
   }
+
+  bulkPurchase() {
+    if (!this.isAffordable) return false;
+    Currency.realityMachines.subtract(this.cost);
+    this.boughtAmount += getInverseHybridCostScaling(
+      Currency.realityMachines.value,
+      1e30,
+      this.config.initialCost,
+      this.config.costMult,
+      this.config.costMult / 10,
+      DC.E309,
+      1e3,
+      this.config.initialCost * this.config.costMult
+    ).sub(player.reality.rebuyables[this.id]).toNumber();
+    return true;
+  }
 }
 
 RealityUpgradeState.index = mapGameData(
