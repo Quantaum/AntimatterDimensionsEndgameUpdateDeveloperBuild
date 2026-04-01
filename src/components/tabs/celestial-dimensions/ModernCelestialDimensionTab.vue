@@ -143,7 +143,7 @@ export default {
             After <span :class="instabilityClassObject()">{{ format(overflow, 2, 1) }}</span> Celestial Matter, your
             Celestial Matter was softcapped <i>again</i>.
             <br>
-            Currently, Celestial Matter above this amount is being raised to the power of
+            Currently, Celestial Matter and the Celestial Matter Softcap start above this amount is being raised to the power of
             <span :class="instabilityClassObject()">{{ format(1 / overflowMag, 2, 3) }}</span>.
             <br>
             The Celestial Matter Overflow is solely based on your Celestial Matter Overflow Magnitude, which is currently
