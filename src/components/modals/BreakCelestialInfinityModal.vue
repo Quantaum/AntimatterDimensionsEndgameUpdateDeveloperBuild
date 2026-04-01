@@ -12,7 +12,7 @@ export default {
       return `Breaking Celestial Infinity will allow you to gain Celestial Matter past ${infinity}.
         Celestial Dimensions and Celestial Tickspeed Upgrades will scale in cost faster after ${infinity} Celestial Matter.
         You will gain additional Celestial Infinity Points on Celestial Crunch based on Celestial Matter produced over ${infinity}.\
-        It will also unlock Break Infinity Upgrades and max all Normal Challenge Autobuyers.`.split("\n");
+        It will also unlock Celestial Break Infinity Upgrades.`.split("\n");
     },
   },
   methods: {
