@@ -1,6 +1,6 @@
 <script>
 import CelestialBreakInfinityButton from "./CelestialBreakInfinityButton";
-import CelestialInfinityUpgradeButton from "@/components/CelestialInfinityUpgradeButton";
+import CelestialInfinityUpgradeButton from "./CelestialInfinityUpgradeButton";
 
 export default {
   name: "CelestialBreakInfinityTab",
