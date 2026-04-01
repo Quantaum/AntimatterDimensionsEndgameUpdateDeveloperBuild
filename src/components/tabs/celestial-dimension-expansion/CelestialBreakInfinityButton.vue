@@ -4,7 +4,8 @@ export default {
   data() {
     return {
       isBroken: false,
-      isUnlocked: false
+      isUnlocked: false,
+      isAffordable: false
     };
   },
   computed: {
@@ -12,24 +13,25 @@ export default {
       return {
         "o-break-celestial-infinity-upgrade-btn": true,
         "o-break-celestial-infinity-upgrade-btn--color-2": true,
-        "o-break-celestial-infinity-upgrade-btn--available": this.isUnlocked,
-        "o-break-celestial-infinity-upgrade-btn--unavailable": !this.isUnlocked,
+        "o-break-celestial-infinity-upgrade-btn--available": this.isUnlocked || this.isAffordable,
+        "o-break-celestial-infinity-upgrade-btn--unavailable": !this.isUnlocked && !this.isAffordable,
         "o-break-celestial-infinity-upgrade-btn--unclickable": this.isBroken,
       };
     },
     text() {
       return this.isUnlocked
         ? (this.isBroken ? "CELESTIAL INFINITY IS BROKEN" : "BREAK CELESTIAL INFINITY")
-        : `PURCHASE CELESTIAL BREAK INFINITY\n\nCOSTS: ${formatInt(10000)} CIP`;
+        : `PURCHASE CELESTIAL BREAK INFINITY\n\nCOSTS: ${formatInt(10000)} CIP`.split("\n");
     }
   },
   methods: {
     update() {
       this.isBroken = player.endgame.celDimExpansion.isBroken;
       this.isUnlocked = player.endgame.celDimExpansion.isBreakUnlocked;
+      this.isAffordable = player.endgame.celDimExpansion.celestialInfinityPoints.gte(10000);
     },
     clicked() {
-      if (!this.isUnlocked && player.endgame.celDimExpansion.celestialInfinityPoints.gte(10000)) {
+      if (!this.isUnlocked && this.isAffordable) {
         Currency.celestialInfinityPoints.purchase(10000);
         player.endgame.celDimExpansion.isBreakUnlocked = true;
       }
