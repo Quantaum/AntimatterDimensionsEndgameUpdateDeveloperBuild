@@ -125,7 +125,7 @@ class CelestialDimensionState extends DimensionState {
   }
 
   get purchaseCap() {
-    return DC.C2P1024;
+    return player.endgame.celDimExpansion.isBroken ? new Decimal(Infinity) : DC.C2P1024;
   }
 
   get isCapped() {
