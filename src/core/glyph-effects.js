@@ -159,10 +159,6 @@ class GlyphEffectConfig {
       if (emptyCombine.value === undefined || emptyCombine.capped === undefined) {
         throw new Error(`The combine function for Glyph effect "${setup.id}" has invalid return type`);
       }
-      if (setup.softcap) {
-        throw new Error(`The combine function for Glyph effect "${setup.id}" gives capped information, ` +
-          `but there's also a softcap method`);
-      }
     }
   }
 
@@ -172,7 +168,7 @@ class GlyphEffectConfig {
     const softcap = setup.softcap;
     const emptyCombine = combine([]);
     // No supplied capped indicator
-    if (typeof (emptyCombine) === "number") {
+    if (typeof (emptyCombine) === "number" || softcap && typeof (emptyCombine.value) === "number") {
       if (softcap === undefined) return effects => ({ value: combine(effects), capped: false });
       return effects => {
         const rawValue = combine(effects);
@@ -180,10 +176,10 @@ class GlyphEffectConfig {
         return { value: cappedValue, capped: rawValue !== cappedValue };
       };
     }
-    if (emptyCombine instanceof Decimal) {
+    if (emptyCombine instanceof Decimal || softcap && emptyCombine.value instanceof Decimal) {
       if (softcap === undefined) return effects => ({ value: combine(effects), capped: false });
       const neqTest = emptyCombine.value instanceof Decimal ? (a, b) => a.neq(b) : (a, b) => a !== b;
-      return combine = effects => {
+      return effects => {
         const rawValue = combine(effects);
         const cappedValue = softcap(rawValue.value);
         return { value: cappedValue, capped: rawValue.capped || neqTest(rawValue.value, cappedValue) };

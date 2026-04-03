@@ -153,7 +153,7 @@ export const Laitela = {
     Currency.darkMatter.max = DC.D1;
     Currency.darkMatter.reset();
     Currency.unnerfedDarkMatter.reset();
-    Currency.singularities.reset();
+    this.celestial.singularities = ExpansionPack.laitelaPack.isBought ? DC.E1 : DC.D0;
     this.celestial.singularityCapIncreases = DC.D0;
   },
   fullReset() {
