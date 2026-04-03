@@ -328,12 +328,11 @@ export const glyphEffects = {
       : "IP ×{value}"),
     effect: (level, strength) => Decimal.clampMin(Decimal.pow(level * (strength + 1), 6).times(10000), 1),
     formatEffect: x => format(x, 2, 3),
-    combine: (effects) => {
+    combine: effects => {
       let sum = effects.reduce(Decimal.prodReducer, DC.D1);
-      return Effarig.eternityCap !== undefined && sum.gt(Effarig.eternityCap)
-        ? { value: Decimal.min(sum, Effarig.eternityCap), capped: true }
-        : { value: sum, capped: false };
+      return { value: sum, capped: false };
     },
+    softcap: value => ((Effarig.eternityCap !== undefined) ? Math.min(value, Effarig.eternityCap.toNumber()) : value),
     conversion: x => 1 + Decimal.log10(x).toNumber() / 1800,
     formatSecondaryEffect: x => format(x, 4, 4),
     alteredColor: () => GlyphAlteration.getAdditionColor("infinity"),
