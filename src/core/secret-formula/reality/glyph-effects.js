@@ -332,7 +332,7 @@ export const glyphEffects = {
       let sum = effects.reduce(Decimal.prodReducer, DC.D1);
       return { value: sum, capped: false };
     },
-    softcap: value => ((Effarig.eternityCap !== undefined) ? Math.min(value, Effarig.eternityCap.toNumber()) : value),
+    softcap: value => ((Effarig.eternityCap !== undefined) ? Decimal.min(value, Effarig.eternityCap) : value),
     conversion: x => 1 + Decimal.log10(x).toNumber() / 1800,
     formatSecondaryEffect: x => format(x, 4, 4),
     alteredColor: () => GlyphAlteration.getAdditionColor("infinity"),
