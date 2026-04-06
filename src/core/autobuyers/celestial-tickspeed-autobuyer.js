@@ -48,7 +48,7 @@ export class CelestialTickspeedAutobuyerState extends IntervaledAutobuyerState {
         buyCelestialTickSpeed();
         break;
       case AUTOBUYER_MODE.BUY_MAX:
-        buyCelestialMaxTickSpeed();
+        buyMaxCelestialTickSpeed();
         break;
     }
   }
