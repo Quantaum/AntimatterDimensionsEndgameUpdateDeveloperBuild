@@ -40,6 +40,7 @@ export default {
       isBroken: false,
       hasInfinities: false,
       infinityPoints: new Decimal(0),
+      isAnyAutobuyerUnlocked: false,
     };
   },
   methods: {
@@ -67,12 +68,16 @@ export default {
       this.isBroken = player.endgame.celDimExpansion.isBroken;
       this.hasInfinities = Currency.celestialInfinities.value.gt(0);
       this.infinityPoints.copyFrom(player.endgame.celDimExpansion.celestialInfinityPoints);
+      this.isAnyAutobuyerUnlocked = Autobuyer.celestialDimension(1).isUnlocked;
     },
     maxAll() {
       CelestialDimensions.buyMax();
     },
     toggleCelestialMatterMultiplier() {
       toggleCelestialMatter();
+    },
+    toggleAllAutobuyers() {
+      toggleAllCelDims();
     },
     instabilityClassObject() {
       return {
@@ -102,6 +107,13 @@ export default {
         @click="toggleCelestialMatterMultiplier"
       >
         Toggle Celestial Matter
+      </PrimaryButton>
+      <PrimaryButton
+        v-if="isAnyAutobuyerUnlocked"
+        class="o-primary-btn--subtab-option"
+        @click="toggleAllAutobuyers"
+      >
+        Toggle all autobuyers
       </PrimaryButton>
     </div>
     <div v-if="!canCrunch || isBroken">
