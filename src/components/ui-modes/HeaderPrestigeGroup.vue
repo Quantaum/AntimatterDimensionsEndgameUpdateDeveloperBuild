@@ -22,7 +22,7 @@ export default {
 </script>
 
 <template>
-  <div class="c-prestige-info-blocks">
+  <div :class="classObject()">
     <HeaderEternityContainer class="l-game-header__eternity" />
     <HeaderCenterContainer class="l-game-header__center" />
     <HeaderInfinityContainer class="l-game-header__infinity" />
