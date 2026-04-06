@@ -136,6 +136,12 @@ window.player = {
       lastTick: 0,
       isBought: false
     },
+    celestialTickspeed: {
+      isUnlocked: false,
+      mode: AUTOBUYER_MODE.BUY_SINGLE,
+      isActive: true,
+      lastTick: 0
+    },
     sacrifice: {
       multiplier: DC.D2,
       isActive: true
