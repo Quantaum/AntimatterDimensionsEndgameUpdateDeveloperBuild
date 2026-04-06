@@ -113,7 +113,8 @@ export default {
     <template v-else>
       <div v-if="!showCIPRate" />
       <b>
-        Celestial Crunch for
+        <span v-if="showCIPRate">Cel Crunch for</span>
+        <span v-else>Celestial Crunch for</span>
         <span :style="amountStyle">{{ format(gainedCIP, 2) }}</span>
         <span v-if="showCIPRate"> CIP</span>
         <span v-else> Celestial {{ pluralize("Point", gainedCIP) }} of Infinity</span>
