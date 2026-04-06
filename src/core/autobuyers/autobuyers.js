@@ -3,6 +3,7 @@ import { AntimatterDimensionAutobuyerState } from "./antimatter-dimension-autobu
 import { BigCrunchAutobuyerState } from "./big-crunch-autobuyer";
 import { BlackHolePowerAutobuyerState } from "./black-hole-power-autobuyer";
 import { BulkSingularityAutobuyerState } from "./bulk-singularity-autobuyer";
+import { CelestialCrunchAutobuyerState } from "./celestial-crunch-autobuyer";
 import { CelestialDimBoostAutobuyerState } from "./celestial-dimboost-autobuyer";
 import { CelestialDimensionAutobuyerState } from "./celestial-dimension-autobuyer";
 import { CelestialGalaxyAutobuyerState } from "./celestial-galaxy-autobuyer";
@@ -38,6 +39,7 @@ export const Autobuyer = {
   bigCrunch: new BigCrunchAutobuyerState(),
   blackHolePower: BlackHolePowerAutobuyerState.createAccessor(),
   bulkSingularity: new BulkSingularityAutobuyerState(),
+  celestialCrunch: new CelestialCrunchAutobuyerState(),
   celestialDimboost: new CelestialDimBoostAutobuyerState(),
   celestialDimension: CelestialDimensionAutobuyerState.createAccessor(),
   celestialGalaxy: new CelestialGalaxyAutobuyerState(),
@@ -82,6 +84,7 @@ export const Autobuyers = (function() {
     Autobuyer.eternity,
     Autobuyer.reality,
     Autobuyer.endgame,
+    Autobuyer.celestialCrunch
   ];
 
   const single = [
@@ -155,6 +158,7 @@ export const Autobuyers = (function() {
         Autobuyer.galaxy,
         Autobuyer.celestialGalaxy,
         Autobuyer.bigCrunch,
+        Autobuyer.celestialCrunch,
         Autobuyer.eternity,
         Autobuyer.reality,
         Autobuyer.endgame].some(autobuyer => autobuyer.isUnlocked);
