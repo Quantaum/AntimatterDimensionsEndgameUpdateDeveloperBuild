@@ -39,6 +39,7 @@ export default {
   <AutobuyerBox
     :autobuyer="autobuyer"
     name="Celestial Tickspeed Autobuyer"
+    show-interval
   >
     <template #toggleSlot>
       <button
