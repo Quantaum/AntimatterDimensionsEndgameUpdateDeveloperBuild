@@ -52,7 +52,7 @@ export default {
     name="Automatic Celestial Dimension Boosts"
   >
     <template
-      v-else-if="isBuyMaxUnlocked"
+      v-if="isBuyMaxUnlocked"
       #intervalSlot
     >
       <div
