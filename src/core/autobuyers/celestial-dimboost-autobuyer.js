@@ -2,7 +2,7 @@ import { IntervaledAutobuyerState } from "./autobuyer";
 
 export class CelestialDimBoostAutobuyerState extends IntervaledAutobuyerState {
   get data() {
-    return player.auto.celDimBoost;
+    return player.auto.celestialDimBoost;
   }
 
   get name() {
