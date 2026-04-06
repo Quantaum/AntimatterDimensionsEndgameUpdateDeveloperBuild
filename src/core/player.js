@@ -158,6 +158,15 @@ window.player = {
       isActive: true,
       lastTick: 0
     },
+    celestialCrunch: {
+      mode: 0,
+      amount: DC.D1,
+      increaseWithMult: true,
+      time: 1,
+      xHighest: DC.D1,
+      isActive: true,
+      lastTick: 0
+    },
     sacrifice: {
       multiplier: DC.D2,
       isActive: true
