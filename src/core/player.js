@@ -1348,6 +1348,12 @@ window.player = {
     }),
     permanentMasteries: [],
   },
+  expanse: {
+    elemental: {
+      quoteBits: 0,
+      quotes: [],
+    },
+  },
   isGameEnd: false,
   tabNotifications: new Set(),
   triggeredTabNotificationBits: 0,
