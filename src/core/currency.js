@@ -685,3 +685,8 @@ Currency.celestialInfinityPoints = new class extends DecimalCurrency {
     player.records.thisCelestialEternity.maxCIP = this.startingValue;
   }
 }();
+
+Currency.divinities = new class extends NumberCurrency {
+  get value() { return player.celestials.pelle.divinities; }
+  set value(value) { player.celestials.pelle.divinities = value; }
+}();
