@@ -136,6 +136,37 @@ window.player = {
       lastTick: 0,
       isBought: false
     },
+    celestialTickspeed: {
+      mode: AUTOBUYER_MODE.BUY_SINGLE,
+      isActive: true,
+      lastTick: 0
+    },
+    celestialDimBoost: {
+      limitCelDimBoosts: false,
+      maxCelDimBoosts: 1,
+      limitUntilCelGalaxies: false,
+      celGalaxies: 10,
+      buyMaxInterval: 0,
+      isActive: true,
+      lastTick: 0
+    },
+    celestialGalaxy: {
+      limitCelGalaxies: false,
+      maxCelGalaxies: 1,
+      buyMax: false,
+      buyMaxInterval: 0,
+      isActive: true,
+      lastTick: 0
+    },
+    celestialCrunch: {
+      mode: 0,
+      amount: DC.D1,
+      increaseWithMult: true,
+      time: 1,
+      xHighest: DC.D1,
+      isActive: true,
+      lastTick: 0
+    },
     sacrifice: {
       multiplier: DC.D2,
       isActive: true
@@ -161,6 +192,13 @@ window.player = {
       isActive: true,
     },
     timeDims: {
+      all: Array.range(0, 8).map(() => ({
+        isActive: false,
+        lastTick: 0,
+      })),
+      isActive: true,
+    },
+    celestialDims: {
       all: Array.range(0, 8).map(() => ({
         isActive: false,
         lastTick: 0,

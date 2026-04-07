@@ -772,27 +772,29 @@ window.getInverseHybridCostScaling = function getInverseHybridCostScaling(
 ) {
   if (amountOfMoney.lt(linInitialCost)) return DC.D0;
   let estimation = DC.D0;
-  const firstPurchOverScale = Decimal.ceil(Decimal.log10(linCostScalingStart / linInitialCost).div(Decimal.log10(linCostMult)));
-  const firstCostOverScale = Decimal.pow(linCostMult, firstPurchOverScale).times(linInitialCost);
+  const firstPurchOverScale = Decimal.floor(Decimal.log10(linCostScalingStart / linInitialCost).div(Decimal.log10(linCostMult))).add(1);
+  const firstCostOverScale = Decimal.pow(linCostMult, firstPurchOverScale.sub(1)).times(linInitialCost);
   if (amountOfMoney.lt(firstCostOverScale)) {
     const pastStart = amountOfMoney.div(linInitialCost);
-	  estimation = Decimal.round(Decimal.log10(pastStart).div(Decimal.log10(linCostMult))).add(1);
+	  estimation = Decimal.floor(Decimal.log10(pastStart).div(Decimal.log10(linCostMult))).add(1);
   }
   if (amountOfMoney.gte(firstCostOverScale) && amountOfMoney.lt(DC.NUMMAX)) {
 	  const afterScale = new LinearMultiplierScaling(linCostMult, linCostMultGrowth).purchasesForLogTotalMultiplier(
       Decimal.ln(amountOfMoney.div(firstCostOverScale)).toNumber());
-	  estimation = Decimal.floor(firstPurchOverScale.add(afterScale)).add(1);
+	  estimation = Decimal.floor(firstPurchOverScale.add(afterScale));
   }
   if (amountOfMoney.gte(DC.NUMMAX)) {
   	const purchasesAtInfinity = Decimal.floor(new LinearMultiplierScaling(linCostMult, linCostMultGrowth).purchasesForLogTotalMultiplier(
-      Decimal.ln(DC.NUMMAX.div(firstCostOverScale)).toNumber()) + firstPurchOverScale.toNumber()).add(1);
-  	if (amountOfMoney.lt(expInitialCost)) return purchasesAtInfinity;
+      Decimal.ln(DC.NUMMAX.div(firstCostOverScale)).toNumber()) + firstPurchOverScale.toNumber());
+  	if (amountOfMoney.lt(expInitialCost)) estimation = purchasesAtInfinity;
   	const logMoneyAfterInfinity = Decimal.log10(amountOfMoney).sub(Decimal.log10(expInitialCost));
   	const logScale = Decimal.log10(expCostMult);
   	const logScaleGrowth = Decimal.log10(expCostMultGrowth);
   	estimation = Decimal.floor(logScale.add(logScaleGrowth.div(2)).neg().add(Decimal.sqrt(Decimal.sqr(logScale.add(logScaleGrowth.div(2)))
       .add(logScaleGrowth.times(logMoneyAfterInfinity).times(2)))).div(logScaleGrowth)).add(purchasesAtInfinity).add(1);
   }
+  if (amountOfMoney.gte(getHybridCostScaling(estimation.toNumber(), linCostScalingStart, linInitialCost, linCostMult,
+    linCostMultGrowth, expInitialCost, expCostMult, expCostMultGrowth))) return estimation.add(1);
   if (amountOfMoney.gte(getHybridCostScaling(estimation.sub(1).toNumber(), linCostScalingStart, linInitialCost, linCostMult,
     linCostMultGrowth, expInitialCost, expCostMult, expCostMultGrowth))) return estimation;
   return estimation.sub(1);

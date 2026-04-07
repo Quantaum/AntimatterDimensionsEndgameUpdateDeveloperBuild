@@ -13,6 +13,13 @@ export function toggleCelestialMatter() {
   player.endgame.celestialMatterMultiplier.isActive = !isEnabled;
 }
 
+export function toggleAllCelDims() {
+  const areEnabled = Autobuyer.celestialDimension(1).isActive;
+  for (let i = 1; i < 9; i++) {
+    Autobuyer.celestialDimension(i).isActive = !areEnabled;
+  }
+}
+
 class CelestialDimensionState extends DimensionState {
   constructor(tier) {
     super(() => player.dimensions.celestial, tier);
@@ -226,7 +233,7 @@ export const CelestialDimensions = {
   },
 
   get OVERFLOW_MAG() {
-    return DC.E1.sub(Decimal.pow(player.records.totalCelMatter.add(1).log10().add(1).log10().sub(3).max(0).add(1), 1.25).sub(1)).toNumber();
+    return DC.E1.sub(Decimal.pow(player.records.totalCelMatter.add(1).log10().add(1).log10().sub(3).max(0).add(1), 1.25).sub(1)).max(1).toNumber();
   },
 
   get softcapPow() {

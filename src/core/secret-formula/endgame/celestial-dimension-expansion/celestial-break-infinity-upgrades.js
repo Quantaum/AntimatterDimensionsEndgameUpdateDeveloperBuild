@@ -25,12 +25,12 @@ export const celestialBreakInfinityUpgrades = {
   autoCD1: {
     id: "autoCD1",
     cost: 5e4,
-    description: "Unlock Autobuyers for the first four Celestial Dimensions"
+    description: "Unlock Autobuyers for Celestial Dimensions 1-4"
   },
   autoCD2: {
     id: "autoCD2",
     cost: 1e5,
-    description: "Unlock Autobuyers for the other four Celestial Dimensions"
+    description: "Unlock Autobuyers for Celestial Dimensions 5-8"
   },
   autoCDPlus: {
     id: "autoCDPlus",

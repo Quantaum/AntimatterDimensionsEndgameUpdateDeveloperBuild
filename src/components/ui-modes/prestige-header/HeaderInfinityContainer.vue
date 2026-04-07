@@ -1,10 +1,12 @@
 <script>
 import BigCrunchButton from "./BigCrunchButton";
+import CelestialCrunchButton from "./CelestialCrunchButton";
 
 export default {
   name: "HeaderInfinityContainer",
   components: {
     BigCrunchButton,
+    CelestialCrunchButton
   },
   data() {
     return {
@@ -53,12 +55,16 @@ export default {
       </div>
       <BigCrunchButton />
     </div>
-    <div v-if="showContainer && hasCelestial">
+    <div
+      v-if="showContainer && hasCelestial"
+      class="c-prestige-button-container"
+    >
       <div class="c-infinity-points">
         You have
         <span class="c-game-header__cip-amount">{{ format(celInfinityPoints, 2) }}</span>
         {{ pluralize("Celestial Infinity Point", celInfinityPoints) }}.
       </div>
+      <CelestialCrunchButton />
     </div>
   </div>
 </template>

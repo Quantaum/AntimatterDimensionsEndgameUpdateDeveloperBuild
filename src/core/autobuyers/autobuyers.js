@@ -3,6 +3,11 @@ import { AntimatterDimensionAutobuyerState } from "./antimatter-dimension-autobu
 import { BigCrunchAutobuyerState } from "./big-crunch-autobuyer";
 import { BlackHolePowerAutobuyerState } from "./black-hole-power-autobuyer";
 import { BulkSingularityAutobuyerState } from "./bulk-singularity-autobuyer";
+import { CelestialCrunchAutobuyerState } from "./celestial-crunch-autobuyer";
+import { CelestialDimBoostAutobuyerState } from "./celestial-dimboost-autobuyer";
+import { CelestialDimensionAutobuyerState } from "./celestial-dimension-autobuyer";
+import { CelestialGalaxyAutobuyerState } from "./celestial-galaxy-autobuyer";
+import { CelestialTickspeedAutobuyerState } from "./celestial-tickspeed-autobuyer";
 import { DarkMatterDimensionAscensionAutobuyerState } from "./dark-matter-dimension-ascension-autobuyer";
 import { DarkMatterDimensionAutobuyerState } from "./dark-matter-dimension-autobuyer";
 import { DilationUpgradeAutobuyerState } from "./dilation-upgrade-autobuyer";
@@ -34,6 +39,11 @@ export const Autobuyer = {
   bigCrunch: new BigCrunchAutobuyerState(),
   blackHolePower: BlackHolePowerAutobuyerState.createAccessor(),
   bulkSingularity: new BulkSingularityAutobuyerState(),
+  celestialCrunch: new CelestialCrunchAutobuyerState(),
+  celestialDimboost: new CelestialDimBoostAutobuyerState(),
+  celestialDimension: CelestialDimensionAutobuyerState.createAccessor(),
+  celestialGalaxy: new CelestialGalaxyAutobuyerState(),
+  celestialTickspeed: new CelestialTickspeedAutobuyerState(),
   darkMatterDimsAscension: new DarkMatterDimensionAscensionAutobuyerState(),
   darkMatterDims: new DarkMatterDimensionAutobuyerState(),
   dilationUpgrade: DilationUpgradeAutobuyerState.createAccessor(),
@@ -65,14 +75,16 @@ export const Autobuyers = (function() {
   const antimatterDimensions = Autobuyer.antimatterDimension.zeroIndexed;
   const infinityDimensions = Autobuyer.infinityDimension.zeroIndexed;
   const timeDimensions = Autobuyer.timeDimension.zeroIndexed;
+  const celestialDimensions = Autobuyer.celestialDimension.zeroIndexed;
 
-  const dimensions = [antimatterDimensions, infinityDimensions, timeDimensions];
+  const dimensions = [antimatterDimensions, infinityDimensions, timeDimensions, celestialDimensions];
 
   const prestige = [
     Autobuyer.bigCrunch,
     Autobuyer.eternity,
     Autobuyer.reality,
     Autobuyer.endgame,
+    Autobuyer.celestialCrunch
   ];
 
   const single = [
@@ -93,7 +105,10 @@ export const Autobuyers = (function() {
     Autobuyer.tickspeed,
     Autobuyer.galaxy,
     Autobuyer.dimboost,
-    Autobuyer.bulkSingularity
+    Autobuyer.bulkSingularity,
+    Autobuyer.celestialTickspeed,
+    Autobuyer.celestialDimboost,
+    Autobuyer.celestialGalaxy
   ].concat(single);
 
   const arrays = [
@@ -111,6 +126,7 @@ export const Autobuyers = (function() {
     Autobuyer.antimatterDimension,
     Autobuyer.infinityDimension,
     Autobuyer.timeDimension,
+    Autobuyer.celestialDimension,
     Autobuyer.replicantiUpgrade,
     Autobuyer.dilationUpgrade,
     Autobuyer.pelleDilationUpgrade,
@@ -138,8 +154,11 @@ export const Autobuyers = (function() {
     get hasAutobuyersForEditModal() {
       return [Autobuyer.bulkSingularity,
         Autobuyer.dimboost,
+        Autobuyer.celestialDimboost,
         Autobuyer.galaxy,
+        Autobuyer.celestialGalaxy,
         Autobuyer.bigCrunch,
+        Autobuyer.celestialCrunch,
         Autobuyer.eternity,
         Autobuyer.reality,
         Autobuyer.endgame].some(autobuyer => autobuyer.isUnlocked);
