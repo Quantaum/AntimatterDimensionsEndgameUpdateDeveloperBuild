@@ -168,6 +168,7 @@ class CelQuotes extends BitUpgradeState {
         ? player.celestials[this._celestial].quotes.push(this.id)
         : player.expanse.elemental.quotes.push(this.id);
     }
+    this.onUnlock();
   }
 
   onUnlock() {
