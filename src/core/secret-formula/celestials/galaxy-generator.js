@@ -69,4 +69,13 @@ export const pelleGalaxyGeneratorUpgrades = {
     currency: () => Currency.realityShards,
     currencyLabel: "Reality Shard"
   }),
+  DTMult: rebuyable({
+    id: "galaxyGeneratorDTMult",
+    description: "Multiply Galaxy generation",
+    cost: x => new Decimal(1e100).times(Decimal.pow(1e100, (x*(x+1)/2)+x)),
+    effect: x => Decimal.pow(2, x),
+    formatEffect: x => formatX(x, 2),
+    currency: () => Currency.dilatedTime,
+    currencyLabel: "Dilated Time"
+  })
 };

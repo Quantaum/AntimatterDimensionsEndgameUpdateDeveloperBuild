@@ -185,6 +185,10 @@ body.t-s12 {
   border-left-color: var(--color-endgame);
 }
 
+.o-tab-btn--cd-expansion::after {
+  border-left-color: var(--color-alpha--base);
+}
+
 .tab-button.shop {
   background-color: #d9bb26;
 }
@@ -349,6 +353,16 @@ body.t-s12 {
   border-top-color: var(--color-endgame);
 }
 
+.o-tab-btn--cd-expansion .o-subtab__tooltip {
+  color: var(--color-alpha--base);
+  background-color: var(--color-prestige--accent);
+  border-color: var(--color-alpha--base);
+}
+
+.o-tab-btn--cd-expansion .o-subtab__tooltip::after {
+  border-top-color: var(--color-alpha--base);
+}
+
 .active {
   background-color: #2c2933;
 }
@@ -502,6 +516,24 @@ body.t-s12 {
 .btn-celestial-crunch:hover {
   color: black;
   background-color: var(--color-celestials);
+}
+
+.btn-divinity {
+  z-index: 1;
+  font-family: Typewriter;
+  font-size: 5rem;
+  color: var(--color-pelle--base);
+  background-color: black;
+  border: var(--var-border-width, 0.2rem) solid var(--color-pelle--base);
+  border-radius: var(--var-border-radius, 0.5rem);
+  padding: 2rem;
+  transition-duration: 0.15s;
+  cursor: pointer;
+}
+
+.btn-divinity:hover {
+  color: black;
+  background-color: var(--color-pelle--base);
 }
 
 .t-normal .c-game-header__tesseract-available,

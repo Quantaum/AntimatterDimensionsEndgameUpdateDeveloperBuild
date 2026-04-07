@@ -772,3 +772,8 @@ export const EndgameMilestone = mapGameDataToObject(
     ? new EndgameMilestoneState(config)
     : new EndgameMilestoneState(config))
 );
+
+export function divinityReset() {
+  Endgame.newEndgame();
+  player.celestials.pelle.divinities++;
+}

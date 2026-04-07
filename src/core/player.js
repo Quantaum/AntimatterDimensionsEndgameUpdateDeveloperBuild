@@ -986,6 +986,7 @@ window.player = {
         galaxies: false
       },
       showBought: false,
+      divinities: 0
     },
     alpha: {
       unlockBits: 0,
@@ -1346,6 +1347,12 @@ window.player = {
       masteries: "",
     }),
     permanentMasteries: [],
+  },
+  expanse: {
+    elemental: {
+      quoteBits: 0,
+      quotes: [],
+    },
   },
   isGameEnd: false,
   tabNotifications: new Set(),
