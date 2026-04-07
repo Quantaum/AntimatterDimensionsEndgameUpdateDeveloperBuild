@@ -1,7 +1,7 @@
 import { alphaQuotes } from "./alpha";
 import { effarigQuotes } from "./effarig";
-import { enslavedQuotes } from "./enslaved";
 import { elementalQuotes } from "./elemental";
+import { enslavedQuotes } from "./enslaved";
 import { laitelaQuotes } from "./laitela";
 import { pelleQuotes } from "./pelle";
 import { raQuotes } from "./ra";
