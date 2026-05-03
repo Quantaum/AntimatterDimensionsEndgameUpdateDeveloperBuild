@@ -746,9 +746,9 @@ export const glyphEffects = {
     // Disregard my man Hevi's above comment we pushing this shit
     effect: (level, strength) => (EffarigUnlock.endgame.canBeApplied
       ? Math.clampMax(Math.pow(level / 25000 * (strength / 3.5), 0.6) / 10, 1.5) *
-        Math.clampMin(Math.log10(Math.pow(level / 25000 * (strength / 3.5), 0.6) / 10 - 0.5) + 1, 1)
+        Math.clampMin(Math.log10(Math.max(Math.pow(level / 25000 * (strength / 3.5), 0.6) / 10 - 0.5, 1)) + 1, 1)
       : Math.clampMax(Math.pow(level / 25000 * (strength / 3.5), 0.5) / 10, 1.5) *
-        Math.clampMin(Math.log10(Math.pow(level / 25000 * (strength / 3.5), 0.5) / 10 - 0.5) + 1, 1)),
+        Math.clampMin(Math.log10(Math.max(Math.pow(level / 25000 * (strength / 3.5), 0.5) / 10 - 0.5, 1)) + 1, 1)),
     formatEffect: x => format(x, 2, 2),
     combine: GlyphCombiner.add,
     enabledInDoomed: () => !Pelle.isGlyphTypeDisabled("reality")
