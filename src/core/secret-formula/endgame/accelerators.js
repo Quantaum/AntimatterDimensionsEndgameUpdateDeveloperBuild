@@ -9,9 +9,11 @@ export const accelerators = {
     baseEffect3: x => `Divine Matter/Energy Production ${formatX(x, 2, 2)}`,
     percentage: totalFill => Decimal.log10(totalFill.plus(1).log10().div(1e200)).div(100).toNumber(),
     percentageToFill: percentage => Decimal.pow10(Decimal.pow10(percentage * 100).times(1e200)).sub(1),
-    effect1: percentage => Decimal.pow10(percentage / 10),
-    effect2: percentage => Decimal.pow10(percentage),
-    effect3: percentage => Decimal.pow10(percentage / 5),
+    effects: {
+      alpha: percentage => Decimal.pow10(percentage / 10),
+      beta: percentage => Decimal.pow10(percentage),
+      gamma: percentage => Decimal.pow10(percentage / 5),
+    },
     currency: () => Currency.antimatter,
     unlockReq: () => Decimal.pow10(1e200),
     milestones: [
@@ -44,9 +46,11 @@ export const accelerators = {
     baseEffect3: x => `Antimatter Overflow Magnitude ${formatInt(10)} ➜ ${format(x, 2, 2)}`,
     percentage: totalFill => Decimal.min(totalFill.div(20000), totalFill.max(1).log10()).div(100).toNumber(),
     percentageToFill: percentage => Decimal.max(new Decimal(percentage * 100).times(20000), Decimal.pow10(percentage * 100)),
-    effect1: percentage => Decimal.pow(1 + percentage / 100, 1 + percentage / 100),
-    effect2: percentage => 1 + percentage / 100,
-    effect3: percentage => 1 / (0.1 + percentage / 250),
+    effects: {
+      alpha: percentage => Decimal.pow(1 + percentage / 100, 1 + percentage / 100),
+      beta: percentage => 1 + percentage / 100,
+      gamma: percentage => 1 / (0.1 + percentage / 250),
+    },
     currency: () => Currency.nullMatter,
     unlockReq: () => Decimal.pow10(5),
     milestones: [
@@ -80,9 +84,11 @@ export const accelerators = {
     baseEffect3: x => `AM Exponent^2 ${formatPow(x, 2, 4)} while Doomed`,
     percentage: totalFill => Decimal.log10(GalaxyGenerator.galaxies).div(3000).sub(1).times(2.4).div(100).toNumber(),
     percentageToFill: percentage => Decimal.pow10((percentage * 100 / 2.4 + 1) * 3000),
-    effect1: percentage => 1 + percentage / 200,
-    effect2: percentage => 1 + percentage / 100,
-    effect3: percentage => 1 + percentage / 2000,
+    effects: {
+      alpha: percentage => 1 + percentage / 200,
+      beta: percentage => 1 + percentage / 100,
+      gamma: percentage => 1 + percentage / 2000,
+    },
     currency: () => Currency.galaxyGeneratorGalaxies,
     unlockReq: () => Decimal.pow10(3000),
     milestones: [
