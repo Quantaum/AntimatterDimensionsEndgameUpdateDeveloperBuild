@@ -36,7 +36,8 @@ export default {
       this.setValue("resource", accelerator.fillCurrency.value);
     },
     setValue(key, value) {
-      this[key].copyFrom(value);
+      if (typeof value === "number") this[key] = value;
+      else this[key].copyFrom(value);
     },
     // One-off formatting function; needs to format large Decimals and a small number assumed to be a percentage
     formatAccelerator(value) {
