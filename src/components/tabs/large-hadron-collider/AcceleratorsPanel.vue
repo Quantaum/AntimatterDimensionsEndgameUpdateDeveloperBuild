@@ -36,7 +36,7 @@ export default {
     >
       Accelerators can be activated by clicking on their bars.
       <span>You cannot activate more than one Accelerator at once.</span>
-      When active, Accelerators fill at a rate of {{ formatPercents(decayRate) }} per second.
+      When active, Accelerators fill at a rate of {{ formatPercents(decayRate, 3) }} per second.
       <br>
       Accelerator effects apply even when not activated, and are based on the current fill percentage.
       <div class="c-accelerator-bar-container">
