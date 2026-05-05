@@ -81,7 +81,7 @@ class AcceleratorState extends GameMechanicState {
   }
 
   get realPercentage() {
-    return this.config.percentage(this.totalFill);
+    return this.amountFilled;
   }
 
   get percentage() {
