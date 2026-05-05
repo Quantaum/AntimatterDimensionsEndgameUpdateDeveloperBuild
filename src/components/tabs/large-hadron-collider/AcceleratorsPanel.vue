@@ -43,7 +43,7 @@ export default {
         <Accelerator
           v-for="accelerator in accelerators"
           :key="accelerator.config.id"
-          :strike="accelerator"
+          :accelerator="accelerator"
         />
       </div>
     </div>
