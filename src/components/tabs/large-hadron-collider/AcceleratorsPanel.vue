@@ -53,6 +53,30 @@ export default {
 </template>
 
 <style scoped>
+.c-accelerator-panel-title {
+  position: relative;
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--color-alpha--base);
+}
+
+.l-accelerator-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--color-text);
+}
+
+.l-accelerator-panel-container {
+  width: 98rem;
+  border: var(--var-border-width, 0.2rem) solid var(--color-alpha--base);
+  border-radius: var(--var-border-radius, 0.5rem);
+  margin: 1rem;
+  padding: 1rem;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 .c-accelerator-bar-container {
   display: flex;
   flex-direction: column;
