@@ -1,5 +1,5 @@
 <script>
-import AcceleratorBar from "./PelleRiftBar";
+import AcceleratorBar from "./AcceleratorBar";
 
 export default {
   name: "Accelerator",
