@@ -23,6 +23,9 @@ export default {
   <div class="l-large-hadron-collider-tab">
     <div class="l-large-hadron-collider-all-content-container">
       <AcceleratorsPanel v-if="hasAccelerator" />
+      <div v-if="!hasAccelerator">
+        Reach {{ format(Decimal.pow10(1e200), 2, 2) }} Antimatter
+      </div>
     </div>
   </div>
 </template>
