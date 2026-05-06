@@ -25,7 +25,7 @@ export default {
     update() {
       this.hasAccelerator = Accelerators.all.some(a => a.isUnlocked);
       this.hadronSpeed = LHC.hadronSpeed;
-      this.amSoftcap.copyFrom(Decimal.pow10(1e200));
+      this.amSoftcap.copyFrom(Pelle.isDoomed ? DC.E9E15 : Decimal.pow10(1e200));
       this.amHardcap.copyFrom(Pelle.isDoomed ? DC.ENUMMAX : LHC.breakingPoint);
     },
   }
