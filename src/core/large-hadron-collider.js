@@ -181,5 +181,9 @@ export const LHC = {
 
   get nextAccelerator() {
     return Accelerators.all.first(a => !a.isUnlocked);
+  },
+
+  gameLoop(diff) {
+    Accelerators.all.forEach(a => a.fill(diff));
   }
 };
