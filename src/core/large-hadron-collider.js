@@ -183,6 +183,11 @@ export const LHC = {
     return Accelerators.all.first(a => !a.isUnlocked);
   },
 
+  get breakingPoint() {
+    return Decimal.pow10(Decimal.pow10(225 + Accelerators.potency.baseEffect2 +
+      Accelerators.emptiness.baseEffect3 + Accelerators.cosmic.baseEffect3));
+  },
+
   gameLoop(diff) {
     Accelerators.all.forEach(a => a.fill(diff));
   }
