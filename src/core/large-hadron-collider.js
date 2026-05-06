@@ -146,6 +146,7 @@ class AcceleratorState extends GameMechanicState {
       return;
     }
     if (!this.isActive || this.isMaxed) return;
+    if (Pelle.isDoomed && this.name === "Potency Accelerator") return;
 
     // Don't drain resources if you only have 1 of it.
     if (this.fillCurrency.value.lte(1)) return;
