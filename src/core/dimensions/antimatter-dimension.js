@@ -622,6 +622,9 @@ class AntimatterDimensionState extends DimensionState {
       if (NormalChallenge(3).isRunning) {
         production = production.times(player.chall3Pow);
       }
+      if (production.gt(1)) {
+        production = production.pow(Accelerators.potency._milestones[0].effectOrDefault(1));
+      }
       if (production.gt(10)) {
         const log10 = production.log10();
         const eg = Currency.endgames.value;
