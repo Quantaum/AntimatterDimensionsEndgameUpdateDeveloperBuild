@@ -97,7 +97,7 @@ export default {
       this.hasEffect4 = DualityUpgrade(18).isBought;
       this.hasDark = DualityUpgrade(19).isBought;
       this.hasExotic = DivinityMilestone.hadronEmpowerment.isReached;
-      this.showWarning = Accelerators.emptiness.effectValue2 > 0;
+      this.showWarning = Accelerators.emptiness.effectValue2 > 1;
     },
     assignOne() {
       if (this.hasExotic) {
