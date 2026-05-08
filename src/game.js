@@ -352,6 +352,14 @@ export function addCelestialInfinityTime(time, realTime, cip, celinfinities) {
   GameCache.bestRunCIPPM.invalidate();
 }
 
+export function resetCelestialInfinityRuns() {
+  player.records.recentCelestialInfinities = Array.from(
+    { length: 10 },
+    () => [DC.E9E15, Number.MAX_VALUE, DC.D1, DC.D1]
+  );
+  GameCache.bestRunCIPPM.invalidate();
+}
+
 export function addCelestialEternityTime(time, realTime, cep, celeternities) {
   player.records.recentCelestialEternities.pop();
   player.records.recentCelestialEternities.unshift([time, realTime, cep, celeternities]);
