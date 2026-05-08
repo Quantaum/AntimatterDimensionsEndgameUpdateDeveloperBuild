@@ -1353,6 +1353,8 @@ window.player = {
       celestialInfinityRebuyables: [0, 0, 0, 0, 0, 0],
       celestialEternities: DC.D0,
       celestialEternityPoints: DC.D0,
+      celestialEternityUpgrades: new Set(),
+      celestialEternityRebuyables: [0, 0, 0],
     },
     largeHadronCollider: {
       accelerators: {
