@@ -2881,6 +2881,44 @@ br {
 
 /* #endregion EP Amount */
 
+/* #region CEP Amount */
+
+.l-game-header__celestial-eternity-points {
+  position: absolute;
+  right: 75%;
+}
+
+.c-game-header__cep-amount {
+  font-weight: bold;
+}
+
+.t-dark .c-game-header__cep-amount,
+.t-s6 .c-game-header__cep-amount,
+.t-s10 .c-game-header__cep-amount {
+  background: linear-gradient(var(--color-eternity), var(--color-celestials));
+  background-clip: text;
+  text-shadow: 0 0 0.7rem var(--color-eternity);
+
+  -webkit-text-fill-color: transparent;
+}
+
+.s-base--metro .c-game-header__cep-amount {
+  background: linear-gradient(var(--color-eternity), var(--color-celestials));
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+.t-s1 .c-game-header__cep-amount {
+  background: linear-gradient(var(--color-eternity), var(--color-celestials));
+  background-clip: text;
+  text-shadow: 0.1rem 0.1rem 0 black;
+
+  -webkit-text-fill-color: transparent;
+}
+
+/* #endregion CEP Amount */
+
 /* #region c-game-header__antimatter */
 
 .c-game-header__antimatter {
