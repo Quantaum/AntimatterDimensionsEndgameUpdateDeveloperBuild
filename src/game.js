@@ -73,6 +73,39 @@ export function playerInfinityUpgradesOnReset() {
   GameCache.dimensionMultDecrease.invalidate();
 }
 
+export function playerCelestialInfinityUpgradesOnReset() {
+
+  const celestialInfinityUpgrades = new Set(
+    ["gameSpeedMultCIP", "celDimPurchaseBoost", "alphaDecayStartBoost",
+      "celDimBoostBuff", "celGalaxyBuff", "celestialMatterConversionBuff",
+      "antimatterCelestialDimBuff", "cipGen", "buffedStart"]
+  );
+
+  const celestialBreakInfinityUpgrades = new Set(
+    ["gameSpeedMultCIP", "celDimPurchaseBoost", "alphaDecayStartBoost",
+      "celDimBoostBuff", "celGalaxyBuff", "celestialMatterConversionBuff",
+      "antimatterCelestialDimBuff", "cipGen", "buffedStart",
+      "autoCD1", "autoCD2", "autoCDPlus",
+      "betterAuto", "bulkCelDimBoosts", "celInfGen",
+      "celTickspeedCostMult", "celDimCostMult", "cipGen",
+      "celDimPurchaseBuff", "celDimboostBuff", "celGalaxyBuff"]
+  );
+
+  if (false) {
+    player.endgame.celDimExpansion.celestialInfinityUpgrades = celestialBreakInfinityUpgrades;
+    player.endgame.celDimExpansion.celestialInfinityRebuyables = [8, 7, 10, 10, 10, 10];
+  } else if (false) {
+    player.endgame.celDimExpansion.celestialInfinityUpgrades = celestialInfinityUpgrades;
+    player.endgame.celDimExpansion.celestialInfinityRebuyables = [0, 0, 0, 0, 0, 0];
+  } else {
+    player.endgame.celDimExpansion.celestialInfinityUpgrades.clear();
+    player.endgame.celDimExpansion.celestialInfinityRebuyables = [0, 0, 0, 0, 0, 0];
+  }
+
+  GameCache.celestialTickSpeedMultDecrease.invalidate();
+  GameCache.celestialDimensionMultDecrease.invalidate();
+}
+
 export function breakInfinity() {
   if (!Autobuyer.bigCrunch.hasMaxedInterval) return;
   if (InfinityChallenge.isRunning) return;
