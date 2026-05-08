@@ -352,6 +352,11 @@ export function addCelestialInfinityTime(time, realTime, cip, celinfinities) {
   GameCache.bestRunCIPPM.invalidate();
 }
 
+export function addCelestialEternityTime(time, realTime, cep, celeternities) {
+  player.records.recentCelestialEternities.pop();
+  player.records.recentCelestialEternities.unshift([time, realTime, cep, celeternities]);
+}
+
 export function gainedInfinities() {
   if (EternityChallenge(4).isRunning) {
     return DC.D1;
@@ -395,6 +400,10 @@ export function gainedCelestialInfinities() {
   return DC.D1;
 }
 
+export function gainedCelestialEternities() {
+  return DC.D1;
+}
+
 export function gainedCelestialInfinityPoints() {
   const div = Effects.min(308);
   let cip = player.endgame.celDimExpansion.isBroken
@@ -403,6 +412,13 @@ export function gainedCelestialInfinityPoints() {
   cip = cip.times(GameCache.totalCIPMult.value);
 
   return cip.floor();
+}
+
+export function gainedCelestialEternityPoints() {
+  let cep = DC.D5.pow(player.records.thisCelestialEternity.maxCIP.plus(
+    gainedCelestialInfinityPoints()).add(1).log10().div(308).sub(0.7)).times(totalCEPMult());
+
+  return cep.floor();
 }
 
 export function updateRefresh() {
@@ -1047,6 +1063,12 @@ function updatePrestigeRates() {
   if (currentCIPmin.gt(player.records.thisCelestialInfinity.bestCIPmin) && Currency.celestialMatter.gte(DC.NUMMAX)) {
     player.records.thisCelestialInfinity.bestCIPmin = currentCIPmin;
     player.records.thisCelestialInfinity.bestCIPminVal = gainedCelestialInfinityPoints();
+  }
+
+  const currentCEPmin = gainedCelestialEternityPoints().dividedBy(Decimal.clampMin(0.0005, Time.thisCelestialEternityRealTime.totalMinutes));
+  if (currentCEPmin.gt(player.records.thisCelestialEternity.bestCEPmin) && Currency.celestialInfinityPoints.gte(DC.NUMMAX)) {
+    player.records.thisCelestialEternity.bestCEPmin = currentCEPmin;
+    player.records.thisCelestialEternity.bestCEPminVal = gainedCelestialEternityPoints();
   }
 }
 
