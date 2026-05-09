@@ -17,9 +17,9 @@ export default {
           CelestialEternityUpgrade.conversionFormulaImprovement
         ],
         [
-          CelestialEternityUpgrade.celCrunchAuto,
           CelestialEternityUpgrade.bulkCelGalaxies,
-          CelestialEternityUpgrade.instaAutos
+          CelestialEternityUpgrade.instaAutos,
+          CelestialEternityUpgrade.celEternityAuto
         ],
         [
           CelestialEternityUpgrade.freeDimBoost,
