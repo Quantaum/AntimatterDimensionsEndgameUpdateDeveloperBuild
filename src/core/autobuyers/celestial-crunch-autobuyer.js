@@ -76,9 +76,9 @@ export class CelestialCrunchAutobuyerState extends IntervaledAutobuyerState {
     return Currency.celestialMatter.gte(DC.NUMMAX) && super.canTick;
   }
 
-  /*get resetTickOn() {
+  get resetTickOn() {
     return PRESTIGE_EVENT.CELESTIAL_ETERNITY;
-  }*/
+  }
 
   get highestPrevPrestige() {
     return player.records.thisCelestialEternity.maxCIP;
