@@ -21,7 +21,7 @@ function rebuyable(config) {
 
 export const celestialEternityUpgrades = {
   betterCIP: rebuyable({
-    id: 1,
+    id: 0,
     initialCost: 1,
     costIncrease: 1e4,
     maxUpgrades: 10,
@@ -32,7 +32,7 @@ export const celestialEternityUpgrades = {
     isDecimal: false
   }),
   largeCDMult: rebuyable({
-    id: 2,
+    id: 1,
     initialCost: 10,
     costIncrease: 10,
     maxUpgrades: 1000,
@@ -43,7 +43,7 @@ export const celestialEternityUpgrades = {
     isDecimal: false
   }),
   conversionFormulaImprovement: rebuyable({
-    id: 3,
+    id: 2,
     initialCost: 1e100,
     costIncrease: 1e50,
     maxUpgrades: 25,
