@@ -86,7 +86,7 @@ export default {
       this.showVSRate = this.peakVSRate.lte(this.rateThreshold);
     },
     condense() {
-      if (!Player.canCondense) return;
+      if (!this.canCondense) return;
       resetForDivineStars();
     }
   },
