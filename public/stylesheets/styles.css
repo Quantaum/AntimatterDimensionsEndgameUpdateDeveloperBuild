@@ -2868,7 +2868,7 @@ br {
 .t-dark .c-game-header__vs-amount,
 .t-s6 .c-game-header__vs-amount,
 .t-s10 .c-game-header__vs-amount {
-  background: linear-gradient(black, var(--color-pelle--base), black);
+  background: linear-gradient(red, yellow, cyan);
   background-clip: text;
   text-shadow: 0 0 0.7rem var(--color-pelle--base);
 
@@ -2876,14 +2876,14 @@ br {
 }
 
 .s-base--metro .c-game-header__vs-amount {
-  background: linear-gradient(black, var(--color-pelle--base), black);
+  background: linear-gradient(red, yellow, cyan);
   background-clip: text;
 
   -webkit-text-fill-color: transparent;
 }
 
 .t-s1 .c-game-header__vs-amount {
-  background: linear-gradient(black, var(--color-pelle--base), black);
+  background: linear-gradient(red, yellow, cyan);
   background-clip: text;
   text-shadow: 0.1rem 0.1rem 0 black;
 
