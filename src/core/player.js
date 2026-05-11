@@ -533,17 +533,17 @@ window.player = {
       maxCEP: DC.D0,
       bestCelestialEternitiesPerMs: DC.D0,
     },
-    thisStarRun: {
+    thisCondense: {
       time: DC.D0,
       realTime: 0,
       maxVM: DC.D0,
       bestVSmin: DC.D0,
       bestVSminVal: DC.D0,
     },
-    bestStarRun: {
+    bestCondense: {
       time: DC.BEMAX,
       realTime: Number.MAX_VALUE,
-      bestVSminNebula: DC.D0,
+      bestVSminSupernova: DC.D0,
     },
     permanent: {
       maxCP: DC.D0,
