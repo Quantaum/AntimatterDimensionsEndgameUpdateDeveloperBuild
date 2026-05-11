@@ -5,6 +5,7 @@ export function divineDimensionCommonMultiplier() {
   mult = mult.timesEffectsOf(DivinityUpgrade.divineL1U3, DivinityUpgrade.divineL1U6);
   mult = mult.times(DivinityMilestone.hadronEmpowerment.isReached ? 77 : 1);
   mult = mult.times(Accelerators.potency.effectValue3);
+  mult = mult.times(Decimal.pow(7, Decimal.log10(player.celestials.pelle.divinity.divineStars.add(1))));
   return mult;
 }
 
@@ -150,7 +151,7 @@ export const DivineDimensions = {
   all: DivineDimension.index.compact(),
 
   get HARDCAP() {
-    return DC.NUMMAX.times(Decimal.pow(1.1, 0));
+    return DC.NUMMAX.pow(Decimal.log10(player.celestials.pelle.divinity.divineStars.add(1)).add(1));
   },
 
   get energyPerSecond() {
