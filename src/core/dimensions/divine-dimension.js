@@ -229,6 +229,7 @@ export function resetForDivineStars() {
   Endgame.resetNoReward();
   DivineDimensions.fullReset();
   Currency.divineMatter.reset();
+  player.records.totalCondenseDivineMatter = DC.E1;
   if (true) {
     let upgR = [];
     for (let upgL = 0; upgL < DivinityUpgrades.all.filter(u => u.layer !== 1).length; upgL++) {
