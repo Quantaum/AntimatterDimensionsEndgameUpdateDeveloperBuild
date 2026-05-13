@@ -1124,6 +1124,12 @@ function updatePrestigeRates() {
     player.records.thisCelestialEternity.bestCEPmin = currentCEPmin;
     player.records.thisCelestialEternity.bestCEPminVal = gainedCelestialEternityPoints();
   }
+
+  const currentVSmin = gainedDivineStars().dividedBy(Decimal.clampMin(0.0005, Time.thisCondenseRealTime.totalMinutes));
+  if (currentVSmin.gt(player.records.thisCondense.bestVSmin) && Currency.divineMatter.gte(DC.NUMMAX)) {
+    player.records.thisCondense.bestVSmin = currentVSmin;
+    player.records.thisCondense.bestVSminVal = gainedDivineStars();
+  }
 }
 
 function globalPassivePrestigeGen(realDiff) {
