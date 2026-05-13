@@ -206,6 +206,8 @@ class InfinityDimensionState extends DimensionState {
 
     mult = mult.powEffectOf(DualityUpgrade(8));
 
+    if (Replicanti.areUnlocked && ResurgenceUpgrade.repSurge.isBought) mult = mult.pow(ReplicantiMultipliers.idPow);
+
     mult = dilateMultiplier(mult, EtherealStars.orange.reward);
 
     if (mult.gte(InfinityDimensions.OVERFLOW)) mult = Decimal.pow(10, Decimal.pow(mult.log10().div(Decimal.log10(InfinityDimensions.OVERFLOW)), 1 / InfinityDimensions.compressionMagnitude).times(Decimal.log10(InfinityDimensions.OVERFLOW)));
