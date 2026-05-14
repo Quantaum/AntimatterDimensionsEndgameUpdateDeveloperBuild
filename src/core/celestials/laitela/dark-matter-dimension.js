@@ -110,7 +110,7 @@ export class DarkMatterDimensionState extends DimensionState {
         SingularityMilestone.multFromInfinitied,
         SingularityMilestone.darkEnergyBoost
       ).mul(destabilizeBoost).times(player.disablePostReality ? 1 : AlphaUnlocks.timestudy192.effects.buff.effectOrDefault(1))
-      .pow((!player.disablePostReality && Alpha.currentStage >= 21 && ResurgenceUpgrade.repSurge.isBought) ? ReplicantiMultipliers.dePow : 1);
+      .pow((!player.disablePostReality && Alpha.currentStage >= 21 && ResurgenceUpgrade.repSurge.isBought && !player.disablePostReality) ? ReplicantiMultipliers.dePow : 1);
   }
 
   get intervalAfterAscension() {
