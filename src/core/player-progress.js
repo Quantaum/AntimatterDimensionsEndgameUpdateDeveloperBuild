@@ -93,7 +93,7 @@ export class PlayerProgress {
   }
 
   static condenseUnlocked() {
-    return PlayerProgress.current.areDivineStarsUnlocked;
+    return PlayerProgress.current.isCondenseUnlocked;
   }
 
   static seenAlteredSpeed() {
