@@ -206,7 +206,7 @@ class InfinityDimensionState extends DimensionState {
 
     mult = mult.powEffectOf(DualityUpgrade(8));
 
-    if (Replicanti.areUnlocked && ResurgenceUpgrade.repSurge.isBought) mult = mult.pow(ReplicantiMultipliers.idPow);
+    if (Replicanti.areUnlocked && ResurgenceUpgrade.repSurge.isBought && !player.disablePostReality) mult = mult.pow(ReplicantiMultipliers.idPow);
 
     mult = dilateMultiplier(mult, EtherealStars.orange.reward);
 
