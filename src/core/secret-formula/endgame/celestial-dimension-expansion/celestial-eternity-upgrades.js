@@ -81,9 +81,9 @@ export const celestialEternityUpgrades = {
   startingBoosts: {
     id: "startingBoosts",
     cost: 1e30,
-    description: () => `Start Cel Crunches and Cel Eternities with ${format(1e25, 2, 2)} Cel Matter, and Cel Eternities
-      with ${format(1e25, 2, 2)} CIP`,
-    effect: 1e25
+    description: () => `Start Cel Crunches and Cel Eternities with ${format(5e25, 2, 2)} Cel Matter, and Cel Eternities
+      with ${format(5e25, 2, 2)} CIP`,
+    effect: 5e25
   },
   startBreakInf: {
     id: "startBreakInf",
