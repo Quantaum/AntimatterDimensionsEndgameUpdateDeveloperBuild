@@ -271,7 +271,13 @@ LHC.powerCores = new PowerCoreState();
 export function enterTheVoid() {
   player.disablePostReality = true;
   Endgame.resetNoReward();
+  disChargeAllPerkUpgrades();
+  disChargeAll();
+  AutomatorBackend.stop();
+  clearCelestialRuns();
   player.endgame.largeHadronCollider.void.isRunning = true;
+  recalculateAllGlyphs();
+  Tab.dimensions.antimatter.show(false);
 };
 
 export function exitTheVoid() {
