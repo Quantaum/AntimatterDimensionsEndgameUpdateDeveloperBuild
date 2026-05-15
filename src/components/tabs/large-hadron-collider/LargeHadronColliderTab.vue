@@ -47,7 +47,8 @@ export default {
       this.isRunning = player.endgame.largeHadronCollider.void.isRunning;
       this.highestAntimatter.copyFrom(player.endgame.largeHadronCollider.void.highestAntimatter);
       this.nullMatter.copyFrom(player.endgame.largeHadronCollider.void.nullMatter);
-      this.nullPerSecond.copyFrom(Decimal.log10(Decimal.pow(AntimatterDimension(1).productionPerSecond, 0.01).max(1)).pow(
+      this.nullPerSecond.copyFrom(player.endgame.largeHadronCollider.void.isRunning ? DC.D0 :
+        Decimal.log10(Decimal.pow(AntimatterDimension(1).productionPerSecond, 0.01).max(1)).pow(
         Decimal.log10(Decimal.log10(Decimal.pow(AntimatterDimension(1).productionPerSecond, 0.01).max(1)).max(1))));
     },
     startRun() {
