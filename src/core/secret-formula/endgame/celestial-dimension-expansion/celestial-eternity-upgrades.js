@@ -23,7 +23,7 @@ export const celestialEternityUpgrades = {
     initialCost: 1,
     costIncrease: 1e4,
     maxUpgrades: 10,
-    effect: value => Math.pow(0.99, value),
+    effect: value => player.disablePostReality ? 1 : Math.pow(0.99, value),
     description: () => `Reduce the Celestial Infinity Point conversion formula divisor by ${formatPercents(0.01)}`,
     formatEffect: value => `${formatX(value, 2, 3)}`,
     noLabel: false
@@ -33,7 +33,7 @@ export const celestialEternityUpgrades = {
     initialCost: 10,
     costIncrease: 10,
     maxUpgrades: 1000,
-    effect: value => Decimal.pow(1000, value),
+    effect: value => player.disablePostReality ? DC.D1 : Decimal.pow(1000, value),
     description: () => `Multiply Celestial Dimensions by ${formatX(1000)} per purchase`,
     formatEffect: value => `${formatX(value, 2, 2)}`,
     noLabel: false
@@ -43,7 +43,7 @@ export const celestialEternityUpgrades = {
     initialCost: 1e100,
     costIncrease: 1e50,
     maxUpgrades: 25,
-    effect: value => Math.pow(1.01, value),
+    effect: value => player.disablePostReality ? 1 : Math.pow(1.01, value),
     description: () => `Multiply the Celestial Dimension Conversion Exponent by ${formatX(1.01, 2, 2)}`,
     formatEffect: value => `${formatX(value, 2, 3)}`,
     noLabel: false
