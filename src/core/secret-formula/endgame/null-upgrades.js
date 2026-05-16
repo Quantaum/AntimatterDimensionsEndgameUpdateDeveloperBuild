@@ -5,7 +5,8 @@ function rebuyable(config) {
     rebuyable: true,
     name,
     id,
-    cost: () => config.initialCost.times(Decimal.pow(config.costIncrease, player.endgame.largeHadronCollider.void.rebuyables[config.id])),
+    cost: () => new Decimal(config.initialCost).times(
+      Decimal.pow(config.costIncrease, player.endgame.largeHadronCollider.void.rebuyables[config.id])),
     maxUpgrades,
     description,
     effect: () => effectFunction(player.endgame.largeHadronCollider.void.rebuyables[config.id]),
