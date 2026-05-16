@@ -1,4 +1,4 @@
-import { GameMechanicState } from "./game-mechanics";
+import { GameMechanicState, RebuyableMechanicState, SetPurchasableMechanicState } from "./game-mechanics";
 
 class AcceleratorMilestoneState extends GameMechanicState {
 
@@ -285,3 +285,54 @@ export function exitTheVoid() {
   Endgame.resetNoReward();
   player.endgame.largeHadronCollider.void.isRunning = false;
 };
+
+export class NullUpgradeState extends SetPurchasableMechanicState {
+  get name() {
+    return this.config.name;
+  }
+  
+  get currency() {
+    return Currency.nullMatter;
+  }
+
+  get set() {
+    return player.endgame.largeHadronCollider.void.upgrades;
+  }
+
+  onPurchased() {
+    this.config.onPurchased?.();
+  }
+}
+
+class RebuyableNullUpgradeState extends RebuyableMechanicState {
+  get name() {
+    return this.config.name;
+  }
+  
+  get currency() {
+    return Currency.nullMatter;
+  }
+
+  get boughtAmount() {
+    return player.endgame.largeHadronCollider.void.rebuyables[this.id];
+  }
+
+  set boughtAmount(value) {
+    player.endgame.largeHadronCollider.void.rebuyables[this.id] = value;
+  }
+
+  get isCapped() {
+    return this.boughtAmount === this.config.maxUpgrades;
+  }
+
+  onPurchased() {
+    this.config.onPurchased?.();
+  }
+}
+
+export const NullUpgrade = mapGameDataToObject(
+  GameDatabase.endgame.nullUpgrades,
+  config => (config.rebuyable
+    ? new RebuyableNullUpgradeState(config)
+    : new NullUpgradeState(config))
+);
