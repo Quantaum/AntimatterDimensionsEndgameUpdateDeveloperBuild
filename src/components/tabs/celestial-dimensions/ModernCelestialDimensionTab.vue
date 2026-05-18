@@ -75,11 +75,11 @@ export default {
       this.isExpanded = Achievement(221).isUnlocked;
       this.canCrunch = Currency.celestialMatter.value.gte(DC.NUMMAX) && this.isExpanded;
       this.isBroken = player.endgame.celDimExpansion.isBroken;
-      this.hasInfinities = Currency.celestialInfinities.value.gt(0);
+      this.hasInfinities = PlayerProgress.celestialInfinityUnlocked();
       this.infinityPoints.copyFrom(player.endgame.celDimExpansion.celestialInfinityPoints);
       this.isAnyAutobuyerUnlocked = Autobuyer.celestialDimension(1).isUnlocked;
       this.timeToCap.copyFrom(DC.D5.times(CelestialDimensions.alphaDecaySpeed));
-      this.hasEternities = Currency.celestialEternities.value.gt(0);
+      this.hasEternities = PlayerProgress.celestialEternityUnlocked();
       this.eternityPoints.copyFrom(player.endgame.celDimExpansion.celestialEternityPoints);
     },
     maxAll() {
@@ -98,7 +98,7 @@ export default {
       };
     },
     celestialCrunch() {
-      if (player.endgame.celDimExpansion.celestialInfinities.gt(0)) celestialCrunchResetRequest();
+      if (PlayerProgress.celestialInfinityUnlocked()) celestialCrunchResetRequest();
       else Modal.celestialCrunch.show();
     }
   }
