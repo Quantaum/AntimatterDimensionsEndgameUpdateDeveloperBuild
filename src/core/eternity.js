@@ -275,9 +275,11 @@ export function gainedEternities() {
     if (PelleAlchemyUpgrade.alchemyEternity.canBeApplied) pelleEternities = pelleEternities.pow(AlchemyResource.eternity.effectValue);
     return pelleEternities;
   }
-  return new Decimal(getAdjustedGlyphEffect("timeetermult"))
+  let eter = new Decimal(getAdjustedGlyphEffect("timeetermult"))
       .timesEffectsOf(RealityUpgrade(3),Achievement(102),Achievement(113))
       .pow(AlchemyResource.eternity.effectValue);
+  if (LHC.voidRunning) eter = eter.timesEffectOf(NullUpgrade.eternityMult);
+  return eter;
 }
 
 export class EternityMilestoneState {
