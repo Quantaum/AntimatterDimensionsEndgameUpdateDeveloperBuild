@@ -7,6 +7,7 @@ export default {
       lightHadrons: 0,
       darkHadrons: 0,
       exoticHadrons: 0,
+      percentageCap: 0,
       hadronTimer: new Decimal(0),
       effect1: new Decimal(1),
       effect2: new Decimal(1),
@@ -24,19 +25,19 @@ export default {
   },
   computed: {
     effect1Time() {
-      return new Decimal(0.25).div(Hadrons.speedFactor).sub(this.hadronTimer);
+      return new Decimal(0.25).div(Hadrons.speedFactor).times(this.percentageCap).sub(this.hadronTimer);
     },
     effect2Time() {
-      return new Decimal(0.5).div(Hadrons.speedFactor).sub(this.hadronTimer);
+      return new Decimal(0.5).div(Hadrons.speedFactor).times(this.percentageCap).sub(this.hadronTimer);
     },
     effect3Time() {
-      return new Decimal(1).div(Hadrons.speedFactor).sub(this.hadronTimer);
+      return new Decimal(1).div(Hadrons.speedFactor).times(this.percentageCap).sub(this.hadronTimer);
     },
     effect4Time() {
-      return new Decimal(2).div(Hadrons.speedFactor).sub(this.hadronTimer);
+      return new Decimal(2).div(Hadrons.speedFactor).times(this.percentageCap).sub(this.hadronTimer);
     },
     effect5Time() {
-      return new Decimal(5).div(Hadrons.speedFactor).sub(this.hadronTimer);
+      return new Decimal(5).div(Hadrons.speedFactor).times(this.percentageCap).sub(this.hadronTimer);
     },
     effect1Text() {
       if (this.effect1Time.lte(0)) return `Effect is capped`;
@@ -85,7 +86,8 @@ export default {
       this.lightHadrons = hadrons.light;
       this.darkHadrons = hadrons.dark;
       this.exoticHadrons = hadrons.exotic;
-      this.hadronTimer.copyFrom(Hadrons.timeFactor.div(100 + Math.pow((Accelerators.emptiness.effectValue2 - 1) * 100, 2)));
+      this.percentageCap = 100 + Math.pow((Accelerators.emptiness.effectValue2 - 1) * 100, 2);
+      this.hadronTimer.copyFrom(Hadrons.timeFactor.div(this.percentageCap));
       this.effect1.copyFrom(Hadrons.singularityMultiplier);
       this.effect2.copyFrom(Hadrons.darkMatterCapMultiplier);
       this.effect3.copyFrom(Hadrons.darkEnergyAscensionBoost);
