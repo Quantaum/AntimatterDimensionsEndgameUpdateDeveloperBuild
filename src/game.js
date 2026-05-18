@@ -40,6 +40,12 @@ export function playerInfinityUpgradesOnReset() {
       "ipOffline"]
   );
 
+  if (player.celestials.pelle.doomed && DivinityMilestone.pelleQoL.isReached) {
+    player.infinityUpgrades = breakInfinityUpgrades;
+    player.infinityRebuyables = [8, 7, 10];
+    return;
+  }
+
   if (PelleUpgrade.keepBreakInfinityUpgrades.canBeApplied) {
     player.infinityUpgrades = new Set([...player.infinityUpgrades].filter(u => breakInfinityUpgrades.has(u)));
     return;
