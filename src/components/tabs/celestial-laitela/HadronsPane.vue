@@ -105,7 +105,7 @@ export default {
       if (this.hasExotic) {
         if (this.lightHadrons <= 0) return;
         Laitela.reset();
-        finishProcessReality({ reset: true });
+        Endgame.resetNoReward();
         player.celestials.laitela.hadrons.light -= 1;
         player.celestials.laitela.hadrons.dark -= 1;
         player.celestials.laitela.hadrons.exotic += 1;
@@ -121,7 +121,7 @@ export default {
       if (this.hasExotic) {
         if (this.exoticHadrons <= 0) return;
         Laitela.reset();
-        finishProcessReality({ reset: true });
+        Endgame.resetNoReward();
         player.celestials.laitela.hadrons.light += 1;
         player.celestials.laitela.hadrons.dark += 1;
         player.celestials.laitela.hadrons.exotic -= 1;
@@ -137,7 +137,7 @@ export default {
       if (this.hasExotic) {
         if (this.lightHadrons <= 0) return;
         Laitela.reset();
-        finishProcessReality({ reset: true });
+        Endgame.resetNoReward();
         player.celestials.laitela.hadrons.light = 0;
         player.celestials.laitela.hadrons.dark = 0;
         player.celestials.laitela.hadrons.exotic = player.celestials.laitela.hadrons.total;
@@ -153,7 +153,7 @@ export default {
       if (this.hasExotic) {
         if (this.exoticHadrons <= 0) return;
         Laitela.reset();
-        finishProcessReality({ reset: true });
+        Endgame.resetNoReward();
         player.celestials.laitela.hadrons.light = player.celestials.laitela.hadrons.total;
         player.celestials.laitela.hadrons.dark = player.celestials.laitela.hadrons.total;
         player.celestials.laitela.hadrons.exotic = 0;
