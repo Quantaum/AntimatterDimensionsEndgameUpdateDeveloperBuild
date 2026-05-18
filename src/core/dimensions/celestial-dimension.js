@@ -252,7 +252,8 @@ export const CelestialDimensions = {
   get softcapPow() {
     const reduction = Effects.product(EndgameMastery(84), Achievement(225));
     const extraReduction = DivinityMilestone.firstDivine.isReached && !player.disablePostReality ? 0.9 : 1;
-    return Decimal.pow(10 * reduction * extraReduction, Hepteracts.softcapReduction()).toNumber();
+    const moreExtraReduction = DivinityMilestone.pelleQoL.isReached && !player.disablePostReality ? 0.8 : 1;
+    return Decimal.pow(10 * reduction * extraReduction * moreExtraReduction, Hepteracts.softcapReduction()).toNumber();
   },
 
   unlockNext() {
@@ -314,7 +315,8 @@ export const CelestialDimensions = {
   },
 
   get alphaDecaySpeed() {
-    return new Decimal(1 - DivineDimensions.conversionFormula3).times(DivinityMilestone.divineDimensions.isReached ? 0.8 : 1).timesEffectOf(DivinityUpgrade.divineL1U2);
+    return new Decimal(1 - DivineDimensions.conversionFormula3).times(DivinityMilestone.divineDimensions.isReached ? 0.8 : 1).timesEffectOf(
+      DivinityUpgrade.divineL1U2).times(DivinityMilestone.pelleQoL.isReached ? 0.5 : 1);
   },
 
   get alphaDecayRemnant() {
