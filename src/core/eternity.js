@@ -203,8 +203,8 @@ export function animateAndEternity(callback) {
 }
 
 export function initializeChallengeCompletions(isReality) {
-  if (LHC.voidRunning && !NullUpgrade.ncComp.isBought) NormalChallenges.clearCompletions();
-  if (!PelleUpgrade.keepInfinityChallenges.canBeApplied || (LHC.voidRunning && !NullUpgrade.icComp.isBought)) InfinityChallenges.clearCompletions();
+  if (!(LHC.voidRunning && NullUpgrade.ncComp.isBought)) NormalChallenges.clearCompletions();
+  if (!PelleUpgrade.keepInfinityChallenges.canBeApplied && !(LHC.voidRunning && NullUpgrade.icComp.isBought)) InfinityChallenges.clearCompletions();
   if (!isReality && EternityMilestone.keepAutobuyers.isReached || Pelle.isDoomed) {
     NormalChallenges.completeAll();
   }
