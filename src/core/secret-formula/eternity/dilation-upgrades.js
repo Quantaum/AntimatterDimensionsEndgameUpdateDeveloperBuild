@@ -1,13 +1,15 @@
-function rebuyableCost(initialCost, increment, id, capIncreaseAt) {
+function rebuyableCost(initialCost, increment, id, capIncreaseAt, superExponent) {
+  if (player.dilation.rebuyables[id] >= superExponent) return Decimal.pow10(1e10).pow(Decimal.pow(1.0001, player.dilation.rebuyables[id]));
   return Decimal.multiply(initialCost, Decimal.pow(increment, player.dilation.rebuyables[id] + (Math.max(player.dilation.rebuyables[id] - capIncreaseAt, 0) * Math.max(player.dilation.rebuyables[id] - (capIncreaseAt + 1), 0) / 2)));
 }
 function rebuyable(config) {
   return {
     id: config.id,
-    cost: () => rebuyableCost(config.initialCost, config.increment, config.id, config.capIncreaseAt(player.dilation.rebuyables[config.id])),
+    cost: () => rebuyableCost(config.initialCost, config.increment, config.id, config.capIncreaseAt(player.dilation.rebuyables[config.id]), config.superExponent ? config.superExponent(player.dilation.rebuyables[config.id]) : Infinity),
     initialCost: config.initialCost,
     increment: config.increment,
     capIncreaseAt: () => config.capIncreaseAt(player.dilation.rebuyables[config.id]),
+    superExponent: () => config.superExponent ? config.superExponent(player.dilation.rebuyables[config.id]) : Infinity,
     description: config.description,
     effect: () => config.effect(player.dilation.rebuyables[config.id]),
     formatEffect: config.formatEffect,
@@ -55,6 +57,7 @@ export const dilationUpgrades = {
     initialCost: 1e6,
     increment: 100,
     capIncreaseAt: () => Decimal.floor((Decimal.log10(DilationUpgradeScaling.PRIMARY_SCALING).div(2)).sub(2)).toNumber(),
+    superExponent: () => 100000,
     description: () =>
       ((Perk.bypassTGReset.isBought && !player.disablePostReality) && (!Pelle.isDoomed || PellePerkUpgrade.perkTGR.canBeApplied)
         ? "Reset Tachyon Galaxies, but lower their threshold"
