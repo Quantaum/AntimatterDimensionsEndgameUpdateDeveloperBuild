@@ -76,6 +76,7 @@ export function buyDilationUpgrade(id, bulk = 1) {
       upgrade.config.initialCost, upgrade.config.increment, upgAmount).toNumber();
     buying = Math.clampMax(buying, bulk);
     buying = Math.clampMax(buying, upgrade.purchaseCap - upgAmount);
+    buying = Math.clampMax(buying, upgrade.superExponent - upgAmount);
     if (upgrade.cost.lt(DilationUpgradeScaling.PRIMARY_SCALING)) buying = Math.clampMax(buying, upgrade.capIncreaseAt - upgAmount);
     if (upgrade.cost.lt(Decimal.pow10(1e10))) buying = Math.clampMax(buying, upgrade.superExponent - upgAmount);
     const hasBoughtOverThreshold = Math.max(upgAmount - upgrade.capIncreaseAt, 0);
