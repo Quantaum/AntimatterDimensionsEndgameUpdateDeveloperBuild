@@ -40,7 +40,8 @@ export default {
     update() {
       this.isUnlocked = this.autobuyer.isUnlocked;
       this.isHiddenSacrifice = this.isSacrifice && Achievement(118).canBeApplied &&
-        (!player.disablePostReality || (Alpha.isRunning && Alpha.currentStage >= 12));
+        (!player.disablePostReality || (Alpha.isRunning && Alpha.currentStage >= 12) ||
+        (LHC.voidRunning && NullUpgrade.limerick1.isBought));
       this.annihilationMode = player.auto.annihilation.mode;
     },
     modeToggle() {
