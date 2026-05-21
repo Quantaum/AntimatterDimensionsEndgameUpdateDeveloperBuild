@@ -82,7 +82,7 @@ export const accelerators = {
     baseEffect1: x => `Galaxy Generation ${formatPow(x, 2, 3)}`,
     baseEffect2: x => `AM Exponent ${formatPow(x, 2, 3)} while Doomed`,
     baseEffect3: x => `AM Exponent^2 ${formatPow(x, 2, 4)} while Doomed`,
-    percentage: totalFill => Decimal.min(Decimal.log10(totalFill.max("1e3000")).sub(3000).div(5000).sqrt().times(20).div(100).toNumber(),
+    percentage: totalFill => Math.min(Decimal.log10(totalFill.max("1e3000")).sub(3000).div(5000).sqrt().times(20).div(100).toNumber(),
       Decimal.log10(totalFill.max(1)).sub(3000).div(5000).times(20).div(100).toNumber()),
     percentageToFill: percentage => Decimal.max(Decimal.pow10(Decimal.sqr(percentage * 100 / 20).times(5000).add(3000)),
       Decimal.pow10(new Decimal(percentage * 100 / 20).times(5000).add(3000))),
