@@ -143,7 +143,7 @@ export const Pelle = {
     if (DivinityMilestone.pelleQoL.isReached) {
       player.celestials.pelle.rifts.decay.percentageSpent = 10;
       player.celestials.pelle.rifts.vacuum.fill = PelleRifts.vacuum.config.percentageToFill(1);
-      player.celestials.pelle.rifts.decay.fill = PelleRifts.decay.config.percentageToFill(1);
+      player.celestials.pelle.rifts.decay.fill = PelleRifts.decay.config.percentageToFill(11);
       player.celestials.pelle.rifts.chaos.fill = PelleRifts.chaos.config.percentageToFill(1);
       player.celestials.pelle.rifts.recursion.fill = PelleRifts.recursion.config.percentageToFill(1);
       player.celestials.pelle.rifts.paradox.fill = PelleRifts.paradox.config.percentageToFill(1);
