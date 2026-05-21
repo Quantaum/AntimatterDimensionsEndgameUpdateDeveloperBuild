@@ -103,6 +103,10 @@ export const GameCache = {
     CelestialBreakInfinityUpgrade.celDimCostMult
   ) - CelestialEternityUpgrade.celDimReduction.effectOrDefault(0)),
 
+  divineDimensionMultDecrease: new Lazy(() => 10 - Effects.sum(
+    DivinityUpgrade.divineL3U1
+  )),
+
   timeStudies: new Lazy(() => NormalTimeStudyState.studies
     .map(s => player.timestudy.studies.includes(s.id))),
 
