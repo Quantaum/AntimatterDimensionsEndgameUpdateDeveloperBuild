@@ -1421,6 +1421,7 @@ export function getTTPerSecond() {
     }
     finalTT = finalTT.pow(player.disablePostReality ? 1 : AlphaUnlocks.timeTheoremGeneration.effects.buff.effectOrDefault(1));
     if (ResurgenceUpgrade.achSurge.isBought && !player.disablePostReality) finalTT = finalTT.pow(Achievements.powerConv(Ra.unlocks.achievementTTMult.effectOrDefault(1)));
+    if (ResurgenceUpgrade.curr1Surge.isBought && !player.disablePostReality) finalTT = finalTT.pow(player.timestudy.theorem.max(1e10).log10().log10());
   }
 
   return finalTT;
