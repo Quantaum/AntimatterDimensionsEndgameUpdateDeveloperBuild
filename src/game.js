@@ -809,6 +809,7 @@ export function gameLoop(passedDiff, options = {}) {
   if (!Alpha.isRunning) preProductionGenerateIP(diff);
   if (Alpha.isRunning) preProductionGenerateIP(realDiff);
   preProductionGenerateCIP(realDiff);
+  preProductionGenerateVS(realDiff);
 
   passivePrestigeGen();
 
