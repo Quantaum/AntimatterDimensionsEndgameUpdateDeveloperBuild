@@ -218,6 +218,7 @@ export function tachyonGainMultiplier() {
     if (PelleRealityUpgrade.paradoxicallyAttain.canBeApplied) pelleTP = pelleTP.timesEffectOf(RealityUpgrade(8));
     if (PelleRealityUpgrade.paradoxicalForever.canBeApplied) pelleTP = pelleTP.timesEffectOf(RealityUpgrade(15));
     pelleTP = pelleTP.timesEffectOf(Ra.unlocks.gameSpeedTachyonMult);
+    if (ResurgenceUpgrade.achSurge.isBought && !player.disablePostReality) pelleTP = pelleTP.pow(Achievements.powerConv(Decimal.sqrt(Achievements.power)));
     return pelleTP;
   }
   const pow = Enslaved.isRunning ? Enslaved.tachyonNerf : 1;
@@ -235,6 +236,8 @@ export function tachyonGainMultiplier() {
   if (LHC.voidRunning) mult = mult.timesEffectOf(NullUpgrade.tachyonParticleMult);
 
   mult = mult.pow(pow);
+
+  if (ResurgenceUpgrade.achSurge.isBought && !player.disablePostReality) mult = mult.pow(Achievements.powerConv(Decimal.sqrt(Achievements.power)));
   
   return mult;
 }
