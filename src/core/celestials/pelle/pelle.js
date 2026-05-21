@@ -89,6 +89,7 @@ export const Pelle = {
     player.IPMultPurchases = DC.D0;
     Autobuyer.bigCrunch.mode = AUTO_CRUNCH_MODE.AMOUNT;
     if (!DivinityMilestone.pelleQoL.isReached) disChargeAll();
+    if (DivinityMilestone.pelleQoL.isReached) PelleStrikes.decay.trigger();
     if (!Effarig.isRunning || Effarig.currentStage !== EFFARIG_STAGES.ENDGAME) clearCelestialRuns();
     CelestialDimensions.resetAmount();
     player.records.thisEndgame.peakGameSpeed = DC.D1;
