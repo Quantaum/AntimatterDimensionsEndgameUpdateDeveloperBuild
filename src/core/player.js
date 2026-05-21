@@ -1042,6 +1042,7 @@ window.player = {
         divineStars: DC.D0
       },
       divinityUpgrades: new Set(),
+      divinityRebuyables: [0, 0, 0, 0],
       resurgenceUpgrades: new Set()
     },
     alpha: {
