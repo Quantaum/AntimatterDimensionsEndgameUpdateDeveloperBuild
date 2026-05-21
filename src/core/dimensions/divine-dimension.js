@@ -7,7 +7,7 @@ export function divineDimensionCommonMultiplier() {
   mult = mult.times(DivinityMilestone.hadronEmpowerment.isReached ? 77 : 1);
   mult = mult.times(Accelerators.potency.effectValue3);
   mult = mult.times(Decimal.pow(7, Decimal.log10(player.celestials.pelle.divinity.divineStars.add(1))).powEffectOf(
-    DivinityUpgrade.divineL3U3);
+    DivinityUpgrade.divineL3U3));
   return mult;
 }
 
