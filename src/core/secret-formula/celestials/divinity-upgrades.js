@@ -195,7 +195,7 @@ export const divinityUpgrades = {
     costIncrease: 200,
     maxUpgrades: 7,
     description: () => `Decrease the post-Infinite Divine Dimension cost scaling multiplier by ${formatInt(1)}`,
-    noLabel: false,
+    noLabel: true,
     onPurchased: () => GameCache.divineDimensionMultDecrease.invalidate()
   }),
   divineL3U2: rebuyable({
