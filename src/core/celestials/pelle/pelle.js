@@ -147,6 +147,8 @@ export const Pelle = {
       player.celestials.pelle.rifts.chaos.fill = PelleRifts.chaos.config.percentageToFill(1);
       player.celestials.pelle.rifts.recursion.fill = PelleRifts.recursion.config.percentageToFill(1);
       player.celestials.pelle.rifts.paradox.fill = PelleRifts.paradox.config.percentageToFill(1);
+      if (PelleRifts.vacuum.milestones[0].canBeApplied) Glyphs.refreshActive();
+      PelleRifts.all.forEach(x => x.checkMilestoneStates());
     }
 
     // Force-unhide all tabs except for the shop tab, for which we retain the hide state instead
