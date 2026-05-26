@@ -62,6 +62,9 @@ export default {
     etherealPowerTimeEstimate() {
       return TimeSpan.fromSeconds(Decimal.sub(this.nextSectorAt, this.etherealPower)
         .div(this.etherealPowerPerSecond)).toTimeEstimate();
+    },
+    starPowerReqText() {
+      return `Reach ${format(DC.NUMMAX, 2, 2)} Ethereal Power to unlock Star Power.`;
     }
   },
   methods: {
@@ -177,7 +180,7 @@ export default {
       class="l-ethereal-extension-unlock"
     >
       <div v-if="!canUnlockStarPower">
-        <span class="c-stellar-glow">Reach {{ format(DC.NUMMAX, 2, 2) }} Ethereal Power to Extend unlock Star Power.</span>
+        <span class="c-stellar-glow">{{ starPowerReqText }}</span>
       </div>
       <div v-if="canUnlockStarPower">
         <button
