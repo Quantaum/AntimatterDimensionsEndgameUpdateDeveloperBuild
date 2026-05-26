@@ -134,8 +134,10 @@ export default {
       v-if="isExtended"
       class="l-star-grid"
     >
-      <span class="c-stellar-glow">Your Stellar Product is </span>
-      <span class="c-cooler-stellar-glow">{{ format(stellarProd, 2, 2) }}</span><span class="c-stellar-glow">.</span>
+      <div>
+        <span class="c-stellar-glow">Your Stellar Product is </span>
+        <span class="c-cooler-stellar-glow">{{ format(stellarProd, 2, 2) }}</span><span class="c-stellar-glow">.</span>
+      </div>
       <br>
       <div
         v-for="row in rows"
