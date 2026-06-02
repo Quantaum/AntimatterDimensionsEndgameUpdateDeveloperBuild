@@ -33,6 +33,9 @@ export const Ethereal = {
       }
     }
     return prod.reduce(Decimal.prodReducer, DC.D1);
+  },
+  get isStarPowerUnlocked() {
+    return player.endgame.ethereal.isStarPowerUnlocked;
   }
 };
 
