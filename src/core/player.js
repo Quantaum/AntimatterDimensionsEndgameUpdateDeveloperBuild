@@ -1372,7 +1372,8 @@ window.player = {
         black: DC.D0,
         gray: DC.D0
       },
-      isStarPowerUnlocked: false
+      isStarPowerUnlocked: false,
+      starPower: DC.D0
     },
     hypercubes: {
       penteracts: 0,
