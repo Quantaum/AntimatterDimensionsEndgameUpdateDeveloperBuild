@@ -76,8 +76,8 @@ export default {
       return `${formatHybridLarge(this.starPower, 3)}`;
     },
     nextGenerationText() {
-      if (this.allStarsUnlocked) return `All stars have been unlocked`;
-      return `The next star unlocks at ${format(this.nextStarReq, 2, 2)} Dual Machines`;
+      if (this.allGenerationsUnlocked) return `All Star Power rewards have been unlocked`;
+      return `You will get a new Star Power reward at ${format(this.nextGeneration, 2, 2)} Star Power`;
     },
   },
   methods: {
