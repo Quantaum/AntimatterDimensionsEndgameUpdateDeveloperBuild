@@ -79,6 +79,16 @@ export default {
       if (this.allGenerationsUnlocked) return `All Star Power rewards have been unlocked`;
       return `You will get a new Star Power reward at ${format(this.nextGeneration, 2, 2)} Star Power`;
     },
+    starTexts() {
+      let arr = [];
+      let starName = ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "White", "Black", "Gray"];
+      for (let t = 0; t < 9; t++) {
+        if (Ethereal.starGeneration(t).neq(0)) {
+          arr.push(`Star Power is currently generating ${formatDecimalPercents(Ethereal.starGeneration(t), 2)} of pending ${starName[t]} Stars per second`);
+        }
+      }
+      return arr;
+    }
   },
   methods: {
     update() {
@@ -224,6 +234,14 @@ export default {
         <span class="c-stellar-glow">Your Star Power is currently multiplying the gain of all Star types by </span>
         <span class="c-cooler-stellar-glow">{{ formatX(starBoost, 3, 3) }}</span><span class="c-stellar-glow">.</span>
       </div>
+      <br>
+      <span
+        class="c-stellar-glow"
+        v-for="(line, index) in starTexts"
+        :key="index"
+      >
+        {{ line }} <br>
+      </span>
       <br>
       <span class="c-stellar-glow">
         {{ nextGenerationText }}
