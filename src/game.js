@@ -463,7 +463,7 @@ export function gainedCelestialInfinities() {
 }
 
 export function gainedCelestialInfinityPoints() {
-  const div = 308 * CelestialEternityUpgrade.betterCIP.effectOrDefault(1);
+  const div = 308 * CelestialEternityUpgrade.betterCIP.effectOrDefault(1) * CelestialEternityPlusUpgrade.betterCIPFormula.effectOrDefault(1);
   let cip = player.endgame.celDimExpansion.isBroken
     ? Decimal.pow10(player.records.thisCelestialInfinity.maxCM.add(1).log10().div(div).sub(0.75))
     : new Decimal(308 / div);
