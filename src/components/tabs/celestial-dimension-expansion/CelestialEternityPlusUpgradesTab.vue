@@ -11,7 +11,7 @@ export default {
       return [
         [
           CelestialEternityPlusUpgrade.megaCelTickspeedReduction,
-          CelestialEternityPlusUpgrade.megaCelDimeReduction,
+          CelestialEternityPlusUpgrade.megaCelDimReduction,
           CelestialEternityPlusUpgrade.betterCIPFormula,
           CelestialEternityPlusUpgrade.oldStoneSlabAndSteelDrill
         ]
