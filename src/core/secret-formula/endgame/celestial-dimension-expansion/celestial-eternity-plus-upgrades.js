@@ -6,7 +6,7 @@ export const celestialEternityPlusUpgrades = {
     effect: 1.5
   },
   megaCelDimReduction: {
-    id: "megaCelDimeReduction",
+    id: "megaCelDimReduction",
     cost: DC.E2000,
     description: () => `Reduce the Celestial Dimension cost scaling multiplier to ${formatX(1.8, 1, 1)}`,
     effect: 1.8
