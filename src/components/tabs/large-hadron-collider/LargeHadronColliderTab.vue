@@ -137,7 +137,7 @@ export default {
     >
       {{ modeDisplay }}
     </PrimaryButton>
-    <div>
+    <div v-if="voidMode === 0">
       Entering The Void will force an Endgame reset and disable all Reality and beyond mechanics.
       <br>
       Your Antimatter will slowly decay and you will gain Null Matter from the decayed Antimatter.
@@ -145,6 +145,11 @@ export default {
         <br>
         Since you Nullified the Multiverse, the ANR Perk and Passive EP Generation are reenabled inside The Void.
       </span>
+    </div>
+    <div v-if="voidMode === 1">
+      Entering The Void in Nullified Mode will force an Endgame reset and Dilate your Antimatter by {{ format(0.01, 2, 2) }}.
+      <br>
+      You will generate Null Particles based on your Antimatter.
     </div>
     <NullUpgradesTabComponent />
   </div>
