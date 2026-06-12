@@ -16,6 +16,8 @@ export default {
     },
     handleClick() {
       player.endgame.largeHadronCollider.void.nullified = true;
+      Modal.message.show(`WARNING: YOUR EXCESS NULL MATTER HAS CREATED A RIFT IN SPACETIME.
+        THIS RIFT HAS CAUSED YOU TO UNLOCK THE NULLIFIED VOID AND START GENERATING NULL PARTICLES.`, {}, 3);
     }
   }
 };
