@@ -6,6 +6,7 @@ import HeaderChallengeDisplay from "../HeaderChallengeDisplay";
 import HeaderChallengeEffects from "../HeaderChallengeEffects";
 import HeaderPrestigeGroup from "../HeaderPrestigeGroup";
 import NewsTicker from "../NewsTicker";
+import NullifyButton from "../NullifyButton";
 
 import BackgroundAnimations from "@/components/BackgroundAnimations";
 import GameUiComponentFixed from "@/components/GameUiComponentFixed";
@@ -20,6 +21,7 @@ export default {
   components: {
     BigCrunchButton,
     DivinityButton,
+    NullifyButton,
     HeaderChallengeDisplay,
     HeaderChallengeEffects,
     NewsTicker,
