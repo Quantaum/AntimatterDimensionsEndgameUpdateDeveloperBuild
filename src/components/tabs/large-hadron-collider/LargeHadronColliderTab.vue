@@ -1,12 +1,14 @@
 <script>
 import AcceleratorsPanel from "./AcceleratorsPanel";
 import NullUpgradesTabComponent from "./NullUpgradesTabComponent";
+import PrimaryButton from "@/components/PrimaryButton";
 
 export default {
   name: "LargeHadronColliderTab",
   components: {
     AcceleratorsPanel,
-    NullUpgradesTabComponent
+    NullUpgradesTabComponent,
+    PrimaryButton
   },
   data() {
     return {
