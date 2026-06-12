@@ -19,7 +19,8 @@ export default {
       highestAntimatter: new Decimal(),
       nullMatter: new Decimal(),
       nullPerSecond: new Decimal(),
-      nullified: false
+      nullified: false,
+      voidMode: 0
     };
   },
   computed: {
@@ -27,6 +28,11 @@ export default {
       if (this.hadronSpeed === 0) return `Your Hadrons are stationary`;
       if (this.hadronSpeed >= 1000) return `Your Hadrons are moving at ${formatHybridLarge(this.hadronSpeed, 3)} m/s`;
       return `Your Hadrons are moving at ${format(this.hadronSpeed, 3, 3)} m/s`;
+    },
+    modeDisplay() {
+      return this.voidMode === 0
+        ? "Void Mode: Normal"
+        : "Void Mode: Nullified";
     },
     voidText() {
       return this.isRunning ? "[Exit the Void.]" : "[Enter the Void.]";
@@ -54,12 +60,13 @@ export default {
         Decimal.log10(Decimal.pow(AntimatterDimension(1).productionPerSecond, 0.01).max(1)).pow(
         Decimal.log10(Decimal.log10(Decimal.pow(AntimatterDimension(1).productionPerSecond, 0.01).max(1)).max(1))));
       this.nullified = player.endgame.largeHadronCollider.void.nullified;
+      this.voidMode = player.endgame.largeHadronCollider.void.mode;
     },
     formatNullAmount(amount) {
       return amount.gte(DC.NUMMAX) ? Notations.current.infinite : format(amount, 2, 2);
     },
     glitchAnim() {
-      let flux = Math.random() / 4;
+      let flux = Math.random() / (4 / (this.voidMode + 1));
       let negFlux = -flux;
       return {
         "text-shadow": `${negFlux}rem 0 red, ${flux}rem 0 blue`,
@@ -68,6 +75,9 @@ export default {
     startRun() {
       if (this.isRunning) exitTheVoid();
       else enterTheVoid();
+    },
+    changeMode() {
+      player.endgame.largeHadronCollider.void.mode = (player.endgame.largeHadronCollider.void.mode + 1) % 2;
     }
   }
 };
@@ -116,6 +126,13 @@ export default {
         </div>
       </div>
     </div>
+    <PrimaryButton
+      v-if="nullified"
+      class="o-primary-btn--subtab-option"
+      @click="changeMode"
+    >
+      {{ modeDisplay }}
+    </PrimaryButton>
     <div>
       Entering The Void will force an Endgame reset and disable all Reality and beyond mechanics.
       <br>
