@@ -6,6 +6,7 @@ import HeaderChallengeDisplay from "../HeaderChallengeDisplay";
 import HeaderChallengeEffects from "../HeaderChallengeEffects";
 import HeaderPrestigeGroup from "../HeaderPrestigeGroup";
 import NewsTicker from "../NewsTicker";
+import NullifyButton from "../NullifyButton";
 
 import GameSpeedDisplay from "@/components/GameSpeedDisplay";
 
@@ -15,6 +16,7 @@ export default {
   components: {
     BigCrunchButton,
     DivinityButton,
+    NullifyButton,
     HeaderChallengeDisplay,
     HeaderChallengeEffects,
     NewsTicker,
