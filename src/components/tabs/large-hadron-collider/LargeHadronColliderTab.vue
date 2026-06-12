@@ -83,8 +83,10 @@ export default {
         if (this.isRunning) exitNullifiedVoid();
         else enterNullifiedVoid();
       }
-      if (this.isRunning) exitTheVoid();
-      else enterTheVoid();
+      else {
+        if (this.isRunning) exitTheVoid();
+        else enterTheVoid();
+      }
     },
     changeMode() {
       if (this.isRunning) return;
