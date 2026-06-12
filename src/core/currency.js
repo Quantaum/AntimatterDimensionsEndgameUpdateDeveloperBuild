@@ -759,7 +759,7 @@ Currency.divineEnergy = new class extends DecimalCurrency {
 Currency.nullMatter = new class extends DecimalCurrency {
   get value() { return player.endgame.largeHadronCollider.void.nullMatter; }
   set value(value) {
-    const newValue = new Decimal(value);
+    const newValue = Decimal.min(value, DC.NUMMAX);
     player.endgame.largeHadronCollider.void.nullMatter = newValue;
   }
 }();
