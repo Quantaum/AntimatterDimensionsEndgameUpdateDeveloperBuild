@@ -1229,6 +1229,10 @@ class CelestialEternityPlusUpgradeState extends SetPurchasableMechanicState {
   get isEffectActive() {
     return !player.disablePostReality && this.isBought;
   }
+
+  onPurchased() {
+    this.config.onPurchased?.();
+  }
 }
 
 export const CelestialEternityPlusUpgrade = mapGameDataToObject(
