@@ -795,3 +795,19 @@ Currency.nullParticles = new class extends DecimalCurrency {
     player.endgame.largeHadronCollider.void.nullParticles = newValue;
   }
 }();
+
+Currency.supernovae = new class extends DecimalCurrency {
+  get value() { return player.celestials.pelle.divinity.supernovae; }
+  set value(value) {
+    const newValue = new Decimal(value);
+    player.celestials.pelle.divinity.supernovae = newValue;
+  }
+}();
+
+Currency.nebulae = new class extends DecimalCurrency {
+  get value() { return player.celestials.pelle.divinity.nebulae; }
+  set value(value) {
+    const newValue = new Decimal(value);
+    player.celestials.pelle.divinity.nebulae = newValue;
+  }
+}();
