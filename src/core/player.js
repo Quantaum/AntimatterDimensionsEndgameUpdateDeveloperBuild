@@ -1052,7 +1052,7 @@ window.player = {
         isProducingEnergy: false,
         condenses: DC.D0,
         divineStars: DC.D0,
-        partCondensed: DC.D0,
+        partCondensed: 0,
         supernovae: DC.D0,
         nebulae: DC.D0
       },
