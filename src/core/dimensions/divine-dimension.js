@@ -288,6 +288,7 @@ export function resetForDivineStars(nova = false) {
       upgR.push("divineL2U5");
     }
     player.celestials.pelle.divinityUpgrades = new Set(upgR);
+    if (!DivinityUpgrade.divineL5U2.isBought) player.celestials.pelle.divinityRebuyables = [0, 0, 0, 0];
   }
   DivineDimensions.fullReset();
   player.records.thisCondense.maxVM = DC.E1;
