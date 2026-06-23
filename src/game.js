@@ -1225,6 +1225,15 @@ function globalPassivePrestigeGen(realDiff) {
   celInfGen = celInfGen.plus(player.endgame.celDimExpansion.partCelestialInfinitied);
   Currency.celestialInfinities.add(celInfGen.floor());
   player.endgame.celDimExpansion.partCelestialInfinitied = celInfGen.minus(celInfGen.floor()).toNumber();
+
+  let condenseGen = DC.D0;
+  if (DivinityUpgrade.divineL5U4.isBought) {
+    condenseGen = condenseGen.plus(new Decimal(0.1).times(Time.unscaledDeltaTime.totalMilliseconds).div(
+      player.records.bestCondense.realTime));
+  }
+  condenseGen = condenseGen.plus(player.celestials.pelle.divinity.partCondensed);
+  Currency.condenses.add(condenseGen.floor());
+  player.endgame.pelle.divinity.partCondensed = condenseGen.minus(condenseGen.floor()).toNumber();
 }
 
 function passivePrestigeGen(realDiff) {
@@ -1395,6 +1404,10 @@ function applyAutoprestige(diff) {
 
   if (CelestialEternityUpgrade.passiveCIP.isBought) {
     Currency.celestialInfinityPoints.add(player.records.thisCelestialInfinity.bestCIPmin.times(DC.D0_01).times(diff).div(1000));
+  }
+
+  if (DivinityUpgrade.divineL5U5.isBought) {
+    Currency.divineStars.add(player.records.thisCondense.bestVSmin.times(DC.D0_01).times(diff).div(1000));
   }
 }
 
