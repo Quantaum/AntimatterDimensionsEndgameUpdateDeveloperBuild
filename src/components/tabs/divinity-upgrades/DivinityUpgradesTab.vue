@@ -90,7 +90,7 @@ export default {
     update() {
       this.has1 = DivinityMilestone.divineDimensions.isReached;
       this.has2 = PlayerProgress.condenseUnlocked();
-      this.has3 = (DivinityUpgrades.all.filter(u => u.layer === 2 && u.isBought).length === DivinityUpgrades.all.filter(u => u.layer === 2).length);
+      this.has3 = (DivinityUpgrades.all.filter(u => u.layer === 2 && u.isBought).length === DivinityUpgrades.all.filter(u => u.layer === 2).length) || PlayerProgress.supernovaUnlocked();
       this.has4 = PlayerProgress.supernovaUnlocked();
       this.has5 = (DivinityUpgrades.all.filter(u => u.layer === 4 && u.isBought).length === DivinityUpgrades.all.filter(u => u.layer === 4).length);
     }
