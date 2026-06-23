@@ -274,13 +274,13 @@ export function resetForDivineStars(nova = false) {
     let upgR = [];
     let min = DivinityUpgrade.divineL5U2.isBought ? 4 :
       (DivinityUpgrade.divineL4U4.isBought ? 3 : (DivinityUpgrade.divineL4U2.isBought ? 2 : 1));
-    for (let upgL = 0; upgL < DivinityUpgrades.all.filter(u => u.layer > (nova ? 3 : 1) && u.layer < min).length; upgL++) {
-      if (DivinityUpgrades.all.filter(u => u.layer > (nova ? 3 : 1) && u.layer < min)[upgL].isBought) {
-        upgR.push(DivinityUpgrades.all.filter(u => u.layer > (nova ? 3 : 1) && u.layer < min)[upgL].id);
+    for (let upgL = 0; upgL < DivinityUpgrades.all.filter(u => u.layer > (nova ? 3 : 1) && (nova ? u.layer < min : true)).length; upgL++) {
+      if (DivinityUpgrades.all.filter(u => u.layer > (nova ? 3 : 1) && (nova ? u.layer < min : true))[upgL].isBought) {
+        upgR.push(DivinityUpgrades.all.filter(u => u.layer > (nova ? 3 : 1) && (nova ? u.layer < min : true))[upgL].id);
       }
     }
-    upgR.push("divineL1U5");
-    if (DivinityUpgrade.divineL4U2.isBought) {
+    if (!upgR.includes("divineL1U5")) upgR.push("divineL1U5");
+    if (DivinityUpgrade.divineL4U2.isBought && !DivinityUpgrade.divineL4U4.isBought && nova) {
       upgR.push("divineL2U1");
       upgR.push("divineL2U2");
       upgR.push("divineL2U3");
