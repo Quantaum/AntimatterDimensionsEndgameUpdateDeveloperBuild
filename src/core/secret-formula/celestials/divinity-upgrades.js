@@ -256,11 +256,12 @@ export const divinityUpgrades = {
     id: "divineL4U1",
     layer: 4,
     cost: new Decimal(1),
-    description: () => `Gain a multiplier to Divine Energy and a power to Divine Dimensions based on highest Nebulae,
-      and gain ${formatX(2)} Divine Stars`,
+    description: () => `Gain a multiplier to Divine Energy and Divine Stars and a power to Divine Dimensions,
+      all based on highest Nebulae`,
     effects: {
       energy: () => player.records.bestSupernova.maxNeb.div(10).add(1).pow(777),
-      matter: () => Decimal.log10(player.records.bestSupernova.maxNeb.add(1)).add(1).pow(0.2)
+      matter: () => Decimal.log10(player.records.bestSupernova.maxNeb.add(1)).add(1).pow(0.2),
+      stars: () => player.records.bestSupernova.maxNeb.add(1)
     }
   },
   divineL4U2: {
