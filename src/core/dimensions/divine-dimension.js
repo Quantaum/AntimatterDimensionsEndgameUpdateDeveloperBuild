@@ -273,12 +273,21 @@ export function resetForDivineStars(nova = false) {
   Currency.divineMatter.reset();
   if (!DivinityUpgrade.divineL2U5.isBought || nova) {
     let upgR = [];
-    for (let upgL = 0; upgL < DivinityUpgrades.all.filter(u => u.layer <= (nova ? 3 : 1)).length; upgL++) {
-      if (DivinityUpgrades.all.filter(u => u.layer <= (nova ? 3 : 1))[upgL].isBought) {
-        upgR.push(DivinityUpgrades.all.filter(u => u.layer <= (nova ? 3 : 1))[upgL].id);
+    let min = DivinityUpgrade.divineL5U2.isBought ? 4 :
+      (DivinityUpgrade.divineL4U4.isBought ? 3 : (DivinityUpgrade.divineL4U2.isBought ? 2 : 1));
+    for (let upgL = 0; upgL < DivinityUpgrades.all.filter(u => u.layer <= (nova ? 3 : 1) && u.layer >= min).length; upgL++) {
+      if (DivinityUpgrades.all.filter(u => u.layer <= (nova ? 3 : 1) && u.layer >= min)[upgL].isBought) {
+        upgR.push(DivinityUpgrades.all.filter(u => u.layer <= (nova ? 3 : 1) && u.layer >= min)[upgL].id);
       }
     }
     upgR.push("divineL1U5");
+    if (DivinityUpgrade.divineL4U2.isBought) {
+      upgR.push("divineL2U1");
+      upgR.push("divineL2U2");
+      upgR.push("divineL2U3");
+      upgR.push("divineL2U4");
+      upgR.push("divineL2U5");
+    }
     player.celestials.pelle.divinityUpgrades = new Set(upgR);
   }
   player.records.thisCondense.time = DC.D0;
