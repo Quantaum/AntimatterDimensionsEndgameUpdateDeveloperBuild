@@ -165,7 +165,8 @@ export const DivineDimensions = {
     const divineEnergyMults = DC.D1.timesEffectsOf(
       DivinityUpgrade.divineL1U7, DivinityUpgrade.divineL2U2, DivinityUpgrade.divineL4U1.effects.energy).times(
       DivinityMilestone.hadronEmpowerment.isReached ? 77 : 1).times(Accelerators.potency.effectValue3);
-    const baseEffect = DivinityUpgrade.divineL2U4 ? player.records.totalDivineMatter : DivineDimension(1).productionPerSecond.max(1);
+    const baseEffect = DivinityUpgrade.divineL2U4.isBought ? player.records.totalDivineMatter :
+      DivineDimension(1).productionPerSecond.max(1);
     return Decimal.pow(100, Decimal.log10(baseEffect).div(100).sub(1)).times(divineEnergyMults);
   },
 
@@ -350,6 +351,7 @@ export function supernova(force, auto, specialConditions = {}) {
   player.records.thisSupernova.bestNebmin = DC.D0;
   player.records.thisSupernova.bestCondensesPerMs = DC.D0;
   resetForDivineStars(true);
+  Currency.divineEnergy.reset();
   player.records.thisCondense.maxVM = DC.E1;
   player.records.thisSupernova.maxVM = DC.E1;
 
