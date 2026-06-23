@@ -416,6 +416,11 @@ export function addCondenseTime(time, realTime, vs, condenses) {
   player.records.recentCondenses.unshift([time, realTime, vs, condenses]);
 }
 
+export function addSupernovaTime(time, realTime, neb, supernovae) {
+  player.records.recentSupernovae.pop();
+  player.records.recentSupernovae.unshift([time, realTime, neb, supernovae]);
+}
+
 export function gainedInfinities() {
   if (EternityChallenge(4).isRunning) {
     return DC.D1;
@@ -492,6 +497,17 @@ export function gainedDivineStars() {
   let divs = Decimal.pow10(player.records.thisCondense.maxVM.add(1).log10().div(div).sub(0.75));
 
   return divs.floor();
+}
+
+function totalNebMult() {
+  return DC.D1;
+}
+
+export function gainedNebulae() {
+  let neb = DC.D5.pow(player.records.thisSupernova.maxVS.plus(
+    gainedDivineStars()).add(1).log10().div(308).sub(0.7)).times(totalNebMult());
+
+  return neb.floor();
 }
 
 export function updateRefresh() {
@@ -799,6 +815,8 @@ export function gameLoop(passedDiff, options = {}) {
     player.records.thisCelestialReality.time = player.records.thisCelestialReality.time.add(diff);
     player.records.thisCondense.time = player.records.thisCondense.time.add(diff);
     player.records.thisCondense.realTime += realDiff;
+    player.records.thisSupernova.time = player.records.thisSupernova.time.add(diff);
+    player.records.thisSupernova.realTime += realDiff;
   }
 
   DeltaTimeState.update(realDiff, diff);
@@ -1165,6 +1183,12 @@ function updatePrestigeRates() {
   if (currentVSmin.gt(player.records.thisCondense.bestVSmin) && Currency.divineMatter.gte(DC.NUMMAX)) {
     player.records.thisCondense.bestVSmin = currentVSmin;
     player.records.thisCondense.bestVSminVal = gainedDivineStars();
+  }
+
+  const currentNebmin = gainedSupernovae().dividedBy(Decimal.clampMin(0.0005, Time.thisSupernovaRealTime.totalMinutes));
+  if (currentNebmin.gt(player.records.thisSupernova.bestNebmin) && Currency.divineStars.gte(DC.NUMMAX)) {
+    player.records.thisSupernova.bestNebmin = currentNebmin;
+    player.records.thisSupernova.bestNebminVal = gainedSupernovae();
   }
 }
 
