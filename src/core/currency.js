@@ -779,6 +779,7 @@ Currency.divineStars = new class extends DecimalCurrency {
   set value(value) {
     const newValue = new Decimal(value);
     player.celestials.pelle.divinity.divineStars = newValue;
+    player.records.thisSupernova.maxVS = player.records.thisSupernova.maxVS.max(value);
   }
 }();
 
