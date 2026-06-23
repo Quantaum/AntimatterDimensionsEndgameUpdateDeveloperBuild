@@ -63,7 +63,7 @@ class DivineDimensionState extends DimensionState {
     mult = mult.times(Decimal.pow(this.powerMultiplier, Decimal.floor(this.baseAmount)));
     if (DivinityMilestone.pelleQoL.isReached && !player.disablePostReality) mult = mult.pow(1.05);
     mult = mult.pow(Accelerators.emptiness._milestones[1].effectOrDefault(1));
-    mult = mult.powEffectsOf(DivinityUpgrade.divineL2U7, DivinityUpgrade.divineL3U5);
+    mult = mult.powEffectsOf(DivinityUpgrade.divineL2U7, DivinityUpgrade.divineL3U5, DivinityUpgrade.divineL4U1.effects.matter);
     if (DivinityMilestone.finalRebirth.isReached && !player.disablePostReality) mult = mult.pow(1.05);
     return mult;
   }
@@ -160,7 +160,8 @@ export const DivineDimensions = {
   },
 
   get energyPerSecond() {
-    const divineEnergyMults = DC.D1.timesEffectsOf(DivinityUpgrade.divineL1U7, DivinityUpgrade.divineL2U2).times(
+    const divineEnergyMults = DC.D1.timesEffectsOf(
+      DivinityUpgrade.divineL1U7, DivinityUpgrade.divineL2U2, DivinityUpgrade.divineL4U1.effects.energy).times(
       DivinityMilestone.hadronEmpowerment.isReached ? 77 : 1).times(Accelerators.potency.effectValue3);
     const baseEffect = DivinityUpgrade.divineL2U4 ? player.records.totalDivineMatter : DivineDimension(1).productionPerSecond.max(1);
     return Decimal.pow(100, Decimal.log10(baseEffect).div(100).sub(1)).times(divineEnergyMults);
