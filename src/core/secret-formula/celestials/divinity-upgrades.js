@@ -277,7 +277,7 @@ export const divinityUpgrades = {
     layer: 4,
     cost: new Decimal(10),
     description: "Divine Dimensions gain a power effect based on real time spent in this Supernova",
-    effect: () => Time.thisSupernovaRealTime.totalHours.div(12).add(1).pow(0.5),
+    effect: () => Time.thisSupernovaRealTime.totalMinutes.div(10).add(1).pow(0.1),
     formatEffect: value => formatPow(value, 2, 3)
   },
   divineL4U4: {
