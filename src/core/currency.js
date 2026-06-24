@@ -814,4 +814,9 @@ Currency.nebulae = new class extends DecimalCurrency {
     player.celestials.pelle.divinity.nebulae = newValue;
     player.records.bestSupernova.maxNeb = player.records.bestSupernova.maxNeb.max(value);
   }
+
+  add(amount) {
+    super.add(amount);
+    player.records.bestSupernova.totalNeb = player.records.bestSupernova.totalNeb.plus(amount);
+  }
 }();
