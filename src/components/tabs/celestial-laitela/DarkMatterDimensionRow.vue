@@ -153,6 +153,9 @@ export default {
     hoverState(state) {
       if (!this.isIntervalCapped) return;
       this.hoverOverAscension = state;
+    },
+    hasLongText() {
+      return this.buttonValue.length >= 20;
     }
   }
 };
@@ -183,19 +186,19 @@ export default {
         >
           <i class="fas fa-question-circle" />
         </span>
-        <span v-html="intervalText" />
+        <span :class="{ 'l-dim-row-small-text': hasLongText }" v-html="intervalText" />
       </button>
       <button
         :class="darkMatterClassObject"
         @click="buyPowerDM"
       >
-        <span v-html="darkMatterText" />
+        <span :class="{ 'l-dim-row-small-text': hasLongText }" v-html="darkMatterText" />
       </button>
       <button
         :class="darkEnergyClassObject"
         @click="buyPowerDE"
       >
-        <span v-html="darkEnergyText" />
+        <span :class="{ 'l-dmd-row-small-text': hasLongText }" v-html="darkEnergyText" />
       </button>
     </div>
     <div v-if="interval.gt(200)">
@@ -209,3 +212,11 @@ export default {
     </div>
   </div>
 </template>
+
+<style scoped>
+.l-dmd-row-small-text {
+  vertical-align: middle;
+  font-size: 0.9rem;
+  line-height: 0.9rem;
+}
+</style>
