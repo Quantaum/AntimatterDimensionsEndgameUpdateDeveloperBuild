@@ -123,7 +123,7 @@ const Positions = Object.freeze({
   alphaUnlock: new Vector(950, 800),
   celestialBreak: new Vector(720, 850),
   celestialEternity: new Vector(600, 750),
-  slabUnlock: new Vector(450, 900),
+  slabdrillUnlock: new Vector(450, 900),
   
 
   pelleGalaxyGen: pelleStarPosition(0, 0),
