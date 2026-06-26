@@ -195,6 +195,7 @@ export class DarkMatterDimensionState extends DimensionState {
   }
 
   buyManyInterval(x) {
+    if (Currency.darkMatter.lte(0)) return false;
     const isBought = this.data.intervalUpgrades;
     const canBuyTotal = Currency.darkMatter.value.div(INTERVAL_START_COST).div(this.adjustedStartingCost).log(
       this.intervalCostIncrease).add(1).floor();
@@ -209,6 +210,7 @@ export class DarkMatterDimensionState extends DimensionState {
   }
 
   buyManyPowerDM(x) {
+    if (Currency.darkMatter.lte(0)) return false;
     const isBought = this.data.powerDMUpgrades;
     const canBuyTotal = Currency.darkMatter.value.div(POWER_DM_START_COST).div(this.adjustedStartingCost).log(
       this.powerDMCostIncrease).add(1).floor();
@@ -223,6 +225,7 @@ export class DarkMatterDimensionState extends DimensionState {
   }
 
   buyManyPowerDE(x) {
+    if (Currency.darkMatter.lte(0)) return false;
     const isBought = this.data.powerDEUpgrades;
     const canBuyTotal = Currency.darkMatter.value.div(POWER_DE_START_COST).div(this.adjustedStartingCost).log(
       this.powerDECostIncrease).add(1).floor();
