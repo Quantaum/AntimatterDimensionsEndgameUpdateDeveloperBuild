@@ -298,6 +298,10 @@ export const Glyphs = {
         ImaginaryUpgrade(25).tryShowWarningModal();
         return;
       }
+      if (DualityUpgrade(22).isLockingMechanics && this.activeWithoutCompanion.length === 0) {
+        DualityUpgrade(22).tryShowWarningModal();
+        return;
+      }
     }
 
     this.validate();
