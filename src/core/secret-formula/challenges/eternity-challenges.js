@@ -123,7 +123,11 @@ export const eternityChallenges = [
     effect: () => TimeDimension(1).productionPerSecond,
     reward: {
       description: "1st Time Dimension produces 8th Infinity Dimensions",
-      effect: completions => TimeDimension(1).productionPerSecond.pow(completions * 0.2).minus(1).clampMin(0),
+      effect: completions => {
+        const base = TimeDimension(1).productionPerSecond.pow(completions * 0.2).minus(1).clampMin(0);
+        if (Pelle.isDoomed) base = base.min(DC.ENUMMAX).times(Decimal.pow10(base.max(1).log10().div(DC.NUMMAX).pow(0.1)));
+        return base;
+      },
       formatEffect: value => `${format(value, 2, 1)} per second`
     }
   },
