@@ -100,13 +100,13 @@ export default {
         DM by ${formatHybridSmall(this.powerDMPerAscension, 3)}, and DE by ${formatInt(POWER_DE_PER_ASCENSION)}.`;
     },
     hasLongIntText() {
-      return this.intervalText.length >= 20;
+      return this.intervalCost.gte(DC.E1E6);
     },
     hasLongDMText() {
-      return this.darkMatterText.length >= 20;
+      return this.powerDMCost.gte(DC.E1E6);
     },
     hasLongDEText() {
-      return this.darkEnergyText.length >= 20;
+      return this.powerDECost.gte(DC.E1E6);
     },
   },
   methods: {
