@@ -1,4 +1,4 @@
-import { BitUpgradeState } from "../game-mechanics";
+import { GameMechanicState } from "../../game-mechanics";
 import wordShift from "../word-shift";
 
 export const Quote = {
@@ -118,14 +118,14 @@ class QuoteLine {
   }
 }
 
-class CelQuotes extends BitUpgradeState {
+class CelQuotes extends GameMechanicState {
   constructor(config, celestial) {
     super(config);
     this._celestial = celestial;
     this._lines = config.lines.map(line => new QuoteLine(line, this));
   }
 
-  get bits() {
+  /*get bits() {
     return player.celestials[this._celestial] ? player.celestials[this._celestial].quoteBits : player.expanse.elemental.quoteBits;
   }
   set bits(value) {
@@ -135,7 +135,7 @@ class CelQuotes extends BitUpgradeState {
     else {
       player.expanse.elemental.quoteBits = value;
     }
-  }
+  }*/
 
   get isUnlocked() {
     return player.celestials[this._celestial]
