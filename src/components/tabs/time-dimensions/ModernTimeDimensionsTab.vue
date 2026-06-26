@@ -23,6 +23,10 @@ export default {
       timeDimCompressionMagnitude: 0,
       timeDimOverflow: 0,
       timeDimStart: new Decimal(0),
+      timeDimCompressionMagnitude2: 0,
+      timeDimOverflow2: 0,
+      timeDimStart2: new Decimal(0),
+      hasSecond: false,
       hasCap: true
     };
   },
@@ -44,6 +48,10 @@ export default {
       this.timeDimCompressionMagnitude = TimeDimensions.compressionMagnitude;
       this.timeDimOverflow = 1 / this.timeDimCompressionMagnitude;
       this.timeDimStart = TimeDimensions.OVERFLOW;
+      this.timeDimCompressionMagnitude2 = TimeDimensions.compressionMag2;
+      this.timeDimOverflow2 = 1 / this.timeDimCompressionMag2;
+      this.timeDimStart2 = TimeDimensions.OVERFLOW_SQUARED;
+      this.hasSecond = Currency.timeShards.gte(DC.ENUMMAX);
       this.hasCap = Alpha.currentStage < 11 || player.disablePostReality;
     },
     maxAll() {
@@ -96,6 +104,18 @@ export default {
           <span class="c-time-dim-compression-description__accent">{{ format(timeDimOverflow, 2, 3) }}</span>
           while above
           <span>{{ formatPostBreak(timeDimStart, 2, 1) }}</span>.
+        </span>
+      </p>
+    </div>
+    <div>
+      <p>
+        <span v-if="hasSecond">
+          Your Time Dimension Compression^2 Magnitude is
+          <span class="c-time-dim-compression-description__accent">{{ format(timeDimCompressionMagnitude2, 2, 3) }}</span>,
+          which raises all Time Dimension Multipliers to the power of
+          <span class="c-time-dim-compression-description__accent">{{ format(timeDimOverflow2, 2, 3) }}</span>
+          while above
+          <span>{{ formatPostBreak(timeDimStart2, 2, 1) }}</span>.
         </span>
       </p>
     </div>
