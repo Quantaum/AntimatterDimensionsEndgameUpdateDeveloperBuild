@@ -49,7 +49,7 @@ export default {
       this.timeDimOverflow = 1 / this.timeDimCompressionMagnitude;
       this.timeDimStart = TimeDimensions.OVERFLOW;
       this.timeDimCompressionMagnitude2 = TimeDimensions.compressionMag2;
-      this.timeDimOverflow2 = 1 / this.timeDimCompressionMag2;
+      this.timeDimOverflow2 = 1 / this.timeDimCompressionMagnitude2;
       this.timeDimStart2 = TimeDimensions.OVERFLOW_SQUARED;
       this.hasSecond = Currency.timeShards.gte(DC.ENUMMAX);
       this.hasCap = Alpha.currentStage < 11 || player.disablePostReality;
