@@ -1,4 +1,4 @@
-import { GameMechanicState } from "../../game-mechanics";
+import { GameMechanicState } from "../game-mechanics";
 import wordShift from "../word-shift";
 
 export const Quote = {
