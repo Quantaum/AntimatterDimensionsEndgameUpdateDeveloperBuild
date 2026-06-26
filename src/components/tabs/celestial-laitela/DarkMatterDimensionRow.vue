@@ -220,7 +220,19 @@ export default {
 </template>
 
 <style scoped>
-.l-dmd-interval-small-text .l-dmd-dm-small-text .l-dmd-de-small-text {
+.l-dmd-interval-small-text {
+  vertical-align: middle;
+  font-size: 0.9rem;
+  line-height: 0.9rem;
+}
+
+.l-dmd-dm-small-text {
+  vertical-align: middle;
+  font-size: 0.9rem;
+  line-height: 0.9rem;
+}
+
+.l-dmd-de-small-text {
   vertical-align: middle;
   font-size: 0.9rem;
   line-height: 0.9rem;
