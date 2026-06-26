@@ -20,6 +20,11 @@ export function buySingleTimeDimension(tier, auto = false) {
     }
     return false;
   }
+  if (DualityUpgrade(15).isLockingMechanics) {
+    const lockString = "purchase a Time Dimension";
+    DualityUpgrade(15).tryShowWarningModal(lockString);
+    return false;
+  }
 
   Currency.eternityPoints.subtract(dim.cost);
   dim.amount = dim.amount.plus(1);
@@ -115,6 +120,11 @@ export function buyMaxTimeDimension(tier, portionToSpend = 1, isMaxAll = false) 
       ImaginaryUpgrade(15).tryShowWarningModal(`purchase a Time Dimension,
         which will produce Infinity Dimensions through EC7`);
     }
+    return false;
+  }
+  if (DualityUpgrade(15).isLockingMechanics) {
+    const lockString = "purchase a Time Dimension";
+    DualityUpgrade(15).tryShowWarningModal(lockString);
     return false;
   }
   if (Enslaved.isRunning) return buySingleTimeDimension(tier);
