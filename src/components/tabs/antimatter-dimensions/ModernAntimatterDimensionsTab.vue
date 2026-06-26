@@ -65,6 +65,10 @@ export default {
           ImaginaryUpgrade(21).tryShowWarningModal();
           return;
         }
+        if (DualityUpgrade(21).isLockingMechanics && player.auto.disableContinuum) {
+          DualityUpgrade(21).tryShowWarningModal();
+          return;
+        }
         Laitela.setContinuum(true);
       }
     },
