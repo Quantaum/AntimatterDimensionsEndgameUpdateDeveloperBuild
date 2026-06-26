@@ -760,8 +760,23 @@ export const pelleQuotes = {
       "So I'll expect to see you soon."
     ]
   },
-  reachGoal: {
+  divinity: {
     id: 31,
+    lines: [
+      { text: "Hello there, $1.", 1: destroyer },
+      "I expect you are still working on the entry fee.",
+      "And in searching the remains of my old Reality, you have found something.",
+      { text: "An escape far stronger than $1.", 1: endgame },
+      { text: "The $1 and I worked together on that for a good while.", 1: elemental },
+      { text: "As part of your $1, you would want to master every power, would you not?", 1: mandate },
+      "As long as it helps you with accumulating the designated resource, I will allow it.",
+      { text: "Remember, I have no reason to $1 you.", 1: misconstrue },
+      { text: "For you would simply $1 time, once again.", 1: reverse },
+      "I will not bother you again until you are ready to enter my domain."
+    ]
+  },
+  reachGoal: {
+    id: 32,
     lines: [
       "That... took a while.",
       { text: "No offense of course, but I expected you to $1 that challenge.", 1: overpower },
