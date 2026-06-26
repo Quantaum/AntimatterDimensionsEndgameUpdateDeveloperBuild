@@ -165,6 +165,7 @@ export const Endgame = {
       if (!EffarigUnlock.endgame.isUnlocked) {
         EffarigUnlock.endgame.unlock();
       }
+      Effarig.quotes.beatEndgame.show();
     }
     this.resetStuff();
 
