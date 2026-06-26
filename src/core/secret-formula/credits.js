@@ -21,7 +21,7 @@ export const credits = {
     18: "Endgame Web Tester",
     19: "Android Tester",
     20: "Endgame Mobile Tester",
-    21: "Other Contributer",
+    21: "Other Contributor",
   },
 
   // Each person must have a name and at least one role (the index of the desired role in roles). They can also have a
