@@ -242,6 +242,12 @@ export function buyOneDimension(tier) {
 
   const cost = dimension.cost;
 
+  if (tier === 8 && DualityUpgrade(15).isLockingMechanics) {
+    const lockString = "purchase an 8th Antimatter Dimension";
+    DualityUpgrade(15).tryShowWarningModal(lockString);
+    return false;
+  }
+
   if (tier === 8 && Enslaved.isRunning && AntimatterDimension(8).bought.gte(1)) return false;
 
   if (cost.lt(DC.E9E15)) dimension.currencyAmount = dimension.currencyAmount.minus(cost);
@@ -267,6 +273,12 @@ export function buyManyDimension(tier) {
   if (Laitela.continuumActive || !dimension.isAvailableForPurchase || !dimension.isAffordableUntil10) return false;
   const cost = dimension.costUntil10;
 
+  if (tier === 8 && DualityUpgrade(15).isLockingMechanics) {
+    const lockString = "purchase an 8th Antimatter Dimension";
+    DualityUpgrade(15).tryShowWarningModal(lockString);
+    return false;
+  }
+
   if (tier === 8 && Enslaved.isRunning) return buyOneDimension(8);
 
   if (cost.lt(DC.E9E15)) dimension.currencyAmount = dimension.currencyAmount.minus(cost);
@@ -284,6 +296,12 @@ export function buyAsManyAsYouCanBuy(tier) {
   if (Laitela.continuumActive || !dimension.isAvailableForPurchase || !dimension.isAffordable) return false;
   const howMany = dimension.howManyCanBuy;
   const cost = dimension.cost.times(howMany);
+
+  if (tier === 8 && DualityUpgrade(15).isLockingMechanics) {
+    const lockString = "purchase an 8th Antimatter Dimension";
+    DualityUpgrade(15).tryShowWarningModal(lockString);
+    return false;
+  }
 
   if (tier === 8 && Enslaved.isRunning) return buyOneDimension(8);
 
@@ -328,6 +346,12 @@ export function buyMaxDimension(tier, bulk = Infinity) {
   let bulkLeft = bulk;
   const goal = Player.infinityGoal;
   if (dimension.cost.gt(goal) && Player.isInAntimatterChallenge) return;
+
+  if (tier === 8 && DualityUpgrade(15).isLockingMechanics) {
+    const lockString = "purchase an 8th Antimatter Dimension";
+    DualityUpgrade(15).tryShowWarningModal(lockString);
+    return false;
+  }
 
   if (tier === 8 && Enslaved.isRunning) {
     buyOneDimension(8);
