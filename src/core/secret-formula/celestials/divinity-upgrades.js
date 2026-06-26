@@ -121,7 +121,7 @@ export const divinityUpgrades = {
     id: "divineL2U2",
     layer: 2,
     cost: new Decimal(7),
-    description: "Divine Stars mutliply Divine Energy production",
+    description: "Divine Stars multiply Divine Energy production",
     effect: () => player.celestials.pelle.divinity.divineStars.max(1),
     formatEffect: value => formatX(value, 2)
   },
