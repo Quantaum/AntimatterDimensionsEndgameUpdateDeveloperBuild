@@ -46,21 +46,24 @@ export default {
       return {
         "o-dark-matter-dimension-button": true,
         "o-dark-matter-dimension-button--available": this.canBuyInterval,
-        "o-dark-matter-dimension-button--ascend": this.isIntervalCapped
+        "o-dark-matter-dimension-button--ascend": this.isIntervalCapped,
+        "l-dmd-interval-small-text": this.hasLongIntText
       };
     },
     darkMatterClassObject() {
       return {
         "o-dark-matter-dimension-button": true,
         "o-dark-matter-dimension-button--available": this.hoverOverAscension || this.canBuyPowerDM,
-        "o-dark-matter-dimension-button--accent": this.hoverOverAscension
+        "o-dark-matter-dimension-button--accent": this.hoverOverAscension,
+        "l-dmd-dm-small-text": this.hasLongDMText
       };
     },
     darkEnergyClassObject() {
       return {
         "o-dark-matter-dimension-button": true,
         "o-dark-matter-dimension-button--available": this.hoverOverAscension || this.canBuyPowerDE,
-        "o-dark-matter-dimension-button--accent": this.hoverOverAscension
+        "o-dark-matter-dimension-button--accent": this.hoverOverAscension,
+        "l-dmd-de-small-text": this.hasLongDEText
       };
     },
     intervalText() {
@@ -155,13 +158,13 @@ export default {
       this.hoverOverAscension = state;
     },
     hasLongIntText() {
-      return this.intervalCost.gte(DC.E1E6);
+      return this.intervalText.length > 20;
     },
     hasLongDMText() {
-      return this.powerDMCost.gte(DC.E1E6);
+      return this.darkMatterText.length > 20;
     },
     hasLongDEText() {
-      return this.powerDECost.gte(DC.E1E6);
+      return this.darkEnergyText.length > 20;
     },
   }
 };
@@ -192,19 +195,19 @@ export default {
         >
           <i class="fas fa-question-circle" />
         </span>
-        <span :class="{ 'l-dim-interval-small-text': hasLongIntText }" v-html="intervalText" />
+        <span v-html="intervalText" />
       </button>
       <button
         :class="darkMatterClassObject"
         @click="buyPowerDM"
       >
-        <span :class="{ 'l-dim-dm-small-text': hasLongDMText }" v-html="darkMatterText" />
+        <span v-html="darkMatterText" />
       </button>
       <button
         :class="darkEnergyClassObject"
         @click="buyPowerDE"
       >
-        <span :class="{ 'l-dmd-de-small-text': hasLongDEText }" v-html="darkEnergyText" />
+        <span v-html="darkEnergyText" />
       </button>
     </div>
     <div v-if="interval.gt(200)">
