@@ -164,7 +164,7 @@ export const resurgenceUpgrades = {
     description: "Unlock more Galactic Powers"
   },
   unl4: {
-    name: "Ressurect",
+    name: "Resurrect",
     id: "unl4",
     cost: new Decimal("1e20000"),
     description: "Unlock Ascension"
