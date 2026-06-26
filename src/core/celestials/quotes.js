@@ -143,6 +143,10 @@ class CelQuotes extends GameMechanicState {
       : player.expanse.elemental.quotes.includes(this.id);
   }
 
+  get canBeUnlocked() {
+    return !this.isUnlocked;
+  }
+
   get requirement() {
     // If requirement is defined, it is always a function returning a boolean.
     return this.config.requirement?.();
