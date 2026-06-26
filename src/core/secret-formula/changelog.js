@@ -78,6 +78,7 @@ The update took 5 hours, but due to Time Dilation one hour is equivalent to a mo
 <li>Made costs above e9e15 not consume resource</li>
 <li>Fixed IP/EP/RM logarithm by zero</li>
 <li>Fixed Endgame Upgrade 8 not triggering properly</li>
+<li>Incorrect Time Dimension and Dark Matter Dimension costs</li>
 <li>Numerous others that I have completely forgotten about</li>
 <li>A bnuch of tpyos reprotuted in teh Dicsord</li>
 </ul>
