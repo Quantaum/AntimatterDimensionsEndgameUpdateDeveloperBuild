@@ -1669,7 +1669,7 @@ export const normalAchievements = [
   },
   {
     id: 201,
-    name: "A New Beginning ^2",
+    name: "A Newer Beginning",
     description: "Begin generation of Galactic Power.",
     checkRequirement: () => GalacticPower.isUnlocked,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
