@@ -74,7 +74,9 @@ export const pelleGalaxyGeneratorUpgrades = {
   DTMult: rebuyable({
     id: "galaxyGeneratorDTMult",
     description: "Multiply Galaxy generation",
-    cost: x => new Decimal(1e100).times(Decimal.pow(1e100, (x*(x+1)/2)+x)),
+    cost: x => new Decimal(1e100).times(
+      Decimal.pow(1e100, (Math.min(x, 20000)*(Math.min(x, 20000)+1)/2)+Math.min(x, 20000))).times(
+      Decimal.pow10(2e10 * Math.pow(1.001, Math.max(x - 20000, 0)))),
     effect: x => Decimal.pow(2 ** (DivinityMilestone.firstDivine.isReached && !player.disablePostReality ? 2 : 1), x),
     formatEffect: x => formatX(x, 2),
     currency: () => Currency.dilatedTime,
