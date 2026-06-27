@@ -22,37 +22,37 @@ export const celestialInfinityUpgrades = {
   },
   celDimBoostBuff: {
     id: "celDimBoostBuff",
-    cost: 20,
+    cost: 10,
     description: () => `Increase the Celestial Dimension Boost base multiplier to ${formatX(100)}`,
     effect: 100
   },
   celGalaxyBuff: {
     id: "celGalaxyBuff",
-    cost: 50,
+    cost: 25,
     description: () => `Increase the Celestial Galaxy buff from ${formatX(1.02, 2, 2)} to ${formatX(1.03, 2, 2)} per Galaxy`,
     effect: 1.03
   },
   celestialMatterConversionBuff: {
     id: "celestialMatterConversionBuff",
-    cost: 100,
+    cost: 50,
     description: () => `Increase the Celestial Matter Conversion Rate base from ${formatPow(2)} to ${formatPow(2.5, 1, 1)}`,
     effect: 2.5
   },
   antimatterCelestialDimBuff: {
     id: "antimatterCelestialDimBuff",
-    cost: 400,
+    cost: 100,
     description: "Multiply all Celestial Dimensions by the Antimatter Exponent's Exponent after Alpha Decay",
     effect: () => Decimal.log10(Decimal.log10(player.antimatter.add(1)).add(1)).max(1)
   },
   cipGen: {
     id: "cipGen",
-    cost: 1000,
+    cost: 300,
     description: () => `Generate CIP at ${formatPercents(0.1)} of your fastest Celestial Crunch`,
     effect: () => player.records.bestCelestialInfinity.time.times(10)
   },
   buffedStart: {
     id: "buffedStart",
-    cost: 2000,
+    cost: 1000,
     description: () => `Start Celestial Infinities with ${formatInt(4)} Celestial Dimension Boosts and ${formatInt(2)} Celestial Galaxies`,
     effect: 4
   }
