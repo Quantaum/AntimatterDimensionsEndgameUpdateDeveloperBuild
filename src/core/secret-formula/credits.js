@@ -316,7 +316,7 @@ export const credits = {
     }, {
       name: "Sumi",
       name2: "Lilly",
-      roles: [18, 21, 13]
+      roles: [18, 21]
     }, {
       name: "SwordPunk",
       roles: 18
