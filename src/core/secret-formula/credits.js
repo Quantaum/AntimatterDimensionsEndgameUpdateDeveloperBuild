@@ -107,6 +107,10 @@ export const credits = {
       name: "Acamaeda",
       roles: [11, 17]
     }, {
+      name: "epic_ducks",
+      name2: "Elys",
+      roles: [13, 18, 21]
+    }, {
       name: "Spoofy",
       roles: 14
     }, {
@@ -266,10 +270,6 @@ export const credits = {
     }, {
       name: "enitiaty",
       roles: 18
-    }, {
-      name: "epic_ducks",
-      name2: "Elys",
-      roles: [18, 21, 13]
     }, {
       name: "Error404",
       roles: [18, 21]
