@@ -13,7 +13,7 @@ export const credits = {
     10: "Lead Design Consultant",
     11: "Design Consultant",
     12: "Writer",
-    13: "Achievement Art",
+    13: "Achievement Artist",
     14: "Visual Artist",
     15: "Modal Maker, Lady Taker, Pie Baker",
     16: "Lurker Tester",
