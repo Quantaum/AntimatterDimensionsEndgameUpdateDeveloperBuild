@@ -1851,7 +1851,7 @@ export const normalAchievements = [
   },
   {
     id: 223,
-    name: "Power! Unlimited power!",
+    name: "Power! Unlimited Power!",
     get description() { return `Have your Infinity Dimension purchase cap exceed ${format(DC.NUMMAX, 1, 0)}.` },
     checkRequirement: () => InfinityDimensions.totalDimCap.gt(DC.NUMMAX),
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
@@ -1874,7 +1874,7 @@ export const normalAchievements = [
   },
   {
     id: 225,
-    name: "299792458 m/s",
+    name: "299792458m/s",
     description: "Uncap Celestial Matter.",
     checkRequirement: () => player.endgame.celDimExpansion.isBroken,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,

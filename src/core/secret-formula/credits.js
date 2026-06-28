@@ -13,7 +13,7 @@ export const credits = {
     10: "Lead Design Consultant",
     11: "Design Consultant",
     12: "Writer",
-    13: "Achievement Art",
+    13: "Achievement Artist",
     14: "Visual Artist",
     15: "Modal Maker, Lady Taker, Pie Baker",
     16: "Lurker Tester",
@@ -95,14 +95,14 @@ export const credits = {
       roles: 8
     }, {
       name: "Didgoty",
-      roles: [9, 18]
+      roles: [9, 18, 21]
     }, {
       name: "Living_Person",
       name2: "Life",
-      roles: [9, 18]
+      roles: [9, 18, 21]
     }, {
       name: "Qwerty",
-      roles: [9, 18]
+      roles: [9, 18, 21]
     }, {
       name: "Acamaeda",
       roles: [11, 17]
@@ -269,7 +269,7 @@ export const credits = {
     }, {
       name: "epic_ducks",
       name2: "Elys",
-      roles: [18, 21]
+      roles: [18, 21, 13]
     }, {
       name: "Error404",
       roles: [18, 21]
@@ -323,7 +323,7 @@ export const credits = {
     }, {
       name: "realmatryx",
       name2: "Matthew",
-      roles: 18
+      roles: [18, 21]
     }, {
       name: "about:blank",
       roles: 19
