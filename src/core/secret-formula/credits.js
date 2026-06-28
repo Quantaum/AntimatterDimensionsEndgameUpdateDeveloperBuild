@@ -95,14 +95,14 @@ export const credits = {
       roles: 8
     }, {
       name: "Didgoty",
-      roles: [9, 18]
+      roles: [9, 18, 21]
     }, {
       name: "Living_Person",
       name2: "Life",
-      roles: [9, 18]
+      roles: [9, 18, 21]
     }, {
       name: "Qwerty",
-      roles: [9, 18]
+      roles: [9, 18, 21]
     }, {
       name: "Acamaeda",
       roles: [11, 17]
@@ -323,7 +323,7 @@ export const credits = {
     }, {
       name: "realmatryx",
       name2: "Matthew",
-      roles: 18
+      roles: [18, 21]
     }, {
       name: "about:blank",
       roles: 19
