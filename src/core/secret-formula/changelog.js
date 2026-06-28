@@ -9,7 +9,7 @@ export const changelog = [
    * }
    */
   {
-    date: [2026, 6, 27],
+    date: [2026, 6, 29],
     name: "v1.0.0: The True Darkness Arises",
     info: `
 The update took 5 hours, but due to Time Dilation one hour is equivalent to a month of real time.
