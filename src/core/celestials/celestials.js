@@ -128,7 +128,7 @@ GameDatabase.celestials.descriptions = [
       of ${formatInt(24)} hours, which can be increased slightly by completing stages of Alpha's Reality.
       Various external resources, such as Cosmic Sector, will boost Alpha Decay as if you have spent more time\
       inside Alpha's Reality. Your current Alpha Decay Speed factor is ${formatX(Alpha.totalSpeedBoost, 2, 2)}.\
-      You start layers of Alpha's Reality with ${formatPercents(Alpha.cosmicSectorMinBoost, 2, 2)} of the total
+      You start layers of Alpha's Reality with ${formatPercents(Alpha.cosmicSectorMinBoost, 2, 2)} of the total\
       time to max already spent. Cosmic Sector boosts Alpha Decay starting and capped values\
       by ${format(Alpha.cosmicSectorExtraBoost, 2, 2)} hours. This does not reduce the time for Alpha Decay to cap,\
       instead it makes Alpha Decay more effective.
