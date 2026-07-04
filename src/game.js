@@ -1794,7 +1794,7 @@ function animateTweens(time) {
   }
   let delta = time - lastFrame;
   lastFrame = time;
-  if (player.dilation.active) {
+  if (player.dilation.active && !Achievement(207).isUnlocked) {
     delta /= Pelle.isDoomed ? 1.5 : 10;
   }
   tweenTime += delta;
