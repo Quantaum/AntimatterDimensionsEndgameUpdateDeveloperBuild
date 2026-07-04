@@ -1564,7 +1564,8 @@ window.player = {
       reality: true,
       background: true,
       blobSnowflakes: 16,
-      blobHole: false
+      blobHole: false,
+      hadrons: true
     },
     confirmations: {
       armageddon: true,
