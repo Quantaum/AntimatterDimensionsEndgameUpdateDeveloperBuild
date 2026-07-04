@@ -91,7 +91,7 @@ class DivineDimensionState extends DimensionState {
   }
 
   get powerMultiplier() {
-    return new Decimal(DivinityUpgrade.divineL2U8 ? 17 : this._powerMultiplier).timesEffectOf(DivinityUpgrade.divineL3U2);
+    return new Decimal(DivinityUpgrade.divineL2U8.isBought ? 17 : this._powerMultiplier).timesEffectOf(DivinityUpgrade.divineL3U2);
   }
 
   get purchases() {
