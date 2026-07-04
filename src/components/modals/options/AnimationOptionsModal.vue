@@ -18,6 +18,7 @@ export default {
       tachyonsUnlocked: false,
       realityUnlocked: false,
       animatedThemeUnlocked: false,
+      lhcUnlocked: false,
       bigCrunch: false,
       eternity: false,
       dilation: false,
