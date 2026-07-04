@@ -34,7 +34,7 @@ export default {
         y: Math.random() * bounds.y
       };
       const direction = randomUnitVector();
-      const speed = (1 / (LHC.hadronSpeed > 0 ? Math.pow(299792458 / LHC.hadronSpeed, 0.2) : Infinity)) * 2;
+      const speed = (1 / (LHC.hadronSpeed > 0 ? Math.pow(299792458 / LHC.hadronSpeed, 0.4) : Infinity)) * 2.5;
       const intersectionLength = intersect(start, direction, { x: 0, y: 0 }, bounds);
       const intersection = {
         x: start.x + direction.x * intersectionLength,
