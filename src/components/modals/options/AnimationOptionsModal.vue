@@ -28,7 +28,8 @@ export default {
       isS11Active: false,
       isBlackHoleUnlocked: false,
       blobHole: false,
-      isS11Unlocked: false
+      isS11Unlocked: false,
+      hadrons: false
     };
   },
   computed: {
@@ -69,6 +70,9 @@ export default {
     },
     blobHole(newValue) {
       player.options.animations.blobHole = newValue;
+    },
+    hadrons(newValue) {
+      player.options.animations.hadrons = newValue;
     }
   },
   methods: {
@@ -84,6 +88,7 @@ export default {
       this.isS11Active = Theme.currentName() === "S11";
       this.isS11Unlocked = Themes.available().map(t => t.name).includes("S11");
       this.isBlackHoleUnlocked = BlackHoles.areUnlocked;
+      this.lhcUnlocked = ExpansionPack.alphaPack.isBought;
 
       const options = player.options.animations;
       this.bigCrunch = options.bigCrunch;
@@ -94,6 +99,7 @@ export default {
       this.background = options.background;
       this.blobSnowflakes = options.blobSnowflakes;
       this.blobHole = options.blobHole;
+      this.hadrons = options.hadrons;
     },
     adjustSliderValue(value) {
       this.blobSnowflakes = value;
@@ -167,6 +173,11 @@ export default {
           @input="adjustSliderValue($event)"
         />
       </div>
+      <ModalOptionsToggleButton
+        v-if="lhcUnlocked"
+        v-model="hadrons"
+        text="Hadrons:"
+      />
     </div>
   </ModalWrapperOptions>
 </template>
