@@ -8,7 +8,9 @@ export default {
   },
   data() {
     return {
-      count: 0,
+      lcount: 0,
+      dcount: 0,
+      ecount: 0,
       initialized: false,
       bounds: {
         x: 0,
@@ -27,8 +29,12 @@ export default {
   },
   methods: {
     update() {
-      this.count = Math.floor(Math.min(player.celestials.laitela.hadrons.total, 100) *
-        Math.max(Math.log10(player.celestials.laitela.hadrons.total) / 2, 1));
+      this.lcount = Math.floor(Math.min(player.celestials.laitela.hadrons.light, 100) *
+        Math.max(Math.log10(player.celestials.laitela.hadrons.light) / 2, 1));
+      this.dcount = Math.floor(Math.min(player.celestials.laitela.hadrons.dark, 100) *
+        Math.max(Math.log10(player.celestials.laitela.hadrons.dark) / 2, 1));
+      this.ecount = Math.floor(Math.min(player.celestials.laitela.hadrons.exotic, 100) *
+        Math.max(Math.log10(player.celestials.laitela.hadrons.exotic) / 2, 1));
       this.isBlob = Theme.currentName() === "S11";
     },
     updateSize() {
@@ -45,10 +51,25 @@ export default {
     class="c-tachyon-particle-container"
   >
     <Hadron
-      v-for="i in count"
+      v-for="i in lcount"
       :key="i"
       :bounds="bounds"
       :is-blob="isBlob"
+      :type="0"
+    />
+    <Hadron
+      v-for="i in dcount"
+      :key="i"
+      :bounds="bounds"
+      :is-blob="isBlob"
+      :type="1"
+    />
+    <Hadron
+      v-for="i in ecount"
+      :key="i"
+      :bounds="bounds"
+      :is-blob="isBlob"
+      :type="2"
     />
   </svg>
 </template>
