@@ -11,7 +11,11 @@ export default {
     isBlob: {
       type: Boolean,
       required: true
-    }
+    },
+    type: {
+      type: Number,
+      required: true
+    },
   },
   data() {
     return {
@@ -85,9 +89,19 @@ export default {
     {{ blob }}
   </text>
   <circle
-    v-else
+    v-if="type === 0"
     r="5"
-    class="o-tachyon-particle"
+    class="o-hadron-light"
+  />
+  <circle
+    v-if="type === 1"
+    r="5"
+    class="o-hadron-dark"
+  />
+  <circle
+    v-if="type === 2"
+    r="5"
+    class="o-hadron-exotic"
   />
 </template>
 
