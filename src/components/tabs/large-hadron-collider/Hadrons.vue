@@ -46,32 +46,31 @@ export default {
 </script>
 
 <template>
-  <svg
-    v-if="initialized"
-    class="c-tachyon-particle-container"
-  >
-    <Hadron
-      v-for="i in lcount"
-      :key="i"
-      :bounds="bounds"
-      :is-blob="isBlob"
-      :type="0"
-    />
-    <Hadron
-      v-for="i in dcount"
-      :key="i"
-      :bounds="bounds"
-      :is-blob="isBlob"
-      :type="1"
-    />
-    <Hadron
-      v-for="i in ecount"
-      :key="i"
-      :bounds="bounds"
-      :is-blob="isBlob"
-      :type="2"
-    />
-  </svg>
+  <div v-if="initialized">
+    <svg class="c-tachyon-particle-container">
+      <Hadron
+        v-for="i in lcount"
+        :key="i"
+        :bounds="bounds"
+        :is-blob="isBlob"
+        :type="0"
+      />
+      <Hadron
+        v-for="i in dcount"
+        :key="i"
+        :bounds="bounds"
+        :is-blob="isBlob"
+        :type="1"
+      />
+      <Hadron
+        v-for="i in ecount"
+        :key="i"
+        :bounds="bounds"
+        :is-blob="isBlob"
+        :type="2"
+      />
+    </svg>
+  </div>
 </template>
 
 <style scoped>
