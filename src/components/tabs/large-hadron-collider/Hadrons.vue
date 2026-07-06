@@ -58,15 +58,15 @@ export default {
       :type="0"
     />
     <Hadron
-      v-for="i in dcount"
-      :key="i"
+      v-for="j in dcount"
+      :key="j"
       :bounds="bounds"
       :is-blob="isBlob"
       :type="1"
     />
     <Hadron
-      v-for="i in ecount"
-      :key="i"
+      v-for="k in ecount"
+      :key="k"
       :bounds="bounds"
       :is-blob="isBlob"
       :type="2"
