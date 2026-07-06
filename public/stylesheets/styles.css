@@ -6066,6 +6066,24 @@ properly on certain themes. */
 
 /* #endregion Dilation */
 
+/* #region Hadrons */
+
+.o-hadron-light {
+  fill: white;
+  box-shadow: inset 0 0 0.5rem 0 black;
+}
+
+.o-hadron-dark {
+  fill: black;
+  box-shadow: inset 0 0 0.5rem 0 white;
+}
+
+.o-hadron-exotic {
+  fill: #00ff00;
+}
+
+/* #endregion Hadrons */
+
 /* #region Break Eternity */
 
 /* #region l-break-eternity-tab */
