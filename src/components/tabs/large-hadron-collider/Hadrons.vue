@@ -55,6 +55,8 @@ export default {
         :is-blob="isBlob"
         :type="0"
       />
+    </svg>
+    <svg class="c-tachyon-particle-container">
       <Hadron
         v-for="i in dcount"
         :key="i"
@@ -62,6 +64,8 @@ export default {
         :is-blob="isBlob"
         :type="1"
       />
+    </svg>
+    <svg class="c-tachyon-particle-container">
       <Hadron
         v-for="i in ecount"
         :key="i"
