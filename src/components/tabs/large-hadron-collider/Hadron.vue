@@ -89,17 +89,17 @@ export default {
     {{ blob }}
   </text>
   <circle
-    v-if="type === 0"
+    v-else-if="type === 0"
     r="5"
     class="o-hadron-light"
   />
   <circle
-    v-if="type === 1"
+    v-else-if="type === 1"
     r="5"
     class="o-hadron-dark"
   />
   <circle
-    v-if="type === 2"
+    v-else-if="type === 2"
     r="5"
     class="o-hadron-exotic"
   />
