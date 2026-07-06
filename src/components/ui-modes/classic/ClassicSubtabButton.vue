@@ -30,7 +30,7 @@ export default {
         "o-tab-btn--reality": this.parentName === "Reality",
         "o-tab-btn--celestial": this.parentName === "Celestials",
         "o-tab-btn--endgame": this.parentName === "Endgame",
-        "o-tab-btn--cdexpansion": this.parentName === "CD Expansion",
+        "o-tab-btn--cd-expansion": this.parentName === "CD Expansion",
         "o-tab-btn--divinity": this.parentName === "Divinity"
       };
     },
