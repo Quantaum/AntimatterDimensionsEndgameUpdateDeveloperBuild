@@ -146,7 +146,8 @@ export const EndgameSkills = {
   },
 
   calculateEndgameMasteriesCost() {
-    let totalCost = EndgameMastery.boughtEM()
+    let list = EndgameMastery.permaMasteries.isBought ? EndgameMastery.boughtEM().filter(m => m.id >= 180) : EndgameMastery.boughtEM();
+    let totalCost = list
       .map(em => em.cost)
       .reduce(Number.sumReducer, 0);
     return totalCost;
