@@ -35,15 +35,15 @@ export default {
   },
   methods: {
     update() {
-      this.rcount = Math.floor(player.endgame.ethereal.stars.red.add(1).log10().sqrt().add(0.5));
-      this.ocount = Math.floor(player.endgame.ethereal.stars.orange.add(1).log10().sqrt().add(0.5));
-      this.ycount = Math.floor(player.endgame.ethereal.stars.yellow.add(1).log10().sqrt().add(0.5));
-      this.gcount = Math.floor(player.endgame.ethereal.stars.green.add(1).log10().sqrt().add(0.5));
-      this.bcount = Math.floor(player.endgame.ethereal.stars.blue.add(1).log10().sqrt().add(0.5));
-      this.pcount = Math.floor(player.endgame.ethereal.stars.purple.add(1).log10().sqrt().add(0.5));
-      this.wcount = Math.floor(player.endgame.ethereal.stars.white.add(1).log10().sqrt().add(0.5));
-      this.lcount = Math.floor(player.endgame.ethereal.stars.black.add(1).log10().sqrt().add(0.5));
-      this.acount = Math.floor(player.endgame.ethereal.stars.gray.add(1).log10().sqrt().add(0.5));
+      this.rcount = Decimal.floor(player.endgame.ethereal.stars.red.add(1).log10().sqrt().add(0.5)).toNumber();
+      this.ocount = Decimal.floor(player.endgame.ethereal.stars.orange.add(1).log10().sqrt().add(0.5)).toNumber();
+      this.ycount = Decimal.floor(player.endgame.ethereal.stars.yellow.add(1).log10().sqrt().add(0.5)).toNumber();
+      this.gcount = Decimal.floor(player.endgame.ethereal.stars.green.add(1).log10().sqrt().add(0.5)).toNumber();
+      this.bcount = Decimal.floor(player.endgame.ethereal.stars.blue.add(1).log10().sqrt().add(0.5)).toNumber();
+      this.pcount = Decimal.floor(player.endgame.ethereal.stars.purple.add(1).log10().sqrt().add(0.5)).toNumber();
+      this.wcount = Decimal.floor(player.endgame.ethereal.stars.white.add(1).log10().sqrt().add(0.5)).toNumber();
+      this.lcount = Decimal.floor(player.endgame.ethereal.stars.black.add(1).log10().sqrt().add(0.5)).toNumber();
+      this.acount = Decimal.floor(player.endgame.ethereal.stars.gray.add(1).log10().sqrt().add(0.5)).toNumber();
       this.isBlob = Theme.currentName() === "S11";
     },
     updateSize() {
