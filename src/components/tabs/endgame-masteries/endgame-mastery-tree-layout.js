@@ -74,6 +74,12 @@ export class EndgameMasteryTreeLayout {
       normalRow(                               EM(171)                                ),
       normalRow(                    EndgameMastery.endgameUpgrades                    )
     ];
+
+    if (ResurgenceUpgrade.unl1.isBought) {
+      this.rows.push(
+        normalRow(                   EndgameMastery.permaMasteries                    )
+      );
+    }
     /* eslint-enable no-multi-spaces, space-in-parens, func-call-spacing */
 
     /**
