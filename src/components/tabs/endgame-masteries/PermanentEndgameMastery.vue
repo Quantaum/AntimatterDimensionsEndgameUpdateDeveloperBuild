@@ -29,8 +29,12 @@ export default {
       return this.mastery.id;
     },
     requirement() {
-      if (this.id <= 2) {
+      if (this.id === 1) {
         return `${formatInt(this.maxES)}/${formatInt(EndgameMastery.endgameUpgrades.totalEndgameSkillRequirement)}
+          total Endgame Skills`;
+      }
+      if (this.id === 2) {
+        return `${formatInt(this.maxES)}/${formatInt(EndgameMastery.permaMasteries.totalEndgameSkillRequirement)}
           total Endgame Skills`;
       }
       return "";
