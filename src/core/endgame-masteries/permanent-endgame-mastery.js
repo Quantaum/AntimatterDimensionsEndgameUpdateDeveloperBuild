@@ -37,6 +37,8 @@ export class PermanentEndgameMasteryState extends EndgameMasteriesState {
     }
 
     if (this.id == 2) {
+      player.endgameMasteries.skills = player.endgameMasteries.skills.add(
+        EndgameMastery.boughtEM().filter(m => m.id < 180).map(em => em.cost).reduce(Number.sumReducer, 0));
       respecEndgameMasteries();
     }
 
