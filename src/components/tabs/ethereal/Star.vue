@@ -38,7 +38,7 @@ export default {
         y: Math.random() * bounds.y
       };
       const direction = randomUnitVector();
-      const speed = 0.1;
+      const speed = 0.025;
       const intersectionLength = intersect(start, direction, { x: 0, y: 0 }, bounds);
       const intersection = {
         x: start.x + direction.x * intersectionLength,
@@ -90,47 +90,47 @@ export default {
   </text>
   <circle
     v-else-if="type === 0"
-    r="8"
+    r="20"
     class="o-star-red"
   />
   <circle
     v-else-if="type === 1"
-    r="8"
+    r="20"
     class="o-star-orange"
   />
   <circle
     v-else-if="type === 2"
-    r="8"
+    r="20"
     class="o-star-yellow"
   />
   <circle
     v-else-if="type === 3"
-    r="8"
+    r="20"
     class="o-star-green"
   />
   <circle
     v-else-if="type === 4"
-    r="8"
+    r="20"
     class="o-star-blue"
   />
   <circle
     v-else-if="type === 5"
-    r="8"
+    r="20"
     class="o-star-purple"
   />
   <circle
     v-else-if="type === 6"
-    r="8"
+    r="20"
     class="o-star-white"
   />
   <circle
     v-else-if="type === 7"
-    r="8"
+    r="20"
     class="o-star-black"
   />
   <circle
     v-else-if="type === 8"
-    r="8"
+    r="20"
     class="o-star-gray"
   />
 </template>
