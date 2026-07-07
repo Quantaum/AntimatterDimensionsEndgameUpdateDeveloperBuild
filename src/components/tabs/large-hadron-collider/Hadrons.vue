@@ -29,12 +29,12 @@ export default {
   },
   methods: {
     update() {
-      this.lcount = Math.floor(Math.min(player.celestials.laitela.hadrons.light, 100) *
-        Math.max(Math.log10(player.celestials.laitela.hadrons.light) / 2, 1));
-      this.dcount = Math.floor(Math.min(player.celestials.laitela.hadrons.dark, 100) *
-        Math.max(Math.log10(player.celestials.laitela.hadrons.dark) / 2, 1));
-      this.ecount = Math.floor(Math.min(player.celestials.laitela.hadrons.exotic, 100) *
-        Math.max(Math.log10(player.celestials.laitela.hadrons.exotic) / 2, 1));
+      this.lcount = Math.min(Math.floor(Math.min(player.celestials.laitela.hadrons.light, 100) *
+        Math.max(Math.log10(player.celestials.laitela.hadrons.light) / 2, 1)), 500);
+      this.dcount = Math.min(Math.floor(Math.min(player.celestials.laitela.hadrons.dark, 100) *
+        Math.max(Math.log10(player.celestials.laitela.hadrons.dark) / 2, 1)), 500);
+      this.ecount = Math.min(Math.floor(Math.min(player.celestials.laitela.hadrons.exotic, 100) *
+        Math.max(Math.log10(player.celestials.laitela.hadrons.exotic) / 2, 1)), 500);
       this.isBlob = Theme.currentName() === "S11";
     },
     updateSize() {
@@ -59,14 +59,14 @@ export default {
     />
     <Hadron
       v-for="j in dcount"
-      :key="j"
+      :key="j + 500"
       :bounds="bounds"
       :is-blob="isBlob"
       :type="1"
     />
     <Hadron
       v-for="k in ecount"
-      :key="k"
+      :key="k + 1000"
       :bounds="bounds"
       :is-blob="isBlob"
       :type="2"
