@@ -493,6 +493,8 @@ export function gainedCelestialEternityPoints() {
   let cep = DC.D5.pow(player.records.thisCelestialEternity.maxCIP.plus(
     gainedCelestialInfinityPoints()).add(1).log10().div(308).sub(0.7)).times(totalCEPMult());
 
+  cep = cep.min(DC.E4000).times(cep.div(DC.E4000).max(1).pow(0.1));
+
   return cep.floor();
 }
 
