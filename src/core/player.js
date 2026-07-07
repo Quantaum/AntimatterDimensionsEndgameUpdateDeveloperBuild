@@ -1565,6 +1565,7 @@ window.player = {
       background: true,
       blobSnowflakes: 16,
       blobHole: false,
+      stars: true,
       hadrons: true
     },
     confirmations: {
