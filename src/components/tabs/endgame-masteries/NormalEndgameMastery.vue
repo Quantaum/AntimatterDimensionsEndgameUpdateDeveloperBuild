@@ -19,7 +19,7 @@ export default {
     }
   },
   data: () => ({
-    showCost: !EndgameMastery.permaMasteries.isBought || (this.setup.mastery.id < 180);
+    showCost: !EndgameMastery.permaMasteries.isBought || (this.setup.mastery.id < 180)
   }),
   computed: {
     mastery() {
