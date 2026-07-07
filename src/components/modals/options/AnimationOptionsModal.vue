@@ -18,6 +18,7 @@ export default {
       tachyonsUnlocked: false,
       realityUnlocked: false,
       animatedThemeUnlocked: false,
+      etherealExtended: false,
       lhcUnlocked: false,
       bigCrunch: false,
       eternity: false,
@@ -30,6 +31,7 @@ export default {
       isBlackHoleUnlocked: false,
       blobHole: false,
       isS11Unlocked: false,
+      stars: false,
       hadrons: false
     };
   },
@@ -72,6 +74,9 @@ export default {
     blobHole(newValue) {
       player.options.animations.blobHole = newValue;
     },
+    stars(newValue) {
+      player.options.animations.stars = newValue;
+    },
     hadrons(newValue) {
       player.options.animations.hadrons = newValue;
     }
@@ -89,6 +94,7 @@ export default {
       this.isS11Active = Theme.currentName() === "S11";
       this.isS11Unlocked = Themes.available().map(t => t.name).includes("S11");
       this.isBlackHoleUnlocked = BlackHoles.areUnlocked;
+      this.etherealExtended = player.endgame.ethereal.isExtended;
       this.lhcUnlocked = ExpansionPack.alphaPack.isBought;
 
       const options = player.options.animations;
@@ -100,6 +106,7 @@ export default {
       this.background = options.background;
       this.blobSnowflakes = options.blobSnowflakes;
       this.blobHole = options.blobHole;
+      this.stars = options.stars;
       this.hadrons = options.hadrons;
     },
     adjustSliderValue(value) {
@@ -174,6 +181,11 @@ export default {
           @input="adjustSliderValue($event)"
         />
       </div>
+      <ModalOptionsToggleButton
+        v-if="etherealExtended"
+        v-model="stars"
+        text="Stars:"
+      />
       <ModalOptionsToggleButton
         v-if="lhcUnlocked"
         v-model="hadrons"
