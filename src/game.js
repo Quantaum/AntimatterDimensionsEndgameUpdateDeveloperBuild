@@ -215,6 +215,8 @@ export function gainedInfinityPoints() {
     ip = ip.pow(ReplicantiMultipliers.ipPow);
   }
 
+  if (ResurgenceUpgrade.ipSurge.isBought && !player.disablePostReality) ip = ip.min(player.antimatter);
+
   return ip.floor();
 }
 
@@ -242,6 +244,9 @@ function totalEPMult() {
       RealityUpgrade(12)
     ).times(getAdjustedGlyphEffect("timeEP")).times(player.disablePostReality ? 1 : AlphaUnlocks.timestudy61.effects.buff.effectOrDefault(1));
   if (LHC.voidRunning) ep = ep.timesEffectOf(NullUpgrade.eternityPointMult);
+
+  if (ResurgenceUpgrade.epSurge.isBought && !player.disablePostReality) ep = ep.min(player.antimatter);
+
   return ep;
 }
 
