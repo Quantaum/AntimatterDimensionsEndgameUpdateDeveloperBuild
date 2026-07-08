@@ -95,7 +95,7 @@ EndgameMastery.allConnections = (function() {
 
     [EM(161), EM(171)],
     [EM(171), PEM(1)],
-    [PEM(1), PEM(2), () => ResurgenceUpgrade.unl1.isBought]
+    [PEM(1), PEM(2), () => !ResurgenceUpgrade.unl1.isBought]
   ].map(props => new EndgameMasteryConnection(props[0], props[1], props[2]));
 
   return connections;
